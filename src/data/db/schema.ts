@@ -117,6 +117,17 @@ export const products = sqliteTable('products', {
   updatedAt: integer('updated_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 });
 
+// Notifications Table
+export const notifications = sqliteTable('notifications', {
+  id: text('id').primaryKey(),
+  userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  type: text('type').notNull(), // e.g., 'SYSTEM', 'SOCIAL', 'EVENT'
+  message: text('message').notNull(),
+  linkUrl: text('link_url'),
+  isRead: integer('is_read', { mode: 'boolean' }).default(false).notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});
+
 // --- PHASE 6: SPORTS MODULE ---
 
 export const seasons = sqliteTable('seasons', {
