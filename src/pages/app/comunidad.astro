@@ -65,7 +65,7 @@ const formatDate = (date: Date | null) => {
             <div class="flex items-start gap-4">
               <a href={`/@${author.slug}`} class="flex-shrink-0">
                 {author.avatarUrl ? (
-                  <img src={author.avatarUrl} alt={author.fullName} class="w-12 h-12 rounded-full object-cover" />
+                  <img loading="lazy" decoding="async" src={author.avatarUrl} alt={author.fullName} class="w-12 h-12 rounded-full object-cover" />
                 ) : (
                   <div class="w-12 h-12 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold">
                     {author.fullName.charAt(0).toUpperCase()}
@@ -88,7 +88,7 @@ const formatDate = (date: Date | null) => {
 
                 {post.imageUrl && (
                   <div class="rounded-lg overflow-hidden border border-brand-black/50 mb-4">
-                    <img src={post.imageUrl} alt="Publicación" class="w-full max-h-96 object-cover" />
+                    <img loading="lazy" decoding="async" src={post.imageUrl} alt="Publicación" class="w-full max-h-96 object-cover" />
                   </div>
                 )}
 

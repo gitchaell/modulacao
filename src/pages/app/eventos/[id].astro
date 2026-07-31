@@ -65,7 +65,7 @@ const formatDate = (date: Date) => {
     <!-- Hero Image -->
     <div class="w-full h-72 md:h-96 rounded-2xl overflow-hidden bg-brand-black border-2 border-brand-dark-card relative mb-8 shadow-xl">
        {event.coverImageUrl ? (
-          <img src={event.coverImageUrl} alt={event.title} class="w-full h-full object-cover opacity-80" />
+          <img loading="lazy" decoding="async" src={event.coverImageUrl} alt={event.title} class="w-full h-full object-cover opacity-80" />
         ) : (
           <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-gold/20 via-brand-black to-brand-black flex items-center justify-center">
             <svg class="text-brand-gold/20 w-32 h-32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -162,7 +162,7 @@ const formatDate = (date: Date) => {
                   <a href={`/@${a.profile.slug}`} title={a.profile.fullName}>
                     <div class="w-10 h-10 rounded-full bg-brand-black border-2 border-brand-dark flex items-center justify-center overflow-hidden hover:border-brand-gold transition-colors">
                       {a.profile.avatarUrl ? (
-                         <img src={a.profile.avatarUrl} alt={a.profile.fullName} class="w-full h-full object-cover" />
+                         <img loading="lazy" decoding="async" src={a.profile.avatarUrl} alt={a.profile.fullName} class="w-full h-full object-cover" />
                       ) : (
                         <span class="text-brand-gold text-xs font-bold">{a.profile.fullName.charAt(0).toUpperCase()}</span>
                       )}
@@ -188,7 +188,7 @@ const formatDate = (date: Date) => {
                     <a href={`/@${a.profile.slug}`} title={a.profile.fullName}>
                       <div class="w-10 h-10 rounded-full bg-brand-black border-2 border-brand-dark opacity-50 flex items-center justify-center overflow-hidden hover:opacity-100 hover:border-brand-gold transition-all">
                         {a.profile.avatarUrl ? (
-                           <img src={a.profile.avatarUrl} alt={a.profile.fullName} class="w-full h-full object-cover" />
+                           <img loading="lazy" decoding="async" src={a.profile.avatarUrl} alt={a.profile.fullName} class="w-full h-full object-cover" />
                         ) : (
                           <span class="text-brand-gold text-xs font-bold">{a.profile.fullName.charAt(0).toUpperCase()}</span>
                         )}

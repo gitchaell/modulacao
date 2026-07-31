@@ -48,7 +48,7 @@ const allMembers = await dbQuery.orderBy(desc(profiles.updatedAt));
           <Card class="h-full hover:border-brand-gold transition-colors text-center py-8">
             <div class="mx-auto w-24 h-24 rounded-full overflow-hidden border-2 border-brand-dark-card group-hover:border-brand-gold transition-colors mb-4 bg-brand-black flex items-center justify-center">
               {member.avatarUrl ? (
-                <img src={member.avatarUrl} alt={member.fullName} class="w-full h-full object-cover" />
+                <img loading="lazy" decoding="async" src={member.avatarUrl} alt={member.fullName} class="w-full h-full object-cover" />
               ) : (
                 <span class="text-3xl font-bold text-brand-gold">{member.fullName.charAt(0).toUpperCase()}</span>
               )}

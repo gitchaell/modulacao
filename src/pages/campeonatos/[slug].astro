@@ -112,7 +112,7 @@ const formatDate = (date: Date) => {
       <div class="relative z-10 container mx-auto px-6 max-w-6xl flex flex-col md:flex-row items-center gap-6">
         <div class="w-24 h-24 bg-brand-dark border-2 border-brand-dark-card rounded-2xl flex items-center justify-center flex-shrink-0">
           {championship.champ.coverImageUrl ? (
-            <img src={championship.champ.coverImageUrl} alt={championship.champ.name} class="w-full h-full object-cover rounded-xl" />
+            <img loading="lazy" decoding="async" src={championship.champ.coverImageUrl} alt={championship.champ.name} class="w-full h-full object-cover rounded-xl" />
           ) : (
              <svg class="w-10 h-10 text-brand-gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
           )}
@@ -152,7 +152,7 @@ const formatDate = (date: Date) => {
                       <div class="flex items-center gap-3">
                         <div class="w-8 h-8 rounded-full bg-brand-dark border border-brand-dark-card flex items-center justify-center overflow-hidden flex-shrink-0">
                           {row.team.logoUrl ? (
-                            <img src={row.team.logoUrl} alt={row.team.name} class="w-full h-full object-cover" />
+                            <img loading="lazy" decoding="async" src={row.team.logoUrl} alt={row.team.name} class="w-full h-full object-cover" />
                           ) : (
                             <span class="text-xs font-bold text-brand-gold">{row.team.name.charAt(0)}</span>
                           )}
@@ -203,7 +203,7 @@ const formatDate = (date: Date) => {
                     <div class="flex justify-between items-center">
                       <div class="flex items-center gap-2">
                         <div class="w-6 h-6 rounded bg-brand-dark border border-brand-dark-card flex items-center justify-center overflow-hidden">
-                           {home?.logoUrl ? <img src={home.logoUrl} class="w-full h-full object-cover"/> : <span class="text-[10px] text-gray-500">{home?.name.charAt(0)}</span>}
+                           {home?.logoUrl ? <img loading="lazy" decoding="async" src={home.logoUrl} class="w-full h-full object-cover"/> : <span class="text-[10px] text-gray-500">{home?.name.charAt(0)}</span>}
                         </div>
                         <span class="font-bold text-white text-sm">{home?.name || 'Local'}</span>
                       </div>
@@ -212,7 +212,7 @@ const formatDate = (date: Date) => {
                     <div class="flex justify-between items-center">
                       <div class="flex items-center gap-2">
                         <div class="w-6 h-6 rounded bg-brand-dark border border-brand-dark-card flex items-center justify-center overflow-hidden">
-                           {away?.logoUrl ? <img src={away.logoUrl} class="w-full h-full object-cover"/> : <span class="text-[10px] text-gray-500">{away?.name.charAt(0)}</span>}
+                           {away?.logoUrl ? <img loading="lazy" decoding="async" src={away.logoUrl} class="w-full h-full object-cover"/> : <span class="text-[10px] text-gray-500">{away?.name.charAt(0)}</span>}
                         </div>
                         <span class="font-bold text-white text-sm">{away?.name || 'Visita'}</span>
                       </div>

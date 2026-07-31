@@ -65,7 +65,7 @@ const formatDate = (date: Date) => {
                     <div class="flex items-center gap-3">
                       <div class="w-8 h-8 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold text-xs overflow-hidden">
                         {profile?.avatarUrl ? (
-                          <img src={profile.avatarUrl} alt="Avatar" class="w-full h-full object-cover" />
+                          <img loading="lazy" decoding="async" src={profile.avatarUrl} alt="Avatar" class="w-full h-full object-cover" />
                         ) : (
                           profile?.fullName?.charAt(0).toUpperCase() || user.email.charAt(0).toUpperCase()
                         )}
