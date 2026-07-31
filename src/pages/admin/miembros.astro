@@ -84,7 +84,7 @@ const formatDate = (date: Date) => {
                   </td>
                   <td class="p-4 text-sm text-gray-400">{formatDate(user.createdAt as unknown as Date)}</td>
                   <td class="p-4 text-right">
-                    <button class="text-gray-500 hover:text-brand-gold transition-colors" title="Editar Rol (Próximamente)">
+                    <button class="text-gray-500 transition-colors cursor-not-allowed opacity-50" title="Editar Rol" disabled>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
                     </button>
                   </td>
