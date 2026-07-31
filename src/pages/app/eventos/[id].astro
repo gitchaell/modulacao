@@ -1,0 +1,207 @@
+---
+import AppLayout from '@/layouts/AppLayout.astro';
+import Button from '@/components/core/Button.astro';
+import { db } from '@/data/db/db';
+import { events, groups, eventAttendances, profiles, users } from '@/data/db/schema';
+import { eq } from 'drizzle-orm';
+import { getSession } from '@/utils/session';
+
+const { id } = Astro.params;
+
+if (!id) {
+  return new Response(null, { status: 404, statusText: 'Not found' });
+}
+
+// Fetch event with group info
+const [eventData] = await db
+  .select({
+    event: events,
+    group: groups
+  })
+  .from(events)
+  .leftJoin(groups, eq(events.groupId, groups.id))
+  .where(eq(events.id, id));
+
+if (!eventData) {
+  return new Response(null, { status: 404, statusText: 'Not found' });
+}
+
+const { event, group } = eventData;
+
+// Fetch attendees
+const attendeesList = await db
+  .select({
+    profile: profiles,
+    status: eventAttendances.status
+  })
+  .from(eventAttendances)
+  .innerJoin(users, eq(eventAttendances.userId, users.id))
+  .innerJoin(profiles, eq(users.id, profiles.userId))
+  .where(eq(eventAttendances.eventId, event.id));
+
+const attending = attendeesList.filter(a => a.status === 'ATTENDING');
+const waitlist = attendeesList.filter(a => a.status === 'WAITLIST');
+
+// Check current user status
+const response = new Response();
+const session = await getSession(Astro.request, response);
+const currentUserAttendance = attendeesList.find(a => a.profile.userId === session.userId);
+
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat('es-ES', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(new Date(date));
+};
+---
+
+<AppLayout title={event.title}>
+  <div class="max-w-4xl mx-auto pb-24">
+
+    <!-- Hero Image -->
+    <div class="w-full h-72 md:h-96 rounded-2xl overflow-hidden bg-brand-black border-2 border-brand-dark-card relative mb-8 shadow-xl">
+       {event.coverImageUrl ? (
+          <img src={event.coverImageUrl} alt={event.title} class="w-full h-full object-cover opacity-80" />
+        ) : (
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-gold/20 via-brand-black to-brand-black flex items-center justify-center">
+            <svg class="text-brand-gold/20 w-32 h-32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+        )}
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Main Info -->
+      <div class="lg:col-span-2 space-y-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+             <span class="inline-block px-3 py-1 text-xs font-bold tracking-widest text-brand-black bg-brand-gold rounded uppercase">Evento</span>
+             {group && (
+               <a href={`/app/grupos/${group.id}`} class="text-brand-gold text-sm hover:underline font-medium">{group.name}</a>
+             )}
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">{event.title}</h1>
+
+          <div class="flex flex-col sm:flex-row gap-6 text-gray-300 bg-brand-dark-card p-6 rounded-xl border border-brand-dark">
+            <div class="flex gap-4 items-start">
+              <div class="w-12 h-12 rounded-lg bg-brand-black flex items-center justify-center text-brand-gold flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div>
+                <p class="font-medium text-white mb-1">Fecha y Hora</p>
+                <p class="text-sm capitalize">{formatDate(event.date as unknown as Date)}</p>
+              </div>
+            </div>
+
+            <div class="hidden sm:block w-px bg-brand-black"></div>
+
+            <div class="flex gap-4 items-start">
+              <div class="w-12 h-12 rounded-lg bg-brand-black flex items-center justify-center text-brand-gold flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <p class="font-medium text-white mb-1">Ubicación</p>
+                <p class="text-sm">{event.location}</p>
+                {event.mapUrl && <a href={event.mapUrl} target="_blank" rel="noopener noreferrer" class="text-brand-gold text-xs hover:underline mt-1 inline-block">Ver mapa</a>}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold uppercase tracking-widest text-brand-gold mb-4">Acerca del evento</h2>
+          <div class="prose prose-invert prose-brand max-w-none text-gray-300 whitespace-pre-wrap leading-relaxed">
+            {event.description}
+          </div>
+        </div>
+
+        {/* Placeholder for map */}
+        {event.mapUrl && (
+          <div class="h-64 w-full bg-brand-dark-card rounded-xl border border-brand-dark flex items-center justify-center text-gray-500 relative overflow-hidden">
+             <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+             <p class="z-10 text-sm">Vista del Mapa (Integración pendiente)</p>
+          </div>
+        )}
+
+      </div>
+
+      <!-- Sidebar / RSVP -->
+      <div class="space-y-6">
+        <div class="bg-brand-dark-card border border-brand-dark rounded-xl p-6 sticky top-6">
+          <h3 class="font-bold text-lg text-white mb-6">Asistencia</h3>
+
+          <form method="POST" action="/api/events/attend" class="mb-8">
+            <input type="hidden" name="eventId" value={event.id} />
+            {currentUserAttendance ? (
+              <div class="space-y-4">
+                <div class="bg-brand-gold/10 border border-brand-gold/30 rounded-lg p-4 text-center">
+                  <p class="text-brand-gold font-medium text-sm">Estás en la lista de: <br/> <strong class="text-lg">{currentUserAttendance.status === 'ATTENDING' ? 'ASISTENTES' : 'ESPERA'}</strong></p>
+                </div>
+                <input type="hidden" name="action" value="LEAVE" />
+                <Button type="submit" variant="outline" fullWidth>Cancelar Asistencia</Button>
+              </div>
+            ) : (
+              <div class="space-y-4">
+                <input type="hidden" name="action" value="JOIN" />
+                <Button type="submit" variant="primary" fullWidth>Asistiré</Button>
+                <p class="text-xs text-gray-500 text-center">Al confirmar aceptas las normas de convivencia del evento.</p>
+              </div>
+            )}
+          </form>
+
+          <div class="border-t border-brand-black pt-6 space-y-6">
+            <div>
+              <h4 class="text-sm font-bold text-gray-400 mb-3 flex items-center justify-between">
+                ASISTENTES <span class="bg-brand-black px-2 py-0.5 rounded text-xs">{attending.length}</span>
+              </h4>
+              <div class="flex flex-wrap gap-2">
+                {attending.slice(0, 8).map(a => (
+                  <a href={`/@${a.profile.slug}`} title={a.profile.fullName}>
+                    <div class="w-10 h-10 rounded-full bg-brand-black border-2 border-brand-dark flex items-center justify-center overflow-hidden hover:border-brand-gold transition-colors">
+                      {a.profile.avatarUrl ? (
+                         <img src={a.profile.avatarUrl} alt={a.profile.fullName} class="w-full h-full object-cover" />
+                      ) : (
+                        <span class="text-brand-gold text-xs font-bold">{a.profile.fullName.charAt(0).toUpperCase()}</span>
+                      )}
+                    </div>
+                  </a>
+                ))}
+                {attending.length > 8 && (
+                  <div class="w-10 h-10 rounded-full bg-brand-black border-2 border-brand-dark flex items-center justify-center text-xs text-gray-400">
+                    +{attending.length - 8}
+                  </div>
+                )}
+                {attending.length === 0 && <p class="text-xs text-gray-500">Nadie confirmado aún.</p>}
+              </div>
+            </div>
+
+            {waitlist.length > 0 && (
+               <div>
+                <h4 class="text-sm font-bold text-gray-400 mb-3 flex items-center justify-between">
+                  LISTA DE ESPERA <span class="bg-brand-black px-2 py-0.5 rounded text-xs">{waitlist.length}</span>
+                </h4>
+                <div class="flex flex-wrap gap-2">
+                  {waitlist.slice(0, 8).map(a => (
+                    <a href={`/@${a.profile.slug}`} title={a.profile.fullName}>
+                      <div class="w-10 h-10 rounded-full bg-brand-black border-2 border-brand-dark opacity-50 flex items-center justify-center overflow-hidden hover:opacity-100 hover:border-brand-gold transition-all">
+                        {a.profile.avatarUrl ? (
+                           <img src={a.profile.avatarUrl} alt={a.profile.fullName} class="w-full h-full object-cover" />
+                        ) : (
+                          <span class="text-brand-gold text-xs font-bold">{a.profile.fullName.charAt(0).toUpperCase()}</span>
+                        )}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</AppLayout>

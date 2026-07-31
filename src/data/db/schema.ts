@@ -1,4 +1,4 @@
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text, integer, primaryKey } from 'drizzle-orm/sqlite-core';
 
 // Users Table
 export const users = sqliteTable('users', {
@@ -77,6 +77,44 @@ export const groupMembers = sqliteTable('group_members', {
   userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   role: text('role', { enum: ['ADMIN', 'MEMBER'] }).default('MEMBER').notNull(),
   joinedAt: integer('joined_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});
+
+// Events Table
+export const events = sqliteTable('events', {
+  id: text('id').primaryKey(),
+  groupId: text('group_id').references(() => groups.id, { onDelete: 'cascade' }),
+  organizerId: text('organizer_id').notNull().references(() => users.id),
+  title: text('title').notNull(),
+  description: text('description').notNull(),
+  date: integer('date', { mode: 'timestamp' }).notNull(),
+  location: text('location').notNull(),
+  mapUrl: text('map_url'),
+  coverImageUrl: text('cover_image_url'),
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});
+
+// Event Attendances Table
+export const eventAttendances = sqliteTable('event_attendances', {
+  eventId: text('event_id').notNull().references(() => events.id, { onDelete: 'cascade' }),
+  userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  status: text('status', { enum: ['ATTENDING', 'WAITLIST'] }).default('ATTENDING').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+}, (t) => ({
+  pk: primaryKey({ columns: [t.eventId, t.userId] }),
+}));
+
+// Catalog Products Table
+export const products = sqliteTable('products', {
+  id: text('id').primaryKey(),
+  name: text('name').notNull(),
+  slug: text('slug').notNull().unique(),
+  description: text('description').notNull(),
+  price: text('price').notNull(), // Formatted text for flexibility (e.g., "$15.00", "Consultar")
+  coverImageUrl: text('cover_image_url'),
+  variants: text('variants', { mode: 'json' }).$type<string[]>(), // e.g., ["S", "M", "L"] or ["Negro", "Dorado"]
+  whatsappNumber: text('whatsapp_number').notNull(), // The number to contact
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 });
 
 // Articles Table (Noticias y Comunicados)
