@@ -10,7 +10,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const session = await getSession(request, response);
 
     if (!session.userId) {
-      return new Response('Unauthorized', { status: 401 });
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
     }
 
     const formData = await request.formData();
@@ -18,7 +18,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const content = formData.get('content')?.toString();
 
     if (!postId || !content || content.trim() === '') {
-      return new Response('Missing required fields', { status: 400 });
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
     await db.insert(comments).values({
@@ -30,6 +30,6 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 
     return redirect('/app/comunidad'); // Or back to a specific post page
   } catch (error: any) {
-    return new Response(error.message, { status: 500 });
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 };

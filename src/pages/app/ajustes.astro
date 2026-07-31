@@ -36,7 +36,7 @@ const [profile] = await db
         <div class="flex items-center gap-6 pb-6 border-b border-brand-dark-card/50">
           <div class="w-24 h-24 rounded-full bg-brand-black border-2 border-brand-dark-card flex items-center justify-center overflow-hidden flex-shrink-0">
              {profile?.avatarUrl ? (
-                <img src={profile.avatarUrl} alt="Avatar" class="w-full h-full object-cover" />
+                <img loading="lazy" decoding="async" src={profile.avatarUrl} alt="Avatar" class="w-full h-full object-cover" />
               ) : (
                 <span class="text-2xl font-bold text-brand-gold">{profile?.fullName.charAt(0).toUpperCase()}</span>
               )}

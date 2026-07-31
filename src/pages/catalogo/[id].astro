@@ -32,7 +32,7 @@ const whatsappUrl = `https://wa.me/${product.whatsappNumber}?text=${whatsappMess
         <div class="w-full md:w-1/2 aspect-square md:aspect-auto md:min-h-[500px] bg-brand-dark p-8 flex items-center justify-center border-b md:border-b-0 md:border-r border-brand-dark-card relative">
           <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-gold/5 via-brand-dark to-brand-dark"></div>
           {product.coverImageUrl ? (
-            <img src={product.coverImageUrl} alt={product.name} class="w-full h-full object-contain relative z-10" />
+            <img loading="lazy" decoding="async" src={product.coverImageUrl} alt={product.name} class="w-full h-full object-contain relative z-10" />
           ) : (
              <svg class="text-brand-gold/10 w-48 h-48 relative z-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
           )}

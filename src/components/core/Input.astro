@@ -14,7 +14,10 @@ const inputId = id || Math.random().toString(36).substring(7);
   <input
     id={inputId}
     class={`flex h-10 w-full rounded-md border border-brand-dark bg-brand-black px-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-brand-gold focus:border-brand-gold disabled:cursor-not-allowed disabled:opacity-50 ${error ? 'border-red-500 focus:ring-red-500' : ''} ${className || ''}`}
+    aria-label={label || rest['aria-label']}
+    aria-invalid={!!error}
+    aria-describedby={error ? `${inputId}-error` : undefined}
     {...rest}
   />
-  {error && <span class="text-xs text-red-500">{error}</span>}
+  {error && <span id={`${inputId}-error`} class="text-xs text-red-500">{error}</span>}
 </div>
