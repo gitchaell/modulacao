@@ -63,15 +63,15 @@ const [productsCount] = await db.select({ count: sql<number>`count(*)` }).from(p
       <Card class="bg-brand-black border-brand-dark-card">
         <h2 class="text-lg font-bold text-brand-gold uppercase tracking-wider mb-6">Accesos Rápidos</h2>
         <div class="space-y-4">
-          <a href="/admin/miembros" class="block p-4 rounded-lg bg-brand-dark-card hover:bg-brand-dark border border-transparent hover:border-brand-gold/50 transition-colors">
+          <a href="/admin/miembros#invite" class="block p-4 rounded-lg bg-brand-dark-card hover:bg-brand-dark border border-transparent hover:border-brand-gold/50 transition-colors">
             <h3 class="font-bold text-white">Gestionar Invitaciones</h3>
             <p class="text-sm text-gray-400 mt-1">Invita a nuevos miembros a unirse a la plataforma.</p>
           </a>
-          <a href="/admin/noticias" class="block p-4 rounded-lg bg-brand-dark-card hover:bg-brand-dark border border-transparent hover:border-brand-gold/50 transition-colors">
+          <a href="/admin/noticias#create" class="block p-4 rounded-lg bg-brand-dark-card hover:bg-brand-dark border border-transparent hover:border-brand-gold/50 transition-colors">
             <h3 class="font-bold text-white">Publicar Comunicado</h3>
             <p class="text-sm text-gray-400 mt-1">Redacta una nueva noticia o aviso oficial.</p>
           </a>
-          <a href="/admin/eventos" class="block p-4 rounded-lg bg-brand-dark-card hover:bg-brand-dark border border-transparent hover:border-brand-gold/50 transition-colors">
+          <a href="/admin/eventos#create" class="block p-4 rounded-lg bg-brand-dark-card hover:bg-brand-dark border border-transparent hover:border-brand-gold/50 transition-colors">
             <h3 class="font-bold text-white">Programar Evento</h3>
             <p class="text-sm text-gray-400 mt-1">Configura fecha, mapa y cupos para el próximo encuentro.</p>
           </a>

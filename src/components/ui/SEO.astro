@@ -44,3 +44,16 @@ const ogImageUrl = new URL(image, Astro.site || Astro.url);
 <meta property="twitter:title" content={`${title} | Modulação`} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImageUrl} />
+
+<!-- Robots -->
+<meta name="robots" content="index, follow" />
+
+<!-- JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Modulação",
+  "url": canonicalURL.origin,
+  "logo": new URL("/favicon.svg", canonicalURL.origin).toString(),
+  "description": description
+})} />
