@@ -17,7 +17,10 @@ const t = useTranslations(lang);
     <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-black/50 z-20 hidden md:hidden"></div>
     <aside id="app-sidebar" class="fixed md:relative inset-y-0 left-0 w-64 bg-brand-dark-card border-r border-brand-dark-card/50 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 z-30">
       <div class="p-6 border-b border-brand-dark-card/50 flex justify-between items-center">
-        <div class="font-bold text-xl text-brand-gold">Modulação App</div>
+        <a href="/" class="flex items-center gap-2 group">
+          <svg class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <div class="font-bold text-lg text-brand-gold">App</div>
+        </a>
         <button id="close-sidebar-btn" class="md:hidden text-gray-400 hover:text-white">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>

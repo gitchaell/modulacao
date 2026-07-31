@@ -12,7 +12,10 @@ const t = useTranslations(lang);
 ---
 <BaseLayout title={title}>
   <header class="w-full py-4 px-8 flex justify-between items-center border-b border-brand-dark-card/50">
-    <div class="font-bold text-xl tracking-wider uppercase text-brand-gold">Modulação</div>
+    <a href="/" class="flex items-center gap-2 group">
+      <svg class="w-8 h-8 text-brand-gold group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <div class="font-bold text-xl tracking-wider uppercase text-brand-gold hidden sm:block">Modulação</div>
+    </a>
 
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex gap-6">
