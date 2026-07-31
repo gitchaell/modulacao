@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'input'> {
+  label?: string;
+  error?: string;
+}
+
+const { label, error, class: className, id, ...rest } = Astro.props;
+const inputId = id || Math.random().toString(36).substring(7);
+---
+<div class="flex flex-col gap-1.5 w-full">
+  {label && <label for={inputId} class="text-sm font-medium text-gray-300">{label}</label>}
+  <input
+    id={inputId}
+    class={`flex h-10 w-full rounded-md border border-brand-dark bg-brand-black px-3 py-2 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-brand-gold focus:border-brand-gold disabled:cursor-not-allowed disabled:opacity-50 ${error ? 'border-red-500 focus:ring-red-500' : ''} ${className || ''}`}
+    {...rest}
+  />
+  {error && <span class="text-xs text-red-500">{error}</span>}
+</div>
