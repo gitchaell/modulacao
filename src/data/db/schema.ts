@@ -41,3 +41,20 @@ export const posts = sqliteTable('posts', {
   type: text('type', { enum: ['TEXT', 'IMAGE', 'POLL'] }).default('TEXT').notNull(),
   createdAt: integer('created_at', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`),
 });
+
+// Articles Table (Noticias y Comunicados)
+export const articles = sqliteTable('articles', {
+  id: text('id').primaryKey(),
+  authorId: text('author_id').notNull().references(() => users.id),
+  type: text('type', { enum: ['NEWS', 'COMMUNIQUE'] }).notNull(),
+  title: text('title').notNull(),
+  slug: text('slug').notNull().unique(),
+  excerpt: text('excerpt'),
+  content: text('content').notNull(), // HTML o Markdown
+  coverImageUrl: text('cover_image_url'),
+  status: text('status', { enum: ['DRAFT', 'PUBLISHED'] }).default('DRAFT').notNull(),
+  publishedAt: integer('published_at', { mode: 'timestamp' }),
+  tags: text('tags', { mode: 'json' }).$type<string[]>(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`),
+});

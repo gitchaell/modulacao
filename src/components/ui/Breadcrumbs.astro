@@ -1,0 +1,43 @@
+---
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  crumbs: Crumb[];
+}
+
+const { crumbs } = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": crumbs.map((crumb, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": crumb.label,
+    "item": crumb.href ? new URL(crumb.href, Astro.site || Astro.url).toString() : undefined
+  }))
+};
+---
+
+<nav aria-label="Breadcrumb" class="mb-4">
+  <ol class="flex flex-wrap items-center space-x-2 text-sm text-gray-400">
+    {crumbs.map((crumb, index) => (
+      <li class="flex items-center">
+        {index > 0 && (
+          <svg class="w-4 h-4 mx-2 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        )}
+        {crumb.href ? (
+          <a href={crumb.href} class="hover:text-brand-gold transition-colors">{crumb.label}</a>
+        ) : (
+          <span class="text-gray-200" aria-current="page">{crumb.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</nav>

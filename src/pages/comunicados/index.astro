@@ -1,0 +1,61 @@
+---
+import PublicLayout from '@/layouts/PublicLayout.astro';
+import Card from '@/components/core/Card.astro';
+import { db } from '@/data/db/db';
+import { articles } from '@/data/db/schema';
+import { eq, desc } from 'drizzle-orm';
+
+const communiques = await db
+  .select()
+  .from(articles)
+  .where(eq(articles.type, 'COMMUNIQUE'))
+  .orderBy(desc(articles.publishedAt));
+
+const formatDate = (date: Date | null) => {
+  if (!date) return '';
+  return new Intl.DateTimeFormat('es-ES', { dateStyle: 'medium' }).format(new Date(date));
+};
+---
+
+<PublicLayout title="Comunicados Oficiales">
+  <div class="py-16 bg-brand-black border-b border-brand-dark-card/50">
+    <div class="container mx-auto px-6 max-w-4xl text-center">
+      <h1 class="text-4xl font-bold uppercase tracking-widest text-brand-gold mb-4">Comunicados Oficiales</h1>
+      <p class="text-gray-400">Información oficial, normas y anuncios importantes para la comunidad Modulação.</p>
+    </div>
+  </div>
+
+  <section class="py-16 bg-brand-offwhite dark:bg-brand-dark min-h-[50vh]">
+    <div class="container mx-auto px-6 max-w-4xl space-y-6">
+      {communiques.length === 0 ? (
+        <div class="text-center py-20 text-gray-500">
+          <p>Aún no hay comunicados publicados.</p>
+        </div>
+      ) : (
+        communiques.map((communique) => (
+          <a href={`/noticias/${communique.slug}`} class="block group">
+            <Card class="hover:border-brand-gold transition-colors flex flex-col sm:flex-row sm:items-center gap-6">
+              <div class="flex-shrink-0 w-16 h-16 bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <div class="flex-1">
+                <div class="text-xs text-brand-gold mb-2 font-semibold tracking-wider">
+                  {formatDate(communique.publishedAt as unknown as Date)}
+                </div>
+                <h2 class="text-xl font-bold text-white mb-2 group-hover:text-brand-gold transition-colors">
+                  {communique.title}
+                </h2>
+                <p class="text-gray-400 text-sm line-clamp-2">
+                  {communique.excerpt}
+                </p>
+              </div>
+              <div class="hidden sm:flex text-gray-500 group-hover:text-brand-gold transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </Card>
+          </a>
+        ))
+      )}
+    </div>
+  </section>
+</PublicLayout>
