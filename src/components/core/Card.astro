@@ -6,6 +6,6 @@ interface Props {
 const { class: className, noPadding = false } = Astro.props;
 const paddingClass = noPadding ? "" : "p-6";
 ---
-<div class={`bg-brand-dark-card border border-brand-dark/50 rounded-xl shadow-sm ${paddingClass} ${className || ''}`}>
+<div class={`bg-white dark:bg-brand-dark-card border border-gray-200 dark:border-brand-dark/50 rounded-xl shadow-sm ${paddingClass} ${className || ''}`}>
   <slot />
 </div>
