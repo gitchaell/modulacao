@@ -17,6 +17,7 @@
     "@astrojs/tailwind": "^6.0.2",
     "@astrojs/vercel": "^11.0.4",
     "@libsql/client": "^0.17.4",
+    "@lucide/astro": "^1.28.0",
     "@tailwindcss/typography": "^0.5.20",
     "@vercel/blob": "^2.6.1",
     "astro": "^7.1.6",
