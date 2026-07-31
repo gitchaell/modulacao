@@ -1,5 +1,4 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
-import { sql } from 'drizzle-orm';
 
 // Users Table
 export const users = sqliteTable('users', {
@@ -7,7 +6,7 @@ export const users = sqliteTable('users', {
   email: text('email').notNull().unique(),
   passwordHash: text('password_hash').notNull(),
   role: text('role', { enum: ['ADMIN', 'MEMBER'] }).default('MEMBER').notNull(),
-  createdAt: integer('created_at', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`),
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 });
 
 // Profiles Table
@@ -19,7 +18,7 @@ export const profiles = sqliteTable('profiles', {
   avatarUrl: text('avatar_url'),
   city: text('city'),
   country: text('country'),
-  updatedAt: integer('updated_at', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 });
 
 // Invitations Table
@@ -30,7 +29,7 @@ export const invitations = sqliteTable('invitations', {
   role: text('role', { enum: ['ADMIN', 'MEMBER'] }).default('MEMBER').notNull(),
   status: text('status', { enum: ['PENDING', 'USED', 'EXPIRED'] }).default('PENDING').notNull(),
   expiresAt: integer('expires_at', { mode: 'timestamp' }).notNull(),
-  createdAt: integer('created_at', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`),
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 });
 
 // Posts Table (Community Feed)
@@ -38,8 +37,46 @@ export const posts = sqliteTable('posts', {
   id: text('id').primaryKey(),
   authorId: text('author_id').notNull().references(() => users.id),
   content: text('content').notNull(),
+  imageUrl: text('image_url'),
   type: text('type', { enum: ['TEXT', 'IMAGE', 'POLL'] }).default('TEXT').notNull(),
-  createdAt: integer('created_at', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`),
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});
+
+// Comments Table
+export const comments = sqliteTable('comments', {
+  id: text('id').primaryKey(),
+  postId: text('post_id').notNull().references(() => posts.id, { onDelete: 'cascade' }),
+  authorId: text('author_id').notNull().references(() => users.id),
+  content: text('content').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});
+
+// Reactions Table
+export const reactions = sqliteTable('reactions', {
+  id: text('id').primaryKey(),
+  postId: text('post_id').references(() => posts.id, { onDelete: 'cascade' }),
+  commentId: text('comment_id').references(() => comments.id, { onDelete: 'cascade' }),
+  userId: text('user_id').notNull().references(() => users.id),
+  type: text('type').notNull(), // e.g., 'like', 'fire', 'gold'
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});
+
+// Groups Table
+export const groups = sqliteTable('groups', {
+  id: text('id').primaryKey(),
+  name: text('name').notNull(),
+  type: text('type', { enum: ['COUNTRY', 'CITY'] }).notNull(),
+  description: text('description'),
+  coverImageUrl: text('cover_image_url'),
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});
+
+// Group Members Table
+export const groupMembers = sqliteTable('group_members', {
+  groupId: text('group_id').notNull().references(() => groups.id, { onDelete: 'cascade' }),
+  userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  role: text('role', { enum: ['ADMIN', 'MEMBER'] }).default('MEMBER').notNull(),
+  joinedAt: integer('joined_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 });
 
 // Articles Table (Noticias y Comunicados)
@@ -55,6 +92,6 @@ export const articles = sqliteTable('articles', {
   status: text('status', { enum: ['DRAFT', 'PUBLISHED'] }).default('DRAFT').notNull(),
   publishedAt: integer('published_at', { mode: 'timestamp' }),
   tags: text('tags', { mode: 'json' }).$type<string[]>(),
-  createdAt: integer('created_at', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`),
-  updatedAt: integer('updated_at', { mode: 'timestamp' }).default(sql`(strftime('%s', 'now'))`),
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 });
