@@ -1,0 +1,95 @@
+---
+import PublicLayout from '@/layouts/PublicLayout.astro';
+import Card from '@/components/core/Card.astro';
+import { db } from '@/data/db/db';
+import { championships, seasons } from '@/data/db/schema';
+import { desc, eq, and } from 'drizzle-orm';
+
+// Obtener la temporada activa
+const [activeSeason] = await db.select().from(seasons).where(eq(seasons.isActive, true)).limit(1);
+
+// Obtener campeonatos de la temporada activa
+let activeChampionships = [];
+if (activeSeason) {
+  activeChampionships = await db
+    .select()
+    .from(championships)
+    .where(and(
+      eq(championships.seasonId, activeSeason.id),
+      eq(championships.status, 'ONGOING')
+    ))
+    .orderBy(desc(championships.name));
+}
+
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat('es-ES', { month: 'long', year: 'numeric' }).format(new Date(date));
+};
+---
+
+<PublicLayout title="Centro Deportivo">
+  <div class="bg-brand-black border-b border-brand-dark-card/50 text-center py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-gold/10 via-brand-black to-brand-black opacity-60"></div>
+    <div class="relative z-10 container mx-auto px-6 max-w-4xl">
+      <h1 class="text-4xl md:text-5xl font-bold uppercase tracking-widest text-brand-gold mb-4">Hub Deportivo</h1>
+      <p class="text-gray-400 text-lg">Resultados en vivo, tablas de posiciones y estadísticas oficiales de Modulação.</p>
+    </div>
+  </div>
+
+  <section class="py-16 bg-brand-offwhite dark:bg-brand-dark min-h-[50vh]">
+    <div class="container mx-auto px-6 max-w-5xl">
+
+      {activeSeason ? (
+        <div class="mb-12">
+          <div class="flex items-center gap-3 mb-8">
+            <h2 class="text-2xl font-bold text-white uppercase tracking-wider">{activeSeason.name}</h2>
+            <span class="bg-brand-gold/20 text-brand-gold text-xs font-bold px-2 py-1 rounded tracking-widest uppercase border border-brand-gold/30">Temporada Actual</span>
+          </div>
+
+          {activeChampionships.length === 0 ? (
+            <div class="text-center py-12 text-gray-500 bg-brand-dark-card rounded-xl border border-brand-dark">
+              <p>No hay campeonatos en curso en esta temporada.</p>
+            </div>
+          ) : (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {activeChampionships.map(champ => (
+                <a href={`/campeonatos/${champ.slug}`} class="block group">
+                  <Card noPadding class="bg-brand-black border-brand-dark-card hover:border-brand-gold transition-colors flex overflow-hidden h-40">
+                    <div class="w-1/3 bg-brand-dark border-r border-brand-dark-card flex items-center justify-center relative overflow-hidden">
+                      {champ.coverImageUrl ? (
+                        <img src={champ.coverImageUrl} alt={champ.name} class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" />
+                      ) : (
+                        <svg class="w-12 h-12 text-brand-gold/20 group-hover:text-brand-gold/40 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                      )}
+                    </div>
+                    <div class="w-2/3 p-6 flex flex-col justify-center">
+                      <div class="text-[10px] font-bold tracking-widest text-brand-gold uppercase mb-1">
+                        {champ.type === 'LEAGUE' ? 'Liga' : 'Copa'}
+                      </div>
+                      <h3 class="text-xl font-bold text-white mb-2 group-hover:text-brand-gold transition-colors line-clamp-2">{champ.name}</h3>
+                      <div class="text-xs text-gray-500 font-medium uppercase tracking-wider flex items-center gap-1 mt-auto">
+                        Ver Posiciones <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                      </div>
+                    </div>
+                  </Card>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
+        <div class="text-center py-20 text-gray-500">
+          <svg class="w-16 h-16 mx-auto text-brand-dark mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <p class="text-lg">Fuera de temporada.</p>
+          <p class="text-sm">Actualmente no hay ninguna temporada deportiva activa.</p>
+        </div>
+      )}
+
+      <!-- Archivo Histórico Placeholder -->
+      <div class="border-t border-brand-dark-card pt-12 mt-12">
+        <h3 class="text-lg font-bold text-gray-400 uppercase tracking-wider mb-6">Archivo Histórico</h3>
+        <p class="text-gray-500 text-sm">Las estadísticas de temporadas anteriores estarán disponibles próximamente.</p>
+      </div>
+
+    </div>
+  </section>
+</PublicLayout>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+<BaseLayout title={`Admin | ${title}`}>
+  <div class="flex h-screen overflow-hidden">
+    <!-- Admin Sidebar -->
+    <aside class="w-72 bg-[#050505] border-r border-brand-dark-card flex flex-col">
+      <div class="p-6 border-b border-brand-dark-card">
+        <div class="font-bold text-lg text-brand-gold uppercase tracking-wider">Modulação Admin</div>
+      </div>
+      <nav class="flex-1 p-4 flex flex-col gap-1 overflow-y-auto">
+        <a href="/admin/dashboard" class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-brand-dark-card transition-colors">Dashboard</a>
+        <a href="/admin/miembros" class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-brand-dark-card transition-colors">Miembros e Invitaciones</a>
+        <a href="/admin/noticias" class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-brand-dark-card transition-colors">Noticias & Comunicados</a>
+        <a href="/admin/eventos" class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-brand-dark-card transition-colors">Eventos</a>
+        <a href="/admin/campeonatos" class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-brand-dark-card transition-colors">Campeonatos</a>
+        <a href="/admin/catalogo" class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-brand-dark-card transition-colors">Catálogo</a>
+      </nav>
+    </aside>
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col min-w-0 bg-brand-dark">
+      <header class="h-16 px-8 border-b border-brand-dark-card flex items-center justify-between">
+        <h1 class="font-semibold text-lg">{title}</h1>
+        <div class="text-sm text-gray-400">Admin Session</div>
+      </header>
+      <main class="flex-1 overflow-y-auto p-8">
+        <slot />
+      </main>
+    </div>
+  </div>
+</BaseLayout>

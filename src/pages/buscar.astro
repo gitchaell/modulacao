@@ -1,0 +1,120 @@
+---
+import PublicLayout from '@/layouts/PublicLayout.astro';
+import Input from '@/components/core/Input.astro';
+import Button from '@/components/core/Button.astro';
+
+// Obtener parámetro de búsqueda inicial si existe
+const query = Astro.url.searchParams.get('q') || '';
+---
+
+<PublicLayout title="Buscador Global">
+  <div class="bg-brand-offwhite dark:bg-brand-dark min-h-screen pb-24">
+
+    <div class="bg-brand-black border-b border-brand-dark-card py-16">
+      <div class="container mx-auto px-6 max-w-4xl text-center">
+        <h1 class="text-3xl font-bold uppercase tracking-widest text-brand-gold mb-6">Buscador Global</h1>
+        <form class="flex w-full max-w-2xl mx-auto gap-2" id="search-form">
+          <Input type="search" name="q" value={query} id="search-input" placeholder="Buscar miembros, eventos, noticias, productos..." class="flex-1" autocomplete="off" />
+          <Button type="submit">Buscar</Button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-6 max-w-4xl mt-12">
+      <div id="loading-indicator" class="hidden text-center py-12 text-gray-500">
+        <svg class="animate-spin w-8 h-8 mx-auto mb-4 text-brand-gold" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+        Buscando...
+      </div>
+
+      <div id="results-container" class="space-y-4">
+        <!-- Results will be injected here by client JS -->
+      </div>
+
+      <div id="no-results" class="hidden text-center py-20 text-gray-500">
+        No se encontraron resultados para tu búsqueda.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('search-form') as HTMLFormElement;
+    const input = document.getElementById('search-input') as HTMLInputElement;
+    const container = document.getElementById('results-container');
+    const loading = document.getElementById('loading-indicator');
+    const noResults = document.getElementById('no-results');
+
+    const performSearch = async (query: string) => {
+      if (!query || query.length < 2) return;
+
+      container!.innerHTML = '';
+      loading?.classList.remove('hidden');
+      noResults?.classList.add('hidden');
+
+      try {
+        const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+        const data = await res.json();
+
+        loading?.classList.add('hidden');
+
+        if (!data.results || data.results.length === 0) {
+          noResults?.classList.remove('hidden');
+          return;
+        }
+
+        data.results.forEach((item: { type: string; label: string; url: string; }) => {
+          const card = document.createElement('a');
+          card.href = item.url;
+          card.className = "block bg-brand-black border border-brand-dark-card rounded-xl p-4 hover:border-brand-gold transition-colors flex items-center justify-between group";
+
+          card.innerHTML = `
+            <div>
+              <span class="text-[10px] uppercase tracking-wider font-bold text-gray-500 bg-brand-dark px-2 py-0.5 rounded mr-3">${item.type}</span>
+              <span class="font-bold text-white group-hover:text-brand-gold transition-colors">${item.label}</span>
+            </div>
+            <svg class="w-5 h-5 text-gray-600 group-hover:text-brand-gold transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          `;
+          container!.appendChild(card);
+        });
+
+      } catch (e) {
+        console.error(e);
+        loading?.classList.add('hidden');
+      }
+    };
+
+    // Initialize search if query param is present on load
+    if (input && input.value) {
+      performSearch(input.value);
+    }
+
+    // Handle form submit
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const url = new URL(window.location.href);
+        url.searchParams.set('q', input.value);
+        window.history.pushState({}, '', url);
+        performSearch(input.value);
+      });
+    }
+
+    // Real-time debounced search
+    let timeout: ReturnType<typeof setTimeout>;
+    if (input) {
+      input.addEventListener('input', () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          if (input.value.length >= 2) {
+             const url = new URL(window.location.href);
+             url.searchParams.set('q', input.value);
+             window.history.replaceState({}, '', url);
+             performSearch(input.value);
+          } else {
+             container!.innerHTML = '';
+             noResults?.classList.add('hidden');
+          }
+        }, 300);
+      });
+    }
+  </script>
+</PublicLayout>

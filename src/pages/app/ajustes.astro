@@ -1,0 +1,96 @@
+---
+import AppLayout from '@/layouts/AppLayout.astro';
+import Card from '@/components/core/Card.astro';
+import Input from '@/components/core/Input.astro';
+import Button from '@/components/core/Button.astro';
+import { db } from '@/data/db/db';
+import { profiles, users } from '@/data/db/schema';
+import { eq } from 'drizzle-orm';
+import { getSession } from '@/utils/session';
+
+const response = new Response();
+const session = await getSession(Astro.request, response);
+
+if (!session.userId) {
+  return Astro.redirect('/invitacion/invalid');
+}
+
+const [profile] = await db
+  .select()
+  .from(profiles)
+  .where(eq(profiles.userId, session.userId));
+---
+
+<AppLayout title="Ajustes de Perfil">
+  <div class="max-w-2xl mx-auto space-y-8">
+
+    <div>
+      <h1 class="text-3xl font-bold uppercase tracking-widest text-brand-gold">Ajustes de Perfil</h1>
+      <p class="text-gray-400 mt-2 text-sm">Configura cómo te ven los demás miembros en la plataforma.</p>
+    </div>
+
+    <Card class="bg-brand-dark shadow-xl">
+      <form method="POST" action="/api/user/update-profile" enctype="multipart/form-data" class="space-y-6">
+
+        <!-- Avatar Upload -->
+        <div class="flex items-center gap-6 pb-6 border-b border-brand-dark-card/50">
+          <div class="w-24 h-24 rounded-full bg-brand-black border-2 border-brand-dark-card flex items-center justify-center overflow-hidden flex-shrink-0">
+             {profile?.avatarUrl ? (
+                <img src={profile.avatarUrl} alt="Avatar" class="w-full h-full object-cover" />
+              ) : (
+                <span class="text-2xl font-bold text-brand-gold">{profile?.fullName.charAt(0).toUpperCase()}</span>
+              )}
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-2">Foto de Perfil</label>
+            <input type="file" name="avatar" accept="image/*" class="text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-brand-gold/10 file:text-brand-gold hover:file:bg-brand-gold/20" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Input
+            name="fullName"
+            label="Nombre Completo"
+            value={profile?.fullName || ''}
+            required
+          />
+          <Input
+            name="slug"
+            label="Usuario (Slug)"
+            value={profile?.slug || ''}
+            required
+            pattern="[a-z0-9-]+"
+            title="Solo letras minúsculas, números y guiones"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Input
+            name="city"
+            label="Ciudad"
+            value={profile?.city || ''}
+          />
+          <Input
+            name="country"
+            label="País"
+            value={profile?.country || ''}
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-1.5">Biografía</label>
+          <textarea
+            name="bio"
+            class="w-full bg-brand-black border border-brand-dark rounded-md p-3 text-sm text-white focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold resize-none h-32"
+            placeholder="Cuéntanos un poco sobre ti..."
+          >{profile?.bio || ''}</textarea>
+        </div>
+
+        <div class="pt-6 border-t border-brand-dark-card/50 flex justify-end">
+          <Button type="submit">Guardar Cambios</Button>
+        </div>
+      </form>
+    </Card>
+
+  </div>
+</AppLayout>

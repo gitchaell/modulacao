@@ -1,0 +1,23 @@
+---
+import '@/styles/global.css';
+import SEO from '@/components/ui/SEO.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+	type?: 'website' | 'article';
+}
+
+const { title, description, image, type } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="dark">
+	<head>
+		<SEO title={title} description={description} image={image} type={type} />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

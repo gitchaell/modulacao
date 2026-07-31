@@ -1,0 +1,66 @@
+---
+import PublicLayout from '@/layouts/PublicLayout.astro';
+import Card from '@/components/core/Card.astro';
+import { db } from '@/data/db/db';
+import { articles } from '@/data/db/schema';
+import { eq, desc } from 'drizzle-orm';
+
+const newsArticles = await db
+  .select()
+  .from(articles)
+  .where(eq(articles.type, 'NEWS'))
+  .orderBy(desc(articles.publishedAt));
+
+const formatDate = (date: Date | null) => {
+  if (!date) return '';
+  return new Intl.DateTimeFormat('es-ES', { dateStyle: 'medium' }).format(new Date(date));
+};
+---
+
+<PublicLayout title="Noticias">
+  <div class="py-16 bg-brand-black border-b border-brand-dark-card/50">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <h1 class="text-4xl font-bold uppercase tracking-widest text-brand-gold mb-4">Noticias</h1>
+      <p class="text-gray-400">Últimas novedades y actualizaciones de Modulação.</p>
+    </div>
+  </div>
+
+  <section class="py-16 bg-brand-offwhite dark:bg-brand-dark min-h-[50vh]">
+    <div class="container mx-auto px-6 max-w-5xl">
+      {newsArticles.length === 0 ? (
+        <div class="text-center py-20 text-gray-500">
+          <p>Aún no hay noticias publicadas.</p>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {newsArticles.map((article) => (
+            <a href={`/noticias/${article.slug}`} class="block group">
+              <Card noPadding class="h-full hover:border-brand-gold transition-colors overflow-hidden flex flex-col">
+                <div class="h-48 bg-brand-black border-b border-brand-dark/50 relative">
+                  {article.coverImageUrl ? (
+                    <img src={article.coverImageUrl} alt={article.title} class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                  ) : (
+                    <div class="absolute inset-0 flex items-center justify-center text-brand-gold/20">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                    </div>
+                  )}
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                  <div class="text-xs text-brand-gold mb-3 font-semibold tracking-wider">
+                    {formatDate(article.publishedAt as unknown as Date)}
+                  </div>
+                  <h2 class="text-xl font-bold text-white mb-3 group-hover:text-brand-gold transition-colors line-clamp-2">
+                    {article.title}
+                  </h2>
+                  <p class="text-gray-400 text-sm line-clamp-3 mt-auto">
+                    {article.excerpt}
+                  </p>
+                </div>
+              </Card>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</PublicLayout>

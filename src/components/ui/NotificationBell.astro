@@ -1,0 +1,127 @@
+---
+import { db } from '@/data/db/db';
+import { notifications } from '@/data/db/schema';
+import { eq, and, desc } from 'drizzle-orm';
+import { getSession } from '@/utils/session';
+
+const response = new Response();
+const session = await getSession(Astro.request, response);
+
+let userNotifications = [];
+let unreadCount = 0;
+
+if (session.userId) {
+  userNotifications = await db
+    .select()
+    .from(notifications)
+    .where(eq(notifications.userId, session.userId))
+    .orderBy(desc(notifications.createdAt))
+    .limit(10);
+
+  unreadCount = userNotifications.filter(n => !n.isRead).length;
+}
+
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat('es-ES', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(date));
+};
+---
+
+<div class="relative inline-block" id="notification-bell-container">
+  <button id="notification-button" class="relative p-2 text-gray-400 hover:text-brand-gold transition-colors focus:outline-none">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    {unreadCount > 0 && (
+      <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-brand-black"></span>
+    )}
+  </button>
+
+  <div id="notification-dropdown" class="absolute right-0 mt-2 w-80 bg-brand-dark-card border border-brand-dark rounded-xl shadow-2xl hidden z-50 overflow-hidden transform origin-top-right transition-all">
+    <div class="p-4 border-b border-brand-dark flex justify-between items-center bg-brand-black/50">
+      <h3 class="font-bold text-white text-sm uppercase tracking-wider">Notificaciones</h3>
+      {unreadCount > 0 && (
+        <button id="mark-all-read" class="text-xs text-brand-gold hover:text-white transition-colors">Marcar todo como leído</button>
+      )}
+    </div>
+
+    <div class="max-h-96 overflow-y-auto divide-y divide-brand-dark">
+      {userNotifications.length === 0 ? (
+        <div class="p-6 text-center text-sm text-gray-500">
+          No tienes notificaciones.
+        </div>
+      ) : (
+        userNotifications.map(notification => (
+          <a
+            href={notification.linkUrl || '#'}
+            class={`block p-4 hover:bg-brand-dark/50 transition-colors ${!notification.isRead ? 'bg-brand-dark/20' : ''}`}
+            data-notification-id={notification.id}
+          >
+            <div class="flex gap-3">
+              <div class={`w-2 h-2 mt-1.5 rounded-full flex-shrink-0 ${!notification.isRead ? 'bg-brand-gold' : 'bg-transparent'}`}></div>
+              <div>
+                <p class={`text-sm ${!notification.isRead ? 'text-white' : 'text-gray-300'}`}>
+                  {notification.message}
+                </p>
+                <span class="text-[10px] text-gray-500 mt-1 block">{formatDate(notification.createdAt as unknown as Date)}</span>
+              </div>
+            </div>
+          </a>
+        ))
+      )}
+    </div>
+  </div>
+</div>
+
+<script>
+  const button = document.getElementById('notification-button');
+  const dropdown = document.getElementById('notification-dropdown');
+  const markAllBtn = document.getElementById('mark-all-read');
+  const notificationLinks = document.querySelectorAll('a[data-notification-id]');
+
+  if (button && dropdown) {
+    button.addEventListener('click', () => {
+      dropdown.classList.toggle('hidden');
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!button.contains(e.target as Node) && !dropdown.contains(e.target as Node)) {
+        dropdown.classList.add('hidden');
+      }
+    });
+  }
+
+  // Handle Mark All as Read
+  if (markAllBtn) {
+    markAllBtn.addEventListener('click', async () => {
+      try {
+        await fetch('/api/notifications/read', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ markAll: true })
+        });
+        // Visual update
+        const dots = dropdown?.querySelectorAll('.bg-brand-gold');
+        dots?.forEach(dot => {
+          dot.classList.remove('bg-brand-gold');
+          dot.classList.add('bg-transparent');
+        });
+        const badge = button?.querySelector('.bg-red-500');
+        if (badge) badge.remove();
+        markAllBtn.remove();
+      } catch (e) {
+        console.error(e);
+      }
+    });
+  }
+
+  // Handle individual click marking as read
+  notificationLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const id = link.getAttribute('data-notification-id');
+      fetch('/api/notifications/read', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id })
+      }).catch(console.error);
+    });
+  });
+</script>

@@ -1,0 +1,56 @@
+---
+import PublicLayout from '@/layouts/PublicLayout.astro';
+---
+
+<PublicLayout title="Quiénes Somos">
+  <div class="relative py-24 bg-brand-black overflow-hidden border-b border-brand-dark-card/50">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-gold/10 via-brand-black to-brand-black opacity-50"></div>
+    <div class="relative z-10 container mx-auto px-6 text-center max-w-3xl">
+      <h1 class="text-4xl md:text-5xl font-bold uppercase tracking-widest text-brand-gold mb-6">Quiénes Somos</h1>
+      <p class="text-xl text-gray-300 font-light">Nuestra historia, nuestro objetivo y la identidad que nos une.</p>
+    </div>
+  </div>
+
+  <section class="py-16 bg-brand-offwhite dark:bg-brand-dark">
+    <div class="container mx-auto px-6 lg:px-8 max-w-4xl space-y-16">
+
+      <!-- Historia -->
+      <div>
+        <h2 class="text-3xl font-bold mb-6 text-brand-gold uppercase tracking-wider">Nuestra Historia</h2>
+        <div class="text-gray-300 space-y-4 leading-relaxed">
+          <p>Modulação nació con una visión clara: unificar la pasión por el deporte en una plataforma de alto nivel. Lo que comenzó como un pequeño grupo de entusiastas se ha transformado en una red global de miembros comprometidos con la excelencia y el compañerismo.</p>
+          <p>Con el paso del tiempo, hemos desarrollado herramientas, organizado campeonatos y construido un espacio donde cada miembro puede compartir, competir y crecer.</p>
+        </div>
+      </div>
+
+      <!-- Objetivo -->
+      <div>
+        <h2 class="text-3xl font-bold mb-6 text-brand-gold uppercase tracking-wider">Nuestro Objetivo</h2>
+        <div class="text-gray-300 space-y-4 leading-relaxed">
+          <p>Buscamos proporcionar una plataforma tecnológica premium que centralice toda la actividad de nuestra comunidad. Desde la gestión deportiva profesional de nuestros campeonatos hasta el catálogo oficial de nuestra marca.</p>
+          <p>Queremos que la experiencia de usuario sea tan impecable como nuestro compromiso con el deporte, fomentando la conexión entre miembros de diferentes ciudades y países.</p>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div>
+        <h2 class="text-3xl font-bold mb-8 text-brand-gold uppercase tracking-wider">Preguntas Frecuentes</h2>
+        <div class="space-y-6">
+          <div class="bg-brand-black border border-brand-dark-card rounded-lg p-6">
+            <h3 class="text-lg font-bold mb-2">¿Cómo puedo unirme a Modulação?</h3>
+            <p class="text-gray-400 text-sm">El acceso a la plataforma es estrictamente por invitación. Los administradores generan invitaciones para los nuevos miembros. Si has recibido una, sigue el enlace en tu correo electrónico para establecer tu contraseña.</p>
+          </div>
+          <div class="bg-brand-black border border-brand-dark-card rounded-lg p-6">
+            <h3 class="text-lg font-bold mb-2">¿Qué funcionalidades ofrece la plataforma?</h3>
+            <p class="text-gray-400 text-sm">Como miembro, puedes participar en foros, acceder al hub deportivo, consultar tablas y fixtures, unirte a grupos por ciudad, inscribirte en eventos y adquirir productos del catálogo oficial.</p>
+          </div>
+          <div class="bg-brand-black border border-brand-dark-card rounded-lg p-6">
+            <h3 class="text-lg font-bold mb-2">¿Es seguro mi perfil público?</h3>
+            <p class="text-gray-400 text-sm">Sí, tienes control sobre la información que se muestra en tu perfil público (`/@tu-usuario`). Los datos sensibles y las interacciones privadas permanecen protegidas dentro de la comunidad de miembros.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</PublicLayout>

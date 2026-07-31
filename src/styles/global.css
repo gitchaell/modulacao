@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-brand-black: #0A0A0A;
+  --color-brand-dark: #121212;
+  --color-brand-dark-card: #1F1F1F;
+  --color-brand-white: #FFFFFF;
+  --color-brand-offwhite: #F8F9FA;
+
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-dark: #B8860B;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-offwhite text-brand-black dark:bg-brand-black dark:text-brand-white;
+  }
+}

@@ -1,0 +1,31 @@
+---
+import AuthLayout from '@/layouts/AuthLayout.astro';
+import Input from '@/components/core/Input.astro';
+import Button from '@/components/core/Button.astro';
+
+// If user is already logged in, redirect them to the app
+const session = await import('@/utils/session').then(m => m.getSession(Astro.request, new Response()));
+if (session.userId) {
+  return Astro.redirect('/app/comunidad');
+}
+---
+
+<AuthLayout title="Iniciar Sesión">
+  <div class="text-center mb-8">
+    <h2 class="text-2xl font-bold uppercase tracking-wider text-white">Ingresar</h2>
+    <p class="text-sm text-gray-400 mt-2">Accede a tu cuenta de Modulação.</p>
+  </div>
+
+  <form class="space-y-4" method="POST" action="/api/auth/login">
+    <Input type="email" name="email" label="Correo Electrónico" required placeholder="correo@ejemplo.com" />
+    <Input type="password" name="password" label="Contraseña" required />
+
+    <Button type="submit" fullWidth class="mt-6">Iniciar Sesión</Button>
+  </form>
+
+  <div class="mt-6 text-center">
+    <p class="text-xs text-gray-500">
+      El acceso es estrictamente por invitación. <br/> Si recibiste una, revisa tu correo electrónico.
+    </p>
+  </div>
+</AuthLayout>

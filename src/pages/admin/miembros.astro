@@ -1,0 +1,193 @@
+---
+import AdminLayout from '@/layouts/AdminLayout.astro';
+import Card from '@/components/core/Card.astro';
+import Button from '@/components/core/Button.astro';
+import Input from '@/components/core/Input.astro';
+import { db } from '@/data/db/db';
+import { invitations, users, profiles } from '@/data/db/schema';
+import { desc, eq } from 'drizzle-orm';
+
+// Fetch users
+const allUsers = await db
+  .select({
+    user: users,
+    profile: profiles
+  })
+  .from(users)
+  .leftJoin(profiles, eq(users.id, profiles.userId))
+  .orderBy(desc(users.createdAt));
+
+// Fetch pending invitations
+const pendingInvitations = await db
+  .select()
+  .from(invitations)
+  .where(eq(invitations.status, 'PENDING'))
+  .orderBy(desc(invitations.createdAt));
+
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat('es-ES', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(date));
+};
+---
+
+<AdminLayout title="Gestión de Miembros">
+  <div class="max-w-6xl mx-auto space-y-8">
+
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div>
+        <h1 class="text-3xl font-bold uppercase tracking-widest text-brand-gold">Miembros</h1>
+        <p class="text-gray-400 mt-2 text-sm">Administra los usuarios registrados y envía nuevas invitaciones.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- Lista de Miembros (Ocupa 2 columnas) -->
+      <Card noPadding class="lg:col-span-2 bg-brand-black border-brand-dark-card overflow-hidden">
+        <div class="p-6 border-b border-brand-dark-card flex justify-between items-center">
+          <h2 class="text-lg font-bold text-white uppercase tracking-wider">Usuarios Registrados</h2>
+          <span class="bg-brand-dark px-3 py-1 rounded text-brand-gold text-sm font-bold">{allUsers.length}</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-brand-dark border-b border-brand-dark-card text-xs uppercase tracking-wider text-gray-400">
+                <th class="p-4 font-medium">Miembro</th>
+                <th class="p-4 font-medium">Email</th>
+                <th class="p-4 font-medium">Rol</th>
+                <th class="p-4 font-medium">Registro</th>
+                <th class="p-4 font-medium"></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-brand-dark-card">
+              {allUsers.map(({ user, profile }) => (
+                <tr class="hover:bg-brand-dark/50 transition-colors">
+                  <td class="p-4">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold text-xs overflow-hidden">
+                        {profile?.avatarUrl ? (
+                          <img src={profile.avatarUrl} alt="Avatar" class="w-full h-full object-cover" />
+                        ) : (
+                          profile?.fullName?.charAt(0).toUpperCase() || user.email.charAt(0).toUpperCase()
+                        )}
+                      </div>
+                      <div>
+                        <div class="font-medium text-white">{profile?.fullName || 'Sin Configurar'}</div>
+                        <div class="text-xs text-brand-gold">@{profile?.slug || 'n/a'}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="p-4 text-sm text-gray-300">{user.email}</td>
+                  <td class="p-4">
+                    <span class={`inline-block px-2 py-1 text-xs font-bold rounded ${user.role === 'ADMIN' ? 'bg-brand-gold/20 text-brand-gold' : 'bg-brand-dark-card text-gray-300'}`}>
+                      {user.role}
+                    </span>
+                  </td>
+                  <td class="p-4 text-sm text-gray-400">{formatDate(user.createdAt as unknown as Date)}</td>
+                  <td class="p-4 text-right">
+                    <button class="text-gray-500 hover:text-brand-gold transition-colors" title="Editar Rol (Próximamente)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+              {allUsers.length === 0 && (
+                <tr>
+                  <td colspan="5" class="p-8 text-center text-gray-500">No hay usuarios registrados.</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      <!-- Panel de Invitaciones -->
+      <div class="space-y-6">
+        <Card class="bg-brand-black border-brand-dark-card">
+          <h2 class="text-lg font-bold text-brand-gold uppercase tracking-wider mb-6">Generar Invitación</h2>
+
+          <form id="inviteForm" class="space-y-4">
+            <Input type="email" id="inviteEmail" name="email" label="Correo Electrónico" required placeholder="correo@ejemplo.com" />
+
+            <div>
+              <label class="block text-sm font-medium text-gray-300 mb-1.5">Rol de Acceso</label>
+              <select id="inviteRole" name="role" class="flex h-10 w-full rounded-md border border-brand-dark bg-brand-black px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-brand-gold focus:border-brand-gold">
+                <option value="MEMBER">MEMBER (Miembro Regular)</option>
+                <option value="ADMIN">ADMIN (Administrador)</option>
+              </select>
+            </div>
+
+            <Button type="submit" fullWidth class="mt-2">Generar Enlace</Button>
+            <p id="inviteMessage" class="text-xs text-center mt-2 hidden"></p>
+          </form>
+        </Card>
+
+        <Card noPadding class="bg-brand-black border-brand-dark-card overflow-hidden">
+          <div class="p-4 border-b border-brand-dark-card">
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider">Invitaciones Pendientes</h2>
+          </div>
+          <ul class="divide-y divide-brand-dark-card max-h-96 overflow-y-auto">
+            {pendingInvitations.map((inv) => (
+              <li class="p-4 hover:bg-brand-dark/50 transition-colors">
+                <div class="flex justify-between items-start mb-1">
+                  <span class="text-sm font-medium text-white truncate pr-2">{inv.email}</span>
+                  <span class="text-[10px] bg-brand-dark-card text-brand-gold px-1.5 py-0.5 rounded font-bold">{inv.role}</span>
+                </div>
+                <div class="text-xs text-gray-500 mb-2">Exp: {formatDate(inv.expiresAt as unknown as Date)}</div>
+                <div class="flex gap-2">
+                  <input type="text" readonly value={`${Astro.url.origin}/invitacion/${inv.token}`} class="text-xs bg-brand-dark border border-brand-dark-card rounded px-2 py-1 flex-1 text-gray-400 focus:outline-none" />
+                </div>
+              </li>
+            ))}
+            {pendingInvitations.length === 0 && (
+              <li class="p-6 text-center text-sm text-gray-500">No hay invitaciones pendientes.</li>
+            )}
+          </ul>
+        </Card>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Lógica en el cliente para generar la invitación sin recargar toda la página de Admin
+    const form = document.getElementById('inviteForm') as HTMLFormElement;
+    const msg = document.getElementById('inviteMessage') as HTMLParagraphElement;
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button');
+        if(btn) btn.disabled = true;
+
+        const email = (document.getElementById('inviteEmail') as HTMLInputElement).value;
+        const role = (document.getElementById('inviteRole') as HTMLSelectElement).value;
+
+        try {
+          const response = await fetch('/api/auth/invite', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, role })
+          });
+
+          const data = await response.json();
+
+          msg.classList.remove('hidden');
+          if (response.ok) {
+            msg.className = "text-xs text-center mt-2 text-green-400";
+            msg.innerText = "Invitación generada exitosamente. Recarga la página para verla.";
+            form.reset();
+          } else {
+            msg.className = "text-xs text-center mt-2 text-red-400";
+            msg.innerText = data.error || "Error al generar la invitación.";
+          }
+        } catch (error) {
+          msg.classList.remove('hidden');
+          msg.className = "text-xs text-center mt-2 text-red-400";
+          msg.innerText = "Error de red.";
+        }
+
+        if(btn) btn.disabled = false;
+      });
+    }
+  </script>
+</AdminLayout>
