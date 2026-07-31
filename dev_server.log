@@ -1,0 +1,13 @@
+
+> temp-app@0.0.1 dev
+> astro dev
+
+19:15:30 [vite] connected.
+19:15:32 [types] Generated 1ms
+19:15:32 [vite] connected.
+19:15:32 [vite] Re-optimizing dependencies because vite config has changed
+ astro  v7.1.6 ready in 2490 ms
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+19:15:32 watching for file changes...
+19:16:26 [200] / 232ms
