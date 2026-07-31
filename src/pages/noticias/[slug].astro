@@ -7,7 +7,7 @@ import { eq } from 'drizzle-orm';
 const { slug } = Astro.params;
 
 if (!slug) {
-  return Astro.redirect('/404');
+  return new Response(null, { status: 404, statusText: 'Not found' });
 }
 
 const [article] = await db
@@ -16,7 +16,7 @@ const [article] = await db
   .where(eq(articles.slug, slug));
 
 if (!article) {
-  return Astro.redirect('/404');
+  return new Response(null, { status: 404, statusText: 'Not found' });
 }
 
 const formatDate = (date: Date | null) => {
