@@ -6,8 +6,8 @@ interface Props {
 const { class: className, noPadding = false } = Astro.props;
 const paddingClass = noPadding ? "" : "p-10";
 ---
-<div class={`relative bg-brand-white dark:bg-brand-dark border border-gray-200/50 dark:border-white/5 rounded-sm premium-shadow hover:-translate-y-1 transition-all duration-300 ease-out overflow-hidden ${paddingClass} ${className || ''}`}>
-  <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-brand-gold/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"></div>
+<div class={`relative bg-brand-white dark:bg-brand-dark border border-gray-200/50 dark:border-white/5 rounded-sm premium-shadow hover:-translate-y-1 transition-all duration-300 ease-out overflow-hidden group ${paddingClass} ${className || ''}`}>
+  <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-brand-gold/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-50 pointer-events-none"></div>
   <div class="relative z-10">
     <slot />
   </div>

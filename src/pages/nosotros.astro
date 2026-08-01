@@ -14,7 +14,7 @@ const t = useTranslations(lang);
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-gold/10 via-brand-black to-brand-black opacity-80 z-0"></div>
     <div class="relative z-10 container mx-auto px-6 text-center max-w-4xl animate-smooth-fade">
       <h1 class="font-display text-4xl md:text-5xl font-bold uppercase tracking-widest text-brand-gold mb-6">{t('nav.about')}</h1>
-      <p class="text-gray-400 text-xl font-medium text-balance">Nuestra historia, nuestro objetivo y la identidad que nos une en {tenantConfig.name}.</p>
+      <p class="text-gray-400 text-xl font-medium text-balance">{t('about.subtitle')}{tenantConfig.name}.</p>
     </div>
   </div>
 
@@ -28,7 +28,7 @@ const t = useTranslations(lang);
             <div class="w-16 h-16 rounded-sm bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0">
               <History class="w-8 h-8" />
             </div>
-            <h2 class="font-display text-3xl font-bold text-brand-black dark:text-white uppercase tracking-wider">Nuestra Historia</h2>
+            <h2 class="font-display text-3xl font-bold text-brand-black dark:text-white uppercase tracking-wider">{t('about.history.title')}</h2>
           </div>
           <div class="text-gray-600 dark:text-gray-300 space-y-6 text-lg leading-relaxed font-medium">
             <p>{tenantConfig.name} nació con una visión clara: unificar la pasión por el deporte en una plataforma de alto nivel. Lo que comenzó como un pequeño grupo de entusiastas se ha transformado en una red global de miembros comprometidos con la excelencia y el compañerismo.</p>
@@ -44,7 +44,7 @@ const t = useTranslations(lang);
             <div class="w-16 h-16 rounded-sm bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0">
               <Target class="w-8 h-8" />
             </div>
-            <h2 class="font-display text-3xl font-bold text-brand-black dark:text-white uppercase tracking-wider">Nuestro Objetivo</h2>
+            <h2 class="font-display text-3xl font-bold text-brand-black dark:text-white uppercase tracking-wider">{t('about.objective.title')}</h2>
           </div>
           <div class="text-gray-600 dark:text-gray-300 space-y-6 text-lg leading-relaxed font-medium">
           <p>Buscamos proporcionar una plataforma tecnológica premium que centralice toda la actividad de nuestra comunidad. Desde la gestión deportiva profesional de nuestros campeonatos hasta el catálogo oficial de nuestra marca.</p>
@@ -61,28 +61,28 @@ const t = useTranslations(lang);
             <div class="w-16 h-16 rounded-sm bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0">
               <HelpCircle class="w-8 h-8" />
             </div>
-            <h2 class="font-display text-3xl font-bold text-brand-black dark:text-white uppercase tracking-wider">Preguntas Frecuentes</h2>
+            <h2 class="font-display text-3xl font-bold text-brand-black dark:text-white uppercase tracking-wider">{t('about.faq.title')}</h2>
           </div>
 
           <div class="space-y-6">
-            <div class="bg-gray-50 dark:bg-brand-black border border-gray-200 dark:border-white/5 rounded-sm p-6 shadow-sm hover:border-brand-gold/50 transition-colors">
-              <h3 class="font-display text-xl font-bold mb-3 flex items-start gap-3 text-brand-black dark:text-white">
+            <details class="group bg-gray-50 dark:bg-brand-black border border-gray-200 dark:border-white/5 rounded-sm p-6 shadow-sm hover:border-brand-gold/50 transition-colors cursor-pointer">
+              <summary class="font-display text-xl font-bold flex items-start gap-3 text-brand-black dark:text-white outline-none">
                 <span class="text-brand-gold">Q.</span> ¿Cómo puedo unirme a {tenantConfig.name}?
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400 text-base font-medium pl-8 border-l-2 border-gray-200 dark:border-gray-800 ml-2 py-2">El acceso a la plataforma es estrictamente por invitación. Los administradores generan invitaciones para los nuevos miembros. Si has recibido una, sigue el enlace en tu correo electrónico para establecer tu contraseña.</p>
-            </div>
-            <div class="bg-gray-50 dark:bg-brand-black border border-gray-200 dark:border-white/5 rounded-sm p-6 shadow-sm hover:border-brand-gold/50 transition-colors">
-              <h3 class="font-display text-xl font-bold mb-3 flex items-start gap-3 text-brand-black dark:text-white">
+              </summary>
+              <p class="text-gray-600 dark:text-gray-400 text-base font-medium pl-8 border-l-2 border-gray-200 dark:border-gray-800 ml-2 mt-4 py-2">El acceso a la plataforma es estrictamente por invitación. Los administradores generan invitaciones para los nuevos miembros. Si has recibido una, sigue el enlace en tu correo electrónico para establecer tu contraseña.</p>
+            </details>
+            <details class="group bg-gray-50 dark:bg-brand-black border border-gray-200 dark:border-white/5 rounded-sm p-6 shadow-sm hover:border-brand-gold/50 transition-colors cursor-pointer">
+              <summary class="font-display text-xl font-bold flex items-start gap-3 text-brand-black dark:text-white outline-none">
                 <span class="text-brand-gold">Q.</span> ¿Qué funcionalidades ofrece la plataforma?
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400 text-base font-medium pl-8 border-l-2 border-gray-200 dark:border-gray-800 ml-2 py-2">Como miembro, puedes participar en foros, acceder al hub deportivo, consultar tablas y fixtures, unirte a grupos por ciudad, inscribirte en eventos y adquirir productos del catálogo oficial.</p>
-            </div>
-            <div class="bg-gray-50 dark:bg-brand-black border border-gray-200 dark:border-white/5 rounded-sm p-6 shadow-sm hover:border-brand-gold/50 transition-colors">
-              <h3 class="font-display text-xl font-bold mb-3 flex items-start gap-3 text-brand-black dark:text-white">
+              </summary>
+              <p class="text-gray-600 dark:text-gray-400 text-base font-medium pl-8 border-l-2 border-gray-200 dark:border-gray-800 ml-2 mt-4 py-2">Como miembro, puedes participar en foros, acceder al hub deportivo, consultar tablas y fixtures, unirte a grupos por ciudad, inscribirte en eventos y adquirir productos del catálogo oficial.</p>
+            </details>
+            <details class="group bg-gray-50 dark:bg-brand-black border border-gray-200 dark:border-white/5 rounded-sm p-6 shadow-sm hover:border-brand-gold/50 transition-colors cursor-pointer">
+              <summary class="font-display text-xl font-bold flex items-start gap-3 text-brand-black dark:text-white outline-none">
                 <span class="text-brand-gold">Q.</span> ¿Es seguro mi perfil público?
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400 text-base font-medium pl-8 border-l-2 border-gray-200 dark:border-gray-800 ml-2 py-2">Sí, tienes control sobre la información que se muestra en tu perfil público (<code class="bg-gray-200 dark:bg-brand-dark-card px-1.5 py-0.5 rounded-sm text-sm">/@tu-usuario</code>). Los datos sensibles y las interacciones privadas permanecen protegidas dentro de la comunidad de miembros.</p>
-            </div>
+              </summary>
+              <p class="text-gray-600 dark:text-gray-400 text-base font-medium pl-8 border-l-2 border-gray-200 dark:border-gray-800 ml-2 mt-4 py-2">Sí, tienes control sobre la información que se muestra en tu perfil público (<code class="bg-gray-200 dark:bg-brand-dark-card px-1.5 py-0.5 rounded-sm text-sm">/@tu-usuario</code>). Los datos sensibles y las interacciones privadas permanecen protegidas dentro de la comunidad de miembros.</p>
+            </details>
           </div>
         </div>
       </Card>
