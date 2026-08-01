@@ -1,0 +1,21 @@
+---
+interface Props {
+  variant?: 'neutral' | 'success' | 'warning' | 'error' | 'gold';
+  class?: string;
+}
+
+const { variant = 'neutral', class: className = '' } = Astro.props;
+
+const variants = {
+  neutral: 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300 border-gray-200 dark:border-gray-700',
+  success: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 border-green-200 dark:border-green-800/50',
+  warning: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 border-yellow-200 dark:border-yellow-800/50',
+  error: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400 border-red-200 dark:border-red-800/50',
+  gold: 'bg-brand-gold/10 text-brand-gold-dark dark:text-brand-gold border-brand-gold/20'
+};
+
+const baseStyles = 'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold tracking-wide uppercase border transition-colors duration-300';
+---
+<span class={`${baseStyles} ${variants[variant]} ${className}`}>
+  <slot />
+</span>
