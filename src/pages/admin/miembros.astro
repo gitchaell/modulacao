@@ -3,9 +3,17 @@ import AdminLayout from '@/layouts/AdminLayout.astro';
 import Card from '@/components/core/Card.astro';
 import Button from '@/components/core/Button.astro';
 import Input from '@/components/core/Input.astro';
+import Badge from '@/components/core/Badge.astro';
+import Table from '@/components/core/Table.astro';
+import Avatar from '@/components/core/Avatar.astro';
 import { db } from '@/data/db/db';
 import { invitations, users, profiles } from '@/data/db/schema';
 import { desc, eq } from 'drizzle-orm';
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+import { tenantConfig } from '@/config/tenant';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 // Fetch users
 const allUsers = await db
@@ -25,121 +33,98 @@ const pendingInvitations = await db
   .orderBy(desc(invitations.createdAt));
 
 const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat('es-ES', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(date));
+  return new Intl.DateTimeFormat(lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(date));
 };
 ---
 
-<AdminLayout title="Gestión de Miembros">
-  <div class="max-w-6xl mx-auto space-y-8">
+<AdminLayout title={t('admin.members.title')}>
+  <div class="max-w-6xl mx-auto space-y-8 animate-smooth-fade">
 
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div>
-        <h1 class="text-3xl font-bold uppercase tracking-widest text-brand-gold">Miembros</h1>
-        <p class="text-gray-400 mt-2 text-sm">Administra los usuarios registrados y envía nuevas invitaciones.</p>
+        <h1 class="font-display text-3xl font-bold uppercase tracking-widest text-brand-gold">{t('admin.members.title')}</h1>
+        <p class="text-gray-500 dark:text-gray-400 mt-2 text-base font-medium">Administra los usuarios registrados y envía nuevas invitaciones.</p>
       </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
       <!-- Lista de Miembros (Ocupa 2 columnas) -->
-      <Card noPadding class="lg:col-span-2 bg-brand-black border-brand-dark-card overflow-hidden">
-        <div class="p-6 border-b border-brand-dark-card flex justify-between items-center">
-          <h2 class="text-lg font-bold text-white uppercase tracking-wider">Usuarios Registrados</h2>
-          <span class="bg-brand-dark px-3 py-1 rounded text-brand-gold text-sm font-bold">{allUsers.length}</span>
+      <Card noPadding class="lg:col-span-2 bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 overflow-hidden premium-shadow">
+        <div class="p-6 border-b border-gray-200 dark:border-white/5 flex justify-between items-center bg-gray-50 dark:bg-brand-black/50">
+          <h2 class="font-display text-lg font-bold text-brand-black dark:text-white uppercase tracking-wider">Usuarios Registrados</h2>
+          <Badge variant="neutral">{allUsers.length}</Badge>
         </div>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="bg-brand-dark border-b border-brand-dark-card text-xs uppercase tracking-wider text-gray-400">
-                <th class="p-4 font-medium">Miembro</th>
-                <th class="p-4 font-medium">Email</th>
-                <th class="p-4 font-medium">Rol</th>
-                <th class="p-4 font-medium">Registro</th>
-                <th class="p-4 font-medium"></th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-brand-dark-card">
-              {allUsers.map(({ user, profile }) => (
-                <tr class="hover:bg-brand-dark/50 transition-colors">
-                  <td class="p-4">
-                    <div class="flex items-center gap-3">
-                      <div class="w-8 h-8 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold text-xs overflow-hidden">
-                        {profile?.avatarUrl ? (
-                          <img loading="lazy" decoding="async" src={profile.avatarUrl} alt="Avatar" class="w-full h-full object-cover" />
-                        ) : (
-                          profile?.fullName?.charAt(0).toUpperCase() || user.email.charAt(0).toUpperCase()
-                        )}
-                      </div>
-                      <div>
-                        <div class="font-medium text-white">{profile?.fullName || 'Sin Configurar'}</div>
-                        <div class="text-xs text-brand-gold">@{profile?.slug || 'n/a'}</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="p-4 text-sm text-gray-300">{user.email}</td>
-                  <td class="p-4">
-                    <span class={`inline-block px-2 py-1 text-xs font-bold rounded ${user.role === 'ADMIN' ? 'bg-brand-gold/20 text-brand-gold' : 'bg-brand-dark-card text-gray-300'}`}>
-                      {user.role}
-                    </span>
-                  </td>
-                  <td class="p-4 text-sm text-gray-400">{formatDate(user.createdAt as unknown as Date)}</td>
-                  <td class="p-4 text-right">
-                    <button class="text-gray-500 transition-colors cursor-not-allowed opacity-50" title="Editar Rol" disabled>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              {allUsers.length === 0 && (
-                <tr>
-                  <td colspan="5" class="p-8 text-center text-gray-500">No hay usuarios registrados.</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
+        <Table headers={['Miembro', 'Email', 'Rol', 'Registro', '']}>
+          {allUsers.map(({ user, profile }) => (
+            <tr class="hover:bg-gray-50 dark:hover:bg-brand-dark/50 transition-colors group">
+              <td class="p-4">
+                <div class="flex items-center gap-4">
+                  <Avatar src={profile?.avatarUrl} alt={profile?.fullName || user.email} size="sm" fallback={(profile?.fullName || user.email).charAt(0).toUpperCase()} />
+                  <div>
+                    <div class="font-semibold text-brand-black dark:text-white group-hover:text-brand-gold transition-colors">{profile?.fullName || 'Sin Configurar'}</div>
+                    <div class="text-[10px] font-bold tracking-widest uppercase text-gray-500 dark:text-brand-gold mt-0.5">@{profile?.slug || 'n/a'}</div>
+                  </div>
+                </div>
+              </td>
+              <td class="p-4 text-sm font-medium text-gray-600 dark:text-gray-300">{user.email}</td>
+              <td class="p-4">
+                <Badge variant={user.role === 'ADMIN' ? 'error' : 'gold'}>{user.role}</Badge>
+              </td>
+              <td class="p-4 text-xs font-semibold tracking-wider uppercase text-gray-400">{formatDate(user.createdAt as unknown as Date)}</td>
+              <td class="p-4 text-right">
+                <button class="p-2 text-gray-400 hover:text-brand-gold transition-colors focus-visible rounded-sm cursor-not-allowed opacity-50" aria-label="Gestionar Usuario" disabled>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                </button>
+              </td>
+            </tr>
+          ))}
+          {allUsers.length === 0 && (
+            <tr>
+              <td colspan="5" class="p-12 text-center font-medium text-gray-500 dark:text-gray-400">No hay usuarios registrados.</td>
+            </tr>
+          )}
+        </Table>
       </Card>
 
       <!-- Panel de Invitaciones -->
       <div class="space-y-6">
-        <Card class="bg-brand-black border-brand-dark-card">
-          <h2 class="text-lg font-bold text-brand-gold uppercase tracking-wider mb-6">Generar Invitación</h2>
-
-          <form id="inviteForm" class="space-y-4">
-            <Input type="email" id="inviteEmail" name="email" label="Correo Electrónico" required placeholder="correo@ejemplo.com" />
-
-            <div>
-              <label class="block text-sm font-medium text-gray-300 mb-1.5">Rol de Acceso</label>
-              <select id="inviteRole" name="role" class="flex h-10 w-full rounded-md border border-brand-dark bg-brand-black px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-brand-gold focus:border-brand-gold">
-                <option value="MEMBER">MEMBER (Miembro Regular)</option>
-                <option value="ADMIN">ADMIN (Administrador)</option>
+        <Card class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5" id="invite">
+          <h2 class="font-display text-lg font-bold text-brand-black dark:text-white uppercase tracking-wider mb-6">{t('admin.members.invite_btn')}</h2>
+          <form id="inviteForm" class="space-y-6">
+            <Input type="email" id="inviteEmail" label="Correo Electrónico" placeholder="usuario@ejemplo.com" required />
+            <div class="flex flex-col gap-2 w-full">
+              <label class="text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite">Rol Inicial</label>
+              <select id="inviteRole" class="flex h-12 w-full rounded-sm border border-gray-300 dark:border-gray-700 bg-transparent px-4 py-3 text-sm text-brand-black dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold hover:border-brand-gold/50 transition-colors">
+                <option value="MEMBER" class="bg-brand-white dark:bg-brand-black">Miembro</option>
+                <option value="ADMIN" class="bg-brand-white dark:bg-brand-black">Administrador</option>
               </select>
             </div>
-
-            <Button type="submit" fullWidth class="mt-2">Generar Enlace</Button>
-            <p id="inviteMessage" class="text-xs text-center mt-2 hidden"></p>
+            <Button type="submit" fullWidth class="mt-2">Generar Link</Button>
+            <p id="inviteMessage" class="text-xs font-medium text-center mt-2 hidden" role="alert"></p>
           </form>
         </Card>
 
-        <Card noPadding class="bg-brand-black border-brand-dark-card overflow-hidden">
-          <div class="p-4 border-b border-brand-dark-card">
-            <h2 class="text-sm font-bold text-white uppercase tracking-wider">Invitaciones Pendientes</h2>
+        <Card class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5" noPadding>
+          <div class="p-6 border-b border-gray-200 dark:border-white/5 flex justify-between items-center bg-gray-50 dark:bg-brand-black/50">
+            <h2 class="text-sm font-bold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Pendientes</h2>
+            <Badge variant="neutral">{pendingInvitations.length}</Badge>
           </div>
-          <ul class="divide-y divide-brand-dark-card max-h-96 overflow-y-auto">
-            {pendingInvitations.map((inv) => (
-              <li class="p-4 hover:bg-brand-dark/50 transition-colors">
-                <div class="flex justify-between items-start mb-1">
-                  <span class="text-sm font-medium text-white truncate pr-2">{inv.email}</span>
-                  <span class="text-[10px] bg-brand-dark-card text-brand-gold px-1.5 py-0.5 rounded font-bold">{inv.role}</span>
+          <ul class="divide-y divide-gray-100 dark:divide-white/5 max-h-96 overflow-y-auto">
+            {pendingInvitations.map(inv => (
+              <li class="p-6 hover:bg-gray-50 dark:hover:bg-brand-black/20 transition-colors">
+                <div class="flex justify-between items-start mb-4">
+                  <span class="text-sm text-brand-black dark:text-white font-semibold truncate mr-2">{inv.email}</span>
+                  <Badge variant={inv.role === 'ADMIN' ? 'error' : 'gold'}>{inv.role}</Badge>
                 </div>
-                <div class="text-xs text-gray-500 mb-2">Exp: {formatDate(inv.expiresAt as unknown as Date)}</div>
+                <div class="text-[10px] font-semibold tracking-widest uppercase text-gray-400 mb-3">Expira: {formatDate(inv.expiresAt as unknown as Date)}</div>
                 <div class="flex gap-2">
-                  <input type="text" readonly value={`${Astro.url.origin}/invitacion/${inv.token}`} class="text-xs bg-brand-dark border border-brand-dark-card rounded px-2 py-1 flex-1 text-gray-400 focus:outline-none" />
+                  <input type="text" readonly value={`${Astro.url.origin}/invitacion/${inv.token}`} class="flex-1 bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-gray-800 rounded-sm px-3 py-2 text-xs text-gray-500 focus:outline-none focus:ring-1 focus:ring-brand-gold" aria-label="Link de invitación" />
                 </div>
               </li>
             ))}
             {pendingInvitations.length === 0 && (
-              <li class="p-6 text-center text-sm text-gray-500">No hay invitaciones pendientes.</li>
+              <li class="p-8 text-center text-sm font-medium text-gray-500 dark:text-gray-400">No hay invitaciones pendientes.</li>
             )}
           </ul>
         </Card>

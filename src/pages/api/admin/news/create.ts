@@ -1,8 +1,10 @@
 import type { APIRoute } from 'astro';
-import { db } from '@/data/db/db';
-import { articles } from '@/data/db/schema';
 import crypto from 'node:crypto';
 import { getSession } from '@/utils/session';
+import { NewsUseCases } from '@/application/use-cases/news';
+import { TursoNewsRepository } from '@/infrastructure/repositories/tursoNewsRepository';
+
+const newsUseCases = new NewsUseCases(new TursoNewsRepository());
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   try {
@@ -10,7 +12,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const session = await getSession(request, response);
 
     if (!session.userId || session.role !== 'ADMIN') {
-       return new Response(JSON.stringify({ error: 'Unauthorized. Admin privileges required.' }), { status: 401 });
+       return new Response(JSON.stringify({ error: 'Unauthorized. Admin privileges required.' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
     }
 
     const formData = await request.formData();
@@ -19,26 +21,27 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const type = formData.get('type')?.toString() as 'NEWS' | 'COMMUNIQUE';
 
     if (!title || !content || !type) {
-      return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400 });
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
-    // Basic slug generation
     const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') + '-' + crypto.randomBytes(4).toString('hex');
 
-    await db.insert(articles).values({
+    await newsUseCases.createNews({
       id: crypto.randomUUID(),
       authorId: session.userId,
       type,
       title,
       slug,
+      excerpt: null,
       content,
-      status: 'DRAFT', // Creates as draft by default
-      createdAt: new Date(),
-      updatedAt: new Date()
+      status: 'DRAFT',
+      publishedAt: null,
+      tags: null,
+      coverImageUrl: null
     });
 
     return redirect('/admin/noticias');
   } catch (error: any) {
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 };

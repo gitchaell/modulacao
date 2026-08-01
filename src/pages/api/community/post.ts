@@ -11,7 +11,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const session = await getSession(request, response);
 
     if (!session.userId) {
-      return new Response('Unauthorized', { status: 401 });
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
     }
 
     const formData = await request.formData();
@@ -19,7 +19,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const imageFile = formData.get('image') as File | null;
 
     if (!content || content.trim() === '') {
-      return new Response('Content is required', { status: 400 });
+      return new Response(JSON.stringify({ error: 'Content is required' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
     let imageUrl = null;
@@ -43,6 +43,6 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     return redirect('/app/comunidad');
   } catch (error: any) {
     console.error('Error creating post:', error);
-    return new Response(error.message, { status: 500 });
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 };

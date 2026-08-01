@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { tenantConfig } from '@/config/tenant';
 
 interface Props {
   title: string;
@@ -7,29 +8,34 @@ interface Props {
 const { title } = Astro.props;
 ---
 <BaseLayout title={`Admin | ${title}`}>
-  <div class="flex h-screen overflow-hidden">
+  <div class="flex h-screen overflow-hidden bg-brand-offwhite dark:bg-brand-black">
     <!-- Admin Sidebar -->
-    <aside class="w-72 bg-[#050505] border-r border-brand-dark-card flex flex-col">
-      <div class="p-6 border-b border-brand-dark-card">
-        <div class="font-bold text-lg text-brand-gold uppercase tracking-wider">Modulação Admin</div>
+    <aside class="w-72 bg-brand-white dark:bg-brand-dark border-r border-gray-200 dark:border-white/5 flex flex-col premium-shadow z-20">
+      <div class="p-6 border-b border-gray-200 dark:border-white/5 flex items-center justify-center">
+        <div class="font-bold text-lg text-brand-black dark:text-brand-white uppercase tracking-widest text-center">{tenantConfig.name} <span class="text-brand-gold block text-xs mt-1">Workspace</span></div>
       </div>
-      <nav class="flex-1 p-4 flex flex-col gap-1 overflow-y-auto">
-        <a href="/admin/dashboard" class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-brand-dark-card transition-colors">Dashboard</a>
-        <a href="/admin/miembros" class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-brand-dark-card transition-colors">Miembros e Invitaciones</a>
-        <a href="/admin/noticias" class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-brand-dark-card transition-colors">Noticias & Comunicados</a>
-        <a href="/admin/eventos" class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-brand-dark-card transition-colors">Eventos</a>
-        <a href="/admin/campeonatos" class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-brand-dark-card transition-colors">Campeonatos</a>
-        <a href="/admin/catalogo" class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-brand-dark-card transition-colors">Catálogo</a>
+      <nav class="flex-1 p-4 flex flex-col gap-2 overflow-y-auto">
+        <a href="/admin/dashboard" class="px-4 py-3 rounded-sm text-sm font-medium tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-brand-gold transition-colors focus-visible">Dashboard</a>
+        <a href="/admin/miembros" class="px-4 py-3 rounded-sm text-sm font-medium tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-brand-gold transition-colors focus-visible">Miembros</a>
+        <a href="/admin/noticias" class="px-4 py-3 rounded-sm text-sm font-medium tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-brand-gold transition-colors focus-visible">Noticias</a>
+        <a href="/admin/eventos" class="px-4 py-3 rounded-sm text-sm font-medium tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-brand-gold transition-colors focus-visible">Eventos</a>
+        <a href="/admin/campeonatos" class="px-4 py-3 rounded-sm text-sm font-medium tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-brand-gold transition-colors focus-visible">Campeonatos</a>
+        <a href="/admin/catalogo" class="px-4 py-3 rounded-sm text-sm font-medium tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 hover:text-brand-gold transition-colors focus-visible">Catálogo</a>
       </nav>
     </aside>
     <!-- Main Content -->
-    <div class="flex-1 flex flex-col min-w-0 bg-brand-dark">
-      <header class="h-16 px-8 border-b border-brand-dark-card flex items-center justify-between">
-        <h1 class="font-semibold text-lg">{title}</h1>
-        <div class="text-sm text-gray-400">Admin Session</div>
+    <div class="flex-1 flex flex-col min-w-0">
+      <header class="h-16 px-8 border-b border-gray-200 dark:border-white/5 flex items-center justify-between bg-brand-white/80 dark:bg-brand-dark/80 backdrop-blur-md sticky top-0 z-10">
+        <h1 class="font-display font-semibold text-xl tracking-wide uppercase text-brand-black dark:text-white">{title}</h1>
+        <div class="text-xs font-medium tracking-wider text-brand-gold uppercase flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+          Admin Session
+        </div>
       </header>
-      <main class="flex-1 overflow-y-auto p-8">
-        <slot />
+      <main class="flex-1 overflow-y-auto p-8 lg:p-12">
+        <div class="max-w-7xl mx-auto">
+          <slot />
+        </div>
       </main>
     </div>
   </div>

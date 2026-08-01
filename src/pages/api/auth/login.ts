@@ -12,13 +12,13 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const password = formData.get('password')?.toString();
 
     if (!email || !password) {
-      return new Response('Email and password are required', { status: 400 });
+      return new Response(JSON.stringify({ error: 'Email and password are required' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
     const [user] = await db.select().from(users).where(eq(users.email, email));
 
     if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
-      return new Response('Invalid credentials', { status: 401 });
+      return new Response(JSON.stringify({ error: 'Invalid credentials' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
     }
 
     const response = redirect('/app/comunidad');
@@ -31,6 +31,6 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     return response;
   } catch (error: any) {
     console.error('Login error:', error);
-    return new Response('Internal Server Error', { status: 500 });
+    return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 };

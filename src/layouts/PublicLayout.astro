@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+import { tenantConfig } from '@/config/tenant';
 
 interface Props {
   title: string;
@@ -11,33 +12,33 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 <BaseLayout title={title}>
-  <header class="w-full py-4 px-8 flex justify-between items-center border-b border-brand-dark-card/50">
-    <a href="/" class="flex items-center gap-2 group">
-      <svg class="w-8 h-8 text-brand-gold group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      <div class="font-bold text-xl tracking-wider uppercase text-brand-gold hidden sm:block">Modulação</div>
+  <header class="w-full py-4 px-8 flex justify-between items-center border-b border-gray-200 dark:border-white/5 bg-brand-white dark:bg-brand-black backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
+    <a href="/" class="flex items-center gap-3 group focus-visible">
+      <svg class="w-8 h-8 text-brand-gold group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <div class="font-bold text-xl tracking-wider uppercase text-brand-black dark:text-brand-white hidden sm:block group-hover:text-brand-gold transition-colors duration-300">{tenantConfig.name}</div>
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden md:flex gap-6">
-      <a href="/" class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
-      <a href="/nosotros" class="hover:text-brand-gold transition-colors">{t('nav.about')}</a>
-      <a href="/campeonatos" class="hover:text-brand-gold transition-colors">{t('nav.championships')}</a>
-      <a href="/catalogo" class="hover:text-brand-gold transition-colors">{t('nav.catalog')}</a>
+    <nav class="hidden md:flex gap-8">
+      <a href="/" class="text-sm font-medium uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.home')}</a>
+      <a href="/nosotros" class="text-sm font-medium uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
+      <a href="/campeonatos" class="text-sm font-medium uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.championships')}</a>
+      <a href="/catalogo" class="text-sm font-medium uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.catalog')}</a>
     </nav>
 
     <!-- Mobile Menu Button -->
-    <button id="mobile-menu-btn" class="md:hidden text-brand-gold p-2 focus:outline-none" aria-label="Abrir menú de navegación">
+    <button id="mobile-menu-btn" class="md:hidden text-brand-black dark:text-brand-white p-2 focus-visible hover:text-brand-gold dark:hover:text-brand-gold transition-colors" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
     </button>
   </header>
 
   <!-- Mobile Navigation Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-brand-black border-b border-brand-dark-card/50">
-    <nav class="flex flex-col px-8 py-4 gap-4">
-      <a href="/" class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
-      <a href="/nosotros" class="hover:text-brand-gold transition-colors">{t('nav.about')}</a>
-      <a href="/campeonatos" class="hover:text-brand-gold transition-colors">{t('nav.championships')}</a>
-      <a href="/catalogo" class="hover:text-brand-gold transition-colors">{t('nav.catalog')}</a>
+  <div id="mobile-menu" class="hidden md:hidden bg-brand-white dark:bg-brand-black border-b border-gray-200 dark:border-white/5 shadow-lg absolute w-full z-40 transition-all duration-300">
+    <nav class="flex flex-col px-8 py-6 gap-6">
+      <a href="/" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('nav.home')}</a>
+      <a href="/nosotros" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
+      <a href="/campeonatos" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('nav.championships')}</a>
+      <a href="/catalogo" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('nav.catalog')}</a>
     </nav>
   </div>
 
@@ -47,14 +48,16 @@ const t = useTranslations(lang);
 
     if (btn && menu) {
       btn.addEventListener('click', () => {
+        const isHidden = menu.classList.contains('hidden');
         menu.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
       });
     }
   </script>
   <main class="min-h-screen">
     <slot />
   </main>
-  <footer class="py-8 text-center text-sm text-gray-500 border-t border-brand-dark-card/50">
-    &copy; {new Date().getFullYear()} Modulação. Todos los derechos reservados.
+  <footer class="py-12 text-center text-sm font-medium tracking-wide uppercase text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-white/5 bg-brand-white dark:bg-brand-black mt-auto">
+    &copy; {new Date().getFullYear()} {tenantConfig.name}. Todos los derechos reservados.
   </footer>
 </BaseLayout>

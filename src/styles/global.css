@@ -21,7 +21,7 @@
 
 @layer base {
   body {
-    @apply bg-brand-offwhite text-brand-black dark:bg-brand-black dark:text-brand-white;
+    @apply bg-brand-offwhite text-brand-black dark:bg-brand-black dark:text-brand-white selection:bg-brand-gold/30 selection:text-brand-black dark:selection:text-brand-white;
     font-family: 'Geist Sans', sans-serif;
     font-variation-settings: 'wght' 400;
     font-feature-settings: 'liga' 1, 'dlig' 1, 'tnum' 1, 'ss02' 1, 'ss05' 1, 'ss09' 1;
@@ -39,5 +39,33 @@
     font-family: 'Geist Mono', monospace;
     font-variation-settings: 'wght' 400;
     font-feature-settings: 'liga' 1, 'ss02' 1, 'ss03' 1;
+  }
+
+  /* Global Accessible Focus States */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-brand-gold ring-offset-2 ring-offset-brand-offwhite dark:ring-offset-brand-black transition-shadow duration-200 ease-out;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .animate-smooth-fade {
+    animation: smoothFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .premium-shadow {
+    @apply shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.4)];
+  }
+}
+
+@keyframes smoothFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -14,17 +14,17 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const confirmPassword = formData.get('confirmPassword')?.toString();
 
     if (!token || !password || !confirmPassword) {
-      return new Response('Missing fields', { status: 400 });
+      return new Response(JSON.stringify({ error: 'Missing fields' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
     if (password !== confirmPassword) {
-      return new Response('Passwords do not match', { status: 400 });
+      return new Response(JSON.stringify({ error: 'Passwords do not match' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
     const [invitation] = await db.select().from(invitations).where(eq(invitations.token, token));
 
     if (!invitation || invitation.status !== 'PENDING' || new Date(invitation.expiresAt) < new Date()) {
-      return new Response('Invalid or expired token', { status: 400 });
+      return new Response(JSON.stringify({ error: 'Invalid or expired token' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
@@ -64,6 +64,6 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     return response;
 
   } catch (error: any) {
-    return new Response(error.message, { status: 500 });
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 };

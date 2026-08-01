@@ -1,8 +1,10 @@
 import type { APIRoute } from 'astro';
-import { db } from '@/data/db/db';
-import { products } from '@/data/db/schema';
 import crypto from 'node:crypto';
 import { getSession } from '@/utils/session';
+import { CatalogUseCases } from '@/application/use-cases/catalog';
+import { TursoCatalogRepository } from '@/infrastructure/repositories/tursoCatalogRepository';
+
+const catalogUseCases = new CatalogUseCases(new TursoCatalogRepository());
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   try {
@@ -10,7 +12,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const session = await getSession(request, response);
 
     if (!session.userId || session.role !== 'ADMIN') {
-       return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
+       return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
     }
 
     const formData = await request.formData();
@@ -20,12 +22,12 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const whatsappNumber = formData.get('whatsappNumber')?.toString();
 
     if (!name || !description || !price || !whatsappNumber) {
-      return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400 });
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
     const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') + '-' + crypto.randomBytes(4).toString('hex');
 
-    await db.insert(products).values({
+    await catalogUseCases.createProduct({
       id: crypto.randomUUID(),
       name,
       slug,
@@ -33,12 +35,11 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       price,
       whatsappNumber,
       variants: [],
-      createdAt: new Date(),
-      updatedAt: new Date()
+      coverImageUrl: null
     });
 
     return redirect('/admin/catalogo');
   } catch (error: any) {
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 };

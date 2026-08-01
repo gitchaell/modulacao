@@ -1,0 +1,11 @@
+---
+interface Props {
+  code: string; // ISO 3166-1 alpha-2 code (e.g. 'ar', 'mx', 'us', 'es')
+  class?: string;
+}
+
+const { code, class: className = '' } = Astro.props;
+// Ensures flag-icons dependency is active.
+import 'flag-icons/css/flag-icons.min.css';
+---
+<span class={`fi fi-${code.toLowerCase()} ${className}`} aria-hidden="true" title={code.toUpperCase()}></span>

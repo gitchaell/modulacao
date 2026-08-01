@@ -1,0 +1,26 @@
+---
+interface Props {
+  src?: string | null;
+  alt: string;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  fallback?: string;
+}
+
+const { src, alt, size = 'md', fallback } = Astro.props;
+
+const sizes = {
+  sm: 'w-8 h-8 text-xs',
+  md: 'w-10 h-10 text-sm',
+  lg: 'w-14 h-14 text-base',
+  xl: 'w-20 h-20 text-lg'
+};
+
+const initial = fallback || alt.charAt(0).toUpperCase();
+---
+<div class={`relative inline-flex items-center justify-center overflow-hidden rounded-full bg-brand-gold/20 text-brand-gold-dark dark:text-brand-gold border border-brand-gold/30 shrink-0 ${sizes[size]}`}>
+  {src ? (
+    <img src={src} alt={alt} class="w-full h-full object-cover" loading="lazy" decoding="async" />
+  ) : (
+    <span class="font-semibold">{initial}</span>
+  )}
+</div>

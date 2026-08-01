@@ -2,9 +2,16 @@
 import AdminLayout from '@/layouts/AdminLayout.astro';
 import Card from '@/components/core/Card.astro';
 import Button from '@/components/core/Button.astro';
+import Badge from '@/components/core/Badge.astro';
+import Table from '@/components/core/Table.astro';
 import { db } from '@/data/db/db';
 import { articles } from '@/data/db/schema';
 import { desc } from 'drizzle-orm';
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+import { tenantConfig } from '@/config/tenant';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const allArticles = await db
   .select()
@@ -12,19 +19,19 @@ const allArticles = await db
   .orderBy(desc(articles.createdAt));
 
 const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat('es-ES', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(date));
+  return new Intl.DateTimeFormat(lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(date));
 };
 ---
 
-<AdminLayout title="Gestión de Contenido">
-  <div class="max-w-6xl mx-auto space-y-8">
+<AdminLayout title={t('admin.news.title')}>
+  <div class="max-w-6xl mx-auto space-y-8 animate-smooth-fade">
 
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div>
-        <h1 class="text-3xl font-bold uppercase tracking-widest text-brand-gold">Noticias y Comunicados</h1>
-        <p class="text-gray-400 mt-2 text-sm">Administra el blog público y la información oficial.</p>
+        <h1 class="font-display text-3xl font-bold uppercase tracking-widest text-brand-gold">{t('admin.news.title')}</h1>
+        <p class="text-gray-500 dark:text-gray-400 mt-2 text-base font-medium">Administra el blog público y la información oficial de {tenantConfig.name}.</p>
       </div>
-      <Button size="sm" class="w-full sm:w-auto" id="btn-create-news" onclick="document.getElementById('create-modal').classList.remove('hidden')">Crear Nuevo</Button>
+      <Button size="md" class="w-full sm:w-auto" id="btn-create-news" onclick="document.getElementById('create-modal').classList.remove('hidden')">{t('admin.news.create_btn')}</Button>
     </div>
 
     <!-- Create Modal Base -->
@@ -91,69 +98,59 @@ const formatDate = (date: Date) => {
       </div>
     </div>
 
-    <Card noPadding class="bg-brand-black border-brand-dark-card overflow-hidden">
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse">
-          <thead>
-            <tr class="bg-brand-dark border-b border-brand-dark-card text-xs uppercase tracking-wider text-gray-400">
-              <th class="p-4 font-medium">Título</th>
-              <th class="p-4 font-medium">Tipo</th>
-              <th class="p-4 font-medium">Estado</th>
-              <th class="p-4 font-medium">Fecha Pub.</th>
-              <th class="p-4 font-medium text-right">Acciones</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-brand-dark-card">
-            {allArticles.map((article) => (
-              <tr class="hover:bg-brand-dark/50 transition-colors group">
-                <td class="p-4">
-                  <div class="font-medium text-white line-clamp-1 group-hover:text-brand-gold transition-colors">{article.title}</div>
-                  <div class="text-xs text-gray-500 truncate max-w-xs">{article.slug}</div>
-                </td>
-                <td class="p-4">
-                  <span class={`inline-block px-2 py-1 text-[10px] font-bold rounded uppercase tracking-wider ${article.type === 'COMMUNIQUE' ? 'bg-red-500/10 text-red-400 border border-red-500/20' : 'bg-brand-dark-card text-gray-300 border border-brand-dark'}`}>
-                    {article.type === 'COMMUNIQUE' ? 'Comunicado' : 'Noticia'}
-                  </span>
-                </td>
-                <td class="p-4">
-                  <span class={`inline-flex items-center gap-1.5 text-xs font-medium ${article.status === 'PUBLISHED' ? 'text-green-400' : 'text-yellow-500'}`}>
-                    <span class={`w-1.5 h-1.5 rounded-full ${article.status === 'PUBLISHED' ? 'bg-green-400' : 'bg-yellow-500'}`}></span>
-                    {article.status === 'PUBLISHED' ? 'Publicado' : 'Borrador'}
-                  </span>
-                </td>
-                <td class="p-4 text-sm text-gray-400">
-                  {article.publishedAt ? formatDate(article.publishedAt as unknown as Date) : '-'}
-                </td>
-                <td class="p-4 text-right">
-                  <div class="flex items-center justify-end gap-2 opacity-50 group-hover:opacity-100 transition-opacity">
-                    {article.status === 'PUBLISHED' && (
-                      <a href={`/noticias/${article.slug}`} target="_blank" class="p-1.5 text-gray-400 hover:text-white transition-colors" title="Ver Público">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-                      </a>
-                    )}
-                    <button class="edit-article-btn p-1.5 text-brand-gold hover:text-white transition-colors" title="Editar" data-id={article.id} data-title={article.title} data-content={article.content} data-type={article.type} data-status={article.status}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-                    </button>
-                    <button class="delete-article-btn p-1.5 text-red-400 hover:text-red-300 transition-colors" title="Eliminar" data-id={article.id}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-            {allArticles.length === 0 && (
-              <tr>
-                <td colspan="5" class="p-12 text-center text-gray-500">
-                  <div class="flex flex-col items-center justify-center gap-3">
-                    <svg class="w-10 h-10 text-brand-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                    No hay contenido publicado. Crea tu primera noticia o comunicado.
-                  </div>
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+    <Card noPadding class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 overflow-hidden premium-shadow">
+      <Table headers={['Título', 'Tipo', 'Estado', 'Fecha Pub.', '']}>
+        {allArticles.map((article) => (
+          <tr class="hover:bg-gray-50 dark:hover:bg-brand-dark/50 transition-colors group">
+            <td class="p-4">
+              <div class="font-display font-semibold text-brand-black dark:text-white line-clamp-1 group-hover:text-brand-gold transition-colors">{article.title}</div>
+              <div class="text-[10px] font-bold tracking-widest text-gray-400 uppercase mt-0.5 truncate max-w-xs">{article.slug}</div>
+            </td>
+            <td class="p-4">
+              <Badge variant={article.type === 'COMMUNIQUE' ? 'error' : 'neutral'}>
+                {article.type === 'COMMUNIQUE' ? 'Comunicado' : 'Noticia'}
+              </Badge>
+            </td>
+            <td class="p-4">
+              <span class={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider ${article.status === 'PUBLISHED' ? 'text-green-500' : 'text-yellow-500'}`}>
+                <span class={`w-1.5 h-1.5 rounded-full animate-pulse ${article.status === 'PUBLISHED' ? 'bg-green-500' : 'bg-yellow-500'}`}></span>
+                {article.status === 'PUBLISHED' ? 'Publicado' : 'Borrador'}
+              </span>
+            </td>
+            <td class="p-4 text-xs font-semibold tracking-wider text-gray-400 uppercase">
+              {article.publishedAt ? formatDate(article.publishedAt as unknown as Date) : '-'}
+            </td>
+            <td class="p-4 text-right">
+              <div class="flex items-center justify-end gap-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                {article.status === 'PUBLISHED' && (
+                  <a href={`/noticias/${article.slug}`} target="_blank" class="p-2 rounded-sm text-gray-400 hover:text-brand-gold transition-colors focus-visible" aria-label="Ver Público">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                  </a>
+                )}
+                <button class="edit-article-btn p-2 rounded-sm text-gray-400 hover:text-brand-gold transition-colors focus-visible" data-id={article.id} data-title={article.title} data-content={article.content} data-type={article.type} data-status={article.status} aria-label="Editar">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                </button>
+                <form method="POST" action="/api/admin/news/delete" class="inline-block m-0 p-0" onsubmit="return confirm('¿Eliminar este artículo?')">
+                  <input type="hidden" name="id" value={article.id} />
+                  <button type="submit" class="delete-article-btn p-2 rounded-sm text-gray-400 hover:text-red-500 transition-colors focus-visible" aria-label="Eliminar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        ))}
+        {allArticles.length === 0 && (
+          <tr>
+            <td colspan="5" class="p-12 text-center text-gray-500 dark:text-gray-400 font-medium">
+              <div class="flex flex-col items-center justify-center gap-3">
+                <svg class="w-10 h-10 text-gray-300 dark:text-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                No hay contenido publicado. Crea tu primera noticia o comunicado.
+              </div>
+            </td>
+          </tr>
+        )}
+      </Table>
     </Card>
 
   </div>

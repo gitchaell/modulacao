@@ -2,7 +2,12 @@
 import AuthLayout from '@/layouts/AuthLayout.astro';
 import Input from '@/components/core/Input.astro';
 import Button from '@/components/core/Button.astro';
+import Alert from '@/components/core/Alert.astro';
 import { validateToken } from '@/domain/auth/invitation';
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const { token } = Astro.params;
 
@@ -11,25 +16,27 @@ const invitation = token ? await validateToken(token) : null;
 const isValid = !!invitation;
 ---
 
-<AuthLayout title="Establecer Contraseña">
+<AuthLayout title={t('auth.invite.title')}>
   <div class="text-center mb-8">
-    <h2 class="text-2xl font-bold uppercase tracking-wider text-white">Bienvenido</h2>
-    <p class="text-sm text-gray-400 mt-2">Crea tu contraseña para acceder a la plataforma.</p>
+    <h2 class="font-display text-3xl font-bold uppercase tracking-wider text-brand-black dark:text-white">Bienvenido</h2>
+    <p class="text-base text-gray-500 font-medium mt-2">Crea tu contraseña para acceder a la plataforma.</p>
   </div>
 
   {isValid ? (
-    <form class="space-y-4" method="POST" action="/api/auth/setup-password">
+    <form class="space-y-6" method="POST" action="/api/auth/setup-password">
       <input type="hidden" name="token" value={token} />
-      <Input type="email" label="Correo Electrónico" value={invitation.email} disabled />
-      <Input type="password" name="password" label="Nueva Contraseña" required minlength="8" />
+      <Input type="email" label={t('auth.login.email')} value={invitation.email} disabled class="bg-gray-50 dark:bg-brand-black cursor-not-allowed" />
+      <Input type="password" name="password" label="Nueva Contraseña" required minlength="8" helperText="Debe tener al menos 8 caracteres." />
       <Input type="password" name="confirmPassword" label="Confirmar Contraseña" required minlength="8" />
 
-      <Button type="submit" fullWidth class="mt-6">Crear Cuenta</Button>
+      <Button type="submit" fullWidth class="mt-8">Crear Cuenta</Button>
     </form>
   ) : (
-    <div class="bg-red-500/10 border border-red-500/50 rounded-md p-4 text-center">
-      <p class="text-red-400 text-sm">El enlace de invitación es inválido, ya ha sido utilizado o ha expirado.</p>
-      <a href="/" class="text-brand-gold text-sm hover:underline mt-4 inline-block">Volver al inicio</a>
+    <div class="text-center">
+      <Alert variant="error" title="Enlace Inválido">
+        El enlace de invitación es inválido, ya ha sido utilizado o ha expirado. Comunícate con el administrador para solicitar uno nuevo.
+      </Alert>
+      <a href="/" class="text-brand-black dark:text-white font-semibold uppercase tracking-wider text-sm hover:text-brand-gold dark:hover:text-brand-gold transition-colors mt-8 inline-block focus-visible">Volver al inicio</a>
     </div>
   )}
 </AuthLayout>
