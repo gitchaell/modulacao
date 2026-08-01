@@ -39,3 +39,27 @@ export interface IEventRepository {
   update(id: string, event: Partial<EventEntity>): Promise<EventEntity>;
   delete(id: string): Promise<void>;
 }
+
+export interface NewsEntity {
+  id: string;
+  authorId: string;
+  type: string;
+  title: string;
+  slug: string;
+  excerpt: string | null;
+  content: string;
+  coverImageUrl: string | null;
+  status: string;
+  publishedAt: Date | null;
+  tags: string[] | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface INewsRepository {
+  findAll(): Promise<NewsEntity[]>;
+  findById(id: string): Promise<NewsEntity | null>;
+  create(news: Omit<NewsEntity, 'createdAt' | 'updatedAt'>): Promise<NewsEntity>;
+  update(id: string, news: Partial<NewsEntity>): Promise<NewsEntity>;
+  delete(id: string): Promise<void>;
+}

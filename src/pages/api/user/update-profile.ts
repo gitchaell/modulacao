@@ -13,7 +13,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const session = await getSession(request, response);
 
     if (!session.userId) {
-      return new Response('Unauthorized', { status: 401 });
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
     }
 
     const formData = await request.formData();
@@ -25,7 +25,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const avatarFile = formData.get('avatar') as File | null;
 
     if (!fullName || !slug) {
-      return new Response('Name and Slug are required', { status: 400 });
+      return new Response(JSON.stringify({ error: 'Name and Slug are required' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
     let avatarUrl = undefined;
@@ -54,6 +54,6 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     return redirect('/app/ajustes');
   } catch (error: any) {
     console.error('Error updating profile:', error);
-    return new Response(error.message, { status: 500 });
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 };

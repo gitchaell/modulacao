@@ -3,13 +3,19 @@ import AppLayout from '@/layouts/AppLayout.astro';
 import Card from '@/components/core/Card.astro';
 import Input from '@/components/core/Input.astro';
 import Button from '@/components/core/Button.astro';
+import Avatar from '@/components/core/Avatar.astro';
 import { db } from '@/data/db/db';
 import { profiles, users } from '@/data/db/schema';
 import { eq } from 'drizzle-orm';
 import { getSession } from '@/utils/session';
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+import { tenantConfig } from '@/config/tenant';
 
 const response = new Response();
 const session = await getSession(Astro.request, response);
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 if (!session.userId) {
   return Astro.redirect('/invitacion/invalid');
@@ -21,29 +27,23 @@ const [profile] = await db
   .where(eq(profiles.userId, session.userId));
 ---
 
-<AppLayout title="Ajustes de Perfil">
-  <div class="max-w-2xl mx-auto space-y-8">
+<AppLayout title={t('app.settings')}>
+  <div class="max-w-2xl mx-auto space-y-8 animate-smooth-fade">
 
     <div>
-      <h1 class="text-3xl font-bold uppercase tracking-widest text-brand-gold">Ajustes de Perfil</h1>
-      <p class="text-gray-400 mt-2 text-sm">Configura cómo te ven los demás miembros en la plataforma.</p>
+      <h1 class="font-display text-3xl font-bold uppercase tracking-widest text-brand-gold">{t('app.settings')}</h1>
+      <p class="text-gray-500 dark:text-gray-400 mt-2 text-base font-medium">Configura cómo te ven los demás miembros en {tenantConfig.name}.</p>
     </div>
 
-    <Card class="bg-brand-dark shadow-xl">
-      <form method="POST" action="/api/user/update-profile" enctype="multipart/form-data" class="space-y-6">
+    <Card class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5">
+      <form method="POST" action="/api/user/update-profile" enctype="multipart/form-data" class="space-y-8">
 
         <!-- Avatar Upload -->
-        <div class="flex items-center gap-6 pb-6 border-b border-brand-dark-card/50">
-          <div class="w-24 h-24 rounded-full bg-brand-black border-2 border-brand-dark-card flex items-center justify-center overflow-hidden flex-shrink-0">
-             {profile?.avatarUrl ? (
-                <img loading="lazy" decoding="async" src={profile.avatarUrl} alt="Avatar" class="w-full h-full object-cover" />
-              ) : (
-                <span class="text-2xl font-bold text-brand-gold">{profile?.fullName.charAt(0).toUpperCase()}</span>
-              )}
-          </div>
+        <div class="flex items-center gap-6 pb-6 border-b border-gray-100 dark:border-white/5">
+          <Avatar src={profile?.avatarUrl} alt={profile?.fullName || 'Avatar'} size="xl" fallback={(profile?.fullName || 'U').charAt(0).toUpperCase()} />
           <div>
-            <label class="block text-sm font-medium text-gray-300 mb-2">Foto de Perfil</label>
-            <input type="file" name="avatar" accept="image/*" class="text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-brand-gold/10 file:text-brand-gold hover:file:bg-brand-gold/20" />
+            <label class="block text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite mb-2">Foto de Perfil</label>
+            <input type="file" name="avatar" accept="image/*" class="text-sm font-medium text-gray-500 dark:text-gray-400 file:mr-4 file:py-2.5 file:px-6 file:rounded-sm file:border-0 file:text-xs file:font-bold file:tracking-widest file:uppercase file:bg-brand-gold/10 file:text-brand-gold hover:file:bg-brand-gold hover:file:text-brand-black focus-visible file:transition-colors cursor-pointer" />
           </div>
         </div>
 
@@ -61,6 +61,7 @@ const [profile] = await db
             required
             pattern="[a-z0-9-]+"
             title="Solo letras minúsculas, números y guiones"
+            helperText="Se usará para tu URL pública."
           />
         </div>
 
@@ -72,22 +73,25 @@ const [profile] = await db
           />
           <Input
             name="country"
-            label="País"
+            label="Código de País (EJ: AR)"
             value={profile?.country || ''}
+            pattern="[A-Za-z]{2}"
+            title="Ingresa el código ISO Alpha-2 de tu país (Ej: MX, ES, CO)"
+            helperText="Usaremos esto para mostrar tu bandera."
           />
         </div>
 
-        <div>
-          <label class="block text-sm font-medium text-gray-300 mb-1.5">Biografía</label>
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite">Biografía</label>
           <textarea
             name="bio"
-            class="w-full bg-brand-black border border-brand-dark rounded-md p-3 text-sm text-white focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold resize-none h-32"
+            class="w-full bg-transparent border border-gray-300 dark:border-gray-700 rounded-sm p-4 text-sm text-brand-black dark:text-white placeholder:text-gray-400 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold resize-none h-32 hover:border-brand-gold/50 transition-colors"
             placeholder="Cuéntanos un poco sobre ti..."
           >{profile?.bio || ''}</textarea>
         </div>
 
-        <div class="pt-6 border-t border-brand-dark-card/50 flex justify-end">
-          <Button type="submit">Guardar Cambios</Button>
+        <div class="pt-6 border-t border-gray-100 dark:border-white/5 flex justify-end">
+          <Button type="submit">{t('common.save')}</Button>
         </div>
       </form>
     </Card>

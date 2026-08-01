@@ -1,8 +1,9 @@
 import type { APIRoute } from 'astro';
-import { db } from '@/data/db/db';
-import { events } from '@/data/db/schema';
-import { eq } from 'drizzle-orm';
 import { getSession } from '@/utils/session';
+import { EventUseCases } from '@/application/use-cases/events';
+import { TursoEventRepository } from '@/infrastructure/repositories/tursoEventRepository';
+
+const eventUseCases = new EventUseCases(new TursoEventRepository());
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   try {
@@ -10,7 +11,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const session = await getSession(request, response);
 
     if (!session.userId || session.role !== 'ADMIN') {
-       return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
+       return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
     }
 
     const formData = await request.formData();
@@ -21,20 +22,18 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const date = formData.get('date')?.toString();
 
     if (!id || !title || !description || !location || !date) {
-      return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400 });
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
-    await db.update(events)
-      .set({
-        title,
-        description,
-        location,
-        date: new Date(date)
-      })
-      .where(eq(events.id, id));
+    await eventUseCases.updateEvent(id, {
+      title,
+      description,
+      location,
+      date: new Date(date)
+    });
 
     return redirect('/admin/eventos');
   } catch (error: any) {
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 };

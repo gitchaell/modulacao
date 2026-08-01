@@ -1,8 +1,9 @@
 import type { APIRoute } from 'astro';
-import { db } from '@/data/db/db';
-import { products } from '@/data/db/schema';
-import { eq } from 'drizzle-orm';
 import { getSession } from '@/utils/session';
+import { CatalogUseCases } from '@/application/use-cases/catalog';
+import { TursoCatalogRepository } from '@/infrastructure/repositories/tursoCatalogRepository';
+
+const catalogUseCases = new CatalogUseCases(new TursoCatalogRepository());
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   try {
@@ -10,7 +11,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const session = await getSession(request, response);
 
     if (!session.userId || session.role !== 'ADMIN') {
-       return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
+       return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { 'Content-Type': 'application/json' } });
     }
 
     const formData = await request.formData();
@@ -21,21 +22,18 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const whatsappNumber = formData.get('whatsappNumber')?.toString();
 
     if (!id || !name || !description || !price || !whatsappNumber) {
-      return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400 });
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
-    await db.update(products)
-      .set({
-        name,
-        description,
-        price,
-        whatsappNumber,
-        updatedAt: new Date()
-      })
-      .where(eq(products.id, id));
+    await catalogUseCases.updateProduct(id, {
+      name,
+      description,
+      price,
+      whatsappNumber
+    });
 
     return redirect('/admin/catalogo');
   } catch (error: any) {
-    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+    return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 };

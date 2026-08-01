@@ -2,9 +2,16 @@
 import AdminLayout from '@/layouts/AdminLayout.astro';
 import Card from '@/components/core/Card.astro';
 import Button from '@/components/core/Button.astro';
+import Badge from '@/components/core/Badge.astro';
+import Table from '@/components/core/Table.astro';
 import { db } from '@/data/db/db';
 import { events, groups } from '@/data/db/schema';
 import { desc, eq } from 'drizzle-orm';
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+import { tenantConfig } from '@/config/tenant';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const allEvents = await db
   .select({
@@ -16,7 +23,7 @@ const allEvents = await db
   .orderBy(desc(events.date));
 
 const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat('es-ES', {
+  return new Intl.DateTimeFormat(lang === 'es' ? 'es-ES' : 'en-US', {
     year: 'numeric', month: 'short', day: 'numeric',
     hour: '2-digit', minute: '2-digit'
   }).format(new Date(date));
@@ -25,15 +32,15 @@ const formatDate = (date: Date) => {
 const isPast = (date: Date) => new Date(date) < new Date();
 ---
 
-<AdminLayout title="Gestión de Eventos">
-  <div class="max-w-6xl mx-auto space-y-8">
+<AdminLayout title={t('admin.events.title')}>
+  <div class="max-w-6xl mx-auto space-y-8 animate-smooth-fade">
 
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div>
-        <h1 class="text-3xl font-bold uppercase tracking-widest text-brand-gold">Eventos</h1>
-        <p class="text-gray-400 mt-2 text-sm">Organiza los próximos encuentros presenciales y virtuales de la comunidad.</p>
+        <h1 class="font-display text-3xl font-bold uppercase tracking-widest text-brand-gold">{t('admin.events.title')}</h1>
+        <p class="text-gray-500 dark:text-gray-400 mt-2 text-base font-medium">Organiza los próximos encuentros presenciales y virtuales de la comunidad {tenantConfig.name}.</p>
       </div>
-      <Button size="sm" class="w-full sm:w-auto" id="btn-create-event" onclick="document.getElementById('create-event-modal').classList.remove('hidden')">Crear Evento</Button>
+      <Button size="md" class="w-full sm:w-auto" id="btn-create-event" onclick="document.getElementById('create-event-modal').classList.remove('hidden')">{t('admin.events.create_btn')}</Button>
     </div>
 
     <!-- Create Event Modal Base -->
@@ -95,80 +102,66 @@ const isPast = (date: Date) => new Date(date) < new Date();
       </div>
     </div>
 
-    <Card noPadding class="bg-brand-black border-brand-dark-card overflow-hidden">
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse">
-          <thead>
-            <tr class="bg-brand-dark border-b border-brand-dark-card text-xs uppercase tracking-wider text-gray-400">
-              <th class="p-4 font-medium">Evento</th>
-              <th class="p-4 font-medium">Grupo / Ubicación</th>
-              <th class="p-4 font-medium">Fecha y Hora</th>
-              <th class="p-4 font-medium">Estado</th>
-              <th class="p-4 font-medium text-right">Acciones</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-brand-dark-card">
-            {allEvents.map(({ event, group }) => (
-              <tr class="hover:bg-brand-dark/50 transition-colors group/row">
-                <td class="p-4">
-                  <div class="font-bold text-white mb-1 group-hover/row:text-brand-gold transition-colors">{event.title}</div>
-                  <div class="text-xs text-gray-500">
-                    <a href={`/app/eventos/${event.id}`} target="_blank" class="hover:underline hover:text-brand-gold transition-colors text-[10px] tracking-wider uppercase flex items-center gap-1">
-                      Ver en App
-                      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    </a>
-                  </div>
-                </td>
-                <td class="p-4 text-sm">
-                  {group ? (
-                     <div class="text-brand-gold font-medium mb-0.5">{group.name}</div>
-                  ) : (
-                     <div class="text-gray-500 font-medium mb-0.5">Global / Sin Grupo</div>
-                  )}
-                  <div class="text-gray-400 text-xs flex items-center gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                    {event.location}
-                  </div>
-                </td>
-                <td class="p-4 text-sm text-gray-300 capitalize">
-                  {formatDate(event.date as unknown as Date)}
-                </td>
-                <td class="p-4">
-                  {isPast(event.date as unknown as Date) ? (
-                    <span class="inline-block px-2 py-1 text-[10px] font-bold rounded uppercase tracking-wider bg-brand-dark-card text-gray-500 border border-brand-dark">
-                      Finalizado
-                    </span>
-                  ) : (
-                    <span class="inline-block px-2 py-1 text-[10px] font-bold rounded uppercase tracking-wider bg-brand-gold/10 text-brand-gold border border-brand-gold/20">
-                      Próximo
-                    </span>
-                  )}
-                </td>
-                <td class="p-4 text-right">
-                  <div class="flex items-center justify-end gap-2 opacity-50 group-hover/row:opacity-100 transition-opacity">
-                    <button class="edit-event-btn p-1.5 text-brand-gold hover:text-white transition-colors" title="Editar" data-id={event.id} data-title={event.title} data-description={event.description} data-location={event.location} data-date={new Date(event.date).toISOString().slice(0, 16)}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-                    </button>
-                    <button class="delete-event-btn p-1.5 text-red-400 hover:text-red-300 transition-colors" title="Eliminar" data-id={event.id}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-            {allEvents.length === 0 && (
-              <tr>
-                <td colspan="5" class="p-12 text-center text-gray-500">
-                  <div class="flex flex-col items-center justify-center gap-3">
-                    <svg class="w-10 h-10 text-brand-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    Aún no se han programado eventos.
-                  </div>
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+    <Card noPadding class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 overflow-hidden premium-shadow">
+      <Table headers={['Evento', 'Grupo / Ubicación', 'Fecha y Hora', 'Estado', '']}>
+        {allEvents.map(({ event, group }) => (
+          <tr class="hover:bg-gray-50 dark:hover:bg-brand-dark/50 transition-colors group/row">
+            <td class="p-4">
+              <div class="font-display text-base font-bold text-brand-black dark:text-white mb-1 group-hover/row:text-brand-gold transition-colors">{event.title}</div>
+              <div class="text-xs text-gray-500">
+                <a href={`/app/eventos/${event.id}`} target="_blank" class="hover:underline hover:text-brand-gold transition-colors text-[10px] tracking-wider uppercase font-semibold flex items-center gap-1 focus-visible rounded-sm">
+                  Ver en App
+                  <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </td>
+            <td class="p-4 text-sm">
+              {group ? (
+                 <div class="text-brand-gold font-semibold mb-1">{group.name}</div>
+              ) : (
+                 <div class="text-gray-500 dark:text-gray-400 font-semibold mb-1">Global / Sin Grupo</div>
+              )}
+              <div class="text-gray-400 dark:text-gray-500 text-[11px] font-medium tracking-wide uppercase flex items-center gap-1.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                {event.location}
+              </div>
+            </td>
+            <td class="p-4 text-sm font-medium text-gray-600 dark:text-gray-300 capitalize">
+              {formatDate(event.date as unknown as Date)}
+            </td>
+            <td class="p-4">
+              {isPast(event.date as unknown as Date) ? (
+                <Badge variant="neutral">Finalizado</Badge>
+              ) : (
+                <Badge variant="gold">Próximo</Badge>
+              )}
+            </td>
+            <td class="p-4 text-right">
+              <div class="flex items-center justify-end gap-2 opacity-50 group-hover/row:opacity-100 transition-opacity">
+                <button class="edit-event-btn p-2 rounded-sm text-gray-400 hover:text-brand-gold transition-colors focus-visible" data-id={event.id} data-title={event.title} data-description={event.description} data-location={event.location} data-date={new Date(event.date).toISOString().slice(0, 16)} aria-label="Editar">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                </button>
+                <form method="POST" action="/api/admin/events/delete" class="inline-block m-0 p-0" onsubmit="return confirm('¿Eliminar este evento?')">
+                  <input type="hidden" name="id" value={event.id} />
+                  <button type="submit" class="delete-event-btn p-2 rounded-sm text-gray-400 hover:text-red-500 transition-colors focus-visible" aria-label="Eliminar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                  </button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        ))}
+        {allEvents.length === 0 && (
+          <tr>
+            <td colspan="5" class="p-12 text-center text-gray-500 dark:text-gray-400 font-medium">
+              <div class="flex flex-col items-center justify-center gap-3">
+                <svg class="w-10 h-10 text-gray-300 dark:text-gray-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Aún no se han programado eventos.
+              </div>
+            </td>
+          </tr>
+        )}
+      </Table>
     </Card>
 
   </div>
