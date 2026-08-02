@@ -18,24 +18,25 @@ const formatDate = (date: Date | null) => {
 ---
 
 <PublicLayout title="Comunicados Oficiales">
-  <div class="py-16 bg-brand-black border-b border-brand-dark-card/50">
-    <div class="container mx-auto px-6 max-w-4xl text-center">
-      <h1 class="text-4xl font-bold uppercase tracking-widest text-brand-gold mb-4">Comunicados Oficiales</h1>
-      <p class="text-gray-400">Información oficial, normas y anuncios importantes para la comunidad Modulação.</p>
+  <div class="py-24 bg-brand-black border-b border-gray-200 dark:border-white/5 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_left,_var(--tw-gradient-stops))] from-brand-gold/10 via-brand-black to-brand-black opacity-80 z-0"></div>
+    <div class="relative z-10 container mx-auto px-6 max-w-4xl text-center animate-smooth-fade">
+      <h1 class="font-display text-4xl md:text-5xl font-bold uppercase tracking-widest text-brand-gold mb-6">Comunicados Oficiales</h1>
+      <p class="text-gray-400 text-lg font-medium text-balance">Información oficial, normas y anuncios importantes para la comunidad Modulação.</p>
     </div>
   </div>
 
-  <section class="py-16 bg-brand-offwhite dark:bg-brand-dark min-h-[50vh]">
-    <div class="container mx-auto px-6 max-w-4xl space-y-6">
+  <section class="py-20 bg-brand-offwhite dark:bg-brand-dark min-h-[50vh]">
+    <div class="container mx-auto px-6 max-w-4xl space-y-6 animate-smooth-fade" style="animation-delay: 0.1s;">
       {communiques.length === 0 ? (
         <div class="text-center py-20 text-gray-500">
           <p>Aún no hay comunicados publicados.</p>
         </div>
       ) : (
         communiques.map((communique) => (
-          <a href={`/noticias/${communique.slug}`} class="block group">
-            <Card class="hover:border-brand-gold transition-colors flex flex-col sm:flex-row sm:items-center gap-6">
-              <div class="flex-shrink-0 w-16 h-16 bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold">
+          <a href={`/comunicados/${communique.slug}`} class="block group focus-visible">
+            <Card class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 hover:border-brand-gold/50 transition-colors flex flex-col sm:flex-row sm:items-center gap-6 premium-shadow">
+              <div class="flex-shrink-0 w-16 h-16 bg-brand-gold/10 rounded-full flex items-center justify-center text-brand-gold group-hover:scale-110 transition-transform duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
               </div>
               <div class="flex-1">
