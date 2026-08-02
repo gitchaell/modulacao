@@ -15,7 +15,7 @@ const {
   ...rest
 } = Astro.props;
 
-const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none disabled:opacity-50 disabled:pointer-events-none rounded-sm";
+const baseStyles = "inline-flex items-center justify-center font-medium transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black disabled:opacity-50 disabled:pointer-events-none rounded-sm";
 
 const variants = {
   primary: "bg-brand-gold text-brand-black font-semibold uppercase tracking-widest hover:bg-brand-gold-dark hover:-translate-y-[2px] premium-shadow border border-transparent",

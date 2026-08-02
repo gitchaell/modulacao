@@ -55,11 +55,11 @@ const formatDate = (date: Date) => {
         userNotifications.map(notification => (
           <a
             href={notification.linkUrl || '#'}
-            class={`block p-4 hover:bg-gray-50 dark:hover:bg-brand-dark/50 transition-colors focus-visible ${!notification.isRead ? 'bg-brand-gold/5 dark:bg-brand-dark/20' : ''}`}
+            class={`block p-4 hover:bg-gray-50 dark:hover:bg-brand-dark/50 transition-colors focus-visible ${!notification.isRead ? 'bg-brand-gold/10 dark:bg-brand-gold/5 border-l-2 border-brand-gold' : 'border-l-2 border-transparent'}`}
             data-notification-id={notification.id}
           >
             <div class="flex gap-3">
-              <div class={`w-2 h-2 mt-1.5 rounded-full flex-shrink-0 ${!notification.isRead ? 'bg-brand-gold' : 'bg-transparent'}`}></div>
+              <div class={`w-2 h-2 mt-1.5 rounded-full flex-shrink-0 transition-colors ${!notification.isRead ? 'bg-brand-gold shadow-[0_0_8px_rgba(212,175,55,0.5)]' : 'bg-transparent'}`}></div>
               <div>
                 <p class={`text-sm ${!notification.isRead ? 'text-brand-black font-medium dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}>
                   {notification.message}

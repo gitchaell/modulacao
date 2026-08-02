@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { db } from '@/data/db/db';
-import { eventAttendances } from '@/data/db/schema';
+import { eventAttendances, events } from '@/data/db/schema';
 import { and, eq } from 'drizzle-orm';
 import { getSession } from '@/utils/session';
 
@@ -22,13 +22,19 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     }
 
     if (action === 'JOIN') {
-      // Basic implementation without capacity limits for Phase 4.
-      // Waitlist logic would be added here if checking capacity limits.
+      const [event] = await db.select().from(events).where(eq(events.id, eventId));
+      if (!event) return new Response('Event not found', { status: 404 });
+
+      const currentAttendees = await db.select().from(eventAttendances).where(eq(eventAttendances.eventId, eventId));
+
+      const attendingCount = currentAttendees.filter(a => a.status === 'ATTENDING').length;
+      const newStatus = attendingCount >= (event.capacity ?? 50) ? 'WAITLIST' : 'ATTENDING';
+
       await db.insert(eventAttendances)
         .values({
           eventId,
           userId: session.userId,
-          status: 'ATTENDING'
+          status: newStatus
         })
         .onConflictDoNothing(); // Prevent multiple attendances
     } else if (action === 'LEAVE') {

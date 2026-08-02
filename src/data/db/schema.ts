@@ -90,6 +90,7 @@ export const events = sqliteTable('events', {
   location: text('location').notNull(),
   mapUrl: text('map_url'),
   coverImageUrl: text('cover_image_url'),
+  capacity: integer('capacity').default(50),
   createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 });
 

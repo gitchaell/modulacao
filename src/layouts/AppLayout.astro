@@ -17,7 +17,7 @@ const t = useTranslations(lang);
   <div class="flex h-screen overflow-hidden bg-brand-offwhite dark:bg-brand-black relative">
     <!-- Sidebar / Off-canvas for mobile -->
     <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-brand-black/50 backdrop-blur-sm z-20 hidden md:hidden transition-opacity"></div>
-    <aside id="app-sidebar" class="fixed md:relative inset-y-0 left-0 w-72 bg-brand-white dark:bg-brand-dark border-r border-gray-200 dark:border-white/5 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-out z-30 premium-shadow">
+    <aside id="app-sidebar" class="fixed md:relative inset-y-0 left-0 w-80 bg-brand-white dark:bg-brand-dark border-r border-gray-200 dark:border-white/5 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-out z-30 premium-shadow">
       <div class="h-16 px-6 border-b border-gray-200 dark:border-white/5 flex justify-between items-center bg-brand-white/80 dark:bg-brand-dark/80 backdrop-blur-md">
         <a href="/" class="flex items-center gap-3 group focus-visible">
           <svg class="w-7 h-7 text-brand-gold group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
@@ -28,10 +28,10 @@ const t = useTranslations(lang);
         </button>
       </div>
       <nav class="flex-1 px-4 py-6 flex flex-col gap-2 overflow-y-auto">
-        <a href="/app/comunidad" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('app.community')}</a>
-        <a href="/app/grupos" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('app.groups')}</a>
-        <a href="/app/eventos" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('app.events')}</a>
-        <a href="/app/directorio" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('app.directory')}</a>
+        <a href="/app/comunidad" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-all hover:scale-[1.02] focus-visible">{t('app.community')}</a>
+        <a href="/app/grupos" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-all hover:scale-[1.02] focus-visible">{t('app.groups')}</a>
+        <a href="/app/eventos" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-all hover:scale-[1.02] focus-visible">{t('app.events')}</a>
+        <a href="/app/directorio" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-all hover:scale-[1.02] focus-visible">{t('app.directory')}</a>
       </nav>
       <div class="p-6 border-t border-gray-200 dark:border-white/5">
         <a href="/app/ajustes" class="flex items-center gap-4 group focus-visible p-2 -mx-2 rounded-sm hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">

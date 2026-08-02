@@ -24,6 +24,10 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
+    if (title.length < 5) {
+      return new Response(JSON.stringify({ error: 'El título debe tener al menos 5 caracteres' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    }
+
     const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') + '-' + crypto.randomBytes(4).toString('hex');
 
     await newsUseCases.createNews({
