@@ -48,7 +48,7 @@ const formatDate = (date: Date | null) => {
     </div>
 
     <!-- Creador de Post -->
-    <Card class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5">
+    <Card class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 premium-shadow">
       <form method="POST" action="/api/community/post" enctype="multipart/form-data" class="space-y-4">
         <textarea
           name="content"
@@ -91,7 +91,7 @@ const formatDate = (date: Date | null) => {
         </Card>
       ) : (
         allPosts.map(({ post, author }) => (
-          <Card class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 hover:border-brand-gold/50 transition-all">
+          <Card class="bg-brand-white/90 dark:bg-brand-dark-card/90 backdrop-blur-sm border border-gray-200 dark:border-white/10 hover:border-brand-gold/50 transition-all premium-shadow">
             <div class="flex items-start gap-4">
               <a href={`/@${author.slug}`} class="flex-shrink-0 focus-visible rounded-full">
                 <Avatar src={author.avatarUrl} alt={author.fullName} size="lg" fallback={author.fullName.charAt(0)} />
@@ -159,7 +159,7 @@ const formatDate = (date: Date | null) => {
                     <textarea
                       name="content"
                       placeholder="Escribe un comentario..."
-                      class="flex-1 bg-transparent border border-gray-300 dark:border-gray-700 rounded-sm p-3 text-sm text-brand-black dark:text-white focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold resize-none min-h-[48px] hover:border-brand-gold/50 transition-colors"
+                      class="flex-1 bg-brand-white dark:bg-brand-black/50 border border-gray-300 dark:border-gray-700 rounded-sm p-3 text-sm text-brand-black dark:text-white focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold resize-none min-h-[48px] hover:border-brand-gold/50 transition-colors shadow-inner"
                       required
                     ></textarea>
                     <Button type="submit" size="sm" class="h-auto self-stretch">Enviar</Button>
