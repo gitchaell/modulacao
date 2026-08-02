@@ -25,6 +25,10 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
+    if (name.length < 3 || price.trim() === '') {
+      return new Response(JSON.stringify({ error: 'Nombre muy corto o precio inválido' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    }
+
     const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') + '-' + crypto.randomBytes(4).toString('hex');
 
     await catalogUseCases.createProduct({

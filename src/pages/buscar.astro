@@ -71,7 +71,7 @@ const query = Astro.url.searchParams.get('q') || '';
         data.results.forEach((item: { type: string; label: string; url: string; }) => {
           const card = document.createElement('a');
           card.href = item.url;
-          card.className = "block bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 rounded-sm p-5 hover:border-brand-gold/50 transition-all flex items-center justify-between group premium-shadow focus-visible";
+          card.className = "block bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 rounded-sm p-5 hover:border-brand-gold/50 hover:-translate-y-1 transition-all flex items-center justify-between group premium-shadow focus-visible";
 
           card.innerHTML = `
             <div class="flex items-center">

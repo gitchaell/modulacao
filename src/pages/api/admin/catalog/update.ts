@@ -25,6 +25,10 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
+    if (name.length < 3 || price.trim() === '') {
+      return new Response(JSON.stringify({ error: 'Nombre muy corto o precio inválido' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    }
+
     await catalogUseCases.updateProduct(id, {
       name,
       description,
