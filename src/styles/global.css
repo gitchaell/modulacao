@@ -27,6 +27,14 @@
     font-feature-settings: 'liga' 1, 'dlig' 1, 'tnum' 1, 'ss02' 1, 'ss05' 1, 'ss09' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* Make main layout elements relative to stack above the background */
+  #__next, body > :not(script):not(style) {
+    position: relative;
+    z-index: 1;
   }
 
   h1, h2, h3, h4, h5, h6 {
