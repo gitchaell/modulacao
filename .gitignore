@@ -26,3 +26,4 @@ pnpm-debug.log*
 .vercel/
 dev_server.log
 local.db
+dev_server.log
