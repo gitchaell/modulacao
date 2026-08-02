@@ -27,6 +27,44 @@
     font-feature-settings: 'liga' 1, 'dlig' 1, 'tnum' 1, 'ss02' 1, 'ss05' 1, 'ss09' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* Global Modulating Waves Background Pattern */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    /* Grid + Modulating Waves overlay */
+    background-image:
+      radial-gradient(circle at center, transparent 0%, var(--bg-color, var(--color-brand-offwhite)) 80%),
+      url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q 25 25, 50 50 T 100 50' fill='none' stroke='rgba(0,0,0,0.08)' stroke-width='1'/%3E%3Cpath d='M0 60 Q 25 35, 50 60 T 100 60' fill='none' stroke='rgba(0,0,0,0.05)' stroke-width='0.5'/%3E%3C/svg%3E"),
+      linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 200px 100px, 40px 40px, 40px 40px;
+    background-position: center, 0 0, 0 0, 0 0;
+    background-repeat: no-repeat, repeat, repeat, repeat;
+  }
+
+  .dark body::before {
+    --bg-color: var(--color-brand-black);
+    background-image:
+      radial-gradient(circle at center, transparent 0%, var(--bg-color) 80%),
+      url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q 25 25, 50 50 T 100 50' fill='none' stroke='rgba(255,255,255,0.2)' stroke-width='1'/%3E%3Cpath d='M0 60 Q 25 35, 50 60 T 100 60' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='0.5'/%3E%3C/svg%3E"),
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  }
+
+  /* Make main layout elements relative to stack above the background */
+  #__next, body > :not(script):not(style) {
+    position: relative;
+    z-index: 1;
   }
 
   h1, h2, h3, h4, h5, h6 {

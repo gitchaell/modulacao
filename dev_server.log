@@ -2,12 +2,19 @@
 > temp-app@0.0.1 dev
 > astro dev
 
-19:15:30 [vite] connected.
-19:15:32 [types] Generated 1ms
-19:15:32 [vite] connected.
-19:15:32 [vite] Re-optimizing dependencies because vite config has changed
- astro  v7.1.6 ready in 2490 ms
+13:35:34 [vite] connected.
+13:35:36 [types] Generated 1ms
+13:35:36 [vite] connected.
+13:35:36 [vite] Re-optimizing dependencies because vite config has changed
+ astro  v7.1.6 ready in 2750 ms
 ┃ Local    http://localhost:4321/
 ┃ Network  use --host to expose
-19:15:32 watching for file changes...
-19:16:26 [200] / 232ms
+13:35:36 watching for file changes...
+13:37:25 [200] / 268ms
+13:42:49 [watch] /src/styles/global.css
+13:43:22 [watch] /src/styles/global.css
+13:44:12 [200] / 235ms
+13:44:12 [200] / 85ms
+13:45:07 [200] / 88ms
+13:46:18 [watch] /src/styles/global.css
+13:46:31 [200] / 195ms
