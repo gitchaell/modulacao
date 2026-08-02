@@ -39,6 +39,8 @@ const t = useTranslations(lang);
       <a href="/nosotros" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
       <a href="/campeonatos" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('nav.championships')}</a>
       <a href="/catalogo" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('nav.catalog')}</a>
+      <a href="/faq" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">FAQ</a>
+      <a href="/contacto" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">Contacto</a>
     </nav>
   </div>
 
@@ -57,7 +59,23 @@ const t = useTranslations(lang);
   <main class="min-h-screen">
     <slot />
   </main>
-  <footer class="py-12 text-center text-sm font-medium tracking-wide uppercase text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-white/5 bg-brand-white dark:bg-brand-black mt-auto">
-    &copy; {new Date().getFullYear()} {tenantConfig.name}. Todos los derechos reservados.
+  <footer class="py-16 text-center text-sm font-medium tracking-wide uppercase text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-white/5 bg-brand-white dark:bg-brand-black mt-auto">
+    <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="flex items-center gap-3">
+        <svg class="w-6 h-6 text-brand-gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span class="font-bold text-lg tracking-wider text-brand-black dark:text-brand-white">{tenantConfig.name}</span>
+      </div>
+      <nav class="flex flex-wrap justify-center gap-6 md:gap-8">
+        <a href="/" class="hover:text-brand-gold transition-colors focus-visible">{t('nav.home')}</a>
+        <a href="/nosotros" class="hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
+        <a href="/campeonatos" class="hover:text-brand-gold transition-colors focus-visible">{t('nav.championships')}</a>
+        <a href="/catalogo" class="hover:text-brand-gold transition-colors focus-visible">{t('nav.catalog')}</a>
+        <a href="/faq" class="hover:text-brand-gold transition-colors focus-visible">FAQ</a>
+        <a href="/contacto" class="hover:text-brand-gold transition-colors focus-visible">Contacto</a>
+      </nav>
+    </div>
+    <div class="mt-12 text-xs opacity-60">
+      &copy; {new Date().getFullYear()} {tenantConfig.name}. Todos los derechos reservados.
+    </div>
   </footer>
 </BaseLayout>
