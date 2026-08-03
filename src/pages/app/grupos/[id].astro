@@ -1,5 +1,6 @@
 ---
 import AppLayout from '@/layouts/AppLayout.astro';
+import Card from '@/components/core/Card.astro';
 import { db } from '@/data/db/db';
 import { groups, groupMembers, profiles, users } from '@/data/db/schema';
 import { eq } from 'drizzle-orm';
@@ -61,8 +62,9 @@ const membersList = await db
         </div>
       ) : (
         membersList.map(({ profile, role }) => (
-          <a href={`/@${profile.slug}`} class="flex items-center gap-4 p-4 bg-brand-dark-card border border-brand-dark/50 rounded-xl hover:border-brand-gold transition-colors group">
-            <div class="w-12 h-12 rounded-full overflow-hidden bg-brand-black flex items-center justify-center border border-brand-dark-card group-hover:border-brand-gold transition-colors">
+          <a href={`/@${profile.slug}`} class="block focus-visible">
+            <Card class="flex items-center gap-4 p-4 bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 hover:border-brand-gold/50 transition-colors group premium-shadow">
+            <div class="w-12 h-12 rounded-full overflow-hidden bg-brand-white dark:bg-brand-black flex items-center justify-center border border-gray-200 dark:border-brand-dark-card group-hover:border-brand-gold transition-colors">
               {profile.avatarUrl ? (
                 <img loading="lazy" decoding="async" src={profile.avatarUrl} alt={profile.fullName} class="w-full h-full object-cover" />
               ) : (
@@ -76,6 +78,7 @@ const membersList = await db
                 {role === 'ADMIN' && <span class="bg-brand-gold/20 text-brand-gold px-1.5 py-0.5 rounded text-[10px]">ADMIN</span>}
               </div>
             </div>
+            </Card>
           </a>
         ))
       )}
