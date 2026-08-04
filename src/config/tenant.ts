@@ -17,7 +17,7 @@ export interface TenantConfig {
 
 export const tenantConfig: TenantConfig = {
   id: 'modulacao',
-  name: 'Modulação',
+  name: 'Grupo Modulação',
   contactEmail: 'contacto@modulacao.com',
   socials: {
     instagram: 'https://instagram.com/modulacao',

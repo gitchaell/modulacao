@@ -1,0 +1,13 @@
+---
+import PublicLayout from '@/layouts/PublicLayout.astro';
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<PublicLayout title={t('nav.championships')}>
+  <div class="container mx-auto py-32 px-6 text-center">
+    <h1 class="text-4xl font-display text-brand-gold font-bold uppercase">{t('nav.championships')}</h1>
+    <p class="mt-4 text-brand-black dark:text-white">Sección en construcción. Muy pronto podrás ver nuestras investigaciones aquí.</p>
+  </div>
+</PublicLayout>
