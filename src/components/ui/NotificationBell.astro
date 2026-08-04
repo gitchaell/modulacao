@@ -11,7 +11,7 @@ const session = await getSession(Astro.request, response);
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-let userNotifications = [];
+let userNotifications: any[] = [];
 let unreadCount = 0;
 
 if (session.userId) {

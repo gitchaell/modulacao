@@ -16,7 +16,7 @@ const t = useTranslations(lang);
 <BaseLayout title={`${title} | ${tenantConfig.name}`}>
   <div class="flex h-screen overflow-hidden bg-brand-offwhite dark:bg-brand-black relative">
     <!-- Sidebar / Off-canvas for mobile -->
-    <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-brand-black/50 backdrop-blur-sm z-20 hidden md:hidden transition-opacity"></div>
+    <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-brand-black/50 backdrop-blur-sm z-20 hidden opacity-0 md:hidden transition-opacity duration-300"></div>
     <aside id="app-sidebar" class="fixed md:relative inset-y-0 left-0 w-80 bg-brand-white dark:bg-brand-dark border-r border-gray-200 dark:border-white/5 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-out z-30 premium-shadow">
       <div class="h-16 px-6 border-b border-gray-200 dark:border-white/5 flex justify-between items-center bg-brand-white/80 dark:bg-brand-dark/80 backdrop-blur-md">
         <a href="/" class="flex items-center gap-3 group focus-visible">
@@ -67,9 +67,23 @@ const t = useTranslations(lang);
     const sidebar = document.getElementById('app-sidebar');
     const overlay = document.getElementById('mobile-sidebar-overlay');
 
+    // Check local storage or match media for theme preference
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+
     const toggleSidebar = () => {
       sidebar?.classList.toggle('-translate-x-full');
-      overlay?.classList.toggle('hidden');
+
+      if (overlay?.classList.contains('hidden')) {
+        overlay.classList.remove('hidden');
+        setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+      } else {
+        overlay?.classList.add('opacity-0');
+        setTimeout(() => overlay?.classList.add('hidden'), 300);
+      }
     };
 
     openBtn?.addEventListener('click', toggleSidebar);

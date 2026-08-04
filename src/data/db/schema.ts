@@ -211,3 +211,14 @@ export const articles = sqliteTable('articles', {
   createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
   updatedAt: integer('updated_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 });
+// Documents / Library Table
+export const documents = sqliteTable('documents', {
+  id: text('id').primaryKey(),
+  uploaderId: text('uploader_id').notNull().references(() => users.id),
+  title: text('title').notNull(),
+  description: text('description'),
+  fileUrl: text('file_url').notNull(),
+  type: text('type', { enum: ['MANUAL', 'REGULATION', 'GENERAL'] }).default('GENERAL').notNull(),
+  size: integer('size'), // in bytes
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});

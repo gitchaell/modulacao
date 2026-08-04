@@ -1,7 +1,7 @@
 import { db } from '../../data/db/db';
 import { products } from '../../data/db/schema';
 import { eq } from 'drizzle-orm';
-import type { ICatalogRepository } from '../../domain/repositories';
+import type { ICatalogRepository, CatalogItem } from '../../domain/repositories';
 
 // Match the actual Drizzle schema for Products
 export interface ProductEntity {
@@ -19,12 +19,12 @@ export interface ProductEntity {
 
 export class TursoCatalogRepository implements ICatalogRepository {
   async findAll(): Promise<ProductEntity[]> {
-    return await db.select().from(products);
+    return await db.select().from(products) as unknown as CatalogItem[];
   }
 
   async findById(id: string): Promise<ProductEntity | null> {
     const result = await db.select().from(products).where(eq(products.id, id)).limit(1);
-    return result[0] || null;
+    return (result[0] as unknown as CatalogItem) || null;
   }
 
   async create(item: Omit<ProductEntity, 'createdAt' | 'updatedAt'>): Promise<ProductEntity> {
@@ -33,7 +33,7 @@ export class TursoCatalogRepository implements ICatalogRepository {
       createdAt: new Date(),
       updatedAt: new Date(),
     }).returning();
-    return result;
+    return result as unknown as CatalogItem;
   }
 
   async update(id: string, item: Partial<ProductEntity>): Promise<ProductEntity> {
@@ -41,7 +41,7 @@ export class TursoCatalogRepository implements ICatalogRepository {
       .set({ ...item, updatedAt: new Date() })
       .where(eq(products.id, id))
       .returning();
-    return result;
+    return result as unknown as CatalogItem;
   }
 
   async delete(id: string): Promise<void> {
