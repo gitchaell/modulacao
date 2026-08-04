@@ -273,4 +273,10 @@ if (checkRes.rows.length === 0) {
     { id: 'team_id_1', name: 'Los Leones', slug: 'los-leones', logoUrl: 'https://dummyimage.com/150x150/000/fff&text=LL', captainId: 'user_id_1' },
     { id: 'team_id_2', name: 'Las Águilas', slug: 'las-aguilas', logoUrl: 'https://dummyimage.com/150x150/000/fff&text=LA', captainId: 'admin_id_1' }
   ]);
+
+  await db.insert(schema.articles).values([
+    { id: 'article_id_1', authorId: 'admin_id_1', type: 'NEWS', title: 'Como o consumo de CARNE poderá auxiliar o nosso treinamento?', slug: 'como-consumo-de-carne-podera-auxiliar', excerpt: 'A alimentação com Carne Vermelha influencia nas interações con diferentes realidades.', content: 'A carne vermelha possui substâncias benéficas...', status: 'PUBLISHED', publishedAt: new Date(Date.now() - 1000000) },
+    { id: 'article_id_2', authorId: 'admin_id_1', type: 'NEWS', title: 'MECANISMO DA TERRA?', slug: 'mecanismo-da-terra', excerpt: 'E se los 02 eclipses de março revelassem um segredo cósmico, guardado há milênios?', content: 'Um eclipse total ocorre quando...', status: 'PUBLISHED', publishedAt: new Date(Date.now() - 5000000) },
+    { id: 'article_id_3', authorId: 'admin_id_1', type: 'NEWS', title: 'ECLIPSE LUNAR X SOLAR', slug: 'eclipse-lunar-x-solar', excerpt: 'Conheça as diferenças entre os fenômenos astronômicos espetaculares.', content: 'Eclipse Lunar e Solar, vocês conhece...', status: 'PUBLISHED', publishedAt: new Date(Date.now() - 10000000) },
+  ]);
 }

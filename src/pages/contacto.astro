@@ -1,0 +1,13 @@
+---
+import PublicLayout from '@/layouts/PublicLayout.astro';
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<PublicLayout title="Contacto">
+  <div class="container mx-auto py-32 px-6 text-center">
+    <h1 class="text-4xl font-display text-brand-gold font-bold uppercase">Contacto</h1>
+    <p class="mt-4 text-brand-black dark:text-white">Ponte en contacto con el Grupo Modulação para más información sobre nuestras actividades.</p>
+  </div>
+</PublicLayout>

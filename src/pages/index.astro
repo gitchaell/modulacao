@@ -3,7 +3,7 @@ import PublicLayout from '@/layouts/PublicLayout.astro';
 import Button from '@/components/core/Button.astro';
 import Card from '@/components/core/Card.astro';
 import WaveBackground from '@/components/ui/WaveBackground.astro';
-import { Trophy, Globe, Shirt } from '@lucide/astro';
+import { Microscope, Brain, Network } from '@lucide/astro';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import { tenantConfig } from '@/config/tenant';
 
@@ -47,7 +47,7 @@ const t = useTranslations(lang);
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative z-10">
         <Card class="group flex flex-col items-center text-center bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-black/5 dark:border-white/10 premium-shadow">
           <div class="w-20 h-20 rounded-full bg-brand-gold/5 dark:bg-brand-gold/10 text-brand-gold flex items-center justify-center mx-auto mb-8 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-500 ease-out border border-brand-gold/20 group-hover:border-transparent group-hover:scale-110 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]">
-            <Trophy class="w-10 h-10" />
+            <Microscope class="w-10 h-10" />
           </div>
           <h3 class="font-display text-2xl font-bold uppercase tracking-widest mb-4 text-brand-black dark:text-white">
             {t('home.features.competition.title')}
@@ -59,7 +59,7 @@ const t = useTranslations(lang);
 
         <Card class="group flex flex-col items-center text-center bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-black/5 dark:border-white/10 premium-shadow">
           <div class="w-20 h-20 rounded-full bg-brand-gold/5 dark:bg-brand-gold/10 text-brand-gold flex items-center justify-center mx-auto mb-8 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-500 ease-out border border-brand-gold/20 group-hover:border-transparent group-hover:scale-110 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]">
-            <Globe class="w-10 h-10" />
+            <Brain class="w-10 h-10" />
           </div>
           <h3 class="font-display text-2xl font-bold uppercase tracking-widest mb-4 text-brand-black dark:text-white">
             {t('home.features.community.title')}
@@ -71,7 +71,7 @@ const t = useTranslations(lang);
 
         <Card class="group flex flex-col items-center text-center bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-black/5 dark:border-white/10 premium-shadow">
           <div class="w-20 h-20 rounded-full bg-brand-gold/5 dark:bg-brand-gold/10 text-brand-gold flex items-center justify-center mx-auto mb-8 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-500 ease-out border border-brand-gold/20 group-hover:border-transparent group-hover:scale-110 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]">
-            <Shirt class="w-10 h-10" />
+            <Network class="w-10 h-10" />
           </div>
           <h3 class="font-display text-2xl font-bold uppercase tracking-widest mb-4 text-brand-black dark:text-white">
             {t('home.features.identity.title')}
