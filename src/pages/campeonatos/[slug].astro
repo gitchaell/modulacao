@@ -1,5 +1,6 @@
 ---
 import PublicLayout from '@/layouts/PublicLayout.astro';
+import Card from '@/components/core/Card.astro';
 import { db } from '@/data/db/db';
 import { championships, seasons, matches, teams, championshipTeams } from '@/data/db/schema';
 import { eq, and, desc, asc } from 'drizzle-orm';
@@ -129,11 +130,11 @@ const formatDate = (date: Date) => {
       <!-- Standings Table -->
       <div class="lg:col-span-2">
         <h2 class="text-xl font-bold text-brand-gold uppercase tracking-wider mb-6">Tabla de Posiciones</h2>
-        <div class="bg-brand-black border border-brand-dark-card rounded-xl overflow-hidden shadow-2xl">
+        <Card noPadding class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md premium-shadow border-gray-200 dark:border-white/10 overflow-hidden">
           <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse min-w-[600px]">
               <thead>
-                <tr class="bg-brand-dark border-b border-brand-dark-card text-xs font-bold text-gray-400 uppercase tracking-wider">
+                <tr class="bg-gray-50 dark:bg-brand-dark border-b border-gray-200 dark:border-white/10 text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                   <th class="px-4 py-3 text-center w-12">#</th>
                   <th class="px-4 py-3">Equipo</th>
                   <th class="px-3 py-3 text-center w-12" title="Partidos Jugados">PJ</th>
@@ -141,30 +142,30 @@ const formatDate = (date: Date) => {
                   <th class="px-3 py-3 text-center w-12" title="Partidos Empatados">E</th>
                   <th class="px-3 py-3 text-center w-12" title="Partidos Perdidos">P</th>
                   <th class="px-3 py-3 text-center w-12" title="Diferencia de Goles">DG</th>
-                  <th class="px-4 py-3 text-center w-16 text-white text-sm">PTS</th>
+                  <th class="px-4 py-3 text-center w-16 text-brand-black dark:text-white text-sm">PTS</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-brand-dark-card">
+              <tbody class="divide-y divide-gray-200 dark:divide-white/10">
                 {standings.map((row, index) => (
-                  <tr class="hover:bg-brand-dark/50 transition-colors">
+                  <tr class="hover:bg-gray-50 dark:hover:bg-brand-dark/50 transition-colors">
                     <td class="px-4 py-3 text-center font-bold text-gray-500">{index + 1}</td>
                     <td class="px-4 py-3">
                       <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-brand-dark border border-brand-dark-card flex items-center justify-center overflow-hidden flex-shrink-0">
+                        <div class="w-8 h-8 rounded-full bg-brand-white dark:bg-brand-dark border border-gray-200 dark:border-white/10 flex items-center justify-center overflow-hidden flex-shrink-0">
                           {row.team.logoUrl ? (
                             <img loading="lazy" decoding="async" src={row.team.logoUrl} alt={row.team.name} class="w-full h-full object-cover" />
                           ) : (
                             <span class="text-xs font-bold text-brand-gold">{row.team.name.charAt(0)}</span>
                           )}
                         </div>
-                        <span class="font-bold text-white">{row.team.name}</span>
+                        <span class="font-bold text-brand-black dark:text-white">{row.team.name}</span>
                       </div>
                     </td>
-                    <td class="px-3 py-3 text-center text-sm text-gray-300">{row.played}</td>
-                    <td class="px-3 py-3 text-center text-sm text-gray-300">{row.won}</td>
-                    <td class="px-3 py-3 text-center text-sm text-gray-300">{row.drawn}</td>
-                    <td class="px-3 py-3 text-center text-sm text-gray-300">{row.lost}</td>
-                    <td class="px-3 py-3 text-center text-sm text-gray-300 font-mono">{row.goalDifference > 0 ? `+${row.goalDifference}` : row.goalDifference}</td>
+                    <td class="px-3 py-3 text-center text-sm text-gray-600 dark:text-gray-400">{row.played}</td>
+                    <td class="px-3 py-3 text-center text-sm text-gray-600 dark:text-gray-400">{row.won}</td>
+                    <td class="px-3 py-3 text-center text-sm text-gray-600 dark:text-gray-400">{row.drawn}</td>
+                    <td class="px-3 py-3 text-center text-sm text-gray-600 dark:text-gray-400">{row.lost}</td>
+                    <td class="px-3 py-3 text-center text-sm text-gray-600 dark:text-gray-400 font-mono">{row.goalDifference > 0 ? `+${row.goalDifference}` : row.goalDifference}</td>
                     <td class="px-4 py-3 text-center font-bold text-brand-gold text-lg">{row.points}</td>
                   </tr>
                 ))}
@@ -176,7 +177,7 @@ const formatDate = (date: Date) => {
               </tbody>
             </table>
           </div>
-        </div>
+        </Card>
       </div>
 
       <!-- Fixture / Matches -->
@@ -184,15 +185,15 @@ const formatDate = (date: Date) => {
         <h2 class="text-xl font-bold text-brand-gold uppercase tracking-wider mb-6">Partidos Recientes</h2>
         <div class="space-y-4">
           {champMatches.length === 0 ? (
-            <div class="bg-brand-black border border-brand-dark-card rounded-xl p-6 text-center text-gray-500 text-sm">
+            <Card class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md premium-shadow border-gray-200 dark:border-white/10 text-center text-gray-500 text-sm">
               El fixture aún no ha sido generado.
-            </div>
+            </Card>
           ) : (
             champMatches.slice(-5).reverse().map(match => {
               const home = teamsInChamp.find(t => t.team.id === match.homeTeamId)?.team;
               const away = teamsInChamp.find(t => t.team.id === match.awayTeamId)?.team;
               return (
-                <div class="bg-brand-black border border-brand-dark-card rounded-xl p-4 flex flex-col gap-3 hover:border-brand-gold/50 transition-colors">
+                <Card class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md premium-shadow border-gray-200 dark:border-white/10 flex flex-col gap-3 hover:border-brand-gold/50 transition-colors">
                   <div class="flex justify-between items-center text-xs text-gray-500 font-bold uppercase tracking-wider">
                     <span>{formatDate(match.date as unknown as Date)}</span>
                     <span class={match.status === 'FINISHED' ? 'text-gray-600' : match.status === 'PLAYING' ? 'text-green-500 animate-pulse' : 'text-brand-gold'}>
@@ -202,24 +203,24 @@ const formatDate = (date: Date) => {
                   <div class="flex flex-col gap-2">
                     <div class="flex justify-between items-center">
                       <div class="flex items-center gap-2">
-                        <div class="w-6 h-6 rounded bg-brand-dark border border-brand-dark-card flex items-center justify-center overflow-hidden">
+                        <div class="w-6 h-6 rounded bg-brand-white dark:bg-brand-dark border border-gray-200 dark:border-white/10 flex items-center justify-center overflow-hidden">
                            {home?.logoUrl ? <img loading="lazy" decoding="async" src={home.logoUrl} class="w-full h-full object-cover"/> : <span class="text-[10px] text-gray-500">{home?.name.charAt(0)}</span>}
                         </div>
-                        <span class="font-bold text-white text-sm">{home?.name || 'Local'}</span>
+                        <span class="font-bold text-brand-black dark:text-white text-sm">{home?.name || 'Local'}</span>
                       </div>
-                      <span class={`font-bold text-lg ${match.homeScore > match.awayScore ? 'text-white' : 'text-gray-500'}`}>{match.status === 'SCHEDULED' ? '-' : match.homeScore}</span>
+                      <span class={`font-bold text-lg ${match.homeScore > match.awayScore ? 'text-brand-black dark:text-white' : 'text-gray-500'}`}>{match.status === 'SCHEDULED' ? '-' : match.homeScore}</span>
                     </div>
                     <div class="flex justify-between items-center">
                       <div class="flex items-center gap-2">
-                        <div class="w-6 h-6 rounded bg-brand-dark border border-brand-dark-card flex items-center justify-center overflow-hidden">
+                        <div class="w-6 h-6 rounded bg-brand-white dark:bg-brand-dark border border-gray-200 dark:border-white/10 flex items-center justify-center overflow-hidden">
                            {away?.logoUrl ? <img loading="lazy" decoding="async" src={away.logoUrl} class="w-full h-full object-cover"/> : <span class="text-[10px] text-gray-500">{away?.name.charAt(0)}</span>}
                         </div>
-                        <span class="font-bold text-white text-sm">{away?.name || 'Visita'}</span>
+                        <span class="font-bold text-brand-black dark:text-white text-sm">{away?.name || 'Visita'}</span>
                       </div>
-                      <span class={`font-bold text-lg ${match.awayScore > match.homeScore ? 'text-white' : 'text-gray-500'}`}>{match.status === 'SCHEDULED' ? '-' : match.awayScore}</span>
+                      <span class={`font-bold text-lg ${match.awayScore > match.homeScore ? 'text-brand-black dark:text-white' : 'text-gray-500'}`}>{match.status === 'SCHEDULED' ? '-' : match.awayScore}</span>
                     </div>
                   </div>
-                </div>
+                </Card>
               );
             })
           )}

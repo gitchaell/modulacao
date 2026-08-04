@@ -24,5 +24,7 @@ pnpm-debug.log*
 .idea/
 
 .vercel/
-dev_server.log
+
 local.db
+
+dev_server.log

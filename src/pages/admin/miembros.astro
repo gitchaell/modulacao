@@ -50,7 +50,7 @@ const formatDate = (date: Date) => {
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
       <!-- Lista de Miembros (Ocupa 2 columnas) -->
-      <Card noPadding class="lg:col-span-2 bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 overflow-hidden premium-shadow">
+      <Card noPadding class="lg:col-span-2 bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 overflow-hidden premium-shadow">
         <div class="p-6 border-b border-gray-200 dark:border-white/5 flex justify-between items-center bg-gray-50 dark:bg-brand-black/50">
           <h2 class="font-display text-lg font-bold text-brand-black dark:text-white uppercase tracking-wider">Usuarios Registrados</h2>
           <Badge variant="neutral">{allUsers.length}</Badge>
@@ -89,7 +89,7 @@ const formatDate = (date: Date) => {
 
       <!-- Panel de Invitaciones -->
       <div class="space-y-6">
-        <Card class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5" id="invite">
+        <Card class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 premium-shadow" id="invite">
           <h2 class="font-display text-lg font-bold text-brand-black dark:text-white uppercase tracking-wider mb-6">{t('admin.members.invite_btn')}</h2>
           <form id="inviteForm" class="space-y-6">
             <Input type="email" id="inviteEmail" label="Correo Electrónico" placeholder="usuario@ejemplo.com" required />
@@ -105,7 +105,7 @@ const formatDate = (date: Date) => {
           </form>
         </Card>
 
-        <Card class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5" noPadding>
+        <Card class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 premium-shadow" noPadding>
           <div class="p-6 border-b border-gray-200 dark:border-white/5 flex justify-between items-center bg-gray-50 dark:bg-brand-black/50">
             <h2 class="text-sm font-bold text-gray-600 dark:text-gray-300 uppercase tracking-wider">Pendientes</h2>
             <Badge variant="neutral">{pendingInvitations.length}</Badge>

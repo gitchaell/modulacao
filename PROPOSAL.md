@@ -1,198 +1,186 @@
-# Propuesta del Proyecto: Plataforma Web Modulação
+# Propuesta de Arquitectura y Desarrollo: Plataforma Web Modulação
 
-A continuación, se detalla la propuesta técnica y arquitectónica para el desarrollo de la plataforma oficial de **Modulação**, priorizando escalabilidad, rendimiento, una arquitectura limpia y una excelente experiencia de usuario bajo los estándares solicitados (Astro, TypeScript, Tailwind CSS v4, TursoDB, y Vercel Blob).
+A continuación se detalla la propuesta técnica, de arquitectura y roadmap para la construcción de la plataforma web oficial de Modulação, asegurando escalabilidad, rendimiento, mantenibilidad y una experiencia de usuario premium.
 
 ---
 
 ## 1. Arquitectura del Proyecto
 
-La arquitectura se basará en el principio de **Separación de Responsabilidades** (Separation of Concerns), utilizando un enfoque modular basado en *Domain-Driven Design (DDD)* simplificado y Arquitectura Hexagonal.
+El proyecto se estructurará siguiendo los principios de **Domain-Driven Design (DDD)** adaptado al ecosistema de Astro. Esto garantiza que la lógica de negocio esté completamente desacoplada de la interfaz de usuario (Astro components) y de la infraestructura (Base de datos, almacenamiento).
 
-*   **Capa de Presentación (UI):** Renderizado híbrido mediante Astro. Las páginas estáticas (institucional, catálogo, perfiles públicos) usarán SSG (Static Site Generation), mientras que la comunidad, el dashboard y módulos dinámicos usarán SSR (Server-Side Rendering). Componentes construidos nativamente en Astro y, cuando se requiera interactividad en el cliente (islas), se pueden incluir componentes de Preact/React/Svelte (opcional) o Web Components puros bajo demanda.
-*   **Capa de Dominio:** Lógica de negocio core (reglas de campeonatos, grupos, comunidad) escrita en TypeScript de forma agnóstica a la infraestructura.
-*   **Capa de Acceso a Datos (Infraestructura):** Conexión con TursoDB usando Drizzle ORM (tipado fuerte, edge-compatible). Integración directa con Vercel Blob para la gestión de medios.
-*   **Capa de API (Endpoints):** Astro Endpoints (`/api/...`) para manejar mutaciones de datos, invitaciones y notificaciones de forma segura.
+- **Framework Frontend/Backend:** Astro (SSR - Server-Side Rendering).
+- **Lenguaje:** TypeScript estricto.
+- **Estilos:** Tailwind CSS v4.
+- **Base de Datos:** TursoDB (SQLite) con Drizzle ORM.
+- **Almacenamiento de Archivos:** Vercel Blob.
+- **Autenticación:** Sesiones basadas en cookies encriptadas (usando `iron-session`) y middleware de Astro (`src/middleware.ts`). Registro exclusivo por enlaces tokenizados enviados por email.
+- **Despliegue:** Vercel (Edge/Serverless).
 
 ---
 
 ## 2. Estructura de Carpetas
 
-Basada en la separación entre dominio, UI y datos para un proyecto Astro escalable:
-
-```
-├── src/
-│   ├── assets/           # Recursos estáticos (imágenes locales, fuentes, íconos)
-│   ├── components/       # Componentes visuales puros (UI)
-│   │   ├── core/         # Botones, inputs, modales (Design System)
-│   │   ├── layouts/      # Cabeceras, pies de página, sidebars
-│   │   └── modules/      # Componentes específicos de dominio (Ej. FeedComunidad, TablaPosiciones)
-│   ├── data/             # Capa de Infraestructura
-│   │   ├── db/           # Configuración de Turso y Drizzle (schema, migraciones)
-│   │   └── storage/      # Clientes e integración con Vercel Blob
-│   ├── domain/           # Lógica de Negocio
-│   │   ├── auth/         # Lógica de invitaciones y sesiones
-│   │   ├── community/    # Posts, reacciones, comentarios
-│   │   ├── sports/       # Campeonatos, equipos, estadísticas
-│   │   └── users/        # Roles, perfiles
-│   ├── layouts/          # Layouts de Astro (Base, Admin, Public, App)
-│   ├── pages/            # Enrutamiento basado en archivos de Astro
-│   │   ├── admin/        # Dashboard administrativo
-│   │   ├── api/          # Endpoints de API pública/privada
-│   │   ├── app/          # Zona privada de miembros (comunidad, grupos)
-│   │   └── index.astro   # Inicio (Public)
-│   ├── styles/           # Tailwind v4 globals y tokens
-│   └── utils/            # Helpers compartidos (formato de fechas, validaciones)
-├── package.json
-├── astro.config.mjs
-├── tailwind.config.ts
-└── tsconfig.json
+```text
+/src
+  /application       # Casos de uso (ej. InviteUserUseCase, CreatePostUseCase)
+  /components        # Componentes UI de Astro y React/Solid (si es necesario por interactividad)
+    /core            # Design System (Button, Input, Modal, Icon)
+    /domain          # Componentes específicos de dominio (EventCard, PlayerProfile)
+    /layout          # Componentes de estructura (Navbar, Footer, Sidebar)
+  /config            # Configuraciones globales y variables de entorno (tenant.ts)
+  /domain            # Entidades, Tipos y Puertos/Interfaces (ej. IUserRepository)
+  /infrastructure    # Implementaciones técnicas (Drizzle repos, Vercel Blob, Email, Turso)
+    /db              # Esquemas de Drizzle ORM y migraciones
+  /i18n              # Textos e internacionalización
+  /layouts           # Layouts de Astro (BaseLayout, AppLayout, AdminLayout)
+  /pages             # Enrutamiento basado en archivos de Astro
+    /api             # Endpoints (v1/) para uso del cliente y webhooks
+    /admin           # Rutas del panel de administración
+    /[username]      # Rutas dinámicas de perfiles
+  /styles            # CSS global, variables de Tailwind v4 y @theme
+  /utils             # Funciones utilitarias (formatters, SEO helpers)
 ```
 
 ---
 
-## 3. Modelo de Datos
+## 3. Modelo de Datos y 4. Entidades Principales
 
-La base de datos (TursoDB/SQLite) será diseñada de forma relacional y normalizada, optimizada para lecturas y escalabilidad edge. Se usará **Drizzle ORM** para el esquema tipado.
+El esquema se definirá mediante Drizzle ORM.
 
----
+**Usuarios y Accesos**
+- `users`: id, email, password_hash, role_id, status (INVITED, ACTIVE, BANNED), created_at.
+- `roles` y `permissions`: Gestión granular (RBAC).
+- `invitations`: id, email, token, expires_at, used_at.
 
-## 4. Entidades Principales
+**Perfiles y Comunidad**
+- `profiles`: user_id, username, first_name, last_name, bio, avatar_url, country, city, group_id.
+- `groups`: id, name, type (COUNTRY, CITY), parent_group_id.
+- `posts` (Comunidad): id, author_id, content, media_urls.
+- `comments` y `reactions`: Para posts, noticias y eventos.
 
-*   **User / Profile:** ID, nombre, email, password_hash, biografía, foto_url, ciudad, país, fecha_ingreso, etc.
-*   **Role / Permission:** Sistema RBAC (Role-Based Access Control). Roles iniciales: Admin, Member.
-*   **Invitation:** Token de registro, email destino, estado (pendiente/usado), fecha_expiracion.
-*   **Post / Comment / Reaction:** Para noticias, comunicados y la comunidad.
-*   **Event:** Título, descripción, fecha, hora, mapa, organizador_id.
-*   **EventAttendance:** Relación de usuarios con eventos (asistirá, lista_espera).
-*   **Group:** Entidad de agrupación (ciudad, país).
-*   **Championship / Season / Team / Player:** Estructura deportiva.
-*   **Match / Statistic:** Partidos, resultados, goles, tarjetas.
-*   **Product:** Catálogo, variantes, descripción, imágenes.
+**Contenido (Noticias, Comunicados, Eventos)**
+- `content`: id, type (NEWS, ANNOUNCEMENT), title, slug, body, author_id, published_at.
+- `events`: id, title, slug, description, location, date, capacity, organizer_id.
+- `event_attendees`: event_id, user_id, status (ATTENDING, WAITLIST) -> Clave primaria compuesta.
+
+**Deportes (Campeonatos)**
+- `seasons`: id, name, year.
+- `championships`: id, name, season_id.
+- `teams`: id, name, logo_url.
+- `team_players`: team_id, user_id (vinculado al perfil).
+- `matches`: id, championship_id, home_team, away_team, date, status, home_score, away_score.
+- `match_events`: match_id, player_id, type (GOAL, YELLOW_CARD, RED_CARD, ASSIST), minute.
+
+**Catálogo**
+- `products`: id, name, description, price, active.
+- `product_images` y `product_variants`.
 
 ---
 
 ## 5. Relaciones
 
-*   Un **User** tiene un único **Profile** (1:1).
-*   Un **User** pertenece a muchos **Groups** y a muchos **Teams** (N:N).
-*   Un **Group** tiene múltiples **Posts** y **Events** (1:N).
-*   Un **Post** puede tener múltiples **Comments** y **Reactions** (1:N).
-*   Un **Championship** tiene una **Season** y agrupa muchos **Teams** (1:N).
-*   Un **Match** relaciona dos **Teams** (Local/Visitante) y genera **Statistics** para N **Players** (1:N).
+- **Usuario 1:1 Perfil:** Cada cuenta tiene un perfil único asociado a un `@username`.
+- **Evento 1:N Asistentes:** Un evento tiene múltiples usuarios (limitados por la capacidad, el resto va a lista de espera).
+- **Equipo N:M Jugadores:** Gestionado por `team_players`. Los jugadores son instancias del `Profile`.
+- **Campeonato 1:N Partidos:** Un campeonato organiza muchos partidos.
 
 ---
 
 ## 6. Diseño del Sistema de Permisos
 
-Implementaremos **RBAC (Role-Based Access Control) con soporte ABAC (Attribute-Based Access Control)** para el futuro.
-
-*   **Roles Base:**
-    *   `ADMIN`: Permisos completos en el CRUD de todas las entidades.
-    *   `MEMBER`: Permisos de lectura pública y privada. Creación/edición de contenido propio (posts, comentarios). Modificación de su propio perfil.
-*   **Implementación:**
-    *   **Middleware:** Un middleware global en Astro evaluará la sesión (cookies o JWT seguro) y el rol antes de renderizar rutas protegidas (ej. `/admin/*` o `/app/*`).
-    *   **Directivas de UI:** Componentes utilitarios (ej. `<RequireRole role="ADMIN">`) para ocultar/mostrar elementos en la interfaz sin lógica compleja repetida.
+Implementaremos **RBAC (Role-Based Access Control)** extensible:
+- **Roles base:** `ADMIN`, `MEMBER`, `GUEST` (implícito).
+- En la base de datos se definirán banderas de permisos (ej. `can_manage_events`, `can_publish_news`).
+- El `middleware.ts` interceptará peticiones a `/admin/*` validando que la sesión tenga el rol/permisos adecuados. De lo contrario, retorna 403 o redirige a login.
 
 ---
 
 ## 7. Arquitectura de Componentes
 
-Se utilizará el patrón **Atomic Design** ajustado para componentes reutilizables y altamente mantenibles:
-
-*   **Base UI (Core):** Componentes visuales genéricos sin lógica de estado. (Ej. `Button.astro`, `Card.astro`, `Input.astro`, `Badge.astro`).
-*   **Modulares (Smart):** Componentes que se conectan al dominio, reciben propiedades específicas y emiten acciones, como `PostCard.astro`, `MatchResultCard.astro`, `ProfileHeader.astro`.
-*   **Contenedores:** Vistas de página completa que obtienen los datos de Drizzle (SSR) y se los pasan a los componentes visuales.
+- **Agnósticos de Dominio:** En `src/components/core/` (Ej. `<Button>`, `<Badge>`, `<Card>`). Solo reciben props de UI y no saben nada de la base de datos.
+- **De Dominio:** En `src/components/domain/` (Ej. `<ChampionshipTable championshipId={12} />`). Estos componentes consumirán los Casos de Uso desde `src/application` en el servidor (Astro SSR) para renderizar HTML final.
+- **Interactividad:** Usaremos componentes de cliente (React, Preact, o Vanilla JS con Web Components) de forma muy aislada (Islands Architecture) para editores WYSIWYG, subida de archivos o pasarela de comentarios dinámica.
 
 ---
 
 ## 8. Diseño del Sistema de Layouts
 
-El enrutamiento usará Layouts anidados en Astro para evitar repetir lógica de encabezados y menús:
-
-1.  **PublicLayout:** Header transparente/dinámico, hero components, footer corporativo y metadatos SEO/Open Graph completos. Utilizado en `/`, `/nosotros`, `/noticias`.
-2.  **AppLayout (Miembros):** Sidebar o Bottom Navigation (mobile), enfocado en la comunidad, sin el ruido institucional. Usado en `/comunidad`, `/eventos`, `/@usuario`.
-3.  **AdminLayout:** Dashboard de ancho completo, Sidebar denso con las herramientas CRUD, Breadcrumbs y header con búsqueda rápida. Usado en `/admin/*`.
-4.  **AuthLayout:** Diseño minimalista (mitad imagen de marca/ondas moduladoras, mitad formulario) para la creación de contraseña con token.
+- `BaseLayout.astro`: Contiene el cascarón HTML, el componente `<SEO />` (OpenGraph, JSON-LD, Canonical), inyección del fondo de "ondas moduladoras" (`body::before`) e inicialización del modo Dark/Light.
+- `PublicLayout.astro`: Navegación principal, Footer.
+- `AppLayout.astro`: Layout para miembros con Sidebar/Navegación contextual a la comunidad y perfil.
+- `AdminLayout.astro`: Panel de control, minimalista y maximizado para visualizar datos (Tablas, Formularios CRUD).
 
 ---
 
 ## 9. Design System
 
-El diseño se basará en la estética "Modulação": premium, tecnológica y elegante (inspirada en la indumentaria oficial, sin ser copia literal).
-
-*   **Paleta de Colores:**
-    *   *Primario (Gold):* Acentos, botones primarios, iconos de jerarquía (`#D4AF37` / `#B8860B` - variantes ajustadas para contraste AA).
-    *   *Fondo (Dark Mode default):* Tonos de negro profundo y gris muy oscuro (`#0A0A0A`, `#121212`, `#1F1F1F` para tarjetas).
-    *   *Fondo (Light Mode):* Blanco puro (`#FFFFFF`) y grises crema muy sutiles (`#F8F9FA`).
-*   **Tipografía:**
-    *   *Headings:* Sans-serif geométrica y moderna (ej. *Inter*, *Outfit* o *Clash Display*) con pesos en Bold y ExtraBold para títulos impactantes.
-    *   *Body:* Sans-serif altamente legible (ej. *Inter* o *Geist*).
-*   **Motivos Visuales:**
-    *   Uso de ondas (Sine/Modulation waves) sutiles como patrones de fondo SVG con baja opacidad.
-    *   Modos claro/oscuro soportados nativamente por Tailwind `dark:class`.
-*   **Interactividad:** Animaciones fluidas (Transiciones CSS, View Transitions API nativo de Astro) para una sensación de SPA (Single Page Application).
+- **Colores:**
+  - Negro: Fondos base y superficies oscuras.
+  - Blanco: Textos principales, fondos en modo claro.
+  - Dorado (Gold): Acentos, botones primarios, focus rings e iconografía destacada.
+- **Tipografía:** Moderna y geométrica para un look premium (ej. *Geist*, *Inter* o *Manrope*).
+- **Tema (Tailwind v4):** Las variables CSS estarán definidas en `src/styles/global.css` dentro de un bloque `@theme`.
+- **Patrón Visual:** Las "ondas moduladoras" serán un fondo global fijo, con capas semi-transparentes (`backdrop-blur`) en las tarjetas y contenedores para dar profundidad técnica y elegante.
+- **Banderas:** Implementación estricta de `flag-icons` CSS.
+- **Accesibilidad:** Soporte ARIA y anillos de foco visibles en todos los elementos interactivos.
 
 ---
 
 ## 10. Mapa Completo del Sitio
 
-*   **Público (Visitante & Miembro):**
-    *   `/` - Inicio
-    *   `/nosotros` - Quiénes somos
-    *   `/noticias` - Feed de noticias
-    *   `/noticias/[slug]` - Detalle de noticia
-    *   `/comunicados` - Oficial
-    *   `/eventos` - Próximos eventos y calendario
-    *   `/campeonatos` - Hub deportivo (Tablas, fixtures)
-    *   `/catalogo` - Productos y servicios (Contactar por WhatsApp)
-    *   `/@usuario` - Perfil público del miembro
-*   **Privado (Solo Miembros - App):**
-    *   `/comunidad` - Feed de red social
-    *   `/grupos` - Grupos por país/ciudad
-    *   `/directorio` - Búsqueda de miembros
-    *   `/ajustes` - Edición de perfil, notificaciones
-*   **Administrativo (Solo Admin):**
-    *   `/admin/dashboard`
-    *   `/admin/miembros` - Invitaciones y roles
-    *   `/admin/contenido` - Blog, eventos, comunicados
-    *   `/admin/deportes` - Gestión de campeonatos y estadísticas
-    *   `/admin/catalogo` - Gestión de productos
-*   **Sistema:**
-    *   `/invitacion/[token]` - Set password
+- `/` (Home)
+- `/nosotros` (Acerca de, FAQ)
+- `/noticias` y `/noticias/[slug]`
+- `/comunicados` y `/comunicados/[slug]`
+- `/eventos` y `/eventos/[slug]`
+- `/comunidad` (Feed de publicaciones)
+- `/directorio` (Filtros por país, ciudad)
+- `/[username]` (Perfil público)
+- `/campeonatos` y `/campeonatos/[slug]`
+- `/catalogo`
+- `/admin` (Dashboard)
+  - `/admin/usuarios`, `/admin/eventos`, `/admin/noticias`, `/admin/campeonatos`, etc.
 
 ---
 
 ## 11. Flujo de Navegación
 
-1.  **Onboarding:** El Admin genera invitación -> Email con link `/invitacion/abc-123` -> Usuario establece clave -> Redirección a `/comunidad`.
-2.  **Navegación Pública:** Usuario aterriza en `/` -> Hero lo dirige al `/catalogo` o `/campeonatos` -> Navega a perfiles públicos (`/@juanperez`).
-3.  **App Experience:** Miembro entra a `/comunidad` -> Lee post -> Comenta -> Visita el perfil del autor -> Ve el grupo del autor -> Se inscribe a un evento de ese grupo -> Recibe notificación in-app/email.
+1. **Visitante:** Aterriza en Home. Ve últimos resultados, eventos futuros, noticias. Puede navegar por perfiles (vista reducida) y catálogo (ver e ir a WhatsApp).
+2. **Registro/Ingreso:** El visitante no puede registrarse por sí mismo. El Admin le envía invitación -> Recibe email -> Hace clic en link -> Crea contraseña -> Entra al sistema.
+3. **Miembro:** Entra. Accede a `/comunidad` para ver feed. Puede dar RSVP a eventos. Puede editar su biografía.
+4. **Admin:** Navega a `/admin` mediante un botón en el menú de usuario. Accede a las tablas CRUD para gestionar toda la plataforma.
 
 ---
 
-## 12. Roadmap (Fases de Implementación)
+## 12. Roadmap y Fases de Implementación
 
-*   **Fase 1: Foundations & Auth**
-    *   Setup de Astro, Tailwind v4, Turso, Vercel Blob.
-    *   Configuración de ESLint/Prettier, estructura de carpetas.
-    *   Sistema de layouts base y UI Kit inicial (Design System).
-    *   Sistema de Invitaciones, Auth (sesiones, middleware, protección de rutas).
-*   **Fase 2: Sitio Institucional & SEO**
-    *   Home (Hero, resúmenes estáticos), Quiénes Somos.
-    *   Motor de Noticias y Comunicados (Editor visual, tags).
-    *   Metadatos SEO, Open Graph, Sitemap.
-*   **Fase 3: Red Social / Comunidad**
-    *   Directorio de Miembros, Perfiles Públicos Completos (`/@usuario`).
-    *   Feed de Comunidad (Posts, imágenes con Vercel Blob, comentarios, reacciones).
-*   **Fase 4: Eventos y Grupos**
-    *   Módulo de Grupos (País, Ciudad).
-    *   Módulo de Eventos (Asistencia, lista de espera, mapas, galería).
-*   **Fase 5: Panel Administrativo y Catálogo**
-    *   Dashboard administrativo (CRUD completo de usuarios, noticias, eventos).
-    *   Catálogo de Productos (Links a WhatsApp).
-*   **Fase 6: Plataforma Deportiva (Campeonatos)**
-    *   Dominio complejo: Torneos, Equipos, Jugadores, Fixtures, Estadísticas, Tablas automáticas.
-*   **Fase 7: Pulido, Búsqueda y Notificaciones**
-    *   Implementación de Buscador Global.
-    *   Sistema centralizado de Notificaciones (In-app y correos transaccionales).
-    *   Auditoría de rendimiento (Lighthouse, Accesibilidad AA) y lanzamiento.
+**Fase 1: Fundación y Autenticación (Core)**
+- Configuración de Astro, Tailwind v4, Drizzle, Turso (modo en memoria por ahora) e i18n base.
+- Diseño del BaseLayout, componentes Core UI básicos.
+- Sistema de usuarios, invitaciones, login e `iron-session`.
+- Middleware de protección de rutas y perfiles de usuario básicos (vista `/[username]`).
+
+**Fase 2: Sitio Institucional y Contenido**
+- Homepage (Hero, secciones dinámicas integradas).
+- Página de "Quiénes Somos".
+- Módulo de Noticias y Comunicados (Listado, Detalle, SEO estricto).
+- Módulo de Eventos (Listado, Detalle, Registro Asistencia / Lista de Espera).
+
+**Fase 3: Comunidad y Directorio**
+- Directorio global de miembros con filtros y páginas de Grupo (País/Ciudad).
+- Módulo de Comunidad (Creación de posts tipo red social, adjuntos, comentarios, reacciones).
+- Expansión de perfiles (actividad reciente, galerías, insignias).
+
+**Fase 4: Sistema Deportivo y Catálogo**
+- Módulo de Campeonatos (Temporadas, equipos, calendarios, partidos, tabla de posiciones automática, goleadores).
+- Catálogo de productos (Variantes, galerías, contacto directo por WhatsApp).
+
+**Fase 5: Panel de Administración, Búsqueda y Refinamiento**
+- Panel Backoffice completo (CRUD exhaustivo protegido con validaciones fuertes y errores JSON).
+- Buscador global implementado (búsqueda cruzada en DB para posts, usuarios, noticias).
+- Sistema de Notificaciones (internas y por email).
+- Auditoría final: Performance (LCP, SEO JSON-LD), Accesibilidad (AA), revisión de diseño y QA.
+
+---
+
+Por favor, revisa esta propuesta. Si estás de acuerdo con la arquitectura y el roadmap trazado, confirmaremos este plan y comenzaremos de inmediato con la **Fase 1** y los primeros pasos del desarrollo.
