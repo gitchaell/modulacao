@@ -64,9 +64,7 @@ const allChampionships = await db.select({
                  <div class="text-xs font-bold tracking-widest text-brand-gold uppercase mb-2">{champ.seasonName || 'General'} • {champ.type}</div>
                  <h2 class="font-display text-xl font-bold text-brand-black dark:text-white mb-4 group-hover:text-brand-gold transition-colors">{champ.name}</h2>
                  <div class="mt-auto">
-                   <Button variant="outline" size="sm" fullWidth class="group-hover:bg-brand-gold group-hover:text-brand-black transition-colors">
-                     Ver Detalles
-                   </Button>
+                   <a href="/campeonatos" class="block mt-auto"><Button variant="outline" size="sm" fullWidth class="group-hover:bg-brand-gold group-hover:text-brand-black transition-colors">Ver Detalles</Button></a>
                  </div>
                </div>
              </Card>

@@ -3,7 +3,24 @@ import AdminLayout from '@/layouts/AdminLayout.astro';
 import Card from '@/components/core/Card.astro';
 import Input from '@/components/core/Input.astro';
 import Button from '@/components/core/Button.astro';
-import { tenantConfig } from '@/config/tenant';
+import { tenantConfig as staticConfig } from '@/config/tenant';
+import { db } from '@/data/db/db';
+import { tenantConfig as dbConfig } from '@/data/db/schema';
+import { eq } from 'drizzle-orm';
+
+const [currentConfig] = await db.select().from(dbConfig).where(eq(dbConfig.id, 'modulacao')).limit(1);
+
+const config = {
+  name: currentConfig?.name || staticConfig.name,
+  contactEmail: currentConfig?.contactEmail || staticConfig.contactEmail,
+  socials: {
+    instagram: currentConfig?.instagram || staticConfig.socials.instagram,
+    youtube: currentConfig?.youtube || staticConfig.socials.youtube,
+    facebook: currentConfig?.facebook || staticConfig.socials.facebook,
+    twitter: currentConfig?.twitter || staticConfig.socials.twitter,
+  }
+};
+
 ---
 
 <AdminLayout title="Configuración Global">
@@ -31,8 +48,8 @@ import { tenantConfig } from '@/config/tenant';
             <h2 class="text-xl font-bold text-white mb-4 border-b border-brand-dark pb-2">Identidad de la Marca</h2>
             <div class="space-y-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input type="text" name="name" label="Nombre de la Institución" value={tenantConfig.name} required minlength="3" />
-                <Input type="email" name="email" label="Correo de Contacto Principal" value={tenantConfig.contactEmail} required />
+                <Input type="text" name="name" label="Nombre de la Institución" value={config.name} required minlength="3" />
+                <Input type="email" name="email" label="Correo de Contacto Principal" value={config.contactEmail} required />
               </div>
               <div>
                 <label class="block text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite mb-2">Logotipo</label>
@@ -51,10 +68,10 @@ import { tenantConfig } from '@/config/tenant';
             <h2 class="text-xl font-bold text-white mb-4 border-b border-brand-dark pb-2">Redes Sociales</h2>
             <div class="space-y-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input type="url" name="instagram" label="Instagram URL" value={tenantConfig.socials.instagram} placeholder="https://instagram.com/..." />
-                <Input type="url" name="youtube" label="YouTube URL" value={tenantConfig.socials.youtube} placeholder="https://youtube.com/..." />
-                <Input type="url" name="facebook" label="Facebook URL" value={tenantConfig.socials.facebook} placeholder="https://facebook.com/..." />
-                <Input type="url" name="twitter" label="X (Twitter) URL" value={tenantConfig.socials.twitter} placeholder="https://twitter.com/..." />
+                <Input type="url" name="instagram" label="Instagram URL" value={config.socials.instagram} placeholder="https://instagram.com/..." />
+                <Input type="url" name="youtube" label="YouTube URL" value={config.socials.youtube} placeholder="https://youtube.com/..." />
+                <Input type="url" name="facebook" label="Facebook URL" value={config.socials.facebook} placeholder="https://facebook.com/..." />
+                <Input type="url" name="twitter" label="X (Twitter) URL" value={config.socials.twitter} placeholder="https://twitter.com/..." />
               </div>
             </div>
           </section>

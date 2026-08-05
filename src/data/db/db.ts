@@ -266,7 +266,8 @@ if (checkRes.rows.length === 0) {
   ]);
 
   await db.insert(schema.championships).values([
-    { id: 'champ_id_1', seasonId: 'season_id_1', name: 'Liga de Verano', slug: 'liga-de-verano', type: 'LEAGUE', coverImageUrl: 'https://dummyimage.com/800x400/000/fff&text=Liga', status: 'ONGOING' }
+    { id: 'champ_id_1', seasonId: 'season_id_1', name: 'Liga de Conocimiento', slug: 'liga-conocimiento', type: 'LEAGUE', coverImageUrl: 'https://dummyimage.com/800x400/000/D4AF37&text=Liga+de+Conocimiento', status: 'ONGOING' },
+    { id: 'champ_id_2', seasonId: 'season_id_1', name: 'Torneo Físico-Mental', slug: 'torneo-fisico', type: 'CUP', coverImageUrl: 'https://dummyimage.com/800x400/000/D4AF37&text=Torneo+Fisico', status: 'DRAFT' }
   ]);
 
   await db.insert(schema.teams).values([
@@ -279,4 +280,18 @@ if (checkRes.rows.length === 0) {
     { id: 'article_id_2', authorId: 'admin_id_1', type: 'NEWS', title: 'MECANISMO DA TERRA?', slug: 'mecanismo-da-terra', excerpt: 'E se los 02 eclipses de março revelassem um segredo cósmico, guardado há milênios?', content: 'Um eclipse total ocorre quando...', status: 'PUBLISHED', publishedAt: new Date(Date.now() - 5000000) },
     { id: 'article_id_3', authorId: 'admin_id_1', type: 'NEWS', title: 'ECLIPSE LUNAR X SOLAR', slug: 'eclipse-lunar-x-solar', excerpt: 'Conheça as diferenças entre os fenômenos astronômicos espetaculares.', content: 'Eclipse Lunar e Solar, vocês conhece...', status: 'PUBLISHED', publishedAt: new Date(Date.now() - 10000000) },
   ]);
+
+
+  await db.insert(schema.events).values([
+    { id: 'event_id_1', organizerId: 'admin_id_1', title: 'Expedición Astronómica Zigurats', description: 'Observación y análisis de anomalías lunares desde el complejo turístico.', date: new Date(Date.now() + 86400000 * 7), location: 'Corguinho, MS', mapUrl: 'https://maps.google.com', coverImageUrl: 'https://dummyimage.com/800x400/000/D4AF37&text=Zigurats', capacity: 100, createdAt: new Date() },
+    { id: 'event_id_2', organizerId: 'admin_id_1', title: 'Taller de Tecnología Mental', description: 'Desarrollo práctico de habilidades extrafísicas e interacción vibracional.', date: new Date(Date.now() + 86400000 * 14), location: 'Sede Principal', capacity: 50, createdAt: new Date() }
+  ]);
+
+
+
+  await db.insert(schema.documents).values([
+    { id: 'doc_1', uploaderId: 'admin_id_1', title: 'Manual de Ciencia Lilarial 2024', description: 'Documento base sobre los nuevos paradigmas científicos.', fileUrl: '#', type: 'MANUAL', size: 1024000, createdAt: new Date() },
+    { id: 'doc_2', uploaderId: 'admin_id_1', title: 'Reglamento Gincanas', description: 'Normativas oficiales para las actividades de campo.', fileUrl: '#', type: 'REGULATION', size: 512000, createdAt: new Date() }
+  ]);
+
 }
