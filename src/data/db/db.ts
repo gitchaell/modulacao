@@ -294,4 +294,11 @@ if (checkRes.rows.length === 0) {
     { id: 'doc_2', uploaderId: 'admin_id_1', title: 'Reglamento Gincanas', description: 'Normativas oficiales para las actividades de campo.', fileUrl: '#', type: 'REGULATION', size: 512000, createdAt: new Date() }
   ]);
 
+
+  await db.insert(schema.products).values([
+    { id: 'prod_1', name: 'Reflector Parabólico D1', slug: 'reflector-parabolico', description: 'Instrumento especializado para la captación y amplificación de ondas lumínicas.', price: 'Consultar', coverImageUrl: 'https://dummyimage.com/800x400/000/D4AF37&text=Reflector+Parabolico', whatsappNumber: '5511999999999', variants: ['Lente Óptica', 'Lente Infrarroja'], createdAt: new Date() },
+    { id: 'prod_2', name: 'Kit Ciencia Lilarial', slug: 'kit-ciencia-lilarial', description: 'Compendio de investigaciones y herramientas básicas para el estudio en campo.', price: 'Consultar', coverImageUrl: 'https://dummyimage.com/800x400/000/D4AF37&text=Kit+Lilarial', whatsappNumber: '5511999999999', variants: ['Digital', 'Físico'], createdAt: new Date() }
+  ]);
+
+
 }
