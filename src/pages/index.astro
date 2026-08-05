@@ -22,8 +22,8 @@ const t = useTranslations(lang);
       <h1 class="font-display text-6xl md:text-8xl lg:text-9xl font-bold uppercase tracking-tight mb-8 drop-shadow-2xl text-brand-black dark:text-white leading-[1.1]">
         {t('home.hero.title')} <br/>
         <span class="text-brand-gold relative inline-block mt-2">
-          {tenantConfig.name}
-          <div class="absolute -bottom-4 left-0 w-full h-2 bg-brand-gold/40 blur-md"></div>
+          {tenantConfig.name.split(' ')[0]}<br/>
+          {tenantConfig.name.split(' ').slice(1).join(' ')}
         </span>
       </h1>
       <p class="text-lg md:text-2xl text-gray-700 dark:text-gray-300 mb-12 font-light max-w-3xl mx-auto leading-relaxed text-balance">
@@ -31,7 +31,7 @@ const t = useTranslations(lang);
       </p>
       <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
         <a href="/noticias" class="w-full sm:w-auto"><Button variant="primary" size="lg" class="w-full sm:w-auto shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-shadow w-full">{t('home.hero.catalog_btn')}</Button></a>
-        <a href="/nosotros" class="w-full sm:w-auto"><Button variant="outline" size="lg" class="w-full sm:w-auto text-brand-black dark:text-brand-white hover:text-brand-black dark:hover:text-brand-black border-brand-black/20 dark:border-white/20 bg-white/10 dark:bg-black/10 backdrop-blur-sm w-full">{t('home.hero.champ_btn')}</Button></a>
+        <a href="/nosotros" class="w-full sm:w-auto"><Button variant="outline" size="lg" class="w-full sm:w-auto backdrop-blur-sm w-full">{t('home.hero.champ_btn')}</Button></a>
       </div>
     </div>
   </section>
