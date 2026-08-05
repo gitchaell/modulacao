@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS "events" (
 	"location" text NOT NULL,
 	"map_url" text,
 	"cover_image_url" text,
+	"capacity" integer DEFAULT 50,
 	"created_at" integer,
 	FOREIGN KEY ("group_id") REFERENCES "groups"("id") ON UPDATE no action ON DELETE cascade,
 	FOREIGN KEY ("organizer_id") REFERENCES "users"("id") ON UPDATE no action ON DELETE no action
@@ -241,7 +242,35 @@ CREATE TABLE IF NOT EXISTS "users" (
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS "users_email_unique" ON "users" ("email");
-`.split(';').map(s => s.trim()).filter(s => s.length > 0);
+
+CREATE TABLE IF NOT EXISTS "documents" (
+	"id" text PRIMARY KEY NOT NULL,
+	"uploader_id" text NOT NULL,
+	"title" text NOT NULL,
+	"description" text,
+	"file_url" text NOT NULL,
+	"type" text DEFAULT 'GENERAL' NOT NULL,
+	"size" integer,
+	"created_at" integer,
+	FOREIGN KEY ("uploader_id") REFERENCES "users"("id") ON UPDATE no action ON DELETE no action
+);
+CREATE TABLE IF NOT EXISTS "contact_messages" (
+	"id" text PRIMARY KEY NOT NULL,
+	"name" text NOT NULL,
+	"email" text NOT NULL,
+	"message" text NOT NULL,
+	"created_at" integer
+);
+CREATE TABLE IF NOT EXISTS "tenant_config" (
+	"id" text PRIMARY KEY NOT NULL,
+	"name" text NOT NULL,
+	"contact_email" text NOT NULL,
+	"instagram" text,
+	"facebook" text,
+	"twitter" text,
+	"youtube" text,
+	"updated_at" integer
+);`.split(';').map(s => s.trim()).filter(s => s.length > 0);
 
 for (const stmt of statements) {
   await client.execute(stmt);
