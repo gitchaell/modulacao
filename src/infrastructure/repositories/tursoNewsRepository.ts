@@ -5,29 +5,31 @@ import type { INewsRepository, NewsEntity } from '../../domain/repositories';
 
 export class TursoNewsRepository implements INewsRepository {
   async findAll(): Promise<NewsEntity[]> {
-    return await db.select().from(articles);
+    return await db.select().from(articles) as unknown as NewsEntity[];
   }
 
   async findById(id: string): Promise<NewsEntity | null> {
     const result = await db.select().from(articles).where(eq(articles.id, id)).limit(1);
-    return result[0] || null;
+    return (result[0] as unknown as NewsEntity) || null;
   }
 
   async create(article: Omit<NewsEntity, 'createdAt' | 'updatedAt'>): Promise<NewsEntity> {
     const [result] = await db.insert(articles).values({
       ...article,
+      type: article.type as any,
+      status: article.status as any,
       createdAt: new Date(),
       updatedAt: new Date(),
     }).returning();
-    return result;
+    return result as unknown as NewsEntity;
   }
 
   async update(id: string, article: Partial<NewsEntity>): Promise<NewsEntity> {
     const [result] = await db.update(articles)
-      .set({ ...article, updatedAt: new Date() })
+      .set({ ...article, type: article.type as any, status: article.status as any, updatedAt: new Date() })
       .where(eq(articles.id, id))
       .returning();
-    return result;
+    return result as unknown as NewsEntity;
   }
 
   async delete(id: string): Promise<void> {

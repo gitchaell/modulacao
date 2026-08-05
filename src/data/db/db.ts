@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS "events" (
 	"location" text NOT NULL,
 	"map_url" text,
 	"cover_image_url" text,
+	"capacity" integer DEFAULT 50,
 	"created_at" integer,
 	FOREIGN KEY ("group_id") REFERENCES "groups"("id") ON UPDATE no action ON DELETE cascade,
 	FOREIGN KEY ("organizer_id") REFERENCES "users"("id") ON UPDATE no action ON DELETE no action
@@ -241,7 +242,35 @@ CREATE TABLE IF NOT EXISTS "users" (
 );
 
 CREATE UNIQUE INDEX IF NOT EXISTS "users_email_unique" ON "users" ("email");
-`.split(';').map(s => s.trim()).filter(s => s.length > 0);
+
+CREATE TABLE IF NOT EXISTS "documents" (
+	"id" text PRIMARY KEY NOT NULL,
+	"uploader_id" text NOT NULL,
+	"title" text NOT NULL,
+	"description" text,
+	"file_url" text NOT NULL,
+	"type" text DEFAULT 'GENERAL' NOT NULL,
+	"size" integer,
+	"created_at" integer,
+	FOREIGN KEY ("uploader_id") REFERENCES "users"("id") ON UPDATE no action ON DELETE no action
+);
+CREATE TABLE IF NOT EXISTS "contact_messages" (
+	"id" text PRIMARY KEY NOT NULL,
+	"name" text NOT NULL,
+	"email" text NOT NULL,
+	"message" text NOT NULL,
+	"created_at" integer
+);
+CREATE TABLE IF NOT EXISTS "tenant_config" (
+	"id" text PRIMARY KEY NOT NULL,
+	"name" text NOT NULL,
+	"contact_email" text NOT NULL,
+	"instagram" text,
+	"facebook" text,
+	"twitter" text,
+	"youtube" text,
+	"updated_at" integer
+);`.split(';').map(s => s.trim()).filter(s => s.length > 0);
 
 for (const stmt of statements) {
   await client.execute(stmt);
@@ -266,7 +295,8 @@ if (checkRes.rows.length === 0) {
   ]);
 
   await db.insert(schema.championships).values([
-    { id: 'champ_id_1', seasonId: 'season_id_1', name: 'Liga de Verano', slug: 'liga-de-verano', type: 'LEAGUE', coverImageUrl: 'https://dummyimage.com/800x400/000/fff&text=Liga', status: 'ONGOING' }
+    { id: 'champ_id_1', seasonId: 'season_id_1', name: 'Liga de Conocimiento', slug: 'liga-conocimiento', type: 'LEAGUE', coverImageUrl: 'https://dummyimage.com/800x400/000/D4AF37&text=Liga+de+Conocimiento', status: 'ONGOING' },
+    { id: 'champ_id_2', seasonId: 'season_id_1', name: 'Torneo Físico-Mental', slug: 'torneo-fisico', type: 'CUP', coverImageUrl: 'https://dummyimage.com/800x400/000/D4AF37&text=Torneo+Fisico', status: 'DRAFT' }
   ]);
 
   await db.insert(schema.teams).values([
@@ -279,4 +309,25 @@ if (checkRes.rows.length === 0) {
     { id: 'article_id_2', authorId: 'admin_id_1', type: 'NEWS', title: 'MECANISMO DA TERRA?', slug: 'mecanismo-da-terra', excerpt: 'E se los 02 eclipses de março revelassem um segredo cósmico, guardado há milênios?', content: 'Um eclipse total ocorre quando...', status: 'PUBLISHED', publishedAt: new Date(Date.now() - 5000000) },
     { id: 'article_id_3', authorId: 'admin_id_1', type: 'NEWS', title: 'ECLIPSE LUNAR X SOLAR', slug: 'eclipse-lunar-x-solar', excerpt: 'Conheça as diferenças entre os fenômenos astronômicos espetaculares.', content: 'Eclipse Lunar e Solar, vocês conhece...', status: 'PUBLISHED', publishedAt: new Date(Date.now() - 10000000) },
   ]);
+
+
+  await db.insert(schema.events).values([
+    { id: 'event_id_1', organizerId: 'admin_id_1', title: 'Expedición Astronómica Zigurats', description: 'Observación y análisis de anomalías lunares desde el complejo turístico.', date: new Date(Date.now() + 86400000 * 7), location: 'Corguinho, MS', mapUrl: 'https://maps.google.com', coverImageUrl: 'https://dummyimage.com/800x400/000/D4AF37&text=Zigurats', capacity: 100, createdAt: new Date() },
+    { id: 'event_id_2', organizerId: 'admin_id_1', title: 'Taller de Tecnología Mental', description: 'Desarrollo práctico de habilidades extrafísicas e interacción vibracional.', date: new Date(Date.now() + 86400000 * 14), location: 'Sede Principal', capacity: 50, createdAt: new Date() }
+  ]);
+
+
+
+  await db.insert(schema.documents).values([
+    { id: 'doc_1', uploaderId: 'admin_id_1', title: 'Manual de Ciencia Lilarial 2024', description: 'Documento base sobre los nuevos paradigmas científicos.', fileUrl: '#', type: 'MANUAL', size: 1024000, createdAt: new Date() },
+    { id: 'doc_2', uploaderId: 'admin_id_1', title: 'Reglamento Gincanas', description: 'Normativas oficiales para las actividades de campo.', fileUrl: '#', type: 'REGULATION', size: 512000, createdAt: new Date() }
+  ]);
+
+
+  await db.insert(schema.products).values([
+    { id: 'prod_1', name: 'Reflector Parabólico D1', slug: 'reflector-parabolico', description: 'Instrumento especializado para la captación y amplificación de ondas lumínicas.', price: 'Consultar', coverImageUrl: 'https://dummyimage.com/800x400/000/D4AF37&text=Reflector+Parabolico', whatsappNumber: '5511999999999', variants: ['Lente Óptica', 'Lente Infrarroja'], createdAt: new Date() },
+    { id: 'prod_2', name: 'Kit Ciencia Lilarial', slug: 'kit-ciencia-lilarial', description: 'Compendio de investigaciones y herramientas básicas para el estudio en campo.', price: 'Consultar', coverImageUrl: 'https://dummyimage.com/800x400/000/D4AF37&text=Kit+Lilarial', whatsappNumber: '5511999999999', variants: ['Digital', 'Físico'], createdAt: new Date() }
+  ]);
+
+
 }

@@ -52,8 +52,8 @@ export interface NewsEntity {
   status: string;
   publishedAt: Date | null;
   tags: string[] | null;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Date | null;
+  updatedAt: Date | null;
 }
 
 export interface INewsRepository {

@@ -8,7 +8,12 @@ import { eq, desc } from 'drizzle-orm';
 const { slug } = Astro.params;
 
 // Remove the leading '@' if it exists in the params.
-const cleanSlug = slug?.replace(/^@/, '');
+// Only intercept routes that start with @ for user profiles
+if (!slug?.startsWith('@')) {
+  return new Response(null, { status: 404, statusText: 'Not found' });
+}
+
+const cleanSlug = slug.substring(1);
 
 if (!cleanSlug) {
   return new Response(null, { status: 404, statusText: 'Not found' });

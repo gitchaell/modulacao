@@ -34,6 +34,6 @@ const widthClass = fullWidth ? "w-full" : "";
 
 const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${widthClass} ${className || ''}`;
 ---
-<button class={classes} {...rest}>
+<button class={classes} aria-label={rest['aria-label'] || rest.title || (typeof Astro.slots.render === 'function' ? undefined : 'Button')} {...rest}>
   <slot />
 </button>

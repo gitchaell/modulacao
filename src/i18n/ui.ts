@@ -8,6 +8,10 @@ export const defaultLang = 'es';
 export const ui = {
   es: {
     'nav.home': 'Inicio',
+    'nav.library': 'Biblioteca',
+    'app.championships': 'Campeonatos',
+    'admin.settings.title': 'Configuración Global',
+
     'nav.about': 'Nosotros',
     'nav.championships': 'Pesquisas',
     'nav.catalog': 'Ecosistema',
@@ -43,6 +47,16 @@ export const ui = {
     'common.status': 'Estado',
     'common.date': 'Fecha',
     'common.actions': 'Acciones',
+
+    'faq.title': 'Preguntas Frecuentes',
+    'faq.subtitle': 'Para más información sobre cómo participar en nuestras investigaciones de campo, visita nuestras redes sociales.',
+    'faq.q1': '¿Qué es Dakila Pesquisas?',
+    'faq.a1': 'Es una asociación mundial que reúne a personas en la búsqueda del conocimiento, cuestionando los dogmas y promoviendo el desarrollo personal.',
+    'faq.q2': '¿Qué es Zigurats?',
+    'faq.a2': 'Zigurats es nuestra principal sede de investigaciones y complejo turístico ubicado en Corguinho, Mato Grosso do Sul, Brasil. Es el centro neurálgico de nuestras observaciones astronómicas.',
+    'faq.q3': '¿Cómo participo en las actividades de campo?',
+    'faq.a3': 'Las actividades y gincanas de conocimiento son eventos programados para los asociados. Al unirte a los grupos de investigación de Dakila, tendrás la oportunidad de sumarte a nuestras misiones de campo.',
+
     'admin.dashboard.title': 'Dashboard General',
     'admin.dashboard.stats.members': 'Total Miembros',
     'admin.dashboard.stats.posts': 'Publicaciones',
@@ -64,7 +78,20 @@ export const ui = {
     'auth.invite.title': 'Configurar Cuenta',
   },
   en: {
-    'nav.home': 'Home',
+
+    'faq.title': 'Frequently Asked Questions',
+    'faq.subtitle': 'For more information on how to participate in our field research, visit our social networks.',
+    'faq.q1': 'What is Dakila Pesquisas?',
+    'faq.a1': 'It is a global association that brings people together in the pursuit of knowledge, questioning dogmas and promoting personal development.',
+    'faq.q2': 'What is Zigurats?',
+    'faq.a2': 'Zigurats is our main research headquarters and tourist complex located in Corguinho, Mato Grosso do Sul, Brazil. It is the nerve center of our astronomical observations.',
+    'faq.q3': 'How do I participate in field activities?',
+    'faq.a3': 'Knowledge activities and gymkhanas are scheduled events for associates. By joining Dakila research groups, you will have the opportunity to join our field missions.',
+ 'nav.home': 'Home',
+    'nav.library': 'Library',
+    'app.championships': 'Championships',
+    'admin.settings.title': 'Global Settings',
+
     'nav.about': 'About',
     'nav.championships': 'Research',
     'nav.catalog': 'Ecosystem',

@@ -211,3 +211,35 @@ export const articles = sqliteTable('articles', {
   createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
   updatedAt: integer('updated_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 });
+// Documents / Library Table
+export const documents = sqliteTable('documents', {
+  id: text('id').primaryKey(),
+  uploaderId: text('uploader_id').notNull().references(() => users.id),
+  title: text('title').notNull(),
+  description: text('description'),
+  fileUrl: text('file_url').notNull(),
+  type: text('type', { enum: ['MANUAL', 'REGULATION', 'GENERAL'] }).default('GENERAL').notNull(),
+  size: integer('size'), // in bytes
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});
+
+// Contact Messages Table
+export const contactMessages = sqliteTable('contact_messages', {
+  id: text('id').primaryKey(),
+  name: text('name').notNull(),
+  email: text('email').notNull(),
+  message: text('message').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});
+
+// Tenant Configuration Table
+export const tenantConfig = sqliteTable('tenant_config', {
+  id: text('id').primaryKey(),
+  name: text('name').notNull(),
+  contactEmail: text('contact_email').notNull(),
+  instagram: text('instagram'),
+  facebook: text('facebook'),
+  twitter: text('twitter'),
+  youtube: text('youtube'),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});

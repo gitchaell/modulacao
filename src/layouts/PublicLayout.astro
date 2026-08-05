@@ -25,6 +25,8 @@ const t = useTranslations(lang);
       <a href="/eventos" class="text-sm font-medium uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('app.events')}</a>
       <a href="/pesquisas" class="text-sm font-medium uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.championships')}</a>
       <a href="/ecosistema" class="text-sm font-medium uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.catalog')}</a>
+      <a href="/biblioteca" class="text-sm font-medium uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.library')}</a>
+      <a href="/campeonatos" class="text-sm font-medium uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">Campeonatos</a>
     </nav>
 
     <!-- Mobile Menu Button -->
@@ -34,15 +36,17 @@ const t = useTranslations(lang);
   </header>
 
   <!-- Mobile Navigation Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-brand-white/95 dark:bg-brand-black/95 border-b border-brand-black/10 dark:border-white/10 shadow-lg fixed inset-0 z-40 backdrop-blur-lg pt-20 transition-all duration-300">
+  <div id="mobile-menu" class="hidden opacity-0 -translate-y-4 md:hidden bg-brand-white/95 dark:bg-brand-black/95 border-b border-brand-black/10 dark:border-white/10 shadow-lg fixed inset-0 z-40 backdrop-blur-lg pt-20 transition-all duration-300 ease-in-out">
     <nav class="flex flex-col px-8 py-6 gap-6 mt-4">
       <a href="/" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('nav.home')}</a>
       <a href="/nosotros" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
       <a href="/eventos" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('app.events')}</a>
       <a href="/pesquisas" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('nav.championships')}</a>
       <a href="/ecosistema" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('nav.catalog')}</a>
-      <a href="/faq" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">FAQ</a>
-      <a href="/contacto" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">Contacto</a>
+      <a href="/biblioteca" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">{t('nav.library')}</a>
+      <a href="/campeonatos" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">Campeonatos</a>
+      <a href="/faq" class="hover:text-brand-gold transition-colors focus-visible">FAQ</a>
+        <a href="/contacto" class="text-base font-semibold uppercase tracking-wide text-brand-black dark:text-gray-300 hover:text-brand-gold transition-colors focus-visible">Contacto</a>
     </nav>
   </div>
 
@@ -50,10 +54,27 @@ const t = useTranslations(lang);
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
 
+    // Check local storage or match media for theme preference
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+
     if (btn && menu) {
       btn.addEventListener('click', () => {
         const isHidden = menu.classList.contains('hidden');
-        menu.classList.toggle('hidden');
+        if (isHidden) {
+          menu.classList.remove('hidden');
+          setTimeout(() => {
+            menu.classList.remove('opacity-0', '-translate-y-4');
+          }, 10);
+        } else {
+          menu.classList.add('opacity-0', '-translate-y-4');
+          setTimeout(() => {
+            menu.classList.add('hidden');
+          }, 300);
+        }
         btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
       });
     }
@@ -73,6 +94,8 @@ const t = useTranslations(lang);
         <a href="/eventos" class="hover:text-brand-gold transition-colors focus-visible">{t('app.events')}</a>
         <a href="/pesquisas" class="hover:text-brand-gold transition-colors focus-visible">{t('nav.championships')}</a>
         <a href="/ecosistema" class="hover:text-brand-gold transition-colors focus-visible">{t('nav.catalog')}</a>
+        <a href="/biblioteca" class="hover:text-brand-gold transition-colors focus-visible">{t('nav.library')}</a>
+        <a href="/campeonatos" class="hover:text-brand-gold transition-colors focus-visible">Campeonatos</a>
         <a href="/faq" class="hover:text-brand-gold transition-colors focus-visible">FAQ</a>
         <a href="/contacto" class="hover:text-brand-gold transition-colors focus-visible">Contacto</a>
       </nav>
