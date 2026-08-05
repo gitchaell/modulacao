@@ -22,7 +22,7 @@ export const ui = {
     'app.settings': 'Ajustes de Perfil',
     'home.hero.title': 'Somos',
     'home.hero.subtitle': 'Explorando la Verdadera Realidad a través del Conocimiento. Descubre nuestras investigaciones, anomalías astronómicas y tecnología mental.',
-    'home.hero.catalog_btn': 'Últimas Pesquisas',
+    'home.hero.catalog_btn': 'ÚLTIMAS PESQUISAS',
     'home.hero.champ_btn': 'Sobre el Grupo',
     'home.features.competition.title': 'Ciencia Lilarial',
     'home.features.competition.desc': 'Estudio de anomalías astronómicas y revisión de los paradigmas de la ciencia tradicional.',
