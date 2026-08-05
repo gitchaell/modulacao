@@ -231,3 +231,15 @@ export const contactMessages = sqliteTable('contact_messages', {
   message: text('message').notNull(),
   createdAt: integer('created_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
 });
+
+// Tenant Configuration Table
+export const tenantConfig = sqliteTable('tenant_config', {
+  id: text('id').primaryKey(),
+  name: text('name').notNull(),
+  contactEmail: text('contact_email').notNull(),
+  instagram: text('instagram'),
+  facebook: text('facebook'),
+  twitter: text('twitter'),
+  youtube: text('youtube'),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).$defaultFn(() => new Date()),
+});
