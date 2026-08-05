@@ -17,26 +17,26 @@ const t = useTranslations(lang);
     <div class="absolute inset-0 z-0 pointer-events-none"></div>
 
     <div class="relative z-10 container mx-auto px-4 md:px-8 text-center max-w-screen-xl animate-smooth-fade flex flex-col items-center justify-center">
-      <h1 class="font-display font-black uppercase tracking-tighter mb-12 text-[#111111] dark:text-white flex flex-col items-center justify-center w-full">
-        <span class="text-[20vw] md:text-[10rem] lg:text-[12rem] leading-[0.85] mb-2">{t('home.hero.title')}</span>
-        <span class="text-[#D4AF37] text-[20vw] md:text-[10rem] lg:text-[12rem] leading-[0.85] relative inline-block">
+      <h1 class="font-sans font-black uppercase tracking-tighter mb-12 text-[#111111] dark:text-white flex flex-col items-center justify-center w-full">
+        <span class="text-[26vw] md:text-[17rem] leading-[0.8] mb-0 whitespace-nowrap">{t('home.hero.title')}</span>
+        <span class="text-[#D4AF37] text-[27.5vw] md:text-[17.9rem] leading-[0.8] relative inline-block whitespace-nowrap">
           {tenantConfig.name.split(' ')[0]}
         </span>
-        <span class="text-[#D4AF37] text-[14vw] md:text-[10rem] lg:text-[12rem] leading-[0.85] relative inline-block">
+        <span class="text-[#D4AF37] text-[14.7vw] md:text-[9.8rem] leading-[0.8] relative inline-block whitespace-nowrap">
           {tenantConfig.name.split(' ').slice(1).join(' ')}
         </span>
       </h1>
       <p class="text-lg md:text-2xl text-[#333333] dark:text-gray-300 mb-16 font-normal max-w-3xl mx-auto leading-normal text-balance">
         {t('home.hero.subtitle')}
       </p>
-      <div class="flex flex-col sm:flex-col gap-6 justify-center items-center pb-20 mt-4 w-full max-w-md mx-auto">
-        <a href="/noticias" class="w-full">
-          <Button variant="primary" size="lg" class="w-full font-bold uppercase tracking-[0.2em] px-10 py-5 rounded-none text-sm md:text-base border-none hover:translate-y-0 bg-[#D4AF37] text-black hover:bg-[#B5952F]">
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center pb-20 mt-4 w-full max-w-3xl mx-auto">
+        <a href="/noticias" class="w-full sm:w-auto">
+          <Button variant="primary" size="lg" class="w-full sm:w-auto font-medium uppercase tracking-[0.15em] px-12 py-5 rounded-none text-[13px] md:text-sm border-none hover:translate-y-0 bg-[#D4AF37] text-[#111] hover:bg-[#B5952F] shadow-none">
             {t('home.hero.catalog_btn')}
           </Button>
         </a>
-        <a href="/nosotros" class="w-full">
-          <Button variant="outline" size="lg" class="w-full font-bold uppercase tracking-[0.2em] px-10 py-5 rounded-none text-sm md:text-base border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black hover:translate-y-0">
+        <a href="/nosotros" class="w-full sm:w-auto">
+          <Button variant="outline" size="lg" class="w-full sm:w-auto font-medium uppercase tracking-[0.15em] px-12 py-5 rounded-none text-[13px] md:text-sm border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#111] hover:translate-y-0 shadow-none">
             {t('home.hero.champ_btn')}
           </Button>
         </a>

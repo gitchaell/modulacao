@@ -15,18 +15,18 @@ const t = useTranslations(lang);
   <header class="w-full py-6 px-8 flex justify-between items-center border-b border-gray-200 dark:border-white/10 bg-white/95 dark:bg-[#111]/95 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
     <a href="/" class="flex items-center gap-3 group focus-visible">
       <svg class="w-8 h-8 text-brand-gold group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      <div class="font-normal text-xl tracking-wider uppercase text-brand-black dark:text-brand-white hidden sm:block group-hover:text-brand-gold transition-colors duration-300">{tenantConfig.name}</div>
+      <div class="font-medium text-[15px] tracking-[0.05em] uppercase text-[#111111] dark:text-brand-white hidden sm:block group-hover:text-brand-gold transition-colors duration-300">{tenantConfig.name}</div>
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden md:flex gap-8">
-      <a href="/" class="text-xs font-medium uppercase tracking-widest text-[#111111] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.home')}</a>
-      <a href="/nosotros" class="text-xs font-medium uppercase tracking-widest text-[#111111] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
-      <a href="/eventos" class="text-xs font-medium uppercase tracking-widest text-[#111111] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('app.events')}</a>
-      <a href="/pesquisas" class="text-xs font-medium uppercase tracking-widest text-[#111111] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.championships')}</a>
-      <a href="/ecosistema" class="text-xs font-medium uppercase tracking-widest text-[#111111] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.catalog')}</a>
-      <a href="/biblioteca" class="text-xs font-medium uppercase tracking-widest text-[#111111] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.library')}</a>
-      <a href="/campeonatos" class="text-xs font-medium uppercase tracking-widest text-[#111111] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">Campeonatos</a>
+    <nav class="hidden md:flex gap-6 lg:gap-8">
+      <a href="/" class="text-[11px] font-medium uppercase tracking-[0.15em] text-[#333333] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.home')}</a>
+      <a href="/nosotros" class="text-[11px] font-medium uppercase tracking-[0.15em] text-[#333333] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
+      <a href="/eventos" class="text-[11px] font-medium uppercase tracking-[0.15em] text-[#333333] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('app.events')}</a>
+      <a href="/pesquisas" class="text-[11px] font-medium uppercase tracking-[0.15em] text-[#333333] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.championships')}</a>
+      <a href="/ecosistema" class="text-[11px] font-medium uppercase tracking-[0.15em] text-[#333333] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.catalog')}</a>
+      <a href="/biblioteca" class="text-[11px] font-medium uppercase tracking-[0.15em] text-[#333333] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">{t('nav.library')}</a>
+      <a href="/campeonatos" class="text-[11px] font-medium uppercase tracking-[0.15em] text-[#333333] dark:text-gray-300 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible">Campeonatos</a>
     </nav>
 
     <!-- Mobile Menu Button -->
