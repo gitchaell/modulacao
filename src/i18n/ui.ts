@@ -8,6 +8,10 @@ export const defaultLang = 'es';
 export const ui = {
   es: {
     'nav.home': 'Inicio',
+    'nav.library': 'Biblioteca',
+    'app.championships': 'Campeonatos',
+    'admin.settings.title': 'Configuración Global',
+
     'nav.about': 'Nosotros',
     'nav.championships': 'Pesquisas',
     'nav.catalog': 'Ecosistema',
@@ -84,6 +88,10 @@ export const ui = {
     'faq.q3': 'How do I participate in field activities?',
     'faq.a3': 'Knowledge activities and gymkhanas are scheduled events for associates. By joining Dakila research groups, you will have the opportunity to join our field missions.',
  'nav.home': 'Home',
+    'nav.library': 'Library',
+    'app.championships': 'Championships',
+    'admin.settings.title': 'Global Settings',
+
     'nav.about': 'About',
     'nav.championships': 'Research',
     'nav.catalog': 'Ecosystem',

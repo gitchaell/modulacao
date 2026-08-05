@@ -1,4 +1,7 @@
 import type { APIRoute } from 'astro';
+import { db } from '@/data/db/db';
+import { contactMessages } from '@/data/db/schema';
+import crypto from 'node:crypto';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -14,8 +17,15 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // In a real app we'd send an email here
-    console.log(`New contact message from ${name} (${email}): ${message}`);
+    await db.insert(contactMessages).values({
+      id: crypto.randomUUID(),
+      name,
+      email,
+      message,
+      createdAt: new Date(),
+    });
+
+    console.log(`New contact message stored in database from ${name} (${email}).`);
 
     return new Response(JSON.stringify({ success: true, message: 'Mensaje enviado correctamente' }), {
       status: 200,
