@@ -18,16 +18,17 @@ const t = useTranslations(lang);
 
     <div class="relative z-10 container mx-auto px-6 lg:px-8 max-w-7xl">
       <div class="max-w-2xl">
-        <h2 class="text-brand-gold font-bold text-xs md:text-sm tracking-widest uppercase mb-4">{t('home.hero.subtitle')}</h2>
-        <h1 class="font-display font-bold text-4xl md:text-6xl lg:text-7xl leading-[1.1] text-brand-white mb-6 whitespace-pre-line tracking-tight">
-          {t('home.hero.title').replace('\n', '<br/>')}
+        <h2 class="text-brand-gold font-bold text-[10px] md:text-xs tracking-[0.2em] uppercase mb-4">MAIS QUE UM TIME,<br/>SOMOS UM ECOSSISTEMA</h2>
+        <h1 class="font-display font-bold text-4xl md:text-5xl lg:text-[64px] leading-[1.1] mb-6 tracking-tight uppercase">
+          <span class="text-brand-white block">PROPÓSITO</span>
+          <span class="text-brand-gold block mt-2">QUE TRANSFORMA</span>
         </h1>
         <p class="text-sm md:text-base text-gray-300 mb-10 max-w-md leading-relaxed">
           {t('home.hero.desc')}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 mb-16">
           <a href="/nosotros" class="bg-brand-gold text-[#0a0a0a] font-bold text-xs tracking-widest uppercase px-8 py-4 text-center hover:bg-brand-white transition-colors flex items-center justify-center gap-3">
-            {t('home.hero.catalog_btn')}
+            CONHEÇA A MODULAÇÃO
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
           <a href="/login" class="border border-white/20 text-brand-white font-bold text-xs tracking-widest uppercase px-8 py-4 text-center hover:border-brand-gold hover:text-brand-gold transition-colors">
@@ -54,8 +55,8 @@ const t = useTranslations(lang);
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4 divide-x-0 lg:divide-x lg:divide-white/5">
         <!-- Feature 1 -->
         <div class="flex flex-col items-center text-center lg:px-6">
-          <div class="w-16 h-16 rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-6 transition-transform hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
           </div>
           <h3 class="font-bold text-xs uppercase tracking-widest text-brand-white mb-3">{t('home.features.identity.title')}</h3>
           <p class="text-[11px] text-gray-400 leading-relaxed max-w-[200px]">{t('home.features.identity.desc')}</p>
@@ -63,8 +64,8 @@ const t = useTranslations(lang);
 
         <!-- Feature 2 -->
         <div class="flex flex-col items-center text-center lg:px-6">
-          <div class="w-16 h-16 rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-6 transition-transform hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <h3 class="font-bold text-xs uppercase tracking-widest text-brand-white mb-3">{t('home.features.unity.title')}</h3>
           <p class="text-[11px] text-gray-400 leading-relaxed max-w-[200px]">{t('home.features.unity.desc')}</p>
@@ -72,8 +73,8 @@ const t = useTranslations(lang);
 
         <!-- Feature 3 -->
         <div class="flex flex-col items-center text-center lg:px-6">
-          <div class="w-16 h-16 rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-6 transition-transform hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
           <h3 class="font-bold text-xs uppercase tracking-widest text-brand-white mb-3">{t('home.features.evolution.title')}</h3>
           <p class="text-[11px] text-gray-400 leading-relaxed max-w-[200px]">{t('home.features.evolution.desc')}</p>
@@ -81,8 +82,8 @@ const t = useTranslations(lang);
 
         <!-- Feature 4 -->
         <div class="flex flex-col items-center text-center lg:px-6">
-          <div class="w-16 h-16 rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="6" y2="2"/><line x1="12" x2="12" y1="22" y2="18"/></svg>
+          <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-6 transition-transform hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="6" y2="2"/><line x1="12" x2="12" y1="22" y2="18"/></svg>
           </div>
           <h3 class="font-bold text-xs uppercase tracking-widest text-brand-white mb-3">{t('home.features.discipline.title')}</h3>
           <p class="text-[11px] text-gray-400 leading-relaxed max-w-[200px]">{t('home.features.discipline.desc')}</p>
@@ -90,8 +91,8 @@ const t = useTranslations(lang);
 
         <!-- Feature 5 -->
         <div class="flex flex-col items-center text-center lg:px-6 col-span-2 md:col-span-1 lg:col-span-1">
-          <div class="w-16 h-16 rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" x2="12" y1="1" y2="3"/><line x1="12" x2="12" y1="21" y2="23"/><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"/><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"/><line x1="1" x2="3" y1="12" y2="12"/><line x1="21" x2="23" y1="12" y2="12"/><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"/><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"/></svg>
+          <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-6 transition-transform hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" x2="12" y1="1" y2="3"/><line x1="12" x2="12" y1="21" y2="23"/><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"/><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"/><line x1="1" x2="3" y1="12" y2="12"/><line x1="21" x2="23" y1="12" y2="12"/><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"/><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"/></svg>
           </div>
           <h3 class="font-bold text-xs uppercase tracking-widest text-brand-white mb-3">{t('home.features.purpose.title')}</h3>
           <p class="text-[11px] text-gray-400 leading-relaxed max-w-[200px]">{t('home.features.purpose.desc')}</p>
@@ -104,10 +105,12 @@ const t = useTranslations(lang);
   <section class="py-24 bg-[#0a0a0a] relative">
     <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
       <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-4">
-        <h2 class="text-xl font-display font-bold text-brand-white uppercase tracking-wider relative">
-          {t('home.highlights.title')}
-          <span class="absolute -bottom-4 left-0 w-12 h-0.5 bg-brand-gold"></span>
-        </h2>
+        <div class="flex items-center gap-4">
+          <h2 class="text-lg md:text-xl font-display font-bold text-brand-white uppercase tracking-widest">
+            DESTAQUES
+          </h2>
+          <div class="h-[2px] w-12 bg-brand-gold"></div>
+        </div>
         <a href="#" class="text-brand-gold text-xs font-bold uppercase tracking-widest hover:text-brand-white transition-colors flex items-center gap-2">
           {t('home.highlights.view_all')} <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -189,10 +192,12 @@ const t = useTranslations(lang);
   <section class="py-24 bg-[#0a0a0a]">
     <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
       <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-4">
-        <h2 class="text-xl font-display font-bold text-brand-white uppercase tracking-wider relative">
-          {t('home.events.title')}
-          <span class="absolute -bottom-4 left-0 w-12 h-0.5 bg-brand-gold"></span>
-        </h2>
+        <div class="flex items-center gap-4">
+          <h2 class="text-lg md:text-xl font-display font-bold text-brand-white uppercase tracking-widest">
+            PRÓXIMOS EVENTOS E PARTIDAS
+          </h2>
+          <div class="h-[2px] w-12 bg-brand-gold"></div>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
@@ -205,7 +210,7 @@ const t = useTranslations(lang);
             <div class="flex gap-6 items-start pb-6 border-b border-white/5">
               <div class="flex flex-col items-center justify-center min-w-[50px]">
                 <span class="text-2xl font-bold text-brand-gold leading-none">25</span>
-                <span class="text-[10px] font-bold text-brand-white uppercase tracking-widest mt-1">MAI</span>
+                <span class="text-[10px] font-bold text-brand-gold uppercase tracking-widest mt-1">MAI</span>
               </div>
               <div>
                 <h4 class="font-bold text-brand-white text-sm mb-1 hover:text-brand-gold transition-colors cursor-pointer">Encontro de Práticas</h4>
@@ -220,8 +225,8 @@ const t = useTranslations(lang);
             <!-- Event Item 2 -->
             <div class="flex gap-6 items-start pb-6 border-b border-white/5">
               <div class="flex flex-col items-center justify-center min-w-[50px]">
-                <span class="text-2xl font-bold text-brand-white leading-none">01</span>
-                <span class="text-[10px] font-bold text-brand-white uppercase tracking-widest mt-1">JUN</span>
+                <span class="text-2xl font-bold text-brand-gold leading-none">01</span>
+                <span class="text-[10px] font-bold text-brand-gold uppercase tracking-widest mt-1">JUN</span>
               </div>
               <div>
                 <h4 class="font-bold text-brand-white text-sm mb-1 hover:text-brand-gold transition-colors cursor-pointer">Workshop de Filosofia</h4>
@@ -236,8 +241,8 @@ const t = useTranslations(lang);
             <!-- Event Item 3 -->
             <div class="flex gap-6 items-start">
               <div class="flex flex-col items-center justify-center min-w-[50px]">
-                <span class="text-2xl font-bold text-brand-white leading-none">08</span>
-                <span class="text-[10px] font-bold text-brand-white uppercase tracking-widest mt-1">JUN</span>
+                <span class="text-2xl font-bold text-brand-gold leading-none">08</span>
+                <span class="text-[10px] font-bold text-brand-gold uppercase tracking-widest mt-1">JUN</span>
               </div>
               <div>
                 <h4 class="font-bold text-brand-white text-sm mb-1 hover:text-brand-gold transition-colors cursor-pointer">Vivência: Consciência e Ação</h4>
@@ -303,10 +308,12 @@ const t = useTranslations(lang);
     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#111] opacity-50 z-0"></div>
     <div class="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
       <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-4">
-        <h2 class="text-xl font-display font-bold text-brand-white uppercase tracking-wider relative">
-          {t('home.articles.title')}
-          <span class="absolute -bottom-4 left-0 w-12 h-0.5 bg-brand-gold"></span>
-        </h2>
+        <div class="flex items-center gap-4">
+          <h2 class="text-lg md:text-xl font-display font-bold text-brand-white uppercase tracking-widest">
+            ARTIGOS EM DESTAQUE
+          </h2>
+          <div class="h-[2px] w-12 bg-brand-gold"></div>
+        </div>
         <a href="/artigos" class="text-brand-gold text-xs font-bold uppercase tracking-widest hover:text-brand-white transition-colors flex items-center gap-2">
           {t('home.articles.view_all')} <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -370,7 +377,7 @@ const t = useTranslations(lang);
   <!-- CTA Banner Section -->
   <section class="py-24 bg-[#0a0a0a]">
     <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
-      <div class="bg-[#111] border border-white/10 relative overflow-hidden flex flex-col md:flex-row">
+      <div class="bg-gradient-to-r from-[#111] to-[#0a0a0a] border border-brand-gold/20 relative overflow-hidden flex flex-col md:flex-row">
         <!-- Abstract background waves -->
         <div class="absolute inset-0 opacity-20 pointer-events-none">
           <svg viewBox="0 0 1000 400" preserveAspectRatio="none" class="w-full h-full text-brand-gold">
@@ -404,15 +411,15 @@ const t = useTranslations(lang);
           </div>
         </div>
 
-        <div class="md:w-[400px] bg-[#1a1a1a] p-12 relative z-10 flex flex-col justify-center border-t md:border-t-0 md:border-l border-white/5">
-          <div class="w-16 h-16 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="md:w-[400px] bg-[#0d0d0d] p-12 relative z-10 flex flex-col justify-center border-t md:border-t-0 md:border-l border-brand-gold/20">
+          <div class="flex items-center gap-4 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-gold" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <h4 class="font-bold text-brand-white text-xl tracking-widest uppercase">{t('home.cta.join_title')}</h4>
           </div>
-          <h4 class="font-bold text-brand-white text-lg mb-2">{t('home.cta.join_title')}</h4>
           <p class="text-xs text-gray-400 mb-8">{t('home.cta.join_desc')}</p>
-          <a href="/login" class="bg-brand-gold text-[#0a0a0a] font-bold text-xs tracking-widest uppercase px-6 py-4 text-center hover:bg-brand-white transition-colors flex items-center justify-center gap-3">
+          <a href="/login" class="bg-[#b8860b] text-[#0a0a0a] font-bold text-[10px] tracking-[0.2em] uppercase px-6 py-4 text-center hover:bg-brand-gold transition-colors flex items-center justify-center gap-3 mt-4 rounded-sm">
             {t('home.cta.join_btn')}
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
       </div>
