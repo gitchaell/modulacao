@@ -3,7 +3,7 @@ import PublicLayout from '@/layouts/PublicLayout.astro';
 import Button from '@/components/core/Button.astro';
 import Card from '@/components/core/Card.astro';
 import WaveBackground from '@/components/ui/WaveBackground.astro';
-import { Microscope, Brain, Network } from '@lucide/astro';
+import { Microscope, Brain, Network, ArrowUpRight, ArrowRight } from '@lucide/astro';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import { tenantConfig } from '@/config/tenant';
 
@@ -13,77 +13,122 @@ const t = useTranslations(lang);
 
 <PublicLayout title={t('nav.home')}>
   <!-- Hero Section -->
-  <section class="relative bg-[#FAFAFA] dark:bg-[#111] text-brand-black dark:text-white min-h-screen flex items-center justify-center overflow-hidden pt-20">
-    <div class="absolute inset-0 z-0 pointer-events-none"></div>
+  <section class="relative text-brand-black dark:text-white min-h-[90vh] flex items-center justify-center overflow-hidden pt-24 pb-16">
+    <div class="relative z-10 container mx-auto px-4 md:px-8 max-w-screen-xl animate-smooth-fade flex flex-col lg:flex-row items-center justify-between gap-12">
 
-    <div class="relative z-10 container mx-auto px-4 md:px-8 text-center max-w-screen-xl animate-smooth-fade flex flex-col items-center justify-center">
-      <h1 class="font-sans font-black uppercase tracking-tighter mb-12 text-[#111111] dark:text-white flex flex-col items-center justify-center w-full">
-        <span class="text-[26vw] md:text-[17rem] leading-[0.8] mb-0 whitespace-nowrap">{t('home.hero.title')}</span>
-        <span class="text-[#D4AF37] text-[27.5vw] md:text-[17.9rem] leading-[0.8] relative inline-block whitespace-nowrap">
-          {tenantConfig.name.split(' ')[0]}
-        </span>
-        <span class="text-[#D4AF37] text-[14.7vw] md:text-[9.8rem] leading-[0.8] relative inline-block whitespace-nowrap">
-          {tenantConfig.name.split(' ').slice(1).join(' ')}
-        </span>
-      </h1>
-      <p class="text-lg md:text-2xl text-[#333333] dark:text-gray-300 mb-16 font-normal max-w-3xl mx-auto leading-normal text-balance">
-        {t('home.hero.subtitle')}
-      </p>
-      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center pb-20 mt-4 w-full max-w-3xl mx-auto">
-        <a href="/noticias" class="w-full sm:w-auto">
-          <Button variant="primary" size="lg" class="w-full sm:w-auto font-medium uppercase tracking-[0.15em] px-12 py-5 rounded-none text-[13px] md:text-sm border-none hover:translate-y-0 bg-[#D4AF37] text-[#111] hover:bg-[#B5952F] shadow-none">
-            {t('home.hero.catalog_btn')}
-          </Button>
-        </a>
-        <a href="/nosotros" class="w-full sm:w-auto">
-          <Button variant="outline" size="lg" class="w-full sm:w-auto font-medium uppercase tracking-[0.15em] px-12 py-5 rounded-none text-[13px] md:text-sm border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#111] hover:translate-y-0 shadow-none">
-            {t('home.hero.champ_btn')}
-          </Button>
-        </a>
+      <!-- Text Content (Left Column) -->
+      <div class="flex flex-col items-start text-left w-full lg:w-1/2">
+        <div class="inline-flex items-center rounded-full border border-black/10 dark:border-white/10 px-3 py-1 text-sm text-gray-600 dark:text-gray-300 mb-6 bg-white/50 dark:bg-white/5 backdrop-blur-sm">
+          <span class="flex h-2 w-2 rounded-full bg-brand-gold mr-2"></span>
+          {t('home.hero.badge')}
+        </div>
+
+        <h1 class="font-sans font-black uppercase tracking-tighter mb-6 text-[#111111] dark:text-white flex flex-col w-full leading-[0.9]">
+          <span class="text-6xl md:text-8xl lg:text-[7rem]">{t('home.hero.title')}</span>
+          <span class="text-[#D4AF37] text-6xl md:text-8xl lg:text-[7.5rem]">
+            {tenantConfig.name.split(' ')[0]}
+          </span>
+          <span class="text-[#D4AF37] text-6xl md:text-8xl lg:text-[7.5rem]">
+            {tenantConfig.name.split(' ').slice(1).join(' ')}
+          </span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-[#333333] dark:text-gray-300 mb-8 font-normal max-w-xl leading-relaxed text-balance">
+          {t('home.hero.subtitle')}
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-start items-center mb-10 w-full">
+          <a href="/noticias" class="w-full sm:w-auto">
+            <Button variant="primary" size="lg" class="w-full sm:w-auto font-medium uppercase tracking-wider px-8 py-4 rounded-md text-[13px] md:text-sm border-none hover:-translate-y-1 bg-[#D4AF37] text-[#111] hover:bg-[#B5952F] shadow-lg shadow-brand-gold/20 flex items-center justify-center gap-2 group transition-all duration-300">
+              {t('home.hero.catalog_btn')}
+              <ArrowUpRight class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </Button>
+          </a>
+          <a href="/nosotros" class="w-full sm:w-auto">
+            <Button variant="outline" size="lg" class="w-full sm:w-auto font-medium uppercase tracking-wider px-8 py-4 rounded-md text-[13px] md:text-sm border border-black/20 dark:border-white/20 text-brand-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10 hover:-translate-y-1 shadow-none flex items-center justify-center gap-2 group transition-all duration-300">
+              {t('home.hero.champ_btn')}
+              <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-8 pt-6 border-t border-black/10 dark:border-white/10 w-full sm:w-auto">
+          <div>
+            <p class="text-2xl font-bold text-brand-black dark:text-white">{t('home.hero.stats.members')}</p>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-brand-black dark:text-white">{t('home.hero.stats.hubs')}</p>
+          </div>
+        </div>
       </div>
+
+      <!-- Masonry Image Grid (Right Column) -->
+      <div class="w-full lg:w-1/2 h-[400px] md:h-[500px] lg:h-[650px] relative">
+        <div class="grid grid-cols-2 grid-rows-2 gap-4 h-full w-full">
+          <!-- Large Left Image -->
+          <div class="row-span-2 col-span-1 rounded-2xl overflow-hidden shadow-2xl shadow-black/10 dark:shadow-white/5 relative group">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Universe" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" decoding="async" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          </div>
+
+          <!-- Top Right Image -->
+          <div class="row-span-1 col-span-1 rounded-2xl overflow-hidden shadow-xl shadow-black/10 dark:shadow-white/5 relative group">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop" alt="Technology" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" decoding="async" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          </div>
+
+          <!-- Bottom Right Image -->
+          <div class="row-span-1 col-span-1 rounded-2xl overflow-hidden shadow-xl shadow-black/10 dark:shadow-white/5 relative group">
+            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop" alt="Research" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy" decoding="async" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- Features Section -->
-  <section class="py-32 relative bg-transparent">
-    <div class="absolute inset-0 bg-gradient-to-b from-brand-offwhite to-brand-white dark:from-brand-black dark:to-brand-dark z-0 pointer-events-none"></div>
-    <div class="container mx-auto px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative z-10">
-        <Card class="group flex flex-col items-center text-center bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-black/5 dark:border-white/10 premium-shadow">
-          <div class="w-20 h-20 rounded-full bg-brand-gold/5 dark:bg-brand-gold/10 text-brand-gold flex items-center justify-center mx-auto mb-8 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-500 ease-out border border-brand-gold/20 group-hover:border-transparent group-hover:scale-110 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]">
-            <Microscope class="w-10 h-10" />
+  <section class="py-24 relative bg-transparent">
+    <div class="container mx-auto px-6 lg:px-8 relative z-10 max-w-screen-xl">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+
+        <Card class="group flex flex-col items-start text-left bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-black/5 dark:border-white/10 premium-shadow p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:bg-white/10">
+          <div class="w-14 h-14 rounded-2xl bg-brand-gold/10 dark:bg-brand-gold/20 text-brand-gold flex items-center justify-center mb-6 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-300 border border-brand-gold/30">
+            <Microscope class="w-7 h-7" />
           </div>
-          <h3 class="font-display text-2xl font-bold uppercase tracking-widest mb-4 text-brand-black dark:text-white">
+          <h3 class="font-display text-xl font-bold uppercase tracking-wider mb-4 text-brand-black dark:text-white">
             {t('home.features.competition.title')}
           </h3>
-          <p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed text-balance">
+          <p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
             {t('home.features.competition.desc')}
           </p>
         </Card>
 
-        <Card class="group flex flex-col items-center text-center bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-black/5 dark:border-white/10 premium-shadow">
-          <div class="w-20 h-20 rounded-full bg-brand-gold/5 dark:bg-brand-gold/10 text-brand-gold flex items-center justify-center mx-auto mb-8 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-500 ease-out border border-brand-gold/20 group-hover:border-transparent group-hover:scale-110 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]">
-            <Brain class="w-10 h-10" />
+        <Card class="group flex flex-col items-start text-left bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-black/5 dark:border-white/10 premium-shadow p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:bg-white/10">
+          <div class="w-14 h-14 rounded-2xl bg-brand-gold/10 dark:bg-brand-gold/20 text-brand-gold flex items-center justify-center mb-6 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-300 border border-brand-gold/30">
+            <Brain class="w-7 h-7" />
           </div>
-          <h3 class="font-display text-2xl font-bold uppercase tracking-widest mb-4 text-brand-black dark:text-white">
+          <h3 class="font-display text-xl font-bold uppercase tracking-wider mb-4 text-brand-black dark:text-white">
             {t('home.features.community.title')}
           </h3>
-          <p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed text-balance">
+          <p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
             {t('home.features.community.desc')}
           </p>
         </Card>
 
-        <Card class="group flex flex-col items-center text-center bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-black/5 dark:border-white/10 premium-shadow">
-          <div class="w-20 h-20 rounded-full bg-brand-gold/5 dark:bg-brand-gold/10 text-brand-gold flex items-center justify-center mx-auto mb-8 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-500 ease-out border border-brand-gold/20 group-hover:border-transparent group-hover:scale-110 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]">
-            <Network class="w-10 h-10" />
+        <Card class="group flex flex-col items-start text-left bg-white/50 dark:bg-white/5 backdrop-blur-xl border border-black/5 dark:border-white/10 premium-shadow p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:hover:bg-white/10">
+          <div class="w-14 h-14 rounded-2xl bg-brand-gold/10 dark:bg-brand-gold/20 text-brand-gold flex items-center justify-center mb-6 group-hover:bg-brand-gold group-hover:text-brand-black transition-all duration-300 border border-brand-gold/30">
+            <Network class="w-7 h-7" />
           </div>
-          <h3 class="font-display text-2xl font-bold uppercase tracking-widest mb-4 text-brand-black dark:text-white">
+          <h3 class="font-display text-xl font-bold uppercase tracking-wider mb-4 text-brand-black dark:text-white">
             {t('home.features.identity.title')}
           </h3>
-          <p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed text-balance">
+          <p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
             {t('home.features.identity.desc')}
           </p>
         </Card>
+
       </div>
     </div>
   </section>
