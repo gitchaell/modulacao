@@ -18,13 +18,14 @@ const t = useTranslations(lang);
       color-scheme: dark;
     }
   </style>
-  <header class="w-full py-3 px-8 flex justify-between items-center border-b border-white/5 bg-[#0a0a0a] backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
-    <a href="/" class="flex items-center gap-3 group focus-visible">
-      <svg class="w-10 h-10 text-brand-gold group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-    </a>
+  <header class="w-full border-b border-white/5 bg-[#0a0a0a] backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
+    <div class="container mx-auto px-6 lg:px-12 max-w-[1400px] py-4 flex justify-between items-center">
+      <a href="/" class="flex items-center gap-3 group focus-visible">
+        <svg class="w-10 h-10 text-brand-gold group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </a>
 
-    <!-- Desktop Navigation -->
-    <nav class="hidden lg:flex gap-5 xl:gap-7 items-center">
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex gap-6 xl:gap-8 items-center">
       <a href="/" class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-gold hover:text-brand-white transition-colors focus-visible">{t('nav.home')}</a>
       <a href="/nosotros" class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
       <a href="/publicacoes" class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.publications')}</a>
@@ -43,22 +44,23 @@ const t = useTranslations(lang);
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
       </button>
 
-      <div class="flex items-center gap-2 px-2 text-brand-white text-xs font-medium">
-        <span class="fi fi-br rounded-sm w-4 h-3 overflow-hidden inline-block object-cover"></span>
-        PT
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        <div class="flex items-center gap-2 px-2 text-brand-white text-xs font-medium">
+          <span class="fi fi-br rounded-sm w-4 h-3 overflow-hidden inline-block object-cover"></span>
+          PT
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+
+        <a href="/login" class="ml-2 px-4 py-2 border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors text-[9px] font-bold uppercase tracking-[0.2em] flex items-center gap-1.5 rounded-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          SEJA UM MEMBRO
+        </a>
       </div>
 
-      <a href="/login" class="ml-2 px-4 py-2 border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors text-[9px] font-bold uppercase tracking-[0.2em] flex items-center gap-1.5 rounded-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        SEJA UM MEMBRO
-      </a>
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="lg:hidden text-brand-white p-2 focus-visible hover:text-brand-gold transition-colors" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
     </div>
-
-    <!-- Mobile Menu Button -->
-    <button id="mobile-menu-btn" class="lg:hidden text-brand-white p-2 focus-visible hover:text-brand-gold transition-colors" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-    </button>
   </header>
 
   <!-- Mobile Navigation Menu -->
@@ -104,11 +106,11 @@ const t = useTranslations(lang);
     <slot />
   </main>
 
-  <footer class="py-12 text-sm font-medium border-t border-white/5 bg-[#0a0a0a] text-brand-white mt-auto">
-    <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+  <footer class="py-16 text-sm font-medium border-t border-white/5 bg-[#0a0a0a] text-brand-white mt-auto">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-6">
 
       <!-- Brand Column -->
-      <div class="col-span-1 lg:col-span-2 pr-8">
+      <div class="col-span-1 lg:col-span-2 lg:pr-12">
         <div class="flex items-center gap-3 mb-6">
           <svg class="w-10 h-10 text-brand-gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           <div>
