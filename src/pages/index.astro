@@ -8,7 +8,7 @@ const t = useTranslations(lang);
 
 <PublicLayout title={t('nav.home')}>
   <!-- Hero Section -->
-  <section class="relative bg-[#0a0a0a] min-h-[90vh] flex items-center pt-20 pb-32 border-b border-white/5 overflow-hidden">
+  <section class="relative bg-[#0a0a0a] min-h-[80vh] flex items-center pt-16 pb-20 border-b border-white/5 overflow-hidden">
     <!-- Placeholder Image Background -->
     <div class="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop" alt="Hero Background" class="w-full h-full object-cover opacity-20 mix-blend-luminosity" />
@@ -16,33 +16,35 @@ const t = useTranslations(lang);
       <div class="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent"></div>
     </div>
 
-    <div class="relative z-10 container mx-auto px-6 lg:px-8 max-w-7xl">
-      <div class="max-w-2xl">
-        <h2 class="text-brand-gold font-bold text-[10px] md:text-xs tracking-[0.2em] uppercase mb-4">MAIS QUE UM TIME,<br/>SOMOS UM ECOSSISTEMA</h2>
-        <h1 class="font-display font-bold text-4xl md:text-5xl lg:text-[64px] leading-[1.1] mb-6 tracking-tight uppercase">
+    <div class="relative z-10 container mx-auto px-6 lg:px-12 max-w-[1400px]">
+      <div class="max-w-xl">
+        <h2 class="text-brand-gold font-bold text-[9px] md:text-[10px] tracking-[0.25em] uppercase mb-3 leading-loose">
+          MAIS QUE UM TIME,<br/>SOMOS UM ECOSSISTEMA
+        </h2>
+        <h1 class="font-display font-bold text-4xl md:text-5xl lg:text-[56px] leading-[1.05] mb-5 tracking-tight uppercase">
           <span class="text-brand-white block">PROPÓSITO</span>
-          <span class="text-brand-gold block mt-2">QUE TRANSFORMA</span>
+          <span class="text-brand-gold block mt-1">QUE TRANSFORMA</span>
         </h1>
-        <p class="text-sm md:text-base text-gray-300 mb-10 max-w-md leading-relaxed">
+        <p class="text-[13px] md:text-sm text-gray-300 mb-8 max-w-[420px] leading-relaxed">
           {t('home.hero.desc')}
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 mb-16">
-          <a href="/nosotros" class="bg-brand-gold text-[#0a0a0a] font-bold text-xs tracking-widest uppercase px-8 py-4 text-center hover:bg-brand-white transition-colors flex items-center justify-center gap-3">
+        <div class="flex flex-col sm:flex-row gap-3 mb-10">
+          <a href="/nosotros" class="bg-[#d4af37] text-[#0a0a0a] font-bold text-[10px] tracking-[0.15em] uppercase px-6 py-3 text-center hover:bg-brand-white transition-colors flex items-center justify-center gap-2 rounded-sm">
             CONHEÇA A MODULAÇÃO
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
-          <a href="/login" class="border border-white/20 text-brand-white font-bold text-xs tracking-widest uppercase px-8 py-4 text-center hover:border-brand-gold hover:text-brand-gold transition-colors">
-            {t('home.hero.champ_btn')}
+          <a href="/login" class="border border-[#d4af37] text-[#d4af37] font-bold text-[10px] tracking-[0.15em] uppercase px-8 py-3 text-center hover:bg-[#d4af37] hover:text-[#0a0a0a] transition-colors rounded-sm">
+            FAÇA PARTE
           </a>
         </div>
 
-        <div class="flex items-center gap-6">
-          <span class="text-brand-gold text-[10px] font-bold tracking-widest uppercase">SIGA-NOS</span>
-          <div class="flex items-center gap-4">
-            <a href="#" class="text-brand-gold hover:text-brand-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
-            <a href="#" class="text-brand-gold hover:text-brand-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
-            <a href="#" class="text-brand-gold hover:text-brand-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="#" class="text-brand-gold hover:text-brand-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
+        <div class="flex items-center gap-4">
+          <span class="text-brand-gold text-[9px] font-bold tracking-[0.2em] uppercase">SIGA-NOS</span>
+          <div class="flex items-center gap-3">
+            <a href="#" class="text-brand-gold hover:text-brand-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+            <a href="#" class="text-brand-gold hover:text-brand-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+            <a href="#" class="text-brand-gold hover:text-brand-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" class="text-brand-gold hover:text-brand-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
           </div>
         </div>
       </div>
@@ -50,137 +52,137 @@ const t = useTranslations(lang);
   </section>
 
   <!-- Features Section -->
-  <section class="py-20 bg-[#0a0a0a] border-b border-white/5">
-    <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4 divide-x-0 lg:divide-x lg:divide-white/5">
+  <section class="py-12 bg-[#0a0a0a] border-b border-white/5">
+    <div class="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-6 divide-x-0 lg:divide-x lg:divide-white/10">
         <!-- Feature 1 -->
-        <div class="flex flex-col items-center text-center lg:px-6">
-          <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-6 transition-transform hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <div class="flex flex-col items-center text-center lg:px-4">
+          <div class="w-[60px] h-[60px] rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-4 transition-transform hover:scale-105">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
           </div>
-          <h3 class="font-bold text-xs uppercase tracking-widest text-brand-white mb-3">{t('home.features.identity.title')}</h3>
-          <p class="text-[11px] text-gray-400 leading-relaxed max-w-[200px]">{t('home.features.identity.desc')}</p>
+          <h3 class="font-bold text-[10px] uppercase tracking-widest text-brand-gold mb-2">{t('home.features.identity.title')}</h3>
+          <p class="text-[10px] text-gray-400 leading-relaxed max-w-[160px]">{t('home.features.identity.desc')}</p>
         </div>
 
         <!-- Feature 2 -->
-        <div class="flex flex-col items-center text-center lg:px-6">
-          <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-6 transition-transform hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div class="flex flex-col items-center text-center lg:px-4">
+          <div class="w-[60px] h-[60px] rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-4 transition-transform hover:scale-105">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <h3 class="font-bold text-xs uppercase tracking-widest text-brand-white mb-3">{t('home.features.unity.title')}</h3>
-          <p class="text-[11px] text-gray-400 leading-relaxed max-w-[200px]">{t('home.features.unity.desc')}</p>
+          <h3 class="font-bold text-[10px] uppercase tracking-widest text-brand-gold mb-2">{t('home.features.unity.title')}</h3>
+          <p class="text-[10px] text-gray-400 leading-relaxed max-w-[160px]">{t('home.features.unity.desc')}</p>
         </div>
 
         <!-- Feature 3 -->
-        <div class="flex flex-col items-center text-center lg:px-6">
-          <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-6 transition-transform hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <div class="flex flex-col items-center text-center lg:px-4">
+          <div class="w-[60px] h-[60px] rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-4 transition-transform hover:scale-105">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
-          <h3 class="font-bold text-xs uppercase tracking-widest text-brand-white mb-3">{t('home.features.evolution.title')}</h3>
-          <p class="text-[11px] text-gray-400 leading-relaxed max-w-[200px]">{t('home.features.evolution.desc')}</p>
+          <h3 class="font-bold text-[10px] uppercase tracking-widest text-brand-gold mb-2">{t('home.features.evolution.title')}</h3>
+          <p class="text-[10px] text-gray-400 leading-relaxed max-w-[160px]">{t('home.features.evolution.desc')}</p>
         </div>
 
         <!-- Feature 4 -->
-        <div class="flex flex-col items-center text-center lg:px-6">
-          <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-6 transition-transform hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="6" y2="2"/><line x1="12" x2="12" y1="22" y2="18"/></svg>
+        <div class="flex flex-col items-center text-center lg:px-4">
+          <div class="w-[60px] h-[60px] rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-4 transition-transform hover:scale-105">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="6" y2="2"/><line x1="12" x2="12" y1="22" y2="18"/></svg>
           </div>
-          <h3 class="font-bold text-xs uppercase tracking-widest text-brand-white mb-3">{t('home.features.discipline.title')}</h3>
-          <p class="text-[11px] text-gray-400 leading-relaxed max-w-[200px]">{t('home.features.discipline.desc')}</p>
+          <h3 class="font-bold text-[10px] uppercase tracking-widest text-brand-gold mb-2">{t('home.features.discipline.title')}</h3>
+          <p class="text-[10px] text-gray-400 leading-relaxed max-w-[160px]">{t('home.features.discipline.desc')}</p>
         </div>
 
         <!-- Feature 5 -->
-        <div class="flex flex-col items-center text-center lg:px-6 col-span-2 md:col-span-1 lg:col-span-1">
-          <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/40 text-brand-gold flex items-center justify-center mb-6 transition-transform hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" x2="12" y1="1" y2="3"/><line x1="12" x2="12" y1="21" y2="23"/><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"/><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"/><line x1="1" x2="3" y1="12" y2="12"/><line x1="21" x2="23" y1="12" y2="12"/><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"/><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"/></svg>
+        <div class="flex flex-col items-center text-center lg:px-4 col-span-2 lg:col-span-1">
+          <div class="w-[60px] h-[60px] rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-4 transition-transform hover:scale-105">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" x2="12" y1="1" y2="3"/><line x1="12" x2="12" y1="21" y2="23"/><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"/><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"/><line x1="1" x2="3" y1="12" y2="12"/><line x1="21" x2="23" y1="12" y2="12"/><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"/><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"/></svg>
           </div>
-          <h3 class="font-bold text-xs uppercase tracking-widest text-brand-white mb-3">{t('home.features.purpose.title')}</h3>
-          <p class="text-[11px] text-gray-400 leading-relaxed max-w-[200px]">{t('home.features.purpose.desc')}</p>
+          <h3 class="font-bold text-[10px] uppercase tracking-widest text-brand-gold mb-2">{t('home.features.purpose.title')}</h3>
+          <p class="text-[10px] text-gray-400 leading-relaxed max-w-[160px]">{t('home.features.purpose.desc')}</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Highlights Section -->
-  <section class="py-24 bg-[#0a0a0a] relative">
-    <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
-      <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-4">
+  <section class="py-16 bg-[#0a0a0a] relative">
+    <div class="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+      <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-3">
         <div class="flex items-center gap-4">
-          <h2 class="text-lg md:text-xl font-display font-bold text-brand-white uppercase tracking-widest">
-            DESTAQUES
+          <h2 class="text-base font-display font-bold text-brand-white uppercase tracking-widest">
+            {t('home.highlights.title')}
           </h2>
-          <div class="h-[2px] w-12 bg-brand-gold"></div>
+          <div class="h-[2px] w-10 bg-brand-gold"></div>
         </div>
-        <a href="#" class="text-brand-gold text-xs font-bold uppercase tracking-widest hover:text-brand-white transition-colors flex items-center gap-2">
-          {t('home.highlights.view_all')} <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <a href="#" class="text-brand-gold text-[9px] font-bold uppercase tracking-[0.2em] hover:text-brand-white transition-colors flex items-center gap-1.5">
+          {t('home.highlights.view_all')} <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Highlight Card 1 -->
-        <a href="#" class="group block border border-white/5 bg-[#111] hover:border-brand-gold/30 transition-colors overflow-hidden">
-          <div class="relative h-48 overflow-hidden">
-            <div class="absolute top-4 left-4 z-10 bg-[#0a0a0a] border border-white/10 text-[9px] font-bold uppercase tracking-wider px-2 py-1 text-gray-300">PUBLICAÇÃO</div>
+        <a href="#" class="group block border border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
+          <div class="relative h-40 overflow-hidden">
+            <div class="absolute top-3 left-3 z-10 bg-[#0a0a0a]/90 border border-brand-gold/50 text-[8px] font-bold uppercase tracking-widest px-2 py-1 text-brand-gold">PUBLICAÇÃO</div>
             <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000&auto=format&fit=crop" alt="Highlight 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent opacity-80"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] to-transparent opacity-90"></div>
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-sm text-brand-white mb-3 group-hover:text-brand-gold transition-colors leading-snug">Reunião de Membros Modulação Santa Cruz</h3>
-            <p class="text-xs text-gray-400 mb-6 line-clamp-2">Encontro exclusivo para membros da comunidade Santa Cruz.</p>
-            <div class="flex items-center gap-4 text-[10px] text-gray-500 font-medium uppercase tracking-wider">
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 24 MAI, 2024</span>
-              <span class="flex items-center gap-1.5 text-brand-gold"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Exclusivo</span>
+          <div class="p-5">
+            <h3 class="font-bold text-[13px] text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-snug">Reunião de Membros Modulação Santa Cruz</h3>
+            <p class="text-[10px] text-gray-400 mb-4 line-clamp-2 leading-relaxed">Encontro exclusivo para membros da comunidade Santa Cruz.</p>
+            <div class="flex items-center gap-3 text-[9px] text-gray-500 font-bold uppercase tracking-widest">
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 24 MAI, 2024</span>
+              <span class="flex items-center gap-1 text-brand-gold"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Exclusivo</span>
             </div>
           </div>
         </a>
 
         <!-- Highlight Card 2 -->
-        <a href="#" class="group block border border-white/5 bg-[#111] hover:border-brand-gold/30 transition-colors overflow-hidden">
-          <div class="relative h-48 overflow-hidden">
-            <div class="absolute top-4 left-4 z-10 bg-[#0a0a0a] border border-white/10 text-[9px] font-bold uppercase tracking-wider px-2 py-1 text-gray-300">ARTIGO</div>
+        <a href="#" class="group block border border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
+          <div class="relative h-40 overflow-hidden">
+            <div class="absolute top-3 left-3 z-10 bg-[#0a0a0a]/90 border border-brand-gold/50 text-[8px] font-bold uppercase tracking-widest px-2 py-1 text-brand-gold">ARTIGO</div>
             <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Highlight 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent opacity-80"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] to-transparent opacity-90"></div>
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-sm text-brand-white mb-3 group-hover:text-brand-gold transition-colors leading-snug">A Modulação como princípio da vida</h3>
-            <p class="text-xs text-gray-400 mb-6 line-clamp-2">Entenda como a modulação está presente em todas as coisas.</p>
-            <div class="flex items-center gap-4 text-[10px] text-gray-500 font-medium uppercase tracking-wider">
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 20 MAI, 2024</span>
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> Público</span>
+          <div class="p-5">
+            <h3 class="font-bold text-[13px] text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-snug">A Modulação como princípio da vida</h3>
+            <p class="text-[10px] text-gray-400 mb-4 line-clamp-2 leading-relaxed">Entenda como a modulação está presente em todas as coisas.</p>
+            <div class="flex items-center gap-3 text-[9px] text-gray-500 font-bold uppercase tracking-widest">
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 20 MAI, 2024</span>
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> Público</span>
             </div>
           </div>
         </a>
 
         <!-- Highlight Card 3 -->
-        <a href="#" class="group block border border-white/5 bg-[#111] hover:border-brand-gold/30 transition-colors overflow-hidden">
-          <div class="relative h-48 overflow-hidden">
-            <div class="absolute top-4 left-4 z-10 bg-[#0a0a0a] border border-white/10 text-[9px] font-bold uppercase tracking-wider px-2 py-1 text-gray-300">PUBLICAÇÃO</div>
+        <a href="#" class="group block border border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
+          <div class="relative h-40 overflow-hidden">
+            <div class="absolute top-3 left-3 z-10 bg-[#0a0a0a]/90 border border-brand-gold/50 text-[8px] font-bold uppercase tracking-widest px-2 py-1 text-brand-gold">PUBLICAÇÃO</div>
             <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=2094&auto=format&fit=crop" alt="Highlight 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent opacity-80"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] to-transparent opacity-90"></div>
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-sm text-brand-white mb-3 group-hover:text-brand-gold transition-colors leading-snug">Exposição: Artes que inspiram e conectam</h3>
-            <p class="text-xs text-gray-400 mb-6 line-clamp-2">A arte como expressão do invisível e da sua real força.</p>
-            <div class="flex items-center gap-4 text-[10px] text-gray-500 font-medium uppercase tracking-wider">
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 15 MAI, 2024</span>
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> Público</span>
+          <div class="p-5">
+            <h3 class="font-bold text-[13px] text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-snug">Exposição: Artes que inspiram e conectam</h3>
+            <p class="text-[10px] text-gray-400 mb-4 line-clamp-2 leading-relaxed">A arte como expressão do invisível e da sua real força.</p>
+            <div class="flex items-center gap-3 text-[9px] text-gray-500 font-bold uppercase tracking-widest">
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 15 MAI, 2024</span>
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> Público</span>
             </div>
           </div>
         </a>
 
         <!-- Highlight Card 4 -->
-        <a href="#" class="group block border border-white/5 bg-[#111] hover:border-brand-gold/30 transition-colors overflow-hidden">
-          <div class="relative h-48 overflow-hidden">
-            <div class="absolute top-4 left-4 z-10 bg-[#0a0a0a] border border-white/10 text-[9px] font-bold uppercase tracking-wider px-2 py-1 text-gray-300">PUBLICAÇÃO</div>
+        <a href="#" class="group block border border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
+          <div class="relative h-40 overflow-hidden">
+            <div class="absolute top-3 left-3 z-10 bg-[#0a0a0a]/90 border border-brand-gold/50 text-[8px] font-bold uppercase tracking-widest px-2 py-1 text-brand-gold">PUBLICAÇÃO</div>
             <img src="https://images.unsplash.com/photo-1574629810360-7efbb6b04040?q=80&w=2070&auto=format&fit=crop" alt="Highlight 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent opacity-80"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] to-transparent opacity-90"></div>
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-sm text-brand-white mb-3 group-hover:text-brand-gold transition-colors leading-snug">Vitória no último campeonato</h3>
-            <p class="text-xs text-gray-400 mb-6 line-clamp-2">Mais que um resultado, uma prova de disciplina e união.</p>
-            <div class="flex items-center gap-4 text-[10px] text-gray-500 font-medium uppercase tracking-wider">
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 10 MAI, 2024</span>
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> Público</span>
+          <div class="p-5">
+            <h3 class="font-bold text-[13px] text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-snug">Vitória no último campeonato</h3>
+            <p class="text-[10px] text-gray-400 mb-4 line-clamp-2 leading-relaxed">Mais que um resultado, uma prova de disciplina e união.</p>
+            <div class="flex items-center gap-3 text-[9px] text-gray-500 font-bold uppercase tracking-widest">
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 10 MAI, 2024</span>
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg> Público</span>
             </div>
           </div>
         </a>
@@ -189,33 +191,33 @@ const t = useTranslations(lang);
   </section>
 
   <!-- Events and Matches Section -->
-  <section class="py-24 bg-[#0a0a0a]">
-    <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
-      <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-4">
+  <section class="py-16 bg-[#0a0a0a]">
+    <div class="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+      <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-3">
         <div class="flex items-center gap-4">
-          <h2 class="text-lg md:text-xl font-display font-bold text-brand-white uppercase tracking-widest">
-            PRÓXIMOS EVENTOS E PARTIDAS
+          <h2 class="text-base font-display font-bold text-brand-white uppercase tracking-widest">
+            {t('home.events.title')}
           </h2>
-          <div class="h-[2px] w-12 bg-brand-gold"></div>
+          <div class="h-[2px] w-10 bg-brand-gold"></div>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <!-- Upcoming Events List -->
-        <div class="border border-white/5 bg-[#0d0d0d] p-8">
-          <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-8">{t('home.events.events_subtitle')}</h3>
+        <div class="border border-white/5 bg-[#0d0d0d] p-6 rounded-sm">
+          <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6">{t('home.events.events_subtitle')}</h3>
 
-          <div class="space-y-6">
+          <div class="space-y-4">
             <!-- Event Item 1 -->
-            <div class="flex gap-6 items-start pb-6 border-b border-white/5">
-              <div class="flex flex-col items-center justify-center min-w-[50px]">
-                <span class="text-2xl font-bold text-brand-gold leading-none">25</span>
-                <span class="text-[10px] font-bold text-brand-gold uppercase tracking-widest mt-1">MAI</span>
+            <div class="flex gap-5 items-start pb-4 border-b border-white/5">
+              <div class="flex flex-col items-center justify-center min-w-[40px]">
+                <span class="text-xl font-bold text-brand-gold leading-none">25</span>
+                <span class="text-[9px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-1">MAI</span>
               </div>
               <div>
-                <h4 class="font-bold text-brand-white text-sm mb-1 hover:text-brand-gold transition-colors cursor-pointer">Encontro de Práticas</h4>
-                <div class="flex items-center gap-3 text-xs text-gray-400">
-                  <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 16:00</span>
+                <h4 class="font-bold text-brand-white text-[13px] mb-1 hover:text-brand-gold transition-colors cursor-pointer">Encontro de Práticas</h4>
+                <div class="flex items-center gap-2 text-[10px] text-gray-400 uppercase tracking-wider font-medium">
+                  <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 16:00</span>
                   <span>•</span>
                   <span>Arena Dakila - Santa Cruz, BO</span>
                 </div>
@@ -223,15 +225,15 @@ const t = useTranslations(lang);
             </div>
 
             <!-- Event Item 2 -->
-            <div class="flex gap-6 items-start pb-6 border-b border-white/5">
-              <div class="flex flex-col items-center justify-center min-w-[50px]">
-                <span class="text-2xl font-bold text-brand-gold leading-none">01</span>
-                <span class="text-[10px] font-bold text-brand-gold uppercase tracking-widest mt-1">JUN</span>
+            <div class="flex gap-5 items-start pb-4 border-b border-white/5">
+              <div class="flex flex-col items-center justify-center min-w-[40px]">
+                <span class="text-xl font-bold text-brand-gold leading-none">01</span>
+                <span class="text-[9px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-1">JUN</span>
               </div>
               <div>
-                <h4 class="font-bold text-brand-white text-sm mb-1 hover:text-brand-gold transition-colors cursor-pointer">Workshop de Filosofia</h4>
-                <div class="flex items-center gap-3 text-xs text-gray-400">
-                  <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 09:00</span>
+                <h4 class="font-bold text-brand-white text-[13px] mb-1 hover:text-brand-gold transition-colors cursor-pointer">Workshop de Filosofia</h4>
+                <div class="flex items-center gap-2 text-[10px] text-gray-400 uppercase tracking-wider font-medium">
+                  <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 09:00</span>
                   <span>•</span>
                   <span>Centro de Treinamento</span>
                 </div>
@@ -239,15 +241,15 @@ const t = useTranslations(lang);
             </div>
 
             <!-- Event Item 3 -->
-            <div class="flex gap-6 items-start">
-              <div class="flex flex-col items-center justify-center min-w-[50px]">
-                <span class="text-2xl font-bold text-brand-gold leading-none">08</span>
-                <span class="text-[10px] font-bold text-brand-gold uppercase tracking-widest mt-1">JUN</span>
+            <div class="flex gap-5 items-start">
+              <div class="flex flex-col items-center justify-center min-w-[40px]">
+                <span class="text-xl font-bold text-brand-gold leading-none">08</span>
+                <span class="text-[9px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-1">JUN</span>
               </div>
               <div>
-                <h4 class="font-bold text-brand-white text-sm mb-1 hover:text-brand-gold transition-colors cursor-pointer">Vivência: Consciência e Ação</h4>
-                <div class="flex items-center gap-3 text-xs text-gray-400">
-                  <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 14:00</span>
+                <h4 class="font-bold text-brand-white text-[13px] mb-1 hover:text-brand-gold transition-colors cursor-pointer">Vivência: Consciência e Ação</h4>
+                <div class="flex items-center gap-2 text-[10px] text-gray-400 uppercase tracking-wider font-medium">
+                  <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 14:00</span>
                   <span>•</span>
                   <span>Espaço Aberto</span>
                 </div>
@@ -255,47 +257,47 @@ const t = useTranslations(lang);
             </div>
           </div>
 
-          <a href="/eventos" class="block w-full text-center mt-8 py-4 border border-white/10 text-brand-gold text-xs font-bold tracking-widest uppercase hover:bg-white/5 transition-colors">
+          <a href="/eventos" class="block w-full text-center mt-6 py-3 border border-white/10 text-brand-gold text-[9px] font-bold tracking-[0.2em] uppercase hover:bg-white/5 transition-colors rounded-sm">
             {t('home.events.view_all')}
           </a>
         </div>
 
         <!-- Next Match -->
-        <div class="border border-white/5 bg-[#0d0d0d] p-8 flex flex-col relative overflow-hidden">
-          <div class="absolute top-0 right-0 p-8 opacity-5">
-            <svg class="w-64 h-64 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <div class="border border-white/5 bg-[#0d0d0d] p-6 flex flex-col relative overflow-hidden rounded-sm">
+          <div class="absolute top-0 right-0 p-6 opacity-[0.03]">
+            <svg class="w-48 h-48 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
           </div>
 
-          <div class="flex justify-between items-center mb-10 relative z-10">
-            <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest">{t('home.events.matches_subtitle')}</h3>
-            <span class="text-[10px] font-bold text-brand-white bg-white/10 px-3 py-1 uppercase tracking-widest">FASE DE GRUPOS</span>
+          <div class="flex justify-between items-center mb-8 relative z-10">
+            <h3 class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{t('home.events.matches_subtitle')}</h3>
+            <span class="text-[8px] font-bold text-brand-white bg-white/10 px-2 py-1 uppercase tracking-[0.2em] rounded-sm">FASE DE GRUPOS</span>
           </div>
 
           <div class="flex-1 flex flex-col justify-center relative z-10">
-            <div class="flex items-center justify-center gap-8 mb-12">
+            <div class="flex items-center justify-center gap-6 mb-8">
               <div class="flex flex-col items-center">
-                <div class="w-24 h-24 rounded-full border border-brand-gold bg-[#0a0a0a] flex items-center justify-center mb-4 p-4 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                <div class="w-20 h-20 rounded-full border border-brand-gold bg-[#0a0a0a] flex items-center justify-center mb-3 p-4 shadow-[0_0_15px_rgba(212,175,55,0.15)]">
                   <svg class="w-full h-full text-brand-gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 </div>
               </div>
 
-              <div class="text-2xl font-display font-bold text-gray-600">VS</div>
+              <div class="text-xl font-display font-bold text-gray-600">VS</div>
 
               <div class="flex flex-col items-center">
-                <div class="w-24 h-24 rounded-full border border-white/20 bg-[#111] flex items-center justify-center mb-4 p-4">
+                <div class="w-20 h-20 rounded-full border border-white/20 bg-[#111] flex items-center justify-center mb-3 p-4">
                   <svg class="w-full h-full text-brand-white opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
                 </div>
               </div>
             </div>
 
-            <div class="flex flex-wrap justify-center items-center gap-6 text-[11px] font-medium text-gray-400 uppercase tracking-wider mb-8">
-              <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 28 MAI, 2024</span>
-              <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 15:30</span>
-              <span class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> ARENA DAKILA</span>
+            <div class="flex flex-wrap justify-center items-center gap-5 text-[10px] font-medium text-gray-400 uppercase tracking-widest mb-6">
+              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 28 MAI, 2024</span>
+              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 15:30</span>
+              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> ARENA DAKILA</span>
             </div>
           </div>
 
-          <a href="#" class="block w-full text-center mt-auto py-4 border border-white/10 text-brand-gold text-xs font-bold tracking-widest uppercase hover:bg-white/5 transition-colors relative z-10">
+          <a href="#" class="block w-full text-center mt-auto py-3 border border-white/10 text-brand-gold text-[9px] font-bold tracking-[0.2em] uppercase hover:bg-white/5 transition-colors relative z-10 rounded-sm">
             {t('home.events.match_details')}
           </a>
         </div>
@@ -304,69 +306,69 @@ const t = useTranslations(lang);
   </section>
 
   <!-- Featured Articles Section -->
-  <section class="py-24 bg-[#0a0a0a] relative border-t border-white/5">
+  <section class="py-16 bg-[#0a0a0a] relative border-t border-white/5">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#111] opacity-50 z-0"></div>
-    <div class="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
-      <div class="flex justify-between items-end mb-12 border-b border-white/10 pb-4">
+    <div class="container mx-auto px-6 lg:px-12 max-w-[1400px] relative z-10">
+      <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-3">
         <div class="flex items-center gap-4">
-          <h2 class="text-lg md:text-xl font-display font-bold text-brand-white uppercase tracking-widest">
-            ARTIGOS EM DESTAQUE
+          <h2 class="text-base font-display font-bold text-brand-white uppercase tracking-widest">
+            {t('home.articles.title')}
           </h2>
-          <div class="h-[2px] w-12 bg-brand-gold"></div>
+          <div class="h-[2px] w-10 bg-brand-gold"></div>
         </div>
-        <a href="/artigos" class="text-brand-gold text-xs font-bold uppercase tracking-widest hover:text-brand-white transition-colors flex items-center gap-2">
-          {t('home.articles.view_all')} <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <a href="/artigos" class="text-brand-gold text-[9px] font-bold uppercase tracking-[0.2em] hover:text-brand-white transition-colors flex items-center gap-1.5">
+          {t('home.articles.view_all')} <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
         <!-- Article Card 1 -->
-        <a href="#" class="group block border border-white/5 bg-[#111] hover:border-brand-gold/30 transition-colors overflow-hidden">
-          <div class="relative h-48 overflow-hidden">
-            <div class="absolute top-4 left-4 z-10 bg-[#0a0a0a] border border-white/10 text-[9px] font-bold uppercase tracking-wider px-2 py-1 text-gray-300">FILOSOFIA</div>
+        <a href="#" class="group block border border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
+          <div class="relative h-40 overflow-hidden">
+            <div class="absolute top-3 left-3 z-10 bg-[#0a0a0a]/90 border border-brand-gold/50 text-[8px] font-bold uppercase tracking-widest px-2 py-1 text-brand-gold">FILOSOFIA</div>
             <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2199&auto=format&fit=crop" alt="Article 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent opacity-80"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] to-transparent opacity-90"></div>
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-sm text-brand-white mb-3 group-hover:text-brand-gold transition-colors leading-snug">O silêncio que modula a consciência</h3>
-            <p class="text-xs text-gray-400 mb-6 line-clamp-2">A importância do silêncio e da presença no processo de modulação.</p>
-            <div class="flex items-center gap-4 text-[10px] text-gray-500 font-medium uppercase tracking-wider">
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 12 MAI, 2024</span>
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 5 MIN LEITURA</span>
+          <div class="p-5">
+            <h3 class="font-bold text-[13px] text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-snug">O silêncio que modula a consciência</h3>
+            <p class="text-[10px] text-gray-400 mb-4 line-clamp-2 leading-relaxed">A importância do silêncio e da presença no processo de modulação.</p>
+            <div class="flex items-center gap-3 text-[9px] text-gray-500 font-bold uppercase tracking-widest">
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 12 MAI, 2024</span>
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 5 MIN LEITURA</span>
             </div>
           </div>
         </a>
 
         <!-- Article Card 2 -->
-        <a href="#" class="group block border border-white/5 bg-[#111] hover:border-brand-gold/30 transition-colors overflow-hidden">
-          <div class="relative h-48 overflow-hidden">
-            <div class="absolute top-4 left-4 z-10 bg-[#0a0a0a] border border-white/10 text-[9px] font-bold uppercase tracking-wider px-2 py-1 text-gray-300">CIÊNCIA</div>
+        <a href="#" class="group block border border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
+          <div class="relative h-40 overflow-hidden">
+            <div class="absolute top-3 left-3 z-10 bg-[#0a0a0a]/90 border border-brand-gold/50 text-[8px] font-bold uppercase tracking-widest px-2 py-1 text-brand-gold">CIÊNCIA</div>
             <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop" alt="Article 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent opacity-80"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] to-transparent opacity-90"></div>
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-sm text-brand-white mb-3 group-hover:text-brand-gold transition-colors leading-snug">Frequências que constroem a realidade</h3>
-            <p class="text-xs text-gray-400 mb-6 line-clamp-2">A ciência moderna confirma o que os antigos já sabiam sobre a vibração.</p>
-            <div class="flex items-center gap-4 text-[10px] text-gray-500 font-medium uppercase tracking-wider">
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 10 MAI, 2024</span>
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 7 MIN LEITURA</span>
+          <div class="p-5">
+            <h3 class="font-bold text-[13px] text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-snug">Frequências que constroem a realidade</h3>
+            <p class="text-[10px] text-gray-400 mb-4 line-clamp-2 leading-relaxed">A ciência moderna confirma o que os antigos já sabiam sobre a vibração.</p>
+            <div class="flex items-center gap-3 text-[9px] text-gray-500 font-bold uppercase tracking-widest">
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 10 MAI, 2024</span>
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 7 MIN LEITURA</span>
             </div>
           </div>
         </a>
 
         <!-- Article Card 3 -->
-        <a href="#" class="group block border border-white/5 bg-[#111] hover:border-brand-gold/30 transition-colors overflow-hidden">
-          <div class="relative h-48 overflow-hidden">
-            <div class="absolute top-4 left-4 z-10 bg-[#0a0a0a] border border-white/10 text-[9px] font-bold uppercase tracking-wider px-2 py-1 text-gray-300">ARTE</div>
+        <a href="#" class="group block border border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
+          <div class="relative h-40 overflow-hidden">
+            <div class="absolute top-3 left-3 z-10 bg-[#0a0a0a]/90 border border-brand-gold/50 text-[8px] font-bold uppercase tracking-widest px-2 py-1 text-brand-gold">ARTE</div>
             <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=2018&auto=format&fit=crop" alt="Article 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#111] to-transparent opacity-80"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] to-transparent opacity-90"></div>
           </div>
-          <div class="p-6">
-            <h3 class="font-bold text-sm text-brand-white mb-3 group-hover:text-brand-gold transition-colors leading-snug">A arte como expressão do invisível</h3>
-            <p class="text-xs text-gray-400 mb-6 line-clamp-2">Expressões que inspiram e conectam formam a base da nossa identidade.</p>
-            <div class="flex items-center gap-4 text-[10px] text-gray-500 font-medium uppercase tracking-wider">
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 05 MAI, 2024</span>
-              <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 MIN LEITURA</span>
+          <div class="p-5">
+            <h3 class="font-bold text-[13px] text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-snug">A arte como expressão do invisível</h3>
+            <p class="text-[10px] text-gray-400 mb-4 line-clamp-2 leading-relaxed">Expressões que inspiram e conectam formam a base da nossa identidade.</p>
+            <div class="flex items-center gap-3 text-[9px] text-gray-500 font-bold uppercase tracking-widest">
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 05 MAI, 2024</span>
+              <span class="flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 MIN LEITURA</span>
             </div>
           </div>
         </a>
@@ -375,51 +377,51 @@ const t = useTranslations(lang);
   </section>
 
   <!-- CTA Banner Section -->
-  <section class="py-24 bg-[#0a0a0a]">
-    <div class="container mx-auto px-6 lg:px-8 max-w-7xl">
-      <div class="bg-gradient-to-r from-[#111] to-[#0a0a0a] border border-brand-gold/20 relative overflow-hidden flex flex-col md:flex-row">
+  <section class="py-16 bg-[#0a0a0a]">
+    <div class="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+      <div class="bg-gradient-to-r from-[#111] to-[#0a0a0a] border border-brand-gold/20 relative overflow-hidden flex flex-col md:flex-row rounded-sm">
         <!-- Abstract background waves -->
-        <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="absolute inset-0 opacity-[0.15] pointer-events-none">
           <svg viewBox="0 0 1000 400" preserveAspectRatio="none" class="w-full h-full text-brand-gold">
             <path d="M0,200 C250,300 350,100 500,200 C650,300 750,100 1000,200 L1000,400 L0,400 Z" fill="none" stroke="currentColor" stroke-width="2"></path>
             <path d="M0,250 C200,350 400,150 600,250 C800,350 900,150 1000,250" fill="none" stroke="currentColor" stroke-width="1"></path>
           </svg>
         </div>
 
-        <div class="flex-1 p-12 lg:p-16 relative z-10 flex flex-col justify-center">
-          <h2 class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-4">FAÇA PARTE DO</h2>
-          <h3 class="text-3xl md:text-4xl font-display font-bold text-brand-white mb-4">ECOSSISTEMA DAKILA</h3>
-          <p class="text-sm text-gray-400 mb-10 max-w-md">{t('home.cta.subtitle')}</p>
+        <div class="flex-1 p-10 lg:p-14 relative z-10 flex flex-col justify-center">
+          <h2 class="text-[9px] text-gray-400 font-bold uppercase tracking-[0.2em] mb-3">FAÇA PARTE DO</h2>
+          <h3 class="text-3xl lg:text-[32px] font-display font-bold text-brand-white mb-3">ECOSSISTEMA DAKILA</h3>
+          <p class="text-[11px] text-gray-400 mb-8 max-w-md">{t('home.cta.subtitle')}</p>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6">
             <div class="flex items-center gap-3">
-              <div class="text-brand-gold"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
-              <span class="text-xs text-brand-white font-medium">{t('home.cta.f1')}</span>
+              <div class="text-brand-gold"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+              <span class="text-[11px] text-brand-white font-medium">{t('home.cta.f1')}</span>
             </div>
             <div class="flex items-center gap-3">
-              <div class="text-brand-gold"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></div>
-              <span class="text-xs text-brand-white font-medium">{t('home.cta.f2')}</span>
+              <div class="text-brand-gold"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></div>
+              <span class="text-[11px] text-brand-white font-medium">{t('home.cta.f2')}</span>
             </div>
             <div class="flex items-center gap-3">
-              <div class="text-brand-gold"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
-              <span class="text-xs text-brand-white font-medium">{t('home.cta.f3')}</span>
+              <div class="text-brand-gold"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+              <span class="text-[11px] text-brand-white font-medium">{t('home.cta.f3')}</span>
             </div>
             <div class="flex items-center gap-3">
-              <div class="text-brand-gold"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-              <span class="text-xs text-brand-white font-medium">{t('home.cta.f4')}</span>
+              <div class="text-brand-gold"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <span class="text-[11px] text-brand-white font-medium">{t('home.cta.f4')}</span>
             </div>
           </div>
         </div>
 
-        <div class="md:w-[400px] bg-[#0d0d0d] p-12 relative z-10 flex flex-col justify-center border-t md:border-t-0 md:border-l border-brand-gold/20">
-          <div class="flex items-center gap-4 mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-gold" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <h4 class="font-bold text-brand-white text-xl tracking-widest uppercase">{t('home.cta.join_title')}</h4>
+        <div class="md:w-[360px] bg-[#0d0d0d] p-10 lg:p-12 relative z-10 flex flex-col justify-center border-t md:border-t-0 md:border-l border-brand-gold/20">
+          <div class="flex items-center gap-4 mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-brand-gold" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <h4 class="font-bold text-brand-white text-lg tracking-widest uppercase">{t('home.cta.join_title')}</h4>
           </div>
-          <p class="text-xs text-gray-400 mb-8">{t('home.cta.join_desc')}</p>
-          <a href="/login" class="bg-[#b8860b] text-[#0a0a0a] font-bold text-[10px] tracking-[0.2em] uppercase px-6 py-4 text-center hover:bg-brand-gold transition-colors flex items-center justify-center gap-3 mt-4 rounded-sm">
+          <p class="text-[11px] text-gray-400 mb-6 leading-relaxed">{t('home.cta.join_desc')}</p>
+          <a href="/login" class="bg-[#d4af37] text-[#0a0a0a] font-bold text-[9px] tracking-[0.2em] uppercase px-5 py-3.5 text-center hover:bg-brand-white transition-colors flex items-center justify-center gap-2 mt-2 rounded-sm">
             {t('home.cta.join_btn')}
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
         </div>
       </div>

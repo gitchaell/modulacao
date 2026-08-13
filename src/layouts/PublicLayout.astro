@@ -18,20 +18,20 @@ const t = useTranslations(lang);
       color-scheme: dark;
     }
   </style>
-  <header class="w-full py-4 px-8 flex justify-between items-center border-b border-white/5 bg-[#0a0a0a] backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
+  <header class="w-full py-3 px-8 flex justify-between items-center border-b border-white/5 bg-[#0a0a0a] backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
     <a href="/" class="flex items-center gap-3 group focus-visible">
       <svg class="w-10 h-10 text-brand-gold group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
     </a>
 
     <!-- Desktop Navigation -->
     <nav class="hidden lg:flex gap-5 xl:gap-7 items-center">
-      <a href="/" class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-gold hover:text-brand-white transition-colors focus-visible">{t('nav.home')}</a>
-      <a href="/nosotros" class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
-      <a href="/publicacoes" class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.publications')}</a>
-      <a href="/artigos" class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.articles')}</a>
-      <a href="/futebol" class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.football')}</a>
-      <a href="/shop" class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.shop')}</a>
-      <a href="/contato" class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.contact')}</a>
+      <a href="/" class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-gold hover:text-brand-white transition-colors focus-visible">{t('nav.home')}</a>
+      <a href="/nosotros" class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
+      <a href="/publicacoes" class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.publications')}</a>
+      <a href="/artigos" class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.articles')}</a>
+      <a href="/futebol" class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.football')}</a>
+      <a href="/shop" class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.shop')}</a>
+      <a href="/contato" class="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.contact')}</a>
     </nav>
 
     <!-- Right Actions -->
@@ -49,7 +49,7 @@ const t = useTranslations(lang);
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
       </div>
 
-      <a href="/login" class="ml-2 px-6 py-3 border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2">
+      <a href="/login" class="ml-2 px-4 py-2 border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors text-[9px] font-bold uppercase tracking-[0.2em] flex items-center gap-1.5 rounded-sm">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         SEJA UM MEMBRO
       </a>
@@ -104,8 +104,8 @@ const t = useTranslations(lang);
     <slot />
   </main>
 
-  <footer class="py-16 text-sm font-medium border-t border-white/5 bg-[#0a0a0a] text-brand-white mt-auto">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
+  <footer class="py-12 text-sm font-medium border-t border-white/5 bg-[#0a0a0a] text-brand-white mt-auto">
+    <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
 
       <!-- Brand Column -->
       <div class="col-span-1 lg:col-span-2 pr-8">
@@ -130,7 +130,7 @@ const t = useTranslations(lang);
       <!-- Links Columns -->
       <div>
         <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-4">NAVEGAÇÃO</h4>
-        <ul class="space-y-3 text-xs text-gray-400">
+        <ul class="space-y-2 text-[11px] text-gray-400">
           <li><a href="#" class="hover:text-brand-white transition-colors">Início</a></li>
           <li><a href="#" class="hover:text-brand-white transition-colors">Sobre Nós</a></li>
           <li><a href="#" class="hover:text-brand-white transition-colors">Publicações</a></li>
@@ -143,7 +143,7 @@ const t = useTranslations(lang);
 
       <div>
         <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-4">FUTEBOL</h4>
-        <ul class="space-y-3 text-xs text-gray-400">
+        <ul class="space-y-2 text-[11px] text-gray-400">
           <li><a href="#" class="hover:text-brand-white transition-colors">Equipe</a></li>
           <li><a href="#" class="hover:text-brand-white transition-colors">Campeonatos</a></li>
           <li><a href="#" class="hover:text-brand-white transition-colors">Calendário</a></li>
@@ -155,7 +155,7 @@ const t = useTranslations(lang);
 
       <div>
         <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-4">MEMBROS</h4>
-        <ul class="space-y-3 text-xs text-gray-400">
+        <ul class="space-y-2 text-[11px] text-gray-400">
           <li><a href="#" class="hover:text-brand-white transition-colors">Área do Membro</a></li>
           <li><a href="#" class="hover:text-brand-white transition-colors">Eventos</a></li>
           <li><a href="#" class="hover:text-brand-white transition-colors">Perfil</a></li>
@@ -165,7 +165,7 @@ const t = useTranslations(lang);
 
       <div>
         <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-4">INFORMAÇÕES</h4>
-        <ul class="space-y-3 text-xs text-gray-400">
+        <ul class="space-y-2 text-[11px] text-gray-400">
           <li><a href="#" class="hover:text-brand-white transition-colors">FAQ</a></li>
           <li><a href="#" class="hover:text-brand-white transition-colors">Termos de Uso</a></li>
           <li><a href="#" class="hover:text-brand-white transition-colors">Privacidade</a></li>
@@ -176,7 +176,7 @@ const t = useTranslations(lang);
       <!-- Contact Column -->
       <div class="col-span-1 lg:col-span-1">
         <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-4">CONTATO</h4>
-        <ul class="space-y-4 text-xs text-gray-400">
+        <ul class="space-y-3 text-[11px] text-gray-400">
           <li class="flex items-center gap-3">
             <svg class="text-brand-gold w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             <a href="mailto:contato@modulacao.com" class="hover:text-brand-white">contato@modulacao.com</a>
