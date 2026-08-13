@@ -1,11 +1,81 @@
 export const languages = {
+  pt: 'Português',
   es: 'Español',
   en: 'English',
 };
 
-export const defaultLang = 'es';
+export const defaultLang = 'pt';
 
 export const ui = {
+  pt: {
+    'nav.home': 'INÍCIO',
+    'nav.about': 'SOBRE NÓS',
+    'nav.publications': 'PUBLICAÇÕES',
+    'nav.articles': 'ARTIGOS',
+    'nav.football': 'FUTEBOL',
+    'nav.shop': 'SHOP',
+    'nav.contact': 'CONTATO',
+    'nav.library': 'BIBLIOTECA',
+    'nav.championships': 'CAMPEONATOS',
+    'nav.catalog': 'CATÁLOGO',
+    'app.events': 'EVENTOS',
+    'nav.members': 'MEMBROS',
+    'nav.faq': 'FAQ',
+
+    'home.hero.title': 'PROPÓSITO\nQUE TRANSFORMA',
+    'home.hero.subtitle': 'MAIS QUE UM TIME, SOMOS UM ECOSSISTEMA',
+    'home.hero.desc': 'Unimos esporte, ciência, arte e propósito para transformar esforço em evolução e resultados em legado.',
+    'home.hero.catalog_btn': 'CONHEÇA A MODULAÇÃO',
+    'home.hero.champ_btn': 'FAÇA PARTE',
+
+    'home.features.identity.title': 'IDENTIDADE',
+    'home.features.identity.desc': 'Orgulho de vestir a camisa e representar a essência.',
+
+    'home.features.unity.title': 'UNIDADE',
+    'home.features.unity.desc': 'Jogamos juntos, vencemos juntos, comemoramos juntos.',
+
+    'home.features.evolution.title': 'EVOLUÇÃO',
+    'home.features.evolution.desc': 'Buscamos sempre a melhor versão dentro e fora de campo.',
+
+    'home.features.discipline.title': 'DISCIPLINA',
+    'home.features.discipline.desc': 'Comprometimento com o processo e os detalhes.',
+
+    'home.features.purpose.title': 'PROPÓSITO',
+    'home.features.purpose.desc': 'Fazer parte de algo maior que o futebol.',
+
+    'home.highlights.title': 'DESTAQUES',
+    'home.highlights.view_all': 'VER TODOS',
+
+    'home.events.title': 'PRÓXIMOS EVENTOS E PARTIDAS',
+    'home.events.events_subtitle': 'PRÓXIMOS EVENTOS',
+    'home.events.matches_subtitle': 'PRÓXIMO JOGO',
+    'home.events.view_all': 'VER TODOS OS EVENTOS',
+    'home.events.match_details': 'VER DETALHES DA PARTIDA',
+
+    'home.articles.title': 'ARTIGOS EM DESTAQUE',
+    'home.articles.view_all': 'VER TODOS',
+
+    'home.cta.title': 'FAÇA PARTE DO\nECOSSISTEMA DAKILA',
+    'home.cta.subtitle': 'Mais que um time. Uma jornada de evolução.',
+    'home.cta.f1': 'Conteúdos exclusivos',
+    'home.cta.f2': 'Descontos em produtos',
+    'home.cta.f3': 'Eventos e vivências transformadoras',
+    'home.cta.f4': 'Impacto na sociedade',
+    'home.cta.join_title': 'JUNTE-SE A NÓS',
+    'home.cta.join_desc': 'Seja um membro e faça parte desta transformação.',
+    'home.cta.join_btn': 'QUERO FAZER PARTE',
+
+    'footer.title': 'MAIS QUE UM TIME',
+    'footer.desc': 'Unimos esporte, ciência, arte e propósito para transformar esforço em evolução e resultados em legado.',
+    'footer.modulacao': 'MODULAÇÃO',
+    'footer.football': 'FUTEBOL',
+    'footer.members': 'MEMBROS',
+    'footer.info': 'INFORMAÇÕES',
+    'footer.contact': 'CONTATO',
+
+    'common.date': 'Data',
+    'common.status': 'Status',
+  },
   es: {
     'nav.home': 'Inicio',
     'nav.library': 'Biblioteca',

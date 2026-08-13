@@ -62,7 +62,7 @@ const allMembers = await dbQuery.orderBy(desc(profiles.updatedAt));
 
             {(member.city || member.country) && (
               <p class="text-gray-500 font-medium text-xs flex items-center justify-center gap-2 mt-6">
-                {member.country && <Flag code={member.country} />}
+                {member.country && <Flag country={member.country} />}
                 {member.city}{member.city && member.country ? ', ' : ''}{member.country}
               </p>
             )}

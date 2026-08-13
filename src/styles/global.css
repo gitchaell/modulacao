@@ -1,3 +1,4 @@
+@import 'flag-icons/css/flag-icons.min.css';
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @import "./fonts/geist-sans.css";
