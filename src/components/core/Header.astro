@@ -1,0 +1,91 @@
+---
+// src/components/core/Header.astro
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+import LanguageSelector from '@/components/ui/LanguageSelector.astro';
+import ThemeToggle from '@/components/ui/ThemeToggle.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<header class="w-full border-b border-white/5 bg-[#0a0a0a] backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
+  <div class="container mx-auto px-6 lg:px-12 max-w-[1400px] py-4 flex justify-between items-center">
+    <a href="/" class="flex items-center gap-3 group focus-visible">
+      <svg class="w-10 h-10 text-brand-gold group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex gap-5 xl:gap-7 items-center">
+      <a href="/" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-gold hover:text-brand-white transition-colors focus-visible">{t('nav.home')}</a>
+      <a href="/nosotros" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
+      <a href="/publicacoes" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.publications')}</a>
+      <a href="/artigos" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.articles')}</a>
+      <a href="/futebol" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.football')}</a>
+      <a href="/shop" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.shop')}</a>
+      <a href="/contato" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.contact')}</a>
+    </nav>
+
+    <!-- Right Actions -->
+    <div class="hidden lg:flex items-center gap-4">
+      <button class="p-1.5 text-brand-gold hover:text-brand-white transition-colors border border-white/10 rounded-sm" aria-label="Search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+
+      <div class="p-1.5 text-brand-white hover:text-brand-gold transition-colors border border-white/10 rounded-sm cursor-pointer">
+         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </div>
+
+      <div class="flex items-center gap-1.5 px-2 py-1.5 border border-white/10 rounded-sm text-brand-white text-xs font-medium cursor-pointer">
+        <span class="fi fi-br rounded-sm w-4 h-3 overflow-hidden inline-block object-cover"></span>
+        PT
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+
+      <a href="/login" class="ml-2 px-4 py-2 border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors text-[10px] font-extrabold uppercase tracking-[0.15em] flex items-center gap-2 rounded-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        SEJA UM MEMBRO
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn" class="lg:hidden text-brand-white p-2 focus-visible hover:text-brand-gold transition-colors" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Navigation Menu -->
+<div id="mobile-menu" class="hidden opacity-0 -translate-y-4 lg:hidden bg-[#0a0a0a]/95 border-b border-white/10 shadow-lg fixed inset-0 z-40 backdrop-blur-lg pt-20 transition-all duration-300 ease-in-out">
+  <nav class="flex flex-col px-8 py-6 gap-6 mt-4">
+    <a href="/" class="text-base font-semibold uppercase tracking-wide text-brand-gold hover:text-brand-white transition-colors focus-visible">{t('nav.home')}</a>
+    <a href="/nosotros" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
+    <a href="/publicacoes" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.publications')}</a>
+    <a href="/artigos" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.articles')}</a>
+    <a href="/futebol" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.football')}</a>
+    <a href="/shop" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.shop')}</a>
+    <a href="/contato" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.contact')}</a>
+    <a href="/login" class="text-base font-semibold uppercase tracking-wide text-brand-gold border border-brand-gold p-4 text-center mt-4">SEJA UM MEMBRO</a>
+  </nav>
+</div>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        setTimeout(() => {
+          menu.classList.remove('opacity-0', '-translate-y-4');
+        }, 10);
+      } else {
+        menu.classList.add('opacity-0', '-translate-y-4');
+        setTimeout(() => {
+          menu.classList.add('hidden');
+        }, 300);
+      }
+      btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+    });
+  }
+</script>
