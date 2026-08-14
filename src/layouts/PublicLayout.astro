@@ -1,15 +1,12 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { getLangFromUrl, useTranslations } from '@/utils/i18n';
-import { tenantConfig } from '@/config/tenant';
+import Header from '@/components/core/Header.astro';
+import Footer from '@/components/core/Footer.astro';
 
 interface Props {
   title: string;
 }
 const { title } = Astro.props;
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 <BaseLayout title={title}>
   <!-- Enforce dark mode for this layout as requested by the design -->
@@ -17,192 +14,23 @@ const t = useTranslations(lang);
     html {
       color-scheme: dark;
     }
-  </style>
-  <header class="w-full border-b border-white/5 bg-[#0a0a0a] backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
-    <div class="container mx-auto px-6 lg:px-12 max-w-[1400px] py-4 flex justify-between items-center">
-      <a href="/" class="flex items-center gap-3 group focus-visible">
-        <svg class="w-10 h-10 text-brand-gold group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex gap-6 xl:gap-8 items-center">
-      <a href="/" class="text-[12px] font-bold uppercase tracking-[0.2em] text-brand-gold hover:text-brand-white transition-colors focus-visible">{t('nav.home')}</a>
-      <a href="/nosotros" class="text-[12px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
-      <a href="/publicacoes" class="text-[12px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.publications')}</a>
-      <a href="/artigos" class="text-[12px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.articles')}</a>
-      <a href="/futebol" class="text-[12px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.football')}</a>
-      <a href="/shop" class="text-[12px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.shop')}</a>
-      <a href="/contato" class="text-[12px] font-bold uppercase tracking-[0.2em] text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.contact')}</a>
-    </nav>
-
-    <!-- Right Actions -->
-    <div class="hidden lg:flex items-center gap-5">
-      <button class="p-2 text-brand-white hover:text-brand-gold transition-colors" aria-label="Search">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      </button>
-      <button class="p-2 text-brand-white hover:text-brand-gold transition-colors" aria-label="Theme">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-      </button>
-
-        <div class="flex items-center gap-2.5 px-2 text-brand-white text-sm font-medium">
-          <span class="fi fi-br rounded-sm w-5 h-3.5 overflow-hidden inline-block object-cover"></span>
-          PT
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-
-        <a href="/login" class="ml-4 px-5 py-2.5 border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors text-[11px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 rounded-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          SEJA UM MEMBRO
-        </a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="lg:hidden text-brand-white p-2 focus-visible hover:text-brand-gold transition-colors" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-      </button>
-    </div>
-  </header>
-
-  <!-- Mobile Navigation Menu -->
-  <div id="mobile-menu" class="hidden opacity-0 -translate-y-4 lg:hidden bg-[#0a0a0a]/95 border-b border-white/10 shadow-lg fixed inset-0 z-40 backdrop-blur-lg pt-20 transition-all duration-300 ease-in-out">
-    <nav class="flex flex-col px-8 py-6 gap-6 mt-4">
-      <a href="/" class="text-base font-semibold uppercase tracking-wide text-brand-gold hover:text-brand-white transition-colors focus-visible">{t('nav.home')}</a>
-      <a href="/nosotros" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
-      <a href="/publicacoes" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.publications')}</a>
-      <a href="/artigos" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.articles')}</a>
-      <a href="/futebol" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.football')}</a>
-      <a href="/shop" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.shop')}</a>
-      <a href="/contato" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.contact')}</a>
-      <a href="/login" class="text-base font-semibold uppercase tracking-wide text-brand-gold border border-brand-gold p-4 text-center mt-4">SEJA UM MEMBRO</a>
-    </nav>
-  </div>
-
-  <script>
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-
-    // Always dark
-    document.documentElement.classList.add('dark');
-
-    if (btn && menu) {
-      btn.addEventListener('click', () => {
-        const isHidden = menu.classList.contains('hidden');
-        if (isHidden) {
-          menu.classList.remove('hidden');
-          setTimeout(() => {
-            menu.classList.remove('opacity-0', '-translate-y-4');
-          }, 10);
-        } else {
-          menu.classList.add('opacity-0', '-translate-y-4');
-          setTimeout(() => {
-            menu.classList.add('hidden');
-          }, 300);
-        }
-        btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
-      });
+    /* Ensure body stays dark and theme matches design */
+    body {
+      background-color: #0a0a0a;
     }
-  </script>
+  </style>
+
+  <Header />
+
   <main class="min-h-screen bg-[#0a0a0a]">
     <slot />
   </main>
 
-  <footer class="py-20 text-base font-medium border-t border-white/5 bg-[#0a0a0a] text-brand-white mt-auto">
-    <div class="max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
+  <Footer />
 
-      <!-- Brand Column -->
-      <div class="col-span-1 lg:col-span-2 lg:pr-12">
-        <div class="flex items-center gap-4 mb-8">
-          <svg class="w-12 h-12 text-brand-gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          <div>
-            <div class="font-bold text-sm tracking-widest text-brand-white">MODULAÇÃO</div>
-            <div class="font-bold text-[12px] tracking-widest text-brand-white">SANTA CRUZ</div>
-          </div>
-        </div>
-        <p class="text-[13px] text-gray-400 leading-relaxed max-w-sm">
-          Unimos esporte, ciência, arte e propósito para transformar esforço em evolução e resultados em legado.
-        </p>
-        <div class="flex gap-5 mt-8">
-          <a href="#" class="text-brand-gold hover:text-brand-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="#" class="text-brand-gold hover:text-brand-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
-          <a href="#" class="text-brand-gold hover:text-brand-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
-          <a href="#" class="text-brand-gold hover:text-brand-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
-        </div>
-      </div>
-
-      <!-- Links Columns -->
-      <div>
-        <h4 class="font-bold text-[13px] uppercase tracking-widest text-brand-gold mb-5">NAVEGAÇÃO</h4>
-        <ul class="space-y-3 text-[13px] text-gray-400">
-          <li><a href="#" class="hover:text-brand-white transition-colors">Início</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Sobre Nós</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Publicações</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Artigos</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Futebol</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Shop</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Contato</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-bold text-[13px] uppercase tracking-widest text-brand-gold mb-5">FUTEBOL</h4>
-        <ul class="space-y-3 text-[13px] text-gray-400">
-          <li><a href="#" class="hover:text-brand-white transition-colors">Equipe</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Campeonatos</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Calendário</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Resultados</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Jogadores</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Estatísticas</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-bold text-[13px] uppercase tracking-widest text-brand-gold mb-5">MEMBROS</h4>
-        <ul class="space-y-3 text-[13px] text-gray-400">
-          <li><a href="#" class="hover:text-brand-white transition-colors">Área do Membro</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Eventos</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Perfil</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Planos de Membro</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-bold text-[13px] uppercase tracking-widest text-brand-gold mb-5">INFORMAÇÕES</h4>
-        <ul class="space-y-3 text-[13px] text-gray-400">
-          <li><a href="#" class="hover:text-brand-white transition-colors">FAQ</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Termos de Uso</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Privacidade</a></li>
-          <li><a href="#" class="hover:text-brand-white transition-colors">Política de Cookies</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact Column -->
-      <div class="col-span-1 lg:col-span-1">
-        <h4 class="font-bold text-[13px] uppercase tracking-widest text-brand-gold mb-5">CONTATO</h4>
-        <ul class="space-y-4 text-[13px] text-gray-400">
-          <li class="flex items-center gap-3">
-            <svg class="text-brand-gold w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            <a href="mailto:contato@modulacao.com" class="hover:text-brand-white">contato@modulacao.com</a>
-          </li>
-          <li class="flex items-center gap-3">
-            <svg class="text-brand-gold w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <span>+55 11 9999-9999</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <svg class="text-brand-gold w-5 h-5 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Santa Cruz, Bolívia</span>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- Copyright -->
-    <div class="max-w-7xl mx-auto px-6 mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[12px] text-gray-500">
-      <div>&copy; {new Date().getFullYear()} Modulação Dakila. Todos os direitos reservados.</div>
-      <div class="flex items-center gap-2.5">
-        Parte do Ecossistema Dakila
-        <svg class="w-5 h-5 text-brand-gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      </div>
-    </div>
-  </footer>
+  <script>
+    // Always dark
+    document.documentElement.classList.add('dark');
+  </script>
 </BaseLayout>
