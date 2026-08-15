@@ -23,31 +23,31 @@ const t = useTranslations(lang);
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <!-- Historia -->
-      <Card noPadding class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 premium-shadow lg:col-span-2">
-        <div class="grid grid-cols-1 lg:grid-cols-2 h-full">
-          <div class="p-8 md:p-12 flex flex-col justify-center">
-            <div class="flex items-center gap-6 mb-8 border-b border-gray-100 dark:border-white/5 pb-6">
-              <div class="w-16 h-16 rounded-sm bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0">
-                <History class="w-8 h-8" />
-              </div>
-              <h2 class="font-display text-3xl font-bold text-brand-black dark:text-white uppercase tracking-wider">{t('about.history.title')}</h2>
+      <Card noPadding class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 premium-shadow lg:col-span-1 h-full flex flex-col">
+        <div class="p-8 md:p-12 flex flex-col h-full">
+          <div class="flex items-center gap-6 mb-8 border-b border-gray-100 dark:border-white/5 pb-6">
+            <div class="w-16 h-16 rounded-sm bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0">
+              <History class="w-8 h-8" />
             </div>
-            <div class="text-gray-600 dark:text-gray-300 space-y-6 text-lg leading-relaxed font-medium">
-              <p>{tenantConfig.name} nació con una visión clara: buscar el conocimiento y revelar la verdadera realidad. Como parte de Dakila Pesquisas, realizamos investigaciones de campo en Corguinho, MS, y en todo el mundo.</p>
-            </div>
+            <h2 class="font-display text-3xl font-bold text-brand-black dark:text-white uppercase tracking-wider">{t('about.history.title')}</h2>
           </div>
-          <div class="hidden lg:block relative min-h-[300px]">
-            <img
-              src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2048&auto=format&fit=crop"
-              alt="Astronomy Research"
-              class="absolute inset-0 w-full h-full object-cover rounded-r-xl"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="absolute inset-0 bg-brand-black/20 rounded-r-xl"></div>
+          <div class="text-gray-600 dark:text-gray-300 space-y-6 text-lg leading-relaxed font-medium flex-grow">
+            <p>{tenantConfig.name} nació con una visión clara: buscar el conocimiento y revelar la verdadera realidad. Como parte de Dakila Pesquisas, realizamos investigaciones de campo en Corguinho, MS, y en todo el mundo.</p>
           </div>
         </div>
       </Card>
+
+      <!-- Imagen -->
+      <div class="lg:col-span-1 h-full relative rounded-sm premium-shadow overflow-hidden min-h-[300px] border border-gray-200 dark:border-white/5">
+        <img
+          src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2048&auto=format&fit=crop"
+          alt="Astronomy Research"
+          class="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-brand-black/20"></div>
+      </div>
 
       <!-- Objetivo -->
       <Card noPadding class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 premium-shadow lg:col-span-1 h-full flex flex-col">
