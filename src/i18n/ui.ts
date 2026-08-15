@@ -10,6 +10,10 @@ export const ui = {
   pt: {
     'nav.home': 'INÍCIO',
     'nav.about': 'SOBRE NÓS',
+    'about.subtitle': 'Nossa história, nosso objetivo e a identidade que nos une no ',
+    'about.history.title': 'Nossa História',
+    'about.objective.title': 'Nosso Objetivo',
+    'about.faq.title': 'Perguntas Frequentes',
     'nav.publications': 'PUBLICAÇÕES',
     'nav.articles': 'ARTIGOS',
     'nav.football': 'FUTEBOL',
