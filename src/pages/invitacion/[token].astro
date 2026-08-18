@@ -6,7 +6,7 @@ import Alert from '@/components/core/Alert.astro';
 import { validateToken } from '@/domain/auth/invitation';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 
 const { token } = Astro.params;

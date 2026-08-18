@@ -6,7 +6,7 @@ import { users, posts, events, products } from '@/data/db/schema';
 import { sql } from 'drizzle-orm';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 
 // Obtener estadísticas globales usando Drizzle

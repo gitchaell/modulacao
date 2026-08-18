@@ -4,7 +4,7 @@ import Card from '@/components/core/Card.astro';
 import { Telescope, Map, Users } from '@lucide/astro';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 ---
 <PublicLayout title={t('nav.catalog')}>

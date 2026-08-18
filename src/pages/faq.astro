@@ -4,7 +4,7 @@ import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import Card from '@/components/core/Card.astro';
 import { HelpCircle } from '@lucide/astro';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 ---
 <PublicLayout title={t('faq.title')}>

@@ -5,7 +5,7 @@ import Button from '@/components/core/Button.astro';
 import Input from '@/components/core/Input.astro';
 import Card from '@/components/core/Card.astro';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 ---
 <PublicLayout title="Contacto">

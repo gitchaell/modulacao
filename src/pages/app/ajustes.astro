@@ -14,7 +14,7 @@ import { tenantConfig } from '@/config/tenant';
 const response = new Response();
 const session = await getSession(Astro.request, response);
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 
 if (!session.userId) {

@@ -1,8 +1,44 @@
 ---
 // src/components/ui/LanguageSelector.astro
+import { getLangFromUrl } from '@/utils/i18n';
+const lang = getLangFromUrl(Astro.cookies);
+
+const flags = {
+  pt: 'fi-br',
+  en: 'fi-us',
+  es: 'fi-es'
+};
+const currentFlag = flags[lang as keyof typeof flags] || 'fi-br';
 ---
-<div class="flex items-center gap-2.5 px-2 text-brand-white text-sm font-medium cursor-pointer">
-  <span class="fi fi-br rounded-sm w-5 h-3.5 overflow-hidden inline-block object-cover"></span>
-  PT
-  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+<div class="relative group">
+  <div class="flex items-center gap-2.5 px-2 text-brand-black dark:text-brand-white text-sm font-medium cursor-pointer group-hover:text-brand-gold transition-colors duration-200">
+    <span class={`fi ${currentFlag} rounded-sm w-5 h-3.5 overflow-hidden inline-block object-cover`}></span>
+    {lang.toUpperCase()}
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-180 transition-transform duration-200"><path d="m6 9 6 6 6-6"/></svg>
+  </div>
+
+  <div class="absolute right-0 mt-2 w-32 bg-white dark:bg-brand-dark border border-white/10 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+    <button class="w-full text-left px-4 py-2 text-sm text-brand-black dark:text-brand-white hover:bg-brand-gold/20 dark:hover:bg-brand-gold/10 hover:text-brand-gold flex items-center gap-2" data-lang="pt">
+      <span class="fi fi-br rounded-sm w-5 h-3.5 overflow-hidden inline-block object-cover"></span> PT
+    </button>
+    <button class="w-full text-left px-4 py-2 text-sm text-brand-black dark:text-brand-white hover:bg-brand-gold/20 dark:hover:bg-brand-gold/10 hover:text-brand-gold flex items-center gap-2" data-lang="en">
+      <span class="fi fi-us rounded-sm w-5 h-3.5 overflow-hidden inline-block object-cover"></span> EN
+    </button>
+    <button class="w-full text-left px-4 py-2 text-sm text-brand-black dark:text-brand-white hover:bg-brand-gold/20 dark:hover:bg-brand-gold/10 hover:text-brand-gold flex items-center gap-2" data-lang="es">
+      <span class="fi fi-es rounded-sm w-5 h-3.5 overflow-hidden inline-block object-cover"></span> ES
+    </button>
+  </div>
 </div>
+
+<script>
+  const buttons = document.querySelectorAll('[data-lang]');
+  buttons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const lang = (e.currentTarget as HTMLButtonElement).dataset.lang;
+      if (lang) {
+        document.cookie = `lang=${lang}; path=/; max-age=31536000`;
+        window.location.reload();
+      }
+    });
+  });
+</script>

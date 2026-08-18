@@ -2,35 +2,35 @@
 // src/components/home/Articles.astro
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 ---
-<section class="py-24 bg-[#0a0a0a] relative border-t border-white/5">
+<section class="py-24 bg-brand-offwhite dark:bg-[#0a0a0a] relative border-t border-black/5 dark:border-white/5">
   <div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#111] opacity-50 z-0"></div>
   <div class="container mx-auto px-6 lg:px-12 max-w-[1400px] relative z-10">
-    <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
+    <div class="flex justify-between items-center mb-8 border-b border-black/10 dark:border-white/10 pb-4">
       <div class="flex items-center gap-4">
-        <h2 class="text-base md:text-lg font-display font-bold text-brand-white uppercase tracking-widest">
+        <h2 class="text-base md:text-lg font-display font-bold text-brand-black dark:text-brand-white uppercase tracking-widest">
           {t('home.articles.title')}
         </h2>
         <div class="h-[2px] w-12 bg-brand-gold"></div>
       </div>
-      <a href="/artigos" class="border border-white/10 px-5 py-2 text-brand-gold text-[10px] font-extrabold uppercase tracking-[0.15em] hover:border-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors flex items-center gap-2 rounded-sm">
+      <a href="/artigos" class="border border-black/10 dark:border-white/10 px-5 py-2 text-brand-gold text-[10px] font-extrabold uppercase tracking-[0.15em] hover:border-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors flex items-center gap-2 rounded-sm">
         {t('home.articles.view_all')} <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <!-- Article Card 1 -->
-      <a href="#" class="group block border border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
+      <a href="#" class="group block border border-black/5 dark:border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
         <div class="relative h-48 overflow-hidden">
-          <div class="absolute top-4 left-4 z-10 bg-[#0a0a0a]/90 border border-brand-gold/50 text-[9px] font-bold uppercase tracking-[0.15em] px-2.5 py-1 text-brand-gold">FILOSOFIA</div>
+          <div class="absolute top-4 left-4 z-10 bg-brand-offwhite dark:bg-[#0a0a0a]/90 border border-brand-gold/50 text-[9px] font-bold uppercase tracking-[0.15em] px-2.5 py-1 text-brand-gold">FILOSOFIA</div>
           <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2199&auto=format&fit=crop" alt="Article 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent opacity-90"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-200 dark:from-[#0d0d0d] via-transparent to-transparent opacity-90"></div>
         </div>
         <div class="p-6">
-          <h3 class="font-bold text-[16px] text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-tight">O silêncio que modula a consciência</h3>
-          <p class="text-[12px] text-gray-400 mb-5 line-clamp-2 leading-normal">A importância do silêncio e da presença no processo de modulação.</p>
+          <h3 class="font-bold text-[16px] text-brand-black dark:text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-tight">O silêncio que modula a consciência</h3>
+          <p class="text-[12px] text-gray-600 dark:text-gray-400 mb-5 line-clamp-2 leading-normal">A importância do silêncio e da presença no processo de modulação.</p>
           <div class="flex items-center gap-4 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
             <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 12 MAI, 2024</span>
             <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 5 MIN LEITURA</span>
@@ -39,15 +39,15 @@ const t = useTranslations(lang);
       </a>
 
       <!-- Article Card 2 -->
-      <a href="#" class="group block border border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
+      <a href="#" class="group block border border-black/5 dark:border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
         <div class="relative h-48 overflow-hidden">
-          <div class="absolute top-4 left-4 z-10 bg-[#0a0a0a]/90 border border-brand-gold/50 text-[9px] font-bold uppercase tracking-[0.15em] px-2.5 py-1 text-brand-gold">CIÊNCIA</div>
+          <div class="absolute top-4 left-4 z-10 bg-brand-offwhite dark:bg-[#0a0a0a]/90 border border-brand-gold/50 text-[9px] font-bold uppercase tracking-[0.15em] px-2.5 py-1 text-brand-gold">CIÊNCIA</div>
           <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop" alt="Article 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent opacity-90"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-200 dark:from-[#0d0d0d] via-transparent to-transparent opacity-90"></div>
         </div>
         <div class="p-6">
-          <h3 class="font-bold text-[16px] text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-tight">Frequências que constroem a realidade</h3>
-          <p class="text-[12px] text-gray-400 mb-5 line-clamp-2 leading-normal">A ciência moderna confirma o que os antigos já sabiam sobre a vibração.</p>
+          <h3 class="font-bold text-[16px] text-brand-black dark:text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-tight">Frequências que constroem a realidade</h3>
+          <p class="text-[12px] text-gray-600 dark:text-gray-400 mb-5 line-clamp-2 leading-normal">A ciência moderna confirma o que os antigos já sabiam sobre a vibração.</p>
           <div class="flex items-center gap-4 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
             <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 10 MAI, 2024</span>
             <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 7 MIN LEITURA</span>
@@ -56,15 +56,15 @@ const t = useTranslations(lang);
       </a>
 
       <!-- Article Card 3 -->
-      <a href="#" class="group block border border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
+      <a href="#" class="group block border border-black/5 dark:border-white/5 bg-[#0d0d0d] hover:border-brand-gold/30 transition-colors overflow-hidden rounded-sm">
         <div class="relative h-48 overflow-hidden">
-          <div class="absolute top-4 left-4 z-10 bg-[#0a0a0a]/90 border border-brand-gold/50 text-[9px] font-bold uppercase tracking-[0.15em] px-2.5 py-1 text-brand-gold">ARTE</div>
+          <div class="absolute top-4 left-4 z-10 bg-brand-offwhite dark:bg-[#0a0a0a]/90 border border-brand-gold/50 text-[9px] font-bold uppercase tracking-[0.15em] px-2.5 py-1 text-brand-gold">ARTE</div>
           <img src="https://images.unsplash.com/photo-1561214115-f2f134cc4912?q=80&w=2018&auto=format&fit=crop" alt="Article 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent opacity-90"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-200 dark:from-[#0d0d0d] via-transparent to-transparent opacity-90"></div>
         </div>
         <div class="p-6">
-          <h3 class="font-bold text-[16px] text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-tight">A arte como expressão do invisível</h3>
-          <p class="text-[12px] text-gray-400 mb-5 line-clamp-2 leading-normal">Expressões que inspiram e conectam formam a base da nossa identidade.</p>
+          <h3 class="font-bold text-[16px] text-brand-black dark:text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-tight">A arte como expressão do invisível</h3>
+          <p class="text-[12px] text-gray-600 dark:text-gray-400 mb-5 line-clamp-2 leading-normal">Expressões que inspiram e conectam formam a base da nossa identidade.</p>
           <div class="flex items-center gap-4 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
             <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> 05 MAI, 2024</span>
             <span class="flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 4 MIN LEITURA</span>

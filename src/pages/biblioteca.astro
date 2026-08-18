@@ -6,7 +6,7 @@ import { db } from '@/data/db/db';
 import { documents } from '@/data/db/schema';
 import { FileText, Download } from '@lucide/astro';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 
 // Fetch data

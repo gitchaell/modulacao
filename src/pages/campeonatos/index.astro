@@ -8,7 +8,7 @@ import { db } from '@/data/db/db';
 import { championships, seasons } from '@/data/db/schema';
 import { eq } from 'drizzle-orm';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 
 // Fetch data

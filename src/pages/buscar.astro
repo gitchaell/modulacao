@@ -4,7 +4,7 @@ import Input from '@/components/core/Input.astro';
 import Button from '@/components/core/Button.astro';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 
 // Obtener parámetro de búsqueda inicial si existe
