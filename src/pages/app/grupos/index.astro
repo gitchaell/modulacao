@@ -8,7 +8,7 @@ import { desc } from 'drizzle-orm';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import { tenantConfig } from '@/config/tenant';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 
 const allGroups = await db
@@ -22,11 +22,11 @@ const allGroups = await db
 
     <div>
       <h1 class="font-display text-3xl font-bold uppercase tracking-widest text-brand-gold">Grupos por Ciudad y País</h1>
-      <p class="text-gray-500 dark:text-gray-400 mt-2 text-base font-medium">Conéctate localmente. Únete a los grupos de tu área en {tenantConfig.name}.</p>
+      <p class="text-gray-500 dark:text-gray-400 mt-2 text-base font-semibold">Conéctate localmente. Únete a los grupos de tu área en {tenantConfig.name}.</p>
     </div>
 
     {allGroups.length === 0 ? (
-      <div class="text-center py-20 text-gray-500 dark:text-gray-400 font-medium">
+      <div class="text-center py-20 text-gray-500 dark:text-gray-400 font-semibold">
         No hay grupos creados actualmente.
       </div>
     ) : (
@@ -52,7 +52,7 @@ const allGroups = await db
                 <h2 class="font-display text-xl font-bold text-brand-black dark:text-white mb-2 group-hover:text-brand-gold transition-colors line-clamp-1">
                   {group.name}
                 </h2>
-                <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2 mt-auto font-medium">
+                <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2 mt-auto font-semibold">
                   {group.description || 'Únete a este grupo para conectar con miembros locales.'}
                 </p>
               </div>

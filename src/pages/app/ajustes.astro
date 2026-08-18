@@ -14,7 +14,7 @@ import { tenantConfig } from '@/config/tenant';
 const response = new Response();
 const session = await getSession(Astro.request, response);
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 
 if (!session.userId) {
@@ -32,7 +32,7 @@ const [profile] = await db
 
     <div>
       <h1 class="font-display text-3xl font-bold uppercase tracking-widest text-brand-gold">{t('app.settings')}</h1>
-      <p class="text-gray-500 dark:text-gray-400 mt-2 text-base font-medium">Configura cómo te ven los demás miembros en {tenantConfig.name}.</p>
+      <p class="text-gray-500 dark:text-gray-400 mt-2 text-base font-semibold">Configura cómo te ven los demás miembros en {tenantConfig.name}.</p>
     </div>
 
     <Card class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md premium-shadow border border-gray-200 dark:border-white/10">
@@ -43,7 +43,7 @@ const [profile] = await db
           <Avatar src={profile?.avatarUrl} alt={profile?.fullName || 'Avatar'} size="xl" fallback={(profile?.fullName || 'U').charAt(0).toUpperCase()} />
           <div>
             <label class="block text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite mb-2">Foto de Perfil</label>
-            <input type="file" name="avatar" accept="image/*" class="text-sm font-medium text-gray-500 dark:text-gray-400 file:mr-4 file:py-2.5 file:px-6 file:rounded-sm file:border-0 file:text-xs file:font-bold file:tracking-widest file:uppercase file:bg-brand-gold/10 file:text-brand-gold hover:file:bg-brand-gold hover:file:text-brand-black focus-visible file:transition-colors cursor-pointer" />
+            <input type="file" name="avatar" accept="image/*" class="text-sm font-semibold text-gray-500 dark:text-gray-400 file:mr-4 file:py-2.5 file:px-6 file:rounded-sm file:border-0 file:text-xs file:font-bold file:tracking-widest file:uppercase file:bg-brand-gold/10 file:text-brand-gold hover:file:bg-brand-gold hover:file:text-brand-black focus-visible file:transition-colors cursor-pointer" />
           </div>
         </div>
 

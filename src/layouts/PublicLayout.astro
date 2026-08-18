@@ -9,28 +9,11 @@ interface Props {
 const { title } = Astro.props;
 ---
 <BaseLayout title={title}>
-  <!-- Enforce dark mode for this layout as requested by the design -->
-  <style is:global>
-    html {
-      color-scheme: dark;
-    }
-
-    /* Ensure body stays dark and theme matches design */
-    body {
-      background-color: #0a0a0a;
-    }
-  </style>
-
   <Header />
 
-  <main class="min-h-screen bg-[#0a0a0a]">
+  <main class="min-h-screen bg-brand-offwhite dark:bg-[#0a0a0a] transition-colors duration-300">
     <slot />
   </main>
 
   <Footer />
-
-  <script>
-    // Always dark
-    document.documentElement.classList.add('dark');
-  </script>
 </BaseLayout>

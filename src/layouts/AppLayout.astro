@@ -10,7 +10,7 @@ interface Props {
 }
 const { title } = Astro.props;
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 ---
 <BaseLayout title={`${title} | ${tenantConfig.name}`}>

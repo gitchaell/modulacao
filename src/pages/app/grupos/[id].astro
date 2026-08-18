@@ -51,7 +51,7 @@ const membersList = await db
 
     <!-- Pestañas (Visual) -->
     <div class="flex border-b border-brand-dark-card/50">
-      <button class="px-6 py-3 text-brand-gold border-b-2 border-brand-gold font-medium">Miembros ({membersList.length})</button>
+      <button class="px-6 py-3 text-brand-gold border-b-2 border-brand-gold font-semibold">Miembros ({membersList.length})</button>
     </div>
 
     <!-- Lista de Miembros -->
@@ -75,7 +75,7 @@ const membersList = await db
               <div class="font-semibold text-white group-hover:text-brand-gold transition-colors">{profile.fullName}</div>
               <div class="text-xs text-brand-gold flex gap-2">
                 <span>@{profile.slug}</span>
-                {role === 'ADMIN' && <span class="bg-brand-gold/20 text-brand-gold px-1.5 py-0.5 rounded text-[10px]">ADMIN</span>}
+                {role === 'ADMIN' && <span class="bg-brand-gold/20 text-brand-gold px-1.5 py-0.5 rounded text-xs">ADMIN</span>}
               </div>
             </div>
             </Card>
