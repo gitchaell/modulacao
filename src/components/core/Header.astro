@@ -15,30 +15,30 @@ const t = useTranslations(lang);
 
     <!-- Desktop Navigation -->
     <nav class="hidden lg:flex gap-5 xl:gap-7 items-center">
-      <a href="/" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-gold hover:text-brand-black dark:hover:text-brand-white transition-colors focus-visible">{t('nav.home')}</a>
-      <a href="/nosotros" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
-      <a href="/publicacoes" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.publications')}</a>
-      <a href="/artigos" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.articles')}</a>
-      <a href="/futebol" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.football')}</a>
-      <a href="/shop" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.shop')}</a>
-      <a href="/contato" class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.contact')}</a>
+      <a href="/" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-gold hover:text-brand-black dark:hover:text-brand-white transition-colors focus-visible">{t('nav.home')}</a>
+      <a href="/nosotros" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
+      <a href="/publicacoes" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.publications')}</a>
+      <a href="/artigos" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.articles')}</a>
+      <a href="/futebol" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.football')}</a>
+      <a href="/shop" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.shop')}</a>
+      <a href="/contato" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.contact')}</a>
     </nav>
 
     <!-- Right Actions -->
     <div class="hidden lg:flex items-center gap-4">
-      <button class="p-1.5 text-brand-gold hover:text-brand-black dark:hover:text-brand-white transition-colors border border-black/10 dark:border-white/10 rounded-sm" aria-label="Search">
+      <button class="h-10 px-3 flex items-center justify-center text-brand-gold hover:text-brand-black dark:hover:text-brand-white transition-colors border border-black/10 dark:border-white/10 rounded-sm" aria-label="Search">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       </button>
 
-      <div class="border border-black/10 dark:border-white/10 rounded-sm overflow-hidden flex items-center">
-        <ThemeToggle />
+      <div class="h-10 flex items-center justify-center border border-black/10 dark:border-white/10 rounded-sm overflow-hidden">
+        <ThemeToggle class="h-full px-3 flex items-center justify-center" />
       </div>
 
-      <div class="border border-black/10 dark:border-white/10 rounded-sm py-1.5">
+      <div class="h-10 flex items-center justify-center border border-black/10 dark:border-white/10 rounded-sm">
         <LanguageSelector />
       </div>
 
-      <a href="/login" class="ml-2 px-4 py-2 border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors text-[10px] font-extrabold uppercase tracking-[0.15em] flex items-center gap-2 rounded-sm">
+      <a href="/login" class="ml-2 h-10 px-4 border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors text-xs font-extrabold uppercase tracking-[0.15em] flex items-center gap-2 rounded-sm">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         SEJA UM MEMBRO
       </a>
@@ -66,24 +66,26 @@ const t = useTranslations(lang);
 </div>
 
 <script>
-  const btn = document.getElementById('mobile-menu-btn');
-  const menu = document.getElementById('mobile-menu');
-
-  if (btn && menu) {
-    btn.addEventListener('click', () => {
-      const isHidden = menu.classList.contains('hidden');
-      if (isHidden) {
-        menu.classList.remove('hidden');
-        setTimeout(() => {
-          menu.classList.remove('opacity-0', '-translate-y-4');
-        }, 10);
-      } else {
-        menu.classList.add('opacity-0', '-translate-y-4');
-        setTimeout(() => {
-          menu.classList.add('hidden');
-        }, 300);
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const btn = target.closest('#mobile-menu-btn');
+    if (btn) {
+      const menu = document.getElementById('mobile-menu');
+      if (menu) {
+        const isHidden = menu.classList.contains('hidden');
+        if (isHidden) {
+          menu.classList.remove('hidden');
+          setTimeout(() => {
+            menu.classList.remove('opacity-0', '-translate-y-4');
+          }, 10);
+        } else {
+          menu.classList.add('opacity-0', '-translate-y-4');
+          setTimeout(() => {
+            menu.classList.add('hidden');
+          }, 300);
+        }
+        btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
       }
-      btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
-    });
-  }
+    }
+  });
 </script>

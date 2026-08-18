@@ -10,8 +10,8 @@ const flags = {
 };
 const currentFlag = flags[lang as keyof typeof flags] || 'fi-br';
 ---
-<div class="relative group">
-  <div class="flex items-center gap-2.5 px-2 text-brand-black dark:text-brand-white text-sm font-medium cursor-pointer group-hover:text-brand-gold transition-colors duration-200">
+<div class="relative group h-full">
+  <div class="h-full flex items-center justify-center gap-2.5 px-3 text-brand-black dark:text-brand-white text-sm font-medium cursor-pointer group-hover:text-brand-gold transition-colors duration-200">
     <span class={`fi ${currentFlag} rounded-sm w-5 h-3.5 overflow-hidden inline-block object-cover`}></span>
     {lang.toUpperCase()}
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-180 transition-transform duration-200"><path d="m6 9 6 6 6-6"/></svg>
@@ -31,14 +31,43 @@ const currentFlag = flags[lang as keyof typeof flags] || 'fi-br';
 </div>
 
 <script>
-  const buttons = document.querySelectorAll('[data-lang]');
-  buttons.forEach(button => {
-    button.addEventListener('click', (e) => {
-      const lang = (e.currentTarget as HTMLButtonElement).dataset.lang;
+  document.addEventListener('click', async (e) => {
+    const target = e.target as HTMLElement;
+    const btn = target.closest('[data-lang]') as HTMLButtonElement;
+
+    if (btn) {
+      const lang = btn.dataset.lang;
       if (lang) {
         document.cookie = `lang=${lang}; path=/; max-age=31536000`;
-        window.location.reload();
+
+        // Fetch new content without reloading
+        try {
+          const res = await fetch(window.location.href);
+          const html = await res.text();
+
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+
+          // Swap header and main and footer, preserving body class/attributes
+          const newHeader = doc.querySelector('header');
+          const oldHeader = document.querySelector('header');
+          if (newHeader && oldHeader) oldHeader.replaceWith(newHeader);
+
+          const newMain = doc.querySelector('main');
+          const oldMain = document.querySelector('main');
+          if (newMain && oldMain) oldMain.replaceWith(newMain);
+
+          const newFooter = doc.querySelector('footer');
+          const oldFooter = document.querySelector('footer');
+          if (newFooter && oldFooter) oldFooter.replaceWith(newFooter);
+
+          // Update title
+          document.title = doc.title;
+        } catch(err) {
+           console.error("Failed to load language without reload, falling back.", err);
+           window.location.reload();
+        }
       }
-    });
+    }
   });
 </script>

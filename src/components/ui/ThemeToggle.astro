@@ -5,18 +5,20 @@ interface Props {
 
 const { class: className = '' } = Astro.props;
 ---
-<button id="theme-toggle" class={`p-2 text-brand-black dark:text-brand-white hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible ${className}`} aria-label="Theme Toggle">
-  <svg id="theme-icon-dark" class="hidden dark:block" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-  <svg id="theme-icon-light" class="block dark:hidden" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+<button class={`theme-toggle p-2 text-brand-black dark:text-brand-white hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible ${className}`} aria-label="Theme Toggle">
+  <svg class="hidden dark:block pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+  <svg class="block dark:hidden pointer-events-none" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
 </button>
 
 <script>
-  const themeToggleBtn = document.getElementById('theme-toggle');
+  // Add a global click listener to handle the theme toggle
+  // This allows the button to be swapped out in the DOM and still function correctly.
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const themeBtn = target.closest('.theme-toggle');
 
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
+    if (themeBtn) {
       const isDark = document.documentElement.classList.contains('dark');
-
       if (isDark) {
         document.documentElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
@@ -24,6 +26,6 @@ const { class: className = '' } = Astro.props;
         document.documentElement.classList.add('dark');
         localStorage.setItem('theme', 'dark');
       }
-    });
-  }
+    }
+  });
 </script>

@@ -19,14 +19,14 @@ const t = useTranslations(lang);
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <!-- Upcoming Events List -->
       <div class="border border-black/5 dark:border-white/5 bg-[#0d0d0d] p-8 rounded-sm flex flex-col">
-        <h3 class="text-[12px] font-bold text-brand-black dark:text-brand-white uppercase tracking-widest mb-8">{t('home.events.events_subtitle')}</h3>
+        <h3 class="text-sm font-bold text-brand-black dark:text-brand-white uppercase tracking-widest mb-8">{t('home.events.events_subtitle')}</h3>
 
         <div class="space-y-6 flex-1">
           <!-- Event Item 1 -->
           <div class="flex gap-6 items-start pb-6 border-b border-black/5 dark:border-white/5">
             <div class="flex flex-col items-center justify-center min-w-[50px]">
               <span class="text-2xl font-bold text-brand-gold leading-none">25</span>
-              <span class="text-[10px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-1.5">MAI</span>
+              <span class="text-xs font-bold text-brand-gold uppercase tracking-[0.2em] mt-1.5">MAI</span>
             </div>
             <div>
               <h4 class="font-bold text-brand-black dark:text-brand-white text-[15px] mb-1.5 hover:text-brand-gold transition-colors cursor-pointer">Encontro de Práticas</h4>
@@ -42,7 +42,7 @@ const t = useTranslations(lang);
           <div class="flex gap-6 items-start pb-6 border-b border-black/5 dark:border-white/5">
             <div class="flex flex-col items-center justify-center min-w-[50px]">
               <span class="text-2xl font-bold text-brand-gold leading-none">01</span>
-              <span class="text-[10px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-1.5">JUN</span>
+              <span class="text-xs font-bold text-brand-gold uppercase tracking-[0.2em] mt-1.5">JUN</span>
             </div>
             <div>
               <h4 class="font-bold text-brand-black dark:text-brand-white text-[15px] mb-1.5 hover:text-brand-gold transition-colors cursor-pointer">Workshop de Filosofia</h4>
@@ -58,7 +58,7 @@ const t = useTranslations(lang);
           <div class="flex gap-6 items-start pb-2">
             <div class="flex flex-col items-center justify-center min-w-[50px]">
               <span class="text-2xl font-bold text-brand-gold leading-none">08</span>
-              <span class="text-[10px] font-bold text-brand-gold uppercase tracking-[0.2em] mt-1.5">JUN</span>
+              <span class="text-xs font-bold text-brand-gold uppercase tracking-[0.2em] mt-1.5">JUN</span>
             </div>
             <div>
               <h4 class="font-bold text-brand-black dark:text-brand-white text-[15px] mb-1.5 hover:text-brand-gold transition-colors cursor-pointer">Vivência: Consciência e Ação</h4>
@@ -71,7 +71,7 @@ const t = useTranslations(lang);
           </div>
         </div>
 
-        <a href="/eventos" class="block w-full text-center mt-8 py-3.5 border border-black/10 dark:border-white/10 text-brand-gold text-[10px] font-extrabold tracking-[0.15em] uppercase hover:bg-white/5 transition-colors rounded-sm">
+        <a href="/eventos" class="block w-full text-center mt-8 py-3.5 border border-black/10 dark:border-white/10 text-brand-gold text-xs font-extrabold tracking-[0.15em] uppercase hover:bg-white/5 transition-colors rounded-sm">
           {t('home.events.view_all')}
         </a>
       </div>
@@ -83,7 +83,7 @@ const t = useTranslations(lang);
         </div>
 
         <div class="flex justify-between items-center mb-10 relative z-10">
-          <h3 class="text-[12px] font-bold text-brand-black dark:text-brand-white uppercase tracking-widest">{t('home.events.matches_subtitle')}</h3>
+          <h3 class="text-sm font-bold text-brand-black dark:text-brand-white uppercase tracking-widest">{t('home.events.matches_subtitle')}</h3>
           <span class="text-[9px] font-extrabold text-brand-black dark:text-brand-white bg-white/10 px-3 py-1.5 uppercase tracking-[0.2em] rounded-sm">FASE DE GRUPOS</span>
         </div>
 
@@ -113,7 +113,7 @@ const t = useTranslations(lang);
           </div>
         </div>
 
-        <a href="#" class="block w-full text-center mt-auto py-3.5 border border-black/10 dark:border-white/10 text-brand-gold text-[10px] font-extrabold tracking-[0.15em] uppercase hover:bg-white/5 transition-colors relative z-10 rounded-sm">
+        <a href="#" class="block w-full text-center mt-auto py-3.5 border border-black/10 dark:border-white/10 text-brand-gold text-xs font-extrabold tracking-[0.15em] uppercase hover:bg-white/5 transition-colors relative z-10 rounded-sm">
           {t('home.events.match_details')}
         </a>
       </div>
