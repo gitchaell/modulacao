@@ -11,7 +11,7 @@ const flags = {
 const currentFlag = flags[lang as keyof typeof flags] || 'fi-br';
 ---
 <div class="relative group h-full">
-  <div class="h-full flex items-center justify-center gap-2.5 px-3 text-brand-black dark:text-brand-white text-sm font-medium cursor-pointer group-hover:text-brand-gold transition-colors duration-200">
+  <div class="h-full flex items-center justify-center gap-2.5 px-3 text-brand-black dark:text-brand-white text-sm font-semibold cursor-pointer group-hover:text-brand-gold transition-colors duration-200">
     <span class={`fi ${currentFlag} rounded-sm w-5 h-3.5 overflow-hidden inline-block object-cover`}></span>
     {lang.toUpperCase()}
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-180 transition-transform duration-200"><path d="m6 9 6 6 6-6"/></svg>

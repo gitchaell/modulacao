@@ -73,7 +73,7 @@ const formatDate = (date: Date) => {
               </div>
               <div>
                 <p class="text-sm font-bold uppercase tracking-widest text-gray-400 mb-1">Fecha y Hora</p>
-                <p class="font-medium text-brand-black dark:text-white">{formatDate(event.date as unknown as Date)}</p>
+                <p class="font-semibold text-brand-black dark:text-white">{formatDate(event.date as unknown as Date)}</p>
               </div>
             </div>
 
@@ -83,12 +83,12 @@ const formatDate = (date: Date) => {
               </div>
               <div>
                 <p class="text-sm font-bold uppercase tracking-widest text-gray-400 mb-1">Ubicación</p>
-                <p class="font-medium text-brand-black dark:text-white">{event.location}</p>
+                <p class="font-semibold text-brand-black dark:text-white">{event.location}</p>
               </div>
             </div>
           </div>
 
-          <div class="prose dark:prose-invert prose-brand max-w-none text-gray-600 dark:text-gray-300 font-medium leading-relaxed whitespace-pre-wrap">
+          <div class="prose dark:prose-invert prose-brand max-w-none text-gray-600 dark:text-gray-300 font-semibold leading-relaxed whitespace-pre-wrap">
             {event.description}
           </div>
 

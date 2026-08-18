@@ -36,14 +36,14 @@ const formatDate = (date: Date) => {
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_left,_var(--tw-gradient-stops))] from-brand-gold/10 via-brand-black to-brand-black opacity-80 z-0"></div>
     <div class="relative z-10 container mx-auto px-6 max-w-6xl animate-smooth-fade">
       <h1 class="font-display text-4xl md:text-5xl font-bold uppercase tracking-widest text-brand-gold mb-6">Próximos Eventos</h1>
-      <p class="text-gray-400 text-lg font-medium text-balance">Descubre y participa en los eventos de la comunidad {tenantConfig.name}.</p>
+      <p class="text-gray-400 text-lg font-semibold text-balance">Descubre y participa en los eventos de la comunidad {tenantConfig.name}.</p>
     </div>
   </div>
 
   <section class="py-20 bg-brand-offwhite dark:bg-brand-dark min-h-[50vh]">
     <div class="container mx-auto px-6 max-w-6xl space-y-8 animate-smooth-fade" style="animation-delay: 0.1s;">
     {upcomingEvents.length === 0 ? (
-      <div class="text-center py-20 text-gray-500 dark:text-gray-400 font-medium">
+      <div class="text-center py-20 text-gray-500 dark:text-gray-400 font-semibold">
         No hay eventos programados en este momento.
       </div>
     ) : (
@@ -52,7 +52,7 @@ const formatDate = (date: Date) => {
           <a href={`/eventos/${event.id}`} class="block group focus-visible">
             <Card noPadding class="h-full border border-gray-200 dark:border-white/5 hover:border-brand-gold/50 transition-all overflow-hidden flex flex-col relative bg-brand-white dark:bg-brand-dark-card premium-shadow">
 
-              <div class="absolute top-4 right-4 z-10 bg-brand-gold text-brand-black text-[10px] font-bold px-3 py-1.5 rounded-sm uppercase tracking-wider shadow-lg">
+              <div class="absolute top-4 right-4 z-10 bg-brand-gold text-brand-black text-xs font-bold px-3 py-1.5 rounded-sm uppercase tracking-wider shadow-lg">
                  {new Date(event.date).toLocaleDateString(lang === 'es' ? 'es-ES' : 'en-US', { day: 'numeric', month: 'short' })}
               </div>
 
@@ -66,7 +66,7 @@ const formatDate = (date: Date) => {
                 )}
               </div>
               <div class="p-6 flex flex-col flex-1">
-                <div class="text-[11px] text-brand-gold mb-3 font-bold tracking-widest uppercase flex items-center gap-1.5">
+                <div class="text-sm text-brand-gold mb-3 font-bold tracking-widest uppercase flex items-center gap-1.5">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                   {formatDate(event.date as unknown as Date)}
                 </div>
@@ -75,7 +75,7 @@ const formatDate = (date: Date) => {
                 </h2>
 
                 <div class="mt-auto space-y-3 pt-4 border-t border-gray-100 dark:border-white/5">
-                  <p class="text-gray-600 dark:text-gray-400 text-sm font-medium flex items-center gap-2">
+                  <p class="text-gray-600 dark:text-gray-400 text-sm font-semibold flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     <span class="truncate">{event.location}</span>
                   </p>
