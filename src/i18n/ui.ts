@@ -8,6 +8,10 @@ export const defaultLang = 'pt';
 
 export const ui = {
   pt: {
+    'publications.hero.title': 'Publicações',
+    'publications.hero.subtitle': 'Explore os artigos e pesquisas mais recentes.',
+    'publications.empty': 'Ainda não há publicações.',
+    'publications.read_more': 'Leia mais',
 
     'about.nav.group': 'O Grupo',
     'about.nav.history': 'História',
@@ -134,6 +138,10 @@ export const ui = {
     'common.status': 'Status',
   },
   es: {
+    'publications.hero.title': 'Publicaciones',
+    'publications.hero.subtitle': 'Explora los artículos y publicaciones más recientes.',
+    'publications.empty': 'Aún no hay publicaciones.',
+    'publications.read_more': 'Leer más',
 
     'about.nav.group': 'El Grupo',
     'about.nav.history': 'Historia',
@@ -258,6 +266,10 @@ export const ui = {
     'auth.invite.title': 'Configurar Cuenta',
   },
   en: {
+    'publications.hero.title': 'Publications',
+    'publications.hero.subtitle': 'Explore the latest articles and research.',
+    'publications.empty': 'No publications yet.',
+    'publications.read_more': 'Read more',
 
     'about.nav.group': 'The Group',
     'about.nav.history': 'History',

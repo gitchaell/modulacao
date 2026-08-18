@@ -5,10 +5,9 @@ import { db } from '@/data/db/db';
 import { articles } from '@/data/db/schema';
 import { eq, desc } from 'drizzle-orm';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
-import { tenantConfig } from '@/config/tenant';
 import { ArrowRight } from '@lucide/astro';
 
-const lang = getLangFromUrl(Astro.cookies);
+const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 // Using 'NEWS' as the type for publications based on seeded data
@@ -24,12 +23,12 @@ const formatDate = (date: Date | null) => {
 };
 ---
 
-<PublicLayout title={t('nav.publications')}>
+<PublicLayout title={t('publications.hero.title')}>
   <div class="py-24 bg-brand-black border-b border-gray-200 dark:border-white/5 relative overflow-hidden">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_left,_var(--tw-gradient-stops))] from-brand-gold/10 via-brand-black to-brand-black opacity-80 z-0"></div>
     <div class="relative z-10 container mx-auto px-6 max-w-6xl animate-smooth-fade text-center md:text-left">
-      <h1 class="font-display text-4xl md:text-5xl font-bold uppercase tracking-widest text-brand-gold mb-6">{t('nav.publications')}</h1>
-      <p class="text-gray-400 text-lg font-semibold text-balance">Explore os artigos e pesquisas mais recentes.</p>
+      <h1 class="font-display text-4xl md:text-5xl font-bold uppercase tracking-widest text-brand-gold mb-6">{t('publications.hero.title')}</h1>
+      <p class="text-gray-400 text-lg font-semibold text-balance">{t('publications.hero.subtitle')}</p>
     </div>
   </div>
 
@@ -37,7 +36,7 @@ const formatDate = (date: Date | null) => {
     <div class="container mx-auto px-6 max-w-6xl">
       {newsArticles.length === 0 ? (
         <div class="text-center py-24 text-gray-500 font-semibold">
-          <p>Aún no hay publicaciones.</p>
+          <p>{t('publications.empty')}</p>
         </div>
       ) : (
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -65,7 +64,7 @@ const formatDate = (date: Date | null) => {
                   </p>
 
                   <div class="mt-auto pt-4 border-t border-gray-100 dark:border-white/5 flex items-center text-brand-gold text-sm font-bold uppercase tracking-wider group-hover:translate-x-2 transition-transform duration-300">
-                    Leia mais
+                    {t('publications.read_more')}
                     <ArrowRight class="w-4 h-4 ml-2" />
                   </div>
                 </div>
