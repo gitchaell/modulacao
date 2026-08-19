@@ -199,7 +199,7 @@ export const matchEvents = sqliteTable('match_events', {
 export const articles = sqliteTable('articles', {
   id: text('id').primaryKey(),
   authorId: text('author_id').notNull().references(() => users.id),
-  type: text('type', { enum: ['NEWS', 'COMMUNIQUE'] }).notNull(),
+  type: text('type', { enum: ['NEWS', 'COMMUNIQUE', 'ARTIGO'] }).notNull(),
   title: text('title').notNull(),
   slug: text('slug').notNull().unique(),
   excerpt: text('excerpt'),

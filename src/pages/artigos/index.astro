@@ -1,0 +1,357 @@
+---
+import PublicLayout from '@/layouts/PublicLayout.astro';
+import { db } from '@/data/db/db';
+import { articles, profiles } from '@/data/db/schema';
+import { eq, desc } from 'drizzle-orm';
+import { getLangFromUrl } from '@/utils/i18n';
+import { Search, ChevronDown, LayoutGrid, List } from '@lucide/astro';
+
+const lang = getLangFromUrl(Astro.cookies);
+
+// Fetch articles with author profiles
+const listArticlesRaw = await db
+  .select({
+    article: articles,
+    author: profiles
+  })
+  .from(articles)
+  .leftJoin(profiles, eq(articles.authorId, profiles.userId))
+  .where(eq(articles.type, 'ARTIGO'))
+  .orderBy(desc(articles.publishedAt));
+
+// Format for easy template use
+const listArticles = listArticlesRaw.map(row => ({
+  ...row.article,
+  author: row.author
+}));
+
+const formatDate = (date: Date | null) => {
+  if (!date) return '';
+  const locale = lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US';
+  return new Intl.DateTimeFormat(locale, { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(date)).toUpperCase();
+};
+
+const featuredArticle = listArticles[0];
+const gridArticles = listArticles.slice(1);
+
+const navItems = [
+  { label: 'TODOS OS TEMAS', active: true, icon: 'grid-2x2' },
+  { label: 'FILOSOFIA', active: false, icon: 'feather' },
+  { label: 'CIÊNCIA', active: false, icon: 'microscope' },
+  { label: 'ARTES', active: false, icon: 'palette' },
+  { label: 'CULTURA', active: false, icon: 'book-open' },
+  { label: 'CONSCIÊNCIA', active: false, icon: 'brain' },
+  { label: 'PROPÓSITO', active: false, icon: 'compass' }
+];
+---
+
+<PublicLayout title="Artigos - Grupo Modulação">
+  <div class="bg-[#0a0a0a] min-h-screen text-gray-300 font-sans">
+
+    {/* HERO SECTION */}
+    <div class="relative pt-24 pb-16 overflow-hidden border-b border-white/10">
+      {/* Wave background logic using pseudo-elements in global css or absolute positioning here */}
+      <div class="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none" style="background-image: url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1920&h=600&auto=format&fit=crop'); background-size: cover; background-position: center; filter: sepia(1) hue-rotate(10deg) saturate(3);"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-0"></div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex items-center text-xs font-semibold text-gray-500 mb-6 uppercase tracking-wider">
+          <a href="/" class="hover:text-brand-gold transition-colors">Início</a>
+          <span class="mx-2">></span>
+          <span class="text-white">Artigos</span>
+        </div>
+
+        <div class="max-w-2xl">
+          <h1 class="text-5xl font-bold text-white mb-2 uppercase tracking-tight">ARTIGOS</h1>
+          <h2 class="text-2xl font-semibold text-brand-gold mb-6 uppercase tracking-wide">CONHECIMENTO QUE TRANSFORMA</h2>
+          <p class="text-gray-400 text-lg leading-relaxed max-w-md">
+            Exploramos ideias, experiências e descobertas que inspiram evolução, consciência e propósito.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {/* NAVIGATION & FILTERS SECTION */}
+    <div class="container mx-auto px-6 py-8">
+      {/* Top Nav Categories */}
+      <div class="flex flex-wrap items-center gap-4 mb-8 border-b border-white/10 pb-6">
+        {navItems.map(item => (
+          <a href="#" class={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wider transition-colors ${item.active ? 'bg-brand-gold/10 text-brand-gold border border-brand-gold/30' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>
+            {/* Pseudo-icon logic for now, using standard generic icons or lucide */}
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      {/* Filter Bar */}
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-10">
+        <div class="flex items-center gap-4 w-full md:w-auto flex-1">
+          <div class="relative w-full max-w-sm">
+            <input type="text" placeholder="Buscar artigos..." class="w-full bg-black/50 border border-white/10 rounded-md py-2 pl-4 pr-10 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-gold/50 transition-colors" />
+            <Search class="absolute right-3 top-2.5 w-4 h-4 text-brand-gold" />
+          </div>
+
+          <div class="relative min-w-[160px] hidden md:block">
+            <select class="w-full appearance-none bg-black/50 border border-white/10 rounded-md py-2 pl-4 pr-10 text-sm text-white focus:outline-none focus:border-brand-gold/50 cursor-pointer">
+              <option>Todos os autores</option>
+            </select>
+            <ChevronDown class="absolute right-3 top-2.5 w-4 h-4 text-brand-gold pointer-events-none" />
+          </div>
+
+          <div class="relative min-w-[140px] hidden md:block">
+            <select class="w-full appearance-none bg-black/50 border border-white/10 rounded-md py-2 pl-4 pr-10 text-sm text-white focus:outline-none focus:border-brand-gold/50 cursor-pointer">
+              <option>Mais recentes</option>
+            </select>
+            <ChevronDown class="absolute right-3 top-2.5 w-4 h-4 text-brand-gold pointer-events-none" />
+          </div>
+
+          <div class="relative min-w-[140px] hidden lg:block">
+            <select class="w-full appearance-none bg-black/50 border border-white/10 rounded-md py-2 pl-4 pr-10 text-sm text-white focus:outline-none focus:border-brand-gold/50 cursor-pointer">
+              <option>Dificuldade</option>
+            </select>
+            <ChevronDown class="absolute right-3 top-2.5 w-4 h-4 text-brand-gold pointer-events-none" />
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 self-end md:self-auto">
+          <button class="p-2 bg-brand-gold/10 text-brand-gold rounded-md border border-brand-gold/30"><LayoutGrid class="w-4 h-4" /></button>
+          <button class="p-2 text-gray-500 hover:text-white rounded-md border border-transparent"><List class="w-4 h-4" /></button>
+        </div>
+      </div>
+
+      {/* MAIN CONTENT AREA: 70/30 SPLIT */}
+      <div class="flex flex-col lg:flex-row gap-10 pb-20">
+
+        {/* Left Column (70%) - Articles Grid */}
+        <div class="lg:w-2/3 xl:w-3/4 flex flex-col gap-6">
+
+          {/* Featured Article (Full Width) */}
+          {featuredArticle && (
+            <a href={`/artigos/${featuredArticle.slug}`} class="block group relative overflow-hidden rounded-xl border border-white/10 hover:border-brand-gold/50 transition-colors">
+              <div class="h-96 relative">
+                {featuredArticle.coverImageUrl ? (
+                  <img src={featuredArticle.coverImageUrl} alt={featuredArticle.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                ) : (
+                  <div class="w-full h-full bg-brand-black/50"></div>
+                )}
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent"></div>
+              </div>
+              <div class="absolute bottom-0 left-0 w-full p-8 flex flex-col">
+                <div class="mb-4">
+                  {featuredArticle.tags && featuredArticle.tags[0] && (
+                    <span class="inline-block border border-brand-gold/30 text-brand-gold text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm">
+                      {featuredArticle.tags[0]}
+                    </span>
+                  )}
+                </div>
+                <h3 class="text-3xl font-bold text-white mb-2 leading-tight group-hover:text-brand-gold transition-colors">{featuredArticle.title}</h3>
+                <p class="text-gray-400 text-sm mb-6 max-w-2xl line-clamp-2">{featuredArticle.excerpt}</p>
+
+                <div class="flex items-center gap-3">
+                  {featuredArticle.author?.avatarUrl ? (
+                    <img src={featuredArticle.author.avatarUrl} alt={featuredArticle.author.fullName} class="w-8 h-8 rounded-full border border-white/10" />
+                  ) : (
+                    <div class="w-8 h-8 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold text-xs font-bold">
+                      {featuredArticle.author?.fullName?.charAt(0) || 'A'}
+                    </div>
+                  )}
+                  <div class="flex flex-col">
+                    <span class="text-white text-sm font-semibold">{featuredArticle.author?.fullName || 'Autor'}</span>
+                    <div class="text-gray-500 text-xs flex items-center gap-2">
+                      <span>{formatDate(featuredArticle.publishedAt as Date)}</span>
+                      <span class="w-1 h-1 rounded-full bg-gray-600"></span>
+                      <span>8 MIN LEITURA</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          )}
+
+          {/* Regular Articles (2 Column Grid) */}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {gridArticles.map(article => (
+              <a href={`/artigos/${article.slug}`} class="block group flex flex-col rounded-xl border border-white/10 hover:border-brand-gold/50 transition-colors overflow-hidden bg-black/20">
+                <div class="h-48 relative overflow-hidden">
+                  {article.coverImageUrl ? (
+                    <img src={article.coverImageUrl} alt={article.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                  ) : (
+                    <div class="w-full h-full bg-brand-black/50"></div>
+                  )}
+                  <div class="absolute top-4 left-4">
+                    {article.tags && article.tags[0] && (
+                      <span class="inline-block bg-[#0a0a0a]/80 backdrop-blur-sm border border-brand-gold/30 text-brand-gold text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm">
+                        {article.tags[0]}
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div class="p-6 flex flex-col flex-1">
+                  <h3 class="text-xl font-bold text-white mb-3 leading-tight group-hover:text-brand-gold transition-colors line-clamp-2">
+                    {article.title}
+                  </h3>
+                  <p class="text-gray-400 text-sm mb-6 line-clamp-3 flex-1">
+                    {article.excerpt}
+                  </p>
+
+                  <div class="flex items-center gap-3 mt-auto">
+                    {article.author?.avatarUrl ? (
+                      <img src={article.author.avatarUrl} alt={article.author.fullName} class="w-8 h-8 rounded-full border border-white/10" />
+                    ) : (
+                      <div class="w-8 h-8 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold text-xs font-bold">
+                        {article.author?.fullName?.charAt(0) || 'A'}
+                      </div>
+                    )}
+                    <div class="flex flex-col">
+                      <span class="text-white text-sm font-semibold">{article.author?.fullName || 'Autor'}</span>
+                      <div class="text-gray-500 text-xs flex items-center gap-2">
+                        <span>{formatDate(article.publishedAt as Date)}</span>
+                        <span class="w-1 h-1 rounded-full bg-gray-600"></span>
+                        <span>4 MIN LEITURA</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          {/* Pagination */}
+          <div class="flex items-center justify-center gap-2 mt-8">
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-white/10 text-gray-500 hover:text-white hover:border-brand-gold/50 transition-colors">&lt;</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-brand-gold/50 text-brand-gold bg-brand-gold/10">1</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-white/10 text-gray-400 hover:text-white hover:border-brand-gold/50 transition-colors">2</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-white/10 text-gray-400 hover:text-white hover:border-brand-gold/50 transition-colors">3</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-white/10 text-gray-400 hover:text-white hover:border-brand-gold/50 transition-colors">4</button>
+            <span class="text-gray-500 px-2">...</span>
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-white/10 text-gray-400 hover:text-white hover:border-brand-gold/50 transition-colors">8</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-white/10 text-gray-500 hover:text-white hover:border-brand-gold/50 transition-colors">&gt;</button>
+          </div>
+
+        </div>
+
+        {/* Right Column (30%) - Sidebar */}
+        <div class="lg:w-1/3 xl:w-1/4 flex flex-col gap-8">
+
+          {/* Categorias */}
+          <div class="border border-white/10 rounded-xl p-6 bg-black/20">
+            <h3 class="text-white font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-2">
+              CATEGORIAS
+              <span class="h-px bg-brand-gold/30 flex-1 ml-2"></span>
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex justify-between items-center text-sm">
+                <a href="#" class="text-gray-400 hover:text-brand-gold transition-colors flex items-center gap-3">
+                  <span class="text-brand-gold/50">#</span> Filosofia
+                </a>
+                <span class="text-gray-600 font-mono text-xs">24</span>
+              </li>
+              <li class="flex justify-between items-center text-sm">
+                <a href="#" class="text-gray-400 hover:text-brand-gold transition-colors flex items-center gap-3">
+                  <span class="text-brand-gold/50">#</span> Ciência
+                </a>
+                <span class="text-gray-600 font-mono text-xs">18</span>
+              </li>
+              <li class="flex justify-between items-center text-sm">
+                <a href="#" class="text-gray-400 hover:text-brand-gold transition-colors flex items-center gap-3">
+                  <span class="text-brand-gold/50">#</span> Artes
+                </a>
+                <span class="text-gray-600 font-mono text-xs">15</span>
+              </li>
+              <li class="flex justify-between items-center text-sm">
+                <a href="#" class="text-gray-400 hover:text-brand-gold transition-colors flex items-center gap-3">
+                  <span class="text-brand-gold/50">#</span> Cultura
+                </a>
+                <span class="text-gray-600 font-mono text-xs">16</span>
+              </li>
+              <li class="flex justify-between items-center text-sm">
+                <a href="#" class="text-gray-400 hover:text-brand-gold transition-colors flex items-center gap-3">
+                  <span class="text-brand-gold/50">#</span> Consciência
+                </a>
+                <span class="text-gray-600 font-mono text-xs">30</span>
+              </li>
+              <li class="flex justify-between items-center text-sm">
+                <a href="#" class="text-gray-400 hover:text-brand-gold transition-colors flex items-center gap-3">
+                  <span class="text-brand-gold/50">#</span> Propósito
+                </a>
+                <span class="text-gray-600 font-mono text-xs">12</span>
+              </li>
+            </ul>
+            <a href="#" class="inline-flex items-center gap-2 text-brand-gold text-xs font-bold uppercase tracking-widest mt-6 hover:text-white transition-colors">
+              VER TODAS CATEGORIAS <span class="text-lg leading-none">&rarr;</span>
+            </a>
+          </div>
+
+          {/* Artigos Mais Lidos */}
+          <div class="border border-white/10 rounded-xl p-6 bg-black/20">
+            <h3 class="text-white font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-2">
+              ARTIGOS MAIS LIDOS
+            </h3>
+            <div class="space-y-6">
+              {listArticles.slice(0, 4).map(article => (
+                <a href={`/artigos/${article.slug}`} class="flex items-center gap-4 group">
+                  <div class="w-16 h-16 rounded-md overflow-hidden shrink-0 border border-white/10">
+                    {article.coverImageUrl ? (
+                      <img src={article.coverImageUrl} alt={article.title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    ) : (
+                      <div class="w-full h-full bg-brand-black/50"></div>
+                    )}
+                  </div>
+                  <div class="flex flex-col">
+                    <h4 class="text-sm font-bold text-gray-200 group-hover:text-brand-gold transition-colors line-clamp-2 leading-tight mb-1">{article.title}</h4>
+                    <span class="text-xs text-gray-500 font-mono">{formatDate(article.publishedAt as Date)}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Newsletter Box */}
+          <div class="border border-brand-gold/20 rounded-xl p-6 bg-brand-gold/5 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-brand-gold/20 via-transparent to-transparent pointer-events-none"></div>
+            <h3 class="text-white font-bold uppercase tracking-widest text-sm mb-3 relative z-10">
+              RECEBA NOVOS ARTIGOS
+            </h3>
+            <p class="text-gray-400 text-xs mb-4 relative z-10">
+              Assine nossa newsletter e receba conteúdos inspiradores semanalmente.
+            </p>
+            <form class="flex flex-col gap-3 relative z-10">
+              <input type="email" placeholder="Seu e-mail" class="w-full bg-black/50 border border-white/10 rounded-md py-2.5 px-4 text-sm text-white focus:outline-none focus:border-brand-gold/50" />
+              <button type="button" class="w-full bg-brand-gold hover:bg-brand-gold/90 text-black font-bold uppercase tracking-widest text-xs py-3 rounded-md transition-colors flex justify-center items-center gap-2">
+                INSCREVER-SE <span class="text-lg leading-none">&rarr;</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* Bottom CTA Banner */}
+      <div class="relative rounded-xl border border-brand-gold/30 overflow-hidden bg-brand-black p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-gold/10 via-transparent to-transparent pointer-events-none"></div>
+        <div class="absolute right-0 bottom-0 opacity-20 pointer-events-none">
+          {/* decorative wave SVG or similar could go here */}
+        </div>
+
+        <div class="flex items-center gap-6 relative z-10">
+          <div class="w-16 h-16 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0 border border-brand-gold/30">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+          </div>
+          <div>
+            <h3 class="text-xl md:text-2xl font-bold text-white uppercase tracking-wider mb-2">EXPLORE CONHECIMENTO PROFUNDO</h3>
+            <p class="text-gray-400 text-sm md:text-base">Cada artigo é um convite para expandir sua visão e transformar sua vida.</p>
+          </div>
+        </div>
+
+        <div class="relative z-10 shrink-0 w-full md:w-auto">
+          <button class="w-full md:w-auto bg-brand-gold hover:bg-brand-gold/90 text-black font-bold uppercase tracking-widest text-sm py-3 px-8 rounded-md transition-colors shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+            QUERO FAZER PARTE <span class="ml-2 text-lg leading-none">&rarr;</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</PublicLayout>
