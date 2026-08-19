@@ -1,5 +1,6 @@
 ---
-import PublicLayout from '@/layouts/PublicLayout.astro';
+import AppLayout from '@/layouts/AppLayout.astro';
+import { getSession } from '@/utils/session';
 import { db } from '@/data/db/db';
 import { articles } from '@/data/db/schema';
 import { eq } from 'drizzle-orm';
@@ -7,6 +8,12 @@ import { getLangFromUrl } from '@/utils/i18n';
 
 const lang = getLangFromUrl(Astro.cookies);
 const { slug } = Astro.params;
+
+const session = await getSession(Astro.request, Astro.response as any);
+if (!session || !session.userId) {
+  return Astro.redirect('/');
+}
+
 
 if (!slug) {
   return new Response(null, { status: 404, statusText: 'Not found' });
@@ -28,7 +35,7 @@ const formatDate = (date: Date | null) => {
 };
 ---
 
-<PublicLayout title={article.title}>
+<AppLayout title={article.title}>
   <article class="bg-brand-offwhite dark:bg-brand-dark min-h-screen pb-24">
     {/* Cabecera del artículo */}
     <header class="py-20 bg-brand-black border-b border-brand-dark-card/50 text-center relative overflow-hidden">
@@ -72,4 +79,4 @@ const formatDate = (date: Date | null) => {
       </a>
     </div>
   </article>
-</PublicLayout>
+</AppLayout>
