@@ -1,0 +1,595 @@
+---
+import PublicLayout from '@/layouts/PublicLayout.astro';
+import Card from '@/components/core/Card.astro';
+import Button from '@/components/core/Button.astro';
+import Avatar from '@/components/core/Avatar.astro';
+import { Play, Calendar, Trophy, ChevronRight, Star, Clock, MapPin, Users, LayoutDashboard, CalendarDays, ChartBar } from '@lucide/astro';
+
+// We need to exactly match the design, so we'll recreate the layout accurately
+---
+
+<PublicLayout title="Futebol - Modulação">
+  <!-- Hero Section -->
+  <!-- Note: We are using a background image that resembles the football on the grass in the mockup -->
+  <section class="relative pt-24 pb-16 overflow-hidden min-h-[400px] flex flex-col justify-end">
+    <div class="absolute inset-0 z-[-2]">
+      <img src="https://images.unsplash.com/photo-1518605368461-1ee7e55dbdb6?auto=format&fit=crop&q=80&w=2000" alt="Futebol Background" class="object-cover w-full h-full opacity-40 mix-blend-overlay" />
+    </div>
+    <!-- Gradient overlay to match the dark bottom fading into the image -->
+    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark-bg via-brand-dark-bg/80 to-transparent z-[-1]"></div>
+
+    <div class="max-w-7xl mx-auto px-4 w-full relative z-10 mb-8">
+      <div class="flex items-center gap-2 text-sm text-brand-gray-light mb-6">
+        <a href="/" class="hover:text-brand-gold transition-colors">Início</a>
+        <ChevronRight class="w-4 h-4" />
+        <span class="text-brand-white">Futebol</span>
+      </div>
+
+      <h1 class="text-5xl md:text-7xl font-bold mb-4 text-brand-white tracking-tight">FUTEBOL</h1>
+      <p class="text-brand-gray-light max-w-xl text-lg leading-relaxed">
+        Disciplina, união e superação dentro e fora de campo.<br/>
+        A modulação também se vive no esporte.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tabs Navigation -->
+  <section class="max-w-7xl mx-auto px-4 mb-12 border-b border-white/10">
+    <div class="flex overflow-x-auto space-x-8 no-scrollbar">
+      <a href="#" class="text-brand-gold border-b-2 border-brand-gold pb-4 px-2 whitespace-nowrap font-medium flex items-center gap-2 transition-colors">
+        <LayoutDashboard class="w-5 h-5" />
+        VISÃO GERAL
+      </a>
+      <a href="#" class="text-brand-gray-light hover:text-brand-white pb-4 px-2 whitespace-nowrap font-medium flex items-center gap-2 transition-colors">
+        <Users class="w-5 h-5" />
+        EQUIPES
+      </a>
+      <a href="#" class="text-brand-gray-light hover:text-brand-white pb-4 px-2 whitespace-nowrap font-medium flex items-center gap-2 transition-colors">
+        <Trophy class="w-5 h-5" />
+        CAMPEONATOS
+      </a>
+      <a href="#" class="text-brand-gray-light hover:text-brand-white pb-4 px-2 whitespace-nowrap font-medium flex items-center gap-2 transition-colors">
+        <CalendarDays class="w-5 h-5" />
+        CALENDÁRIO
+      </a>
+      <a href="#" class="text-brand-gray-light hover:text-brand-white pb-4 px-2 whitespace-nowrap font-medium flex items-center gap-2 transition-colors">
+        <Users class="w-5 h-5" />
+        JOGADORES
+      </a>
+      <a href="#" class="text-brand-gray-light hover:text-brand-white pb-4 px-2 whitespace-nowrap font-medium flex items-center gap-2 transition-colors">
+        <ChartBar class="w-5 h-5" />
+        ESTATÍSTICAS
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Grid (Matches, Standings, Scorers) -->
+  <section class="max-w-7xl mx-auto px-4 mb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+      <!-- Left Column (Matches) -->
+      <div class="lg:col-span-5 space-y-8">
+
+        <!-- Próximo Jogo -->
+        <div>
+          <h2 class="text-xl font-bold text-brand-white mb-4 tracking-wide uppercase">Próximo Jogo</h2>
+          <Card class="bg-brand-dark-card/60 border border-white/5 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <div class="text-center mb-8">
+              <div class="text-xs text-brand-gray-light uppercase tracking-widest mb-1">Campeonato Dakila 2024</div>
+              <div class="text-sm text-brand-gold font-medium uppercase">Fase de Grupos</div>
+            </div>
+
+            <div class="flex items-center justify-between mb-8 px-4">
+              <div class="flex flex-col items-center">
+                <!-- Placeholder for Modulação Dakila logo -->
+                <div class="w-20 h-20 rounded-full border border-brand-gold flex items-center justify-center bg-black/30 mb-3 shadow-[0_0_15px_rgba(206,170,105,0.2)]">
+                  <div class="w-16 h-16 rounded-full border border-brand-gold/50 flex items-center justify-center">
+                     <span class="text-[10px] text-brand-gold font-bold text-center leading-tight">MODULAÇÃO<br/>DAKILA</span>
+                  </div>
+                </div>
+                <span class="text-sm font-medium text-brand-white">MODULAÇÃO DAKILA</span>
+              </div>
+
+              <div class="text-2xl font-bold text-brand-gold">VS</div>
+
+              <div class="flex flex-col items-center">
+                <!-- Placeholder for FC Rivera logo -->
+                <div class="w-20 h-20 rounded-full border border-white/20 flex items-center justify-center bg-black/30 mb-3">
+                   <div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center bg-white/5">
+                     <span class="text-[10px] text-white font-bold text-center leading-tight">FC<br/>RIVERA</span>
+                   </div>
+                </div>
+                <span class="text-sm font-medium text-brand-gray-light">FC RIVERA</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-center gap-6 text-sm text-brand-gray-light mb-6">
+              <div class="flex items-center gap-2"><Calendar class="w-4 h-4 text-brand-gold" /> 20 ABR 2024</div>
+              <div class="flex items-center gap-2"><Clock class="w-4 h-4 text-brand-gold" /> 16:00</div>
+              <div class="flex items-center gap-2"><MapPin class="w-4 h-4 text-brand-gold" /> Arena Dakila</div>
+            </div>
+
+            <div class="flex justify-center">
+              <Button variant="outline" class="w-full sm:w-auto border-brand-gold/30 text-brand-gold hover:bg-brand-gold/10 text-xs uppercase tracking-wider">
+                Ver detalhes da partida <ChevronRight class="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </Card>
+        </div>
+
+        <!-- Próximos Jogos List -->
+        <div>
+          <h2 class="text-xl font-bold text-brand-white mb-4 tracking-wide uppercase">Próximos Jogos</h2>
+          <Card class="bg-brand-dark-card/60 border border-white/5 p-0 overflow-hidden">
+            <div class="divide-y divide-white/5">
+
+              <!-- Match 1 -->
+              <div class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors group">
+                <div class="flex flex-col items-center justify-center w-12 text-center border-r border-white/10 pr-4 mr-4">
+                  <span class="text-xl font-bold text-brand-gold leading-none">25</span>
+                  <span class="text-xs text-brand-gray-light uppercase">Mai</span>
+                </div>
+                <div class="flex items-center justify-between flex-1">
+                  <div class="flex items-center gap-3 w-[40%]">
+                    <div class="w-6 h-6 rounded-full border border-brand-gold bg-black/30"></div>
+                    <span class="text-sm font-medium text-brand-white truncate">Modulação Dakila</span>
+                  </div>
+                  <span class="text-xs font-bold text-brand-gold px-2">VS</span>
+                  <div class="flex items-center gap-3 w-[40%] justify-end">
+                    <span class="text-sm text-brand-gray-light truncate text-right">FC Rivera</span>
+                    <div class="w-6 h-6 rounded-full border border-white/20 bg-black/30"></div>
+                  </div>
+                </div>
+                <div class="flex flex-col items-end w-24 border-l border-white/10 pl-4 ml-4">
+                   <span class="text-sm font-medium text-brand-white">19:30</span>
+                   <span class="text-[10px] text-brand-gray-light text-right">Arena Dakila</span>
+                </div>
+              </div>
+
+              <!-- Match 2 -->
+              <div class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors group">
+                <div class="flex flex-col items-center justify-center w-12 text-center border-r border-white/10 pr-4 mr-4">
+                  <span class="text-xl font-bold text-brand-gold leading-none">01</span>
+                  <span class="text-xs text-brand-gray-light uppercase">Jun</span>
+                </div>
+                <div class="flex items-center justify-between flex-1">
+                  <div class="flex items-center gap-3 w-[40%]">
+                    <div class="w-6 h-6 rounded-full border border-brand-gold bg-black/30"></div>
+                    <span class="text-sm font-medium text-brand-white truncate">Modulação Dakila</span>
+                  </div>
+                  <span class="text-xs font-bold text-brand-gold px-2">VS</span>
+                  <div class="flex items-center gap-3 w-[40%] justify-end">
+                    <span class="text-sm text-brand-gray-light truncate text-right">Santa Cruz FC</span>
+                    <div class="w-6 h-6 rounded-full border border-white/20 bg-black/30"></div>
+                  </div>
+                </div>
+                <div class="flex flex-col items-end w-24 border-l border-white/10 pl-4 ml-4">
+                   <span class="text-sm font-medium text-brand-white">17:00</span>
+                   <span class="text-[10px] text-brand-gray-light text-right">Arena Dakila</span>
+                </div>
+              </div>
+
+              <!-- Match 3 -->
+              <div class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors group">
+                <div class="flex flex-col items-center justify-center w-12 text-center border-r border-white/10 pr-4 mr-4">
+                  <span class="text-xl font-bold text-brand-gold leading-none">08</span>
+                  <span class="text-xs text-brand-gray-light uppercase">Jun</span>
+                </div>
+                <div class="flex items-center justify-between flex-1">
+                  <div class="flex items-center gap-3 w-[40%]">
+                    <div class="w-6 h-6 rounded-full border border-white/20 bg-black/30"></div>
+                    <span class="text-sm text-brand-gray-light truncate">Clube Harmonia</span>
+                  </div>
+                  <span class="text-xs font-bold text-brand-gold px-2">VS</span>
+                  <div class="flex items-center gap-3 w-[40%] justify-end">
+                    <span class="text-sm font-medium text-brand-white truncate text-right">Modulação Dakila</span>
+                    <div class="w-6 h-6 rounded-full border border-brand-gold bg-black/30"></div>
+                  </div>
+                </div>
+                <div class="flex flex-col items-end w-24 border-l border-white/10 pl-4 ml-4">
+                   <span class="text-sm font-medium text-brand-white">15:30</span>
+                   <span class="text-[10px] text-brand-gray-light text-right">Estádio Harmonia</span>
+                </div>
+              </div>
+
+               <!-- Match 4 -->
+              <div class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors group">
+                <div class="flex flex-col items-center justify-center w-12 text-center border-r border-white/10 pr-4 mr-4">
+                  <span class="text-xl font-bold text-brand-gold leading-none">15</span>
+                  <span class="text-xs text-brand-gray-light uppercase">Jun</span>
+                </div>
+                <div class="flex items-center justify-between flex-1">
+                  <div class="flex items-center gap-3 w-[40%]">
+                    <div class="w-6 h-6 rounded-full border border-brand-gold bg-black/30"></div>
+                    <span class="text-sm font-medium text-brand-white truncate">Modulação Dakila</span>
+                  </div>
+                  <span class="text-xs font-bold text-brand-gold px-2">VS</span>
+                  <div class="flex items-center gap-3 w-[40%] justify-end">
+                    <span class="text-sm text-brand-gray-light truncate text-right">União Esportiva</span>
+                    <div class="w-6 h-6 rounded-full border border-white/20 bg-black/30"></div>
+                  </div>
+                </div>
+                <div class="flex flex-col items-end w-24 border-l border-white/10 pl-4 ml-4">
+                   <span class="text-sm font-medium text-brand-white">17:00</span>
+                   <span class="text-[10px] text-brand-gray-light text-right">Arena Dakila</span>
+                </div>
+              </div>
+
+            </div>
+            <div class="p-4 flex justify-center border-t border-white/5">
+              <Button variant="outline" class="w-full sm:w-auto border-brand-gold/30 text-brand-gold hover:bg-brand-gold/10 text-xs uppercase tracking-wider">
+                Ver calendário completo <ChevronRight class="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </Card>
+        </div>
+
+      </div>
+
+      <!-- Right Column (Standings & Scorers) -->
+      <div class="lg:col-span-7 space-y-8">
+
+        <!-- Tabela de Posições -->
+        <div>
+           <div class="flex items-center justify-between mb-4">
+             <h2 class="text-xl font-bold text-brand-white tracking-wide uppercase">Tabela de Posições</h2>
+             <select class="bg-black/50 border border-white/10 text-brand-white text-xs px-3 py-1.5 rounded-sm outline-none focus:border-brand-gold">
+               <option>Grupo A</option>
+               <option>Grupo B</option>
+             </select>
+           </div>
+
+           <Card class="bg-brand-dark-card/60 border border-white/5 p-0 overflow-hidden">
+             <div class="overflow-x-auto">
+               <table class="w-full text-sm text-left">
+                 <thead class="text-xs text-brand-gray-light uppercase border-b border-white/5 bg-white/5">
+                   <tr>
+                     <th scope="col" class="px-4 py-3 font-medium w-8">#</th>
+                     <th scope="col" class="px-4 py-3 font-medium">Equipe</th>
+                     <th scope="col" class="px-3 py-3 font-medium text-center w-8" title="Partidas Jogadas">PJ</th>
+                     <th scope="col" class="px-3 py-3 font-medium text-center w-8" title="Vitórias">V</th>
+                     <th scope="col" class="px-3 py-3 font-medium text-center w-8" title="Empates">E</th>
+                     <th scope="col" class="px-3 py-3 font-medium text-center w-8" title="Derrotas">D</th>
+                     <th scope="col" class="px-3 py-3 font-medium text-center w-8" title="Gols Pró">GP</th>
+                     <th scope="col" class="px-3 py-3 font-medium text-center w-8" title="Gols Contra">GC</th>
+                     <th scope="col" class="px-3 py-3 font-medium text-center w-8" title="Saldo de Gols">SG</th>
+                     <th scope="col" class="px-4 py-3 font-bold text-brand-gold text-center w-12" title="Pontos">PTS</th>
+                   </tr>
+                 </thead>
+                 <tbody class="divide-y divide-white/5">
+                   <!-- Team 1 -->
+                   <tr class="hover:bg-white/5 transition-colors group">
+                     <td class="px-4 py-3 font-medium text-brand-white">1</td>
+                     <td class="px-4 py-3 flex items-center gap-3">
+                       <div class="w-5 h-5 rounded-full border border-brand-gold flex items-center justify-center bg-black/50">
+                         <Star class="w-3 h-3 text-brand-gold fill-brand-gold" />
+                       </div>
+                       <span class="font-medium text-brand-white">Modulação Dakila</span>
+                     </td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">6</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">4</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">1</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">1</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">12</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">4</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">8</td>
+                     <td class="px-4 py-3 text-center font-bold text-brand-gold">13</td>
+                   </tr>
+                   <!-- Team 2 -->
+                   <tr class="hover:bg-white/5 transition-colors">
+                     <td class="px-4 py-3 font-medium text-brand-white">2</td>
+                     <td class="px-4 py-3 flex items-center gap-3">
+                       <div class="w-5 h-5 rounded-full border border-white/20 bg-black/50"></div>
+                       <span class="text-brand-gray-light group-hover:text-brand-white transition-colors">FC Rivera</span>
+                     </td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">6</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">3</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">2</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">1</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">9</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">5</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">4</td>
+                     <td class="px-4 py-3 text-center font-bold text-brand-gold">11</td>
+                   </tr>
+                   <!-- Team 3 -->
+                   <tr class="hover:bg-white/5 transition-colors">
+                     <td class="px-4 py-3 font-medium text-brand-white">3</td>
+                     <td class="px-4 py-3 flex items-center gap-3">
+                       <div class="w-5 h-5 rounded-full border border-white/20 bg-black/50"></div>
+                       <span class="text-brand-gray-light group-hover:text-brand-white transition-colors">Santa Cruz FC</span>
+                     </td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">6</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">2</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">2</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">2</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">6</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">6</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">0</td>
+                     <td class="px-4 py-3 text-center font-bold text-brand-gold">8</td>
+                   </tr>
+                   <!-- Team 4 -->
+                   <tr class="hover:bg-white/5 transition-colors">
+                     <td class="px-4 py-3 font-medium text-brand-white">4</td>
+                     <td class="px-4 py-3 flex items-center gap-3">
+                       <div class="w-5 h-5 rounded-full border border-white/20 bg-black/50"></div>
+                       <span class="text-brand-gray-light group-hover:text-brand-white transition-colors">Clube Harmonia</span>
+                     </td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">6</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">1</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">1</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">4</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">3</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">9</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">-6</td>
+                     <td class="px-4 py-3 text-center font-bold text-brand-gold">4</td>
+                   </tr>
+                   <!-- Team 5 -->
+                   <tr class="hover:bg-white/5 transition-colors">
+                     <td class="px-4 py-3 font-medium text-brand-white">5</td>
+                     <td class="px-4 py-3 flex items-center gap-3">
+                       <div class="w-5 h-5 rounded-full border border-white/20 bg-black/50"></div>
+                       <span class="text-brand-gray-light group-hover:text-brand-white transition-colors">União Esportiva</span>
+                     </td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">6</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">0</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">2</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">4</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">2</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">8</td>
+                     <td class="px-3 py-3 text-center text-brand-gray-light">-6</td>
+                     <td class="px-4 py-3 text-center font-bold text-brand-gold">2</td>
+                   </tr>
+                 </tbody>
+               </table>
+             </div>
+
+             <div class="p-4 flex justify-center border-t border-white/5">
+               <button class="text-brand-gold text-xs uppercase tracking-wider font-medium flex items-center hover:text-white transition-colors">
+                 Ver tabela completa <ChevronRight class="w-4 h-4 ml-1" />
+               </button>
+             </div>
+           </Card>
+        </div>
+
+        <!-- Artilheiros -->
+        <div>
+           <div class="flex items-center justify-between mb-4">
+             <h2 class="text-xl font-bold text-brand-white tracking-wide uppercase">Artilheiros</h2>
+             <button class="text-brand-gold text-xs uppercase tracking-wider font-medium flex items-center hover:text-white transition-colors">
+               Ver todos <ChevronRight class="w-4 h-4 ml-1" />
+             </button>
+           </div>
+
+           <Card class="bg-brand-dark-card/60 border border-white/5 p-0 overflow-hidden">
+             <div class="p-4 grid grid-cols-[auto_1fr_auto_auto] gap-4 items-center text-xs text-brand-gray-light uppercase border-b border-white/5 bg-white/5">
+                <div class="w-6 text-center">#</div>
+                <div>Jogador</div>
+                <div class="w-16 text-center">Jogos</div>
+                <div class="w-16 text-center font-bold text-white">Gols</div>
+             </div>
+             <div class="divide-y divide-white/5">
+
+               <!-- Scorer 1 -->
+               <div class="p-4 grid grid-cols-[auto_1fr_auto_auto] gap-4 items-center hover:bg-white/5 transition-colors group">
+                  <div class="w-6 text-center font-bold text-brand-gold text-lg">1</div>
+                  <div class="flex items-center gap-3">
+                    <Avatar alt="Lucas Andrade" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=100&h=100" />
+                    <div>
+                      <div class="text-sm font-bold text-brand-white leading-tight">Lucas Andrade</div>
+                      <div class="text-xs text-brand-gold">Modulação Dakila</div>
+                    </div>
+                  </div>
+                  <div class="w-16 text-center text-sm text-brand-gray-light">6</div>
+                  <div class="w-16 text-center font-bold text-brand-gold text-xl">7</div>
+               </div>
+
+               <!-- Scorer 2 -->
+               <div class="p-4 grid grid-cols-[auto_1fr_auto_auto] gap-4 items-center hover:bg-white/5 transition-colors group">
+                  <div class="w-6 text-center font-medium text-brand-gray-light text-lg group-hover:text-brand-white transition-colors">2</div>
+                  <div class="flex items-center gap-3">
+                    <Avatar alt="Matheus Oliveira" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100&h=100" />
+                    <div>
+                      <div class="text-sm font-medium text-brand-white leading-tight">Matheus Oliveira</div>
+                      <div class="text-xs text-brand-gray-light group-hover:text-white transition-colors">FC Rivera</div>
+                    </div>
+                  </div>
+                  <div class="w-16 text-center text-sm text-brand-gray-light">6</div>
+                  <div class="w-16 text-center font-bold text-brand-gold text-xl">5</div>
+               </div>
+
+               <!-- Scorer 3 -->
+               <div class="p-4 grid grid-cols-[auto_1fr_auto_auto] gap-4 items-center hover:bg-white/5 transition-colors group">
+                  <div class="w-6 text-center font-medium text-brand-gray-light text-lg group-hover:text-brand-white transition-colors">3</div>
+                  <div class="flex items-center gap-3">
+                    <Avatar alt="Diego Santos" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=100&h=100" />
+                    <div>
+                      <div class="text-sm font-medium text-brand-white leading-tight">Diego Santos</div>
+                      <div class="text-xs text-brand-gray-light group-hover:text-white transition-colors">Santa Cruz FC</div>
+                    </div>
+                  </div>
+                  <div class="w-16 text-center text-sm text-brand-gray-light">6</div>
+                  <div class="w-16 text-center font-bold text-brand-gold text-xl">4</div>
+               </div>
+
+               <!-- Scorer 4 -->
+               <div class="p-4 grid grid-cols-[auto_1fr_auto_auto] gap-4 items-center hover:bg-white/5 transition-colors group">
+                  <div class="w-6 text-center font-medium text-brand-gray-light text-lg group-hover:text-brand-white transition-colors">4</div>
+                  <div class="flex items-center gap-3">
+                    <Avatar alt="Gabriel Lima" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&q=80&w=100&h=100" />
+                    <div>
+                      <div class="text-sm font-medium text-brand-white leading-tight">Gabriel Lima</div>
+                      <div class="text-xs text-brand-gold/70">Modulação Dakila</div>
+                    </div>
+                  </div>
+                  <div class="w-16 text-center text-sm text-brand-gray-light">6</div>
+                  <div class="w-16 text-center font-bold text-brand-gold text-xl">4</div>
+               </div>
+
+               <!-- Scorer 5 -->
+               <div class="p-4 grid grid-cols-[auto_1fr_auto_auto] gap-4 items-center hover:bg-white/5 transition-colors group">
+                  <div class="w-6 text-center font-medium text-brand-gray-light text-lg group-hover:text-brand-white transition-colors">5</div>
+                  <div class="flex items-center gap-3">
+                    <Avatar alt="Rafael Pereira" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100&h=100" />
+                    <div>
+                      <div class="text-sm font-medium text-brand-white leading-tight">Rafael Pereira</div>
+                      <div class="text-xs text-brand-gray-light group-hover:text-white transition-colors">Clube Harmonia</div>
+                    </div>
+                  </div>
+                  <div class="w-16 text-center text-sm text-brand-gray-light">6</div>
+                  <div class="w-16 text-center font-bold text-brand-gold text-xl">3</div>
+               </div>
+
+             </div>
+           </Card>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- News & Highlights -->
+  <section class="max-w-7xl mx-auto px-4 mb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+      <!-- Últimas Notícias (Left side, takes up roughly 2/3) -->
+      <div class="lg:col-span-8">
+        <h2 class="text-xl font-bold text-brand-white mb-4 tracking-wide uppercase">Últimas Notícias</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- News Card 1 -->
+          <Card noPadding class="bg-brand-dark-card/60 border border-white/5 group h-full flex flex-col">
+            <div class="relative h-48 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&q=80&w=800" alt="Time celebrando" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+              <div class="absolute top-4 left-4">
+                <div class="px-2 py-1 text-[10px] font-bold tracking-widest bg-black/80 backdrop-blur-md border border-white/10 text-brand-gold rounded-sm uppercase">Campeonato</div>
+              </div>
+            </div>
+            <div class="p-6 flex-1 flex flex-col">
+              <h3 class="text-lg font-bold text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-snug">
+                Modulação Dakila vence e garante classificação antecipada
+              </h3>
+              <p class="text-sm text-brand-gray-light mb-4 line-clamp-2 flex-1">
+                Vitória importante fora de casa consolida a liderança no grupo A.
+              </p>
+              <div class="flex items-center gap-4 text-xs text-brand-gray-light/70 uppercase tracking-wide">
+                <span>15 ABR 2024</span>
+                <span class="w-1 h-1 rounded-full bg-brand-gold/50"></span>
+                <span>3 MIN LEITURA</span>
+              </div>
+            </div>
+          </Card>
+
+          <!-- News Card 2 (Stacked visually in mockup but we'll use grid) -->
+          <div class="flex flex-col gap-6">
+            <!-- News Card 2a -->
+            <Card noPadding class="bg-brand-dark-card/60 border border-white/5 group flex-1">
+               <div class="relative h-32 w-full overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&q=80&w=600" alt="Treino" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+                  <div class="absolute top-3 left-3">
+                    <div class="px-2 py-1 text-[10px] font-bold tracking-widest bg-black/80 backdrop-blur-md border border-white/10 text-white rounded-sm uppercase">Equipe</div>
+                  </div>
+               </div>
+               <div class="p-4">
+                 <h3 class="text-base font-bold text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-tight line-clamp-2">
+                   Conheça o elenco do time principal 2024
+                 </h3>
+                 <p class="text-xs text-brand-gray-light mb-3 line-clamp-2">
+                   Unidos por um propósito, focados em cada detalhe.
+                 </p>
+                 <div class="flex items-center gap-3 text-[10px] text-brand-gray-light/70 uppercase tracking-wide">
+                    <span>13 ABR 2024</span>
+                    <span class="w-1 h-1 rounded-full bg-brand-gold/50"></span>
+                    <span>4 MIN LEITURA</span>
+                 </div>
+               </div>
+            </Card>
+
+            <!-- News Card 2b -->
+            <Card noPadding class="bg-brand-dark-card/60 border border-white/5 group flex-1">
+               <div class="relative h-32 w-full overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=600" alt="Base" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+                  <div class="absolute top-3 left-3">
+                    <div class="px-2 py-1 text-[10px] font-bold tracking-widest bg-black/80 backdrop-blur-md border border-white/10 text-white rounded-sm uppercase">Base</div>
+                  </div>
+               </div>
+               <div class="p-4">
+                 <h3 class="text-base font-bold text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-tight line-clamp-2">
+                   Categorias de base: formação e valores
+                 </h3>
+                 <p class="text-xs text-brand-gray-light mb-3 line-clamp-2">
+                   Mais que futebol, formamos caráter, disciplina e resiliência.
+                 </p>
+                 <div class="flex items-center gap-3 text-[10px] text-brand-gray-light/70 uppercase tracking-wide">
+                    <span>10 ABR 2024</span>
+                    <span class="w-1 h-1 rounded-full bg-brand-gold/50"></span>
+                    <span>5 MIN LEITURA</span>
+                 </div>
+               </div>
+            </Card>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Destaques (Right side, takes up roughly 1/3) -->
+      <div class="lg:col-span-4">
+        <h2 class="text-xl font-bold text-brand-white mb-4 tracking-wide uppercase">Destaques</h2>
+
+        <Card noPadding class="bg-brand-dark-card/60 border border-white/5 group h-full flex flex-col">
+          <div class="relative flex-1 min-h-[250px] w-full overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1508344928928-7155b67de238?auto=format&fit=crop&q=80&w=600" alt="Video highlight" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-14 h-14 rounded-full bg-black/50 backdrop-blur-md border border-white/20 flex items-center justify-center text-white cursor-pointer group-hover:scale-110 group-hover:bg-brand-gold group-hover:border-brand-gold group-hover:text-black transition-all duration-300">
+                <Play class="w-6 h-6 ml-1" />
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 bg-brand-dark-card border-t border-white/5">
+            <h3 class="text-base font-bold text-brand-white mb-3 group-hover:text-brand-gold transition-colors leading-tight">
+              Melhores momentos: Modulação Dakila 3 x 1 FC Rivera
+            </h3>
+            <div class="flex items-center gap-4 text-[10px] text-brand-gray-light/70 uppercase tracking-wide">
+              <span>08 ABR 2024</span>
+              <span class="w-1 h-1 rounded-full bg-brand-gold/50"></span>
+              <span>VÍDEO 4:32</span>
+            </div>
+          </div>
+        </Card>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="max-w-7xl mx-auto px-4 mb-24">
+    <div class="relative overflow-hidden rounded-xl border border-brand-gold/20 bg-brand-dark-card/80 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 mix-blend-overlay"></div>
+      <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-brand-gold/10 to-transparent pointer-events-none"></div>
+
+      <div class="relative z-10 flex items-center gap-6">
+        <div class="w-16 h-16 rounded-full border border-brand-gold/30 flex items-center justify-center bg-brand-gold/10 text-brand-gold">
+          <Users class="w-8 h-8" />
+        </div>
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-brand-white mb-2">Faça parte do time fora de campo.</h2>
+          <p class="text-brand-gray-light text-sm md:text-base">
+            Seja membro e viva o ecossistema Modulação por completo.
+          </p>
+        </div>
+      </div>
+
+      <div class="relative z-10 w-full md:w-auto">
+        <Button class="w-full md:w-auto bg-brand-gold text-brand-black hover:bg-brand-gold/90 font-bold px-8 py-4 uppercase tracking-wider text-sm transition-all shadow-[0_0_20px_rgba(206,170,105,0.3)] hover:shadow-[0_0_30px_rgba(206,170,105,0.5)]">
+          Quero Fazer Parte <ChevronRight class="w-4 h-4 ml-2 inline" />
+        </Button>
+      </div>
+    </div>
+  </section>
+
+</PublicLayout>
