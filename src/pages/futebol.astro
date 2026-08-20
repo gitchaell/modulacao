@@ -1,0 +1,373 @@
+---
+import PublicLayout from '@/layouts/PublicLayout.astro';
+import Card from '@/components/core/Card.astro';
+import Badge from '@/components/core/Badge.astro';
+import Button from '@/components/core/Button.astro';
+import Flag from '@/components/core/Flag.astro';
+import Avatar from '@/components/core/Avatar.astro';
+import { Play, Calendar, Trophy, Newspaper } from '@lucide/astro';
+---
+
+<PublicLayout title="Futebol - Modulação">
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-gold/10 via-brand-dark-bg to-brand-dark-bg z-[-1]"></div>
+    <div class="max-w-6xl mx-auto px-4 relative z-10 text-center">
+      <Badge variant="gold" class="mb-4">ESPORTES</Badge>
+      <h1 class="text-4xl md:text-5xl font-light mb-6 text-brand-black dark:text-brand-white">Futebol</h1>
+      <p class="text-brand-black/70 dark:text-brand-gray-light max-w-2xl mx-auto text-lg">
+        Toda a atualidade, resultados e classificações das melhores ligas do mundo.
+        Acompanhe seus times e jogadores favoritos em tempo real.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tabs Navigation -->
+  <section class="max-w-6xl mx-auto px-4 mb-8">
+    <div class="flex overflow-x-auto space-x-6 border-b border-white/10 pb-4 no-scrollbar">
+      <a href="#" class="text-brand-gold border-b-2 border-brand-gold pb-4 px-2 whitespace-nowrap font-medium transition-colors">Visão Geral</a>
+      <a href="#" class="text-brand-black/60 dark:text-brand-gray-light hover:text-brand-black dark:hover:text-brand-white pb-4 px-2 whitespace-nowrap font-medium transition-colors">Partidas</a>
+      <a href="#" class="text-brand-black/60 dark:text-brand-gray-light hover:text-brand-black dark:hover:text-brand-white pb-4 px-2 whitespace-nowrap font-medium transition-colors">Classificação</a>
+      <a href="#" class="text-brand-black/60 dark:text-brand-gray-light hover:text-brand-black dark:hover:text-brand-white pb-4 px-2 whitespace-nowrap font-medium transition-colors">Notícias</a>
+    </div>
+  </section>
+
+  <!-- 2-Column Grid -->
+  <section class="max-w-6xl mx-auto px-4 mb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- Left Column: Games -->
+      <div class="lg:col-span-2 space-y-8">
+        <!-- Next Games -->
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-light text-brand-black dark:text-brand-white">Próximos Jogos</h2>
+            <a href="#" class="text-sm text-brand-gold hover:text-brand-gold/80 transition-colors">Ver todos</a>
+          </div>
+          <div class="space-y-4">
+            <!-- Game Card 1 -->
+            <Card class="hover:border-brand-gold/30 transition-colors" noPadding>
+              <div class="p-6 flex items-center justify-between w-full">
+                <div class="flex items-center gap-4 w-1/3">
+                  <Flag country="es" class="text-2xl rounded-sm overflow-hidden" />
+                  <span class="font-medium text-brand-black dark:text-brand-white">Real Madrid</span>
+                </div>
+                <div class="flex flex-col items-center justify-center w-1/3">
+                  <div class="px-2 py-1 text-[10px] font-bold tracking-widest border border-black/20 dark:border-white/20 text-brand-black dark:text-white rounded-sm mb-2">HOJE 21:00</div>
+                  <span class="text-xs text-brand-black/60 dark:text-brand-gray-light">Santiago Bernabéu</span>
+                </div>
+                <div class="flex items-center justify-end gap-4 w-1/3">
+                  <span class="font-medium text-brand-black dark:text-brand-white">Barcelona</span>
+                  <Flag country="es" class="text-2xl rounded-sm overflow-hidden" />
+                </div>
+              </div>
+            </Card>
+            <!-- Game Card 2 -->
+            <Card class="hover:border-brand-gold/30 transition-colors" noPadding>
+              <div class="p-6 flex items-center justify-between w-full">
+                <div class="flex items-center gap-4 w-1/3">
+                  <Flag country="gb" class="text-2xl rounded-sm overflow-hidden" />
+                  <span class="font-medium text-brand-black dark:text-brand-white">Man City</span>
+                </div>
+                <div class="flex flex-col items-center justify-center w-1/3">
+                  <div class="px-2 py-1 text-[10px] font-bold tracking-widest border border-black/20 dark:border-white/20 text-brand-black dark:text-white rounded-sm mb-2">AMANHÃ 16:00</div>
+                  <span class="text-xs text-brand-black/60 dark:text-brand-gray-light">Etihad Stadium</span>
+                </div>
+                <div class="flex items-center justify-end gap-4 w-1/3">
+                  <span class="font-medium text-brand-black dark:text-brand-white">Arsenal</span>
+                  <Flag country="gb" class="text-2xl rounded-sm overflow-hidden" />
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        <!-- Latest Results -->
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-light text-brand-black dark:text-brand-white">Últimos Resultados</h2>
+          </div>
+          <div class="space-y-4">
+            <!-- Result Card 1 -->
+            <Card class="hover:border-brand-gold/30 transition-colors" noPadding>
+              <div class="p-6 flex items-center justify-between w-full">
+                <div class="flex items-center gap-4 w-1/3">
+                  <Flag country="it" class="text-2xl rounded-sm overflow-hidden" />
+                  <span class="font-medium text-brand-black dark:text-brand-white">Juventus</span>
+                </div>
+                <div class="flex flex-col items-center justify-center w-1/3">
+                  <div class="flex items-center gap-3 mb-1">
+                    <span class="text-2xl font-bold text-brand-black dark:text-brand-white">2</span>
+                    <span class="text-brand-black/60 dark:text-brand-gray-light">-</span>
+                    <span class="text-2xl font-bold text-brand-black dark:text-brand-white">1</span>
+                  </div>
+                  <span class="text-xs text-brand-black/60 dark:text-brand-gray-light">Finalizado</span>
+                </div>
+                <div class="flex items-center justify-end gap-4 w-1/3">
+                  <span class="font-medium text-brand-black dark:text-brand-white">AC Milan</span>
+                  <Flag country="it" class="text-2xl rounded-sm overflow-hidden" />
+                </div>
+              </div>
+            </Card>
+            <!-- Result Card 2 -->
+            <Card class="hover:border-brand-gold/30 transition-colors" noPadding>
+              <div class="p-6 flex items-center justify-between w-full">
+                <div class="flex items-center gap-4 w-1/3">
+                  <Flag country="de" class="text-2xl rounded-sm overflow-hidden" />
+                  <span class="font-medium text-brand-black dark:text-brand-white">Bayern</span>
+                </div>
+                <div class="flex flex-col items-center justify-center w-1/3">
+                  <div class="flex items-center gap-3 mb-1">
+                    <span class="text-2xl font-bold text-brand-black dark:text-brand-white">3</span>
+                    <span class="text-brand-black/60 dark:text-brand-gray-light">-</span>
+                    <span class="text-2xl font-bold text-brand-black dark:text-brand-white">0</span>
+                  </div>
+                  <span class="text-xs text-brand-black/60 dark:text-brand-gray-light">Finalizado</span>
+                </div>
+                <div class="flex items-center justify-end gap-4 w-1/3">
+                  <span class="font-medium text-brand-black dark:text-brand-white">Dortmund</span>
+                  <Flag country="de" class="text-2xl rounded-sm overflow-hidden" />
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Standings & Scorers -->
+      <div class="space-y-8">
+        <!-- Standings -->
+        <Card noPadding>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-xl font-light text-brand-black dark:text-brand-white flex items-center gap-2">
+                <Trophy class="w-5 h-5 text-brand-gold" /> Classificação
+              </h2>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left">
+                <thead class="text-xs text-brand-black/60 dark:text-brand-gray-light uppercase border-b border-black/10 dark:border-white/10">
+                  <tr>
+                    <th class="px-2 py-3 font-medium">Equipe</th>
+                    <th class="px-2 py-3 font-medium text-center">PTS</th>
+                    <th class="px-2 py-3 font-medium text-center">PJ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-black/5 dark:border-white/5 hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                    <td class="px-2 py-3 flex items-center gap-2 text-brand-black dark:text-brand-white">
+                      <span class="text-brand-gold font-bold w-4">1</span>
+                      <Flag country="es" class="text-lg rounded-sm" /> Real Madrid
+                    </td>
+                    <td class="px-2 py-3 text-center font-bold text-brand-black dark:text-brand-white">78</td>
+                    <td class="px-2 py-3 text-center text-brand-black/60 dark:text-brand-gray-light">32</td>
+                  </tr>
+                  <tr class="border-b border-black/5 dark:border-white/5 hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                    <td class="px-2 py-3 flex items-center gap-2 text-brand-black dark:text-brand-white">
+                      <span class="text-brand-black/60 dark:text-brand-gray-light font-bold w-4">2</span>
+                      <Flag country="es" class="text-lg rounded-sm" /> Barcelona
+                    </td>
+                    <td class="px-2 py-3 text-center font-bold text-brand-black dark:text-brand-white">70</td>
+                    <td class="px-2 py-3 text-center text-brand-black/60 dark:text-brand-gray-light">32</td>
+                  </tr>
+                  <tr class="border-b border-black/5 dark:border-white/5 hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                    <td class="px-2 py-3 flex items-center gap-2 text-brand-black dark:text-brand-white">
+                      <span class="text-brand-black/60 dark:text-brand-gray-light font-bold w-4">3</span>
+                      <Flag country="es" class="text-lg rounded-sm" /> Girona
+                    </td>
+                    <td class="px-2 py-3 text-center font-bold text-brand-black dark:text-brand-white">65</td>
+                    <td class="px-2 py-3 text-center text-brand-black/60 dark:text-brand-gray-light">32</td>
+                  </tr>
+                  <tr class="border-b border-black/5 dark:border-white/5 hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                    <td class="px-2 py-3 flex items-center gap-2 text-brand-black dark:text-brand-white">
+                      <span class="text-brand-black/60 dark:text-brand-gray-light font-bold w-4">4</span>
+                      <Flag country="es" class="text-lg rounded-sm" /> Atl. Madrid
+                    </td>
+                    <td class="px-2 py-3 text-center font-bold text-brand-black dark:text-brand-white">61</td>
+                    <td class="px-2 py-3 text-center text-brand-black/60 dark:text-brand-gray-light">32</td>
+                  </tr>
+                  <tr class="hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                    <td class="px-2 py-3 flex items-center gap-2 text-brand-black dark:text-brand-white">
+                      <span class="text-brand-black/60 dark:text-brand-gray-light font-bold w-4">5</span>
+                      <Flag country="es" class="text-lg rounded-sm" /> Athletic
+                    </td>
+                    <td class="px-2 py-3 text-center font-bold text-brand-black dark:text-brand-white">58</td>
+                    <td class="px-2 py-3 text-center text-brand-black/60 dark:text-brand-gray-light">32</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <a href="#" class="block text-center text-sm text-brand-gold hover:text-brand-gold/80 transition-colors mt-4 pt-4 border-t border-black/10 dark:border-white/10">Ver tabela completa</a>
+          </div>
+        </Card>
+
+        <!-- Top Scorers -->
+        <Card noPadding>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-xl font-light text-brand-black dark:text-brand-white">Artilheiros</h2>
+            </div>
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="font-bold text-brand-gold w-4">1</div>
+                  <Avatar alt="Jude Bellingham" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=100&h=100" />
+                  <div>
+                    <div class="text-sm font-medium text-brand-black dark:text-brand-white">J. Bellingham</div>
+                    <div class="text-xs text-brand-black/60 dark:text-brand-gray-light">Real Madrid</div>
+                  </div>
+                </div>
+                <div class="font-bold text-brand-black dark:text-brand-white">16 <span class="text-xs text-brand-black/60 dark:text-brand-gray-light font-normal">Goles</span></div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="font-bold text-brand-black/60 dark:text-brand-gray-light w-4">2</div>
+                  <Avatar alt="Artem Dovbyk" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100&h=100" />
+                  <div>
+                    <div class="text-sm font-medium text-brand-black dark:text-brand-white">A. Dovbyk</div>
+                    <div class="text-xs text-brand-black/60 dark:text-brand-gray-light">Girona</div>
+                  </div>
+                </div>
+                <div class="font-bold text-brand-black dark:text-brand-white">16 <span class="text-xs text-brand-black/60 dark:text-brand-gray-light font-normal">Goles</span></div>
+              </div>
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="font-bold text-brand-black/60 dark:text-brand-gray-light w-4">3</div>
+                  <Avatar alt="Ante Budimir" src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=100&h=100" />
+                  <div>
+                    <div class="text-sm font-medium text-brand-black dark:text-brand-white">A. Budimir</div>
+                    <div class="text-xs text-brand-black/60 dark:text-brand-gray-light">Osasuna</div>
+                  </div>
+                </div>
+                <div class="font-bold text-brand-black dark:text-brand-white">15 <span class="text-xs text-brand-black/60 dark:text-brand-gray-light font-normal">Goles</span></div>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- News & Highlights -->
+  <section class="max-w-6xl mx-auto px-4 mb-24">
+    <div class="flex items-center gap-2 mb-8">
+      <Newspaper class="w-6 h-6 text-brand-gold" />
+      <h2 class="text-3xl font-light text-brand-black dark:text-brand-white">Notícias e Destaques</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Video Highlight Card (Spans 2 columns on lg) -->
+      <Card noPadding class="lg:col-span-2 group">
+        <div class="relative h-64 md:h-80 w-full overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1518605368461-1ee7e55dbdb6?auto=format&fit=crop&q=80&w=1200" alt="Estadio lleno" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-black/90 via-brand-black/40 to-transparent"></div>
+
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-brand-gold/90 flex items-center justify-center text-brand-black cursor-pointer shadow-[0_0_30px_rgba(206,170,105,0.4)] group-hover:scale-110 transition-transform">
+              <Play class="w-8 h-8 ml-1" />
+            </div>
+          </div>
+
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <Badge variant="gold" class="mb-3">RESUMO</Badge>
+            <h3 class="text-2xl font-medium text-white mb-2 leading-tight group-hover:text-brand-gold transition-colors">
+              Real Madrid vs Manchester City: Noite mágica na Champions
+            </h3>
+            <p class="text-brand-gray-light text-sm line-clamp-2">
+              Uma partida inesquecível que ficará na história do futebol europeu. Reviva os melhores momentos e todos os gols do encontro de quartas de final.
+            </p>
+          </div>
+        </div>
+      </Card>
+
+      <!-- Standard News Card 1 -->
+      <Card noPadding class="group">
+        <div class="relative h-48 w-full overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&q=80&w=600" alt="Jugador celebrando" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+          <div class="absolute top-4 left-4">
+            <div class="px-2 py-1 text-xs font-bold tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-white rounded-sm">LALIGA</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 text-xs text-brand-black/60 dark:text-brand-gray-light mb-3">
+            <Calendar class="w-3 h-3" /> Há 2 horas
+          </div>
+          <h3 class="text-lg font-medium text-brand-black dark:text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-snug">
+            O Clássico decidirá o campeonato da liga nesta temporada
+          </h3>
+          <p class="text-sm text-brand-black/60 dark:text-brand-gray-light line-clamp-2">
+            Ambas as equipes chegam empatadas em pontos faltando três rodadas para o final do torneio.
+          </p>
+        </div>
+      </Card>
+
+      <!-- Standard News Card 2 -->
+      <Card noPadding class="group">
+        <div class="relative h-48 w-full overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1508344928928-7155b67de238?auto=format&fit=crop&q=80&w=600" alt="Trofeo" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+          <div class="absolute top-4 left-4">
+            <div class="px-2 py-1 text-xs font-bold tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-white rounded-sm">MERCADO</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 text-xs text-brand-black/60 dark:text-brand-gray-light mb-3">
+            <Calendar class="w-3 h-3" /> Há 5 horas
+          </div>
+          <h3 class="text-lg font-medium text-brand-black dark:text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-snug">
+            As contratações mais esperadas para o próximo mercado de verão
+          </h3>
+          <p class="text-sm text-brand-black/60 dark:text-brand-gray-light line-clamp-2">
+            Analisamos os rumores e movimentos confirmados das principais ligas europeias para a próxima temporada.
+          </p>
+        </div>
+      </Card>
+
+      <!-- Standard News Card 3 -->
+      <Card noPadding class="group md:col-span-2 lg:col-span-1">
+        <div class="relative h-48 w-full overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&q=80&w=600" alt="Entrenamiento" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
+          <div class="absolute top-4 left-4">
+            <div class="px-2 py-1 text-xs font-bold tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-white rounded-sm">ANÁLISIS</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center gap-2 text-xs text-brand-black/60 dark:text-brand-gray-light mb-3">
+            <Calendar class="w-3 h-3" /> Ontem
+          </div>
+          <h3 class="text-lg font-medium text-brand-black dark:text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-snug">
+            A evolução tática na Premier League este ano
+          </h3>
+          <p class="text-sm text-brand-black/60 dark:text-brand-gray-light line-clamp-2">
+            Uma análise de como os treinadores estão adaptando seus sistemas para superar as defesas modernas.
+          </p>
+        </div>
+      </Card>
+
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="max-w-6xl mx-auto px-4 mb-24">
+    <Card noPadding class="text-center relative overflow-hidden group border-brand-gold/20">
+      <div class="p-12">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-gold/5 via-transparent to-brand-gold/5 pointer-events-none"></div>
+        <div class="relative z-10 max-w-2xl mx-auto">
+          <Trophy class="w-12 h-12 text-brand-gold mx-auto mb-6" />
+          <h2 class="text-3xl font-light text-brand-black dark:text-brand-white mb-4">Não perca nenhum detalhe</h2>
+          <p class="text-brand-black/70 dark:text-brand-gray-light mb-8 text-lg">
+            Junte-se à nossa comunidade para receber alertas de gols ao vivo, notícias exclusivas e análises de especialistas diretamente no seu e-mail.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button variant="primary" size="lg">Inscreva-se agora</Button>
+            <Button variant="outline" size="lg">Baixar o App</Button>
+          </div>
+        </div>
+      </div>
+    </Card>
+  </section>
+
+</PublicLayout>
