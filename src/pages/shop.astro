@@ -1,0 +1,347 @@
+---
+import PublicLayout from '../layouts/PublicLayout.astro';
+import {
+  ChevronRight, LayoutGrid, Shirt, ShoppingBag, Book, Image, GraduationCap, Users,
+  Star, ChevronDown, List, ArrowRight, Package, MessageCircle, ClipboardCheck, Settings,
+  HeartHandshake, Award, Headphones, ShieldCheck, ArrowLeft, ArrowRight as ArrowRightIcon
+} from '@lucide/astro';
+
+const destaques = [
+  { name: 'Camisa Oficial Modulação Dakila', price: 'R$ 159,90', reviews: 128, category: 'VESTUÁRIO', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500&auto=format&fit=crop' },
+  { name: 'Moletom com Capuz Modulação Dakila', price: 'R$ 199,90', reviews: 96, category: 'VESTUÁRIO', img: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=500&auto=format&fit=crop' },
+  { name: 'Pingente Modulação Dakila', price: 'R$ 89,90', reviews: 74, category: 'ACESSÓRIOS', img: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=500&auto=format&fit=crop' },
+  { name: 'Livro: Modulação – A Ciência da Vida', price: 'R$ 69,90', reviews: 52, category: 'LIVROS', img: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=500&auto=format&fit=crop' },
+];
+
+const produtos = [
+  { name: 'Boné Modulação Dakila', price: 'R$ 89,90', reviews: 42, img: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=500&auto=format&fit=crop' },
+  { name: 'Camiseta Básica Modulação Dakila', price: 'R$ 99,90', reviews: 58, img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=500&auto=format&fit=crop' },
+  { name: 'Caderno Modulação Dakila', price: 'R$ 59,90', reviews: 31, img: 'https://images.unsplash.com/photo-1531346878377-a541e4ab0eaf?q=80&w=500&auto=format&fit=crop' },
+  { name: 'Caneca Modulação Dakila', price: 'R$ 49,90', reviews: 27, img: 'https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?q=80&w=500&auto=format&fit=crop' },
+  { name: 'Quadro Ondas da Modulação', price: 'R$ 249,90', reviews: 18, category: 'ARTE E DECORAÇÃO', img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=500&auto=format&fit=crop' },
+  { name: 'Curso: Consciência e Propósito', price: 'R$ 297,00', reviews: 67, category: 'CURSOS E EXPERIÊNCIAS', img: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=500&auto=format&fit=crop' },
+  { name: 'Livro: Filosofia da Modulação', price: 'R$ 79,90', reviews: 44, category: 'LIVROS', img: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=500&auto=format&fit=crop' },
+  { name: 'Consultoria em Desenvolvimento Humano', price: 'R$ 450,00', reviews: 15, category: 'SERVIÇOS', img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=500&auto=format&fit=crop' },
+];
+
+const categoriesMenu = [
+  { name: 'TODOS OS ITENS', icon: LayoutGrid, active: true },
+  { name: 'VESTUÁRIO', icon: Shirt },
+  { name: 'ACESSÓRIOS', icon: ShoppingBag },
+  { name: 'LIVROS', icon: Book },
+  { name: 'ARTE E DECORAÇÃO', icon: Image },
+  { name: 'CURSOS E EXPERIÊNCIAS', icon: GraduationCap },
+  { name: 'SERVIÇOS', icon: Users },
+];
+
+const sidebarCategories = [
+  { name: 'Todos os itens', count: 24, active: true },
+  { name: 'Vestuário', count: 6 },
+  { name: 'Acessórios', count: 6 },
+  { name: 'Livros', count: 4 },
+  { name: 'Arte e Decoração', count: 3 },
+  { name: 'Cursos e Experiências', count: 3 },
+  { name: 'Serviços', count: 2 },
+];
+---
+<PublicLayout title="Shop">
+  <!-- Hero Section -->
+  <section class="relative min-h-[400px] flex items-center pt-24 pb-12 overflow-hidden border-b border-white/5">
+    <!-- Hero Background Image (Right side) -->
+    <div class="absolute inset-0 z-0 flex justify-end opacity-60">
+      <div class="w-full lg:w-2/3 h-full relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/80 to-transparent z-10"></div>
+        <img
+          src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=1200&auto=format&fit=crop"
+          alt="Shop Hero"
+          class="w-full h-full object-cover"
+        />
+        <!-- Gold Wave overlay (abstract representation) -->
+        <div class="absolute inset-0 z-20 opacity-30 bg-[url('/wave-pattern.svg')] bg-cover mix-blend-screen pointer-events-none"></div>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="max-w-2xl">
+        <div class="flex items-center text-sm text-gray-400 mb-6">
+          <a href="/" class="hover:text-white transition-colors">Início</a>
+          <ChevronRight class="w-4 h-4 mx-2" />
+          <span class="text-white">Shop</span>
+        </div>
+
+        <h1 class="text-5xl lg:text-6xl font-bold text-white mb-6 font-display tracking-tight">SHOP</h1>
+
+        <p class="text-lg text-gray-300 leading-relaxed max-w-lg">
+          Produtos e serviços que representam o propósito, a identidade e o espírito do Ecossistema Modulação.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Navigation Bar -->
+  <div class="border-b border-white/10 sticky top-[72px] z-30 bg-brand-black/90 backdrop-blur-md">
+    <div class="container mx-auto px-6">
+      <div class="flex items-center space-x-2 overflow-x-auto scrollbar-hide py-4">
+        {categoriesMenu.map(cat => {
+          const Icon = cat.icon;
+          return (
+            <button class={`flex items-center flex-shrink-0 px-6 py-3 rounded-lg border transition-all duration-300 ${cat.active ? 'border-brand-gold text-brand-gold bg-brand-gold/5' : 'border-transparent text-gray-400 hover:text-white hover:bg-white/5'}`}>
+              <Icon class="w-5 h-5 mr-3" />
+              <span class="text-sm font-medium tracking-wide whitespace-nowrap">{cat.name}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-6 py-12">
+    <div class="flex flex-col lg:flex-row gap-8">
+
+      <!-- Main Content (Left) -->
+      <div class="flex-1">
+
+        <!-- Destaques Section -->
+        <div class="mb-16">
+          <div class="flex items-center mb-8">
+            <h2 class="text-xl font-medium text-white tracking-widest uppercase">DESTAQUES</h2>
+            <div class="ml-4 flex-1 h-px bg-gradient-to-r from-brand-gold/50 to-transparent"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {destaques.map(product => (
+              <div class="group bg-brand-dark-card/50 border border-white/5 hover:border-brand-gold/30 rounded-xl overflow-hidden transition-all duration-300 hover:transform hover:-translate-y-1">
+                <div class="relative aspect-square overflow-hidden bg-[#111]">
+                  {product.category && (
+                    <div class="absolute top-3 left-3 z-10 bg-black/70 backdrop-blur-md border border-brand-gold/20 text-brand-gold text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">
+                      {product.category}
+                    </div>
+                  )}
+                  <img src={product.img} alt={product.name} class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+                </div>
+                <div class="p-5">
+                  <h3 class="text-white font-medium text-sm line-clamp-2 h-10 group-hover:text-brand-gold transition-colors">{product.name}</h3>
+                  <div class="text-brand-gold font-bold mt-3">{product.price}</div>
+                  <div class="flex items-center mt-2 space-x-1">
+                    {[1, 2, 3, 4, 5].map(() => (
+                      <Star class="w-3.5 h-3.5 fill-brand-gold text-brand-gold" />
+                    ))}
+                    <span class="text-gray-400 text-xs ml-1">({product.reviews})</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Produtos Section -->
+        <div>
+          <div class="flex items-center mb-8">
+            <h2 class="text-xl font-medium text-white tracking-widest uppercase">PRODUTOS</h2>
+            <div class="ml-4 flex-1 h-px bg-gradient-to-r from-brand-gold/50 to-transparent"></div>
+          </div>
+
+          <!-- Filters Bar -->
+          <div class="flex flex-wrap items-center justify-between mb-8 gap-4">
+            <div class="flex items-center space-x-3">
+              <button class="flex items-center px-4 py-2 bg-brand-dark-card border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white transition-colors">
+                Mais recentes
+                <ChevronDown class="w-4 h-4 ml-2 opacity-70" />
+              </button>
+              <button class="flex items-center px-4 py-2 bg-brand-dark-card border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white transition-colors">
+                Disponibilidade
+                <ChevronDown class="w-4 h-4 ml-2 opacity-70" />
+              </button>
+              <button class="flex items-center px-4 py-2 bg-brand-dark-card border border-white/10 rounded-lg text-sm text-gray-300 hover:text-white transition-colors">
+                Faixa de preço
+                <ChevronDown class="w-4 h-4 ml-2 opacity-70" />
+              </button>
+            </div>
+
+            <div class="flex items-center space-x-4">
+              <span class="text-sm text-gray-400 hidden md:inline-block">24 produtos encontrados</span>
+              <div class="flex items-center space-x-2">
+                <button class="p-2 border border-brand-gold/30 text-brand-gold rounded-lg bg-brand-gold/5">
+                  <LayoutGrid class="w-4 h-4" />
+                </button>
+                <button class="p-2 border border-white/10 text-gray-400 rounded-lg hover:text-white transition-colors">
+                  <List class="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {produtos.map(product => (
+              <div class="group bg-brand-dark-card/50 border border-white/5 hover:border-brand-gold/30 rounded-xl overflow-hidden transition-all duration-300 hover:transform hover:-translate-y-1">
+                <div class="relative aspect-square overflow-hidden bg-[#111]">
+                  {product.category && (
+                    <div class="absolute top-3 left-3 z-10 bg-black/70 backdrop-blur-md border border-brand-gold/20 text-brand-gold text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">
+                      {product.category}
+                    </div>
+                  )}
+                  <img src={product.img} alt={product.name} class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
+                </div>
+                <div class="p-5">
+                  <h3 class="text-white font-medium text-sm line-clamp-2 h-10 group-hover:text-brand-gold transition-colors">{product.name}</h3>
+                  <div class="text-brand-gold font-bold mt-3">{product.price}</div>
+                  <div class="flex items-center mt-2 space-x-1">
+                    {[1, 2, 3, 4, 5].map(() => (
+                      <Star class="w-3.5 h-3.5 fill-brand-gold text-brand-gold" />
+                    ))}
+                    <span class="text-gray-400 text-xs ml-1">({product.reviews})</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Pagination -->
+          <div class="flex justify-center">
+            <div class="flex items-center space-x-2">
+              <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 text-gray-400 hover:text-white hover:border-white/30 transition-colors">
+                <ArrowLeft class="w-4 h-4" />
+              </button>
+              <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-brand-gold text-brand-black bg-brand-gold transition-colors font-medium">
+                1
+              </button>
+              <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 text-gray-400 hover:text-white hover:border-white/30 transition-colors">
+                2
+              </button>
+              <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 text-gray-400 hover:text-white hover:border-white/30 transition-colors">
+                3
+              </button>
+              <span class="w-10 h-10 flex items-center justify-center text-gray-500">...</span>
+              <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 text-gray-400 hover:text-white hover:border-white/30 transition-colors">
+                6
+              </button>
+              <button class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 text-gray-400 hover:text-white hover:border-white/30 transition-colors">
+                <ArrowRightIcon class="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sidebar (Right) -->
+      <div class="w-full lg:w-[320px] shrink-0 space-y-8">
+
+        <!-- Categorias -->
+        <div class="bg-brand-dark-card/50 border border-white/5 rounded-2xl p-6">
+          <h3 class="text-white font-medium mb-6 uppercase tracking-wider text-sm">CATEGORIAS</h3>
+          <ul class="space-y-4">
+            {sidebarCategories.map(cat => (
+              <li>
+                <button class={`w-full flex items-center justify-between text-sm group ${cat.active ? 'text-brand-gold' : 'text-gray-400 hover:text-white'}`}>
+                  <span class="transition-colors">{cat.name}</span>
+                  <span class={`opacity-60 text-xs ${cat.active ? 'text-brand-gold' : 'text-gray-500 group-hover:text-gray-300'}`}>{cat.count}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Promo Banner -->
+        <div class="relative bg-gradient-to-br from-[#1A1814] to-black border border-brand-gold/30 rounded-2xl p-8 overflow-hidden group">
+          <div class="absolute inset-0 bg-[url('/wave-pattern.svg')] opacity-20 bg-cover mix-blend-screen pointer-events-none group-hover:scale-105 transition-transform duration-700"></div>
+
+          <div class="relative z-10">
+            <h3 class="text-xl font-display font-bold text-white mb-4">PRODUTOS QUE INSPIRAM E CONECTAM.</h3>
+            <p class="text-gray-300 text-sm mb-8 leading-relaxed">
+              Cada item carrega propósito, identidade e transformação.
+            </p>
+            <button class="w-full bg-brand-gold hover:bg-[#C5A030] text-brand-black font-medium py-3 px-4 rounded-lg flex items-center justify-center transition-colors shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+              CONHEÇA MAIS
+              <ArrowRight class="w-4 h-4 ml-2" />
+            </button>
+          </div>
+        </div>
+
+        <!-- Como Comprar -->
+        <div class="bg-brand-dark-card/50 border border-white/5 rounded-2xl p-6">
+          <h3 class="text-white font-medium mb-4 uppercase tracking-wider text-sm">COMO COMPRAR</h3>
+          <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+            Nossos produtos e serviços podem ser adquiridos de forma simples e segura.
+          </p>
+
+          <ul class="space-y-6 mb-8">
+            <li class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center shrink-0 mt-0.5">
+                <Package class="w-4 h-4 text-brand-gold" />
+              </div>
+              <p class="text-sm text-gray-300 ml-4">Escolha o produto ou serviço</p>
+            </li>
+            <li class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center shrink-0 mt-0.5">
+                <MessageCircle class="w-4 h-4 text-brand-gold" />
+              </div>
+              <p class="text-sm text-gray-300 ml-4">Fale com nosso time pelo WhatsApp</p>
+            </li>
+            <li class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center shrink-0 mt-0.5">
+                <ClipboardCheck class="w-4 h-4 text-brand-gold" />
+              </div>
+              <p class="text-sm text-gray-300 ml-4">Finalize seu pedido</p>
+            </li>
+            <li class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center shrink-0 mt-0.5">
+                <Settings class="w-4 h-4 text-brand-gold" />
+              </div>
+              <p class="text-sm text-gray-300 ml-4">Receba e faça parte da transformação</p>
+            </li>
+          </ul>
+
+          <button class="w-full bg-brand-gold/10 hover:bg-brand-gold/20 text-brand-gold border border-brand-gold/50 font-medium py-3 px-4 rounded-lg flex items-center justify-center transition-colors">
+            <MessageCircle class="w-5 h-5 mr-2" />
+            FALAR NO WHATSAPP
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Features Footer Bar -->
+  <div class="border-t border-b border-white/5 bg-[#0a0a0a]">
+    <div class="container mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div class="flex items-start space-x-4">
+          <HeartHandshake class="w-8 h-8 text-brand-gold shrink-0 mt-1" />
+          <div>
+            <h4 class="text-white text-sm font-medium mb-1">PRODUTOS COM PROPÓSITO</h4>
+            <p class="text-gray-400 text-xs leading-relaxed">Cada item fortalece o ecossistema.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <Award class="w-8 h-8 text-brand-gold shrink-0 mt-1" />
+          <div>
+            <h4 class="text-white text-sm font-medium mb-1">QUALIDADE E EXCELÊNCIA</h4>
+            <p class="text-gray-400 text-xs leading-relaxed">Compromisso com a qualidade.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <Headphones class="w-8 h-8 text-brand-gold shrink-0 mt-1" />
+          <div>
+            <h4 class="text-white text-sm font-medium mb-1">ATENDIMENTO HUMANO</h4>
+            <p class="text-gray-400 text-xs leading-relaxed">Estamos aqui para ajudar.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4">
+          <ShieldCheck class="w-8 h-8 text-brand-gold shrink-0 mt-1" />
+          <div>
+            <h4 class="text-white text-sm font-medium mb-1">PAGAMENTO SEGURO</h4>
+            <p class="text-gray-400 text-xs leading-relaxed">Seus dados protegidos.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</PublicLayout>
