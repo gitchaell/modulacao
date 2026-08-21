@@ -28,3 +28,4 @@ pnpm-debug.log*
 local.db
 
 dev_server.log
+*.log
