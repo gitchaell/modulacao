@@ -248,6 +248,11 @@ export const ui = {
     'auth.login.or': 'ou',
     'auth.login.invite_btn': 'ENTRAR COM CONVITE',
     'auth.login.not_member': 'Ainda não é membro?',
+
+    'auth.login.apply_title': 'Ainda não é membro da Modulação?',
+    'auth.login.apply_desc': 'Faça parte do nosso ecossistema e tenha acesso a conteúdos exclusivos, eventos e uma rede de contatos global.',
+    'auth.login.apply_btn': 'APLICAR AGORA',
+
     'auth.login.join_now': 'Saiba como fazer parte da Modulação Dakila ->',
 
     'auth.login.title': 'Iniciar Sessão',
@@ -494,6 +499,11 @@ export const ui = {
     'auth.login.or': 'o',
     'auth.login.invite_btn': 'ENTRAR CON INVITACIÓN',
     'auth.login.not_member': '¿Aún no eres miembro?',
+
+    'auth.login.apply_title': '¿Aún no eres miembro de Modulación?',
+    'auth.login.apply_desc': 'Sé parte de nuestro ecosistema y obtén acceso a contenido exclusivo, eventos y una red de contactos global.',
+    'auth.login.apply_btn': 'APLICAR AHORA',
+
     'auth.login.join_now': 'Descubre cómo ser parte de Modulación Dakila ->',
 
     'auth.login.title': 'Iniciar Sesión',
@@ -739,6 +749,11 @@ export const ui = {
     'auth.login.or': 'or',
     'auth.login.invite_btn': 'ENTER WITH INVITATION',
     'auth.login.not_member': 'Not a member yet?',
+
+    'auth.login.apply_title': 'Not a member of Modulación yet?',
+    'auth.login.apply_desc': 'Be part of our ecosystem and get access to exclusive content, events, and a global contact network.',
+    'auth.login.apply_btn': 'APPLY NOW',
+
     'auth.login.join_now': 'Learn how to be part of Modulação Dakila ->',
 
     'auth.login.title': 'Sign In',

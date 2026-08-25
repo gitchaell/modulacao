@@ -4,7 +4,7 @@ import Input from '@/components/core/Input.astro';
 import Button from '@/components/core/Button.astro';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import { tenantConfig } from '@/config/tenant';
-import { Users, FileText, Calendar, Shield, Ticket } from 'lucide-astro';
+import { Users, FileText, Calendar } from 'lucide-astro';
 
 const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
@@ -71,22 +71,30 @@ if (session.userId) {
             </div>
           </div>
 
-          <div class="flex gap-4">
-            <div class="mt-1 shrink-0 text-brand-gold">
-              <Shield class="w-6 h-6" />
-            </div>
-            <div>
-              <h3 class="text-brand-black dark:text-brand-white font-bold text-sm tracking-wide mb-1">{t('auth.login.feature4.title')}</h3>
-              <p class="text-gray-500 dark:text-gray-400 text-sm">{t('auth.login.feature4.desc')}</p>
-            </div>
-          </div>
-
         </div>
+
+        <!-- Apply Now Section -->
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-white/10 space-y-4">
+          <h3 class="text-brand-black dark:text-brand-white font-bold text-lg">{t('auth.login.apply_title')}</h3>
+          <p class="text-gray-500 dark:text-gray-400 text-sm max-w-md">
+            {t('auth.login.apply_desc')}
+          </p>
+          <Button type="button" variant="outline" class="mt-4 !border-gray-200 dark:!border-white/20 !text-brand-black dark:!text-brand-white hover:!bg-gray-50 dark:hover:!bg-white/5 uppercase tracking-widest font-bold rounded-md px-8 py-3 text-xs">
+            {t('auth.login.apply_btn')}
+          </Button>
+        </div>
+
       </div>
 
       <!-- Right side: Form Card -->
       <div class="w-full max-w-md mx-auto lg:ml-auto lg:mr-0 animate-smooth-fade" style="animation-delay: 0.1s;">
         <div class="bg-brand-white dark:bg-[#111111] p-8 sm:p-10 border border-gray-200 dark:border-white/5 premium-shadow rounded-xl">
+
+          <div class="mb-8 text-center">
+            <h2 class="text-2xl font-display font-bold text-brand-black dark:text-brand-white uppercase tracking-wider">
+              {t('auth.login.title')}
+            </h2>
+          </div>
 
           <form class="space-y-5" method="POST" action="/api/auth/login">
             <Input
@@ -110,40 +118,17 @@ if (session.userId) {
               </button>
             </div>
 
-            <Button type="submit" fullWidth class="mt-6 !bg-brand-gold hover:!bg-brand-gold-dark !text-brand-black uppercase tracking-widest font-bold border-none rounded-md !py-3.5 transition-colors">
-              {t('auth.login.submit')}
-            </Button>
-
-            <div class="text-center mt-4">
-              <a href="#" class="text-sm text-gray-500 hover:text-brand-gold dark:hover:text-brand-gold transition-colors">
+            <div class="flex justify-end mt-2">
+              <a href="#" class="text-xs text-gray-500 hover:text-brand-gold dark:hover:text-brand-gold transition-colors">
                 {t('auth.login.forgot_password')}
               </a>
             </div>
+
+            <Button type="submit" fullWidth class="mt-6 !bg-brand-gold hover:!bg-brand-gold-dark !text-brand-black uppercase tracking-widest font-bold border-none rounded-md !py-3.5 transition-colors">
+              {t('auth.login.submit')}
+            </Button>
           </form>
 
-          <div class="relative my-8">
-            <div class="absolute inset-0 flex items-center">
-              <div class="w-full border-t border-gray-200 dark:border-white/10"></div>
-            </div>
-            <div class="relative flex justify-center text-sm">
-              <span class="px-4 bg-brand-white dark:bg-[#111111] text-gray-500 uppercase tracking-wider text-xs font-semibold">
-                {t('auth.login.or')}
-              </span>
-            </div>
-          </div>
-
-          <Button type="button" variant="outline" fullWidth class="!border-gray-200 dark:!border-white/10 !text-brand-black dark:!text-brand-white hover:!bg-gray-50 dark:hover:!bg-white/5 uppercase tracking-widest font-bold rounded-md !py-3.5 flex items-center justify-center gap-2 text-xs">
-            <Ticket class="w-5 h-5 text-gray-400" />
-            {t('auth.login.invite_btn')}
-          </Button>
-
-        </div>
-
-        <div class="mt-8 text-center text-sm">
-          <p class="text-gray-500 dark:text-gray-400 mb-2">{t('auth.login.not_member')}</p>
-          <a href="#" class="text-brand-gold hover:text-brand-gold-dark font-bold text-xs uppercase tracking-widest transition-colors">
-            {t('auth.login.join_now')}
-          </a>
         </div>
       </div>
 
@@ -153,7 +138,7 @@ if (session.userId) {
 
 <script>
   const togglePassword = document.getElementById('toggle-password');
-  const passwordInput = document.querySelector('input[name="password"]') as HTMLInputElement;
+  const passwordInput = document.querySelector('input[name="password"]');
 
   if (togglePassword && passwordInput) {
     togglePassword.addEventListener('click', () => {
