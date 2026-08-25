@@ -4,115 +4,290 @@ import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import Button from '@/components/core/Button.astro';
 import Input from '@/components/core/Input.astro';
 import Card from '@/components/core/Card.astro';
-import { MapPin, Phone, Mail } from '@lucide/astro';
+import { MapPin, Phone, Mail, Clock, Share2, Users, Shield, Calendar, ShoppingCart, ChevronRight, Send, Map } from '@lucide/astro';
+import { Instagram, Youtube, Facebook, Twitter } from 'lucide-astro';
 
 const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 ---
 <PublicLayout title={t('contact.hero.title')}>
-  <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
 
-    {/* Left Column: Content and Form */}
-    <div class="px-6 py-12 md:py-20 lg:px-16 xl:px-24 flex flex-col justify-center bg-brand-white dark:bg-brand-dark-card/90 border-r border-gray-200 dark:border-white/5 relative z-10 shadow-[8px_0_30px_-15px_rgba(0,0,0,0.3)]">
+  {/* Hero Section */}
+  <section class="relative w-full h-[400px] md:h-[500px] flex items-center justify-start overflow-hidden">
+    {/* Background Image - Mountain Climbers (Placeholder from Unsplash) */}
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=2000&auto=format&fit=crop" alt="Hero background" class="w-full h-full object-cover object-center opacity-40 dark:opacity-30 mix-blend-overlay" />
+      <div class="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/80 to-transparent"></div>
+      <div class="absolute bottom-0 w-full h-32 bg-gradient-to-t from-brand-black to-transparent"></div>
 
-      <div class="max-w-xl mx-auto w-full">
-        {/* Breadcrumbs */}
-        <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-8 font-medium">
-          <a href="/" class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
-          <span class="mx-2">/</span>
-          <span class="text-brand-black dark:text-brand-white uppercase">{t('contact.hero.title')}</span>
-        </div>
+      {/* Decorative Gold Wave SVG Placeholder (Abstract) */}
+      <svg class="absolute bottom-10 w-full h-24 text-brand-gold/30 pointer-events-none" preserveAspectRatio="none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <path fill="currentColor" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,197.3C960,213,1056,203,1152,186.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    </div>
 
-        {/* Header */}
-        <h1 class="font-display text-4xl md:text-5xl font-bold uppercase tracking-widest text-brand-black dark:text-brand-white mb-6">
-          {t('contact.hero.title')}
-        </h1>
-        <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-10 text-balance">
-          {t('contact.info.desc')}
-        </p>
-
-        {/* Contact Details row/grid */}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-           <div class="flex flex-col gap-3">
-              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-gold/10 dark:bg-brand-gold/5 flex items-center justify-center border border-brand-gold/20">
-                <MapPin class="w-5 h-5 text-brand-gold" />
-              </div>
-              <div class="text-sm font-medium text-brand-black dark:text-brand-white">
-                {t('contact.info.address')}
-              </div>
-           </div>
-
-           <div class="flex flex-col gap-3">
-              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-gold/10 dark:bg-brand-gold/5 flex items-center justify-center border border-brand-gold/20">
-                <Phone class="w-5 h-5 text-brand-gold" />
-              </div>
-              <div class="text-sm font-medium text-brand-black dark:text-brand-white">
-                {t('contact.info.phone')}
-              </div>
-           </div>
-
-           <div class="flex flex-col gap-3">
-              <div class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-gold/10 dark:bg-brand-gold/5 flex items-center justify-center border border-brand-gold/20">
-                <Mail class="w-5 h-5 text-brand-gold" />
-              </div>
-              <div class="text-sm font-medium text-brand-black dark:text-brand-white">
-                {t('contact.info.email')}
-              </div>
-           </div>
-        </div>
-
-        {/* Form */}
-        <form id="contact-form" method="POST" action="/api/contacto" class="space-y-6">
-          <div id="form-success" class="hidden bg-green-500/10 text-green-500 border border-green-500/20 p-4 rounded-sm text-sm font-semibold">
-            {t('contact.form.success')}
-          </div>
-          <div id="form-error" class="hidden bg-red-500/10 text-red-500 border border-red-500/20 p-4 rounded-sm text-sm font-semibold">
-            {t('contact.form.error')}
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Input type="text" name="name" label={t('contact.form.name.label')} placeholder={t('contact.form.name.placeholder')} required />
-            <Input type="email" name="email" label={t('contact.form.email.label')} placeholder={t('contact.form.email.placeholder')} required />
-          </div>
-
-          <div class="flex flex-col gap-2 w-full">
-            <label for="message" class="text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite">
-              {t('contact.form.message.label')}
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              required
-              rows="5"
-              placeholder={t('contact.form.message.placeholder')}
-              class="flex w-full rounded-sm border bg-white dark:bg-brand-black/50 px-4 py-3 text-sm text-brand-black dark:text-white placeholder:text-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold disabled:cursor-not-allowed disabled:opacity-50 border-gray-300 dark:border-gray-700 hover:border-brand-gold/50"
-            ></textarea>
-          </div>
-
-          <div class="pt-2">
-            <Button type="submit" fullWidth>{t('contact.form.submit')}</Button>
-          </div>
-        </form>
-
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 mt-16">
+      <div class="flex items-center text-sm text-gray-400 mb-6 font-medium">
+        <a href="/" class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
+        <span class="mx-2">&gt;</span>
+        <span class="text-white uppercase">{t('contact.hero.title')}</span>
       </div>
-    </div>
 
-    {/* Right Column: Map */}
-    <div class="hidden lg:block relative min-h-[400px] h-full w-full">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0654069818817!2d-46.65431638502213!3d-23.566089767664687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1sen!2sbr!4v1620310000000!5m2!1sen!2sbr"
-        width="100%"
-        height="100%"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        class="absolute inset-0 w-full h-full object-cover dark:filter dark:grayscale dark:contrast-125 dark:opacity-70 grayscale"
-      ></iframe>
-      {/* Optional dark overlay for map in dark mode to blend better */}
-      <div class="absolute inset-0 pointer-events-none hidden dark:block bg-brand-dark/20 mix-blend-multiply"></div>
+      <h1 class="font-display text-5xl md:text-6xl font-bold uppercase tracking-widest text-white mb-6">
+        {t('contact.hero.title')}
+      </h1>
+
+      <h2 class="text-brand-gold font-display text-xl md:text-2xl font-bold tracking-wider mb-8 uppercase max-w-2xl">
+        {t('contact.info.desc')}
+      </h2>
+
+      <p class="text-gray-300 text-base md:text-lg max-w-xl leading-relaxed whitespace-pre-line">
+        {t('contact.info.desc2')}
+      </p>
     </div>
-  </div>
+  </section>
+
+  <main class="w-full bg-brand-black text-white py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 space-y-24">
+
+      {/* Info Grid (5 Columns) */}
+      <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 border-b border-white/10 pb-16">
+        {/* Email */}
+        <div class="flex flex-col gap-3 group">
+          <div class="flex items-center gap-3">
+             <Mail class="w-6 h-6 text-brand-gold" />
+             <h3 class="font-bold tracking-widest uppercase text-sm">{t('contact.info.email.label')}</h3>
+          </div>
+          <div class="pl-9 space-y-1">
+             <p class="text-gray-300 text-sm">contato@modulacao.org</p>
+             <p class="text-gray-500 text-xs">{t('contact.info.email.desc')}</p>
+          </div>
+        </div>
+
+        {/* WhatsApp */}
+        <div class="flex flex-col gap-3 group">
+          <div class="flex items-center gap-3">
+             <Phone class="w-6 h-6 text-brand-gold" />
+             <h3 class="font-bold tracking-widest uppercase text-sm">{t('contact.info.whatsapp')}</h3>
+          </div>
+          <div class="pl-9 space-y-1">
+             <p class="text-gray-300 text-sm">+591 780 00000</p>
+             <p class="text-gray-500 text-xs">{t('contact.info.whatsapp.desc')}</p>
+          </div>
+        </div>
+
+        {/* Address */}
+        <div class="flex flex-col gap-3 group">
+          <div class="flex items-center gap-3">
+             <MapPin class="w-6 h-6 text-brand-gold" />
+             <h3 class="font-bold tracking-widest uppercase text-sm">{t('contact.info.address.label')}</h3>
+          </div>
+          <div class="pl-9 space-y-1">
+             <p class="text-gray-300 text-sm leading-tight whitespace-pre-line">{t('contact.info.address.desc')}</p>
+             <a href="#" class="text-brand-gold text-xs hover:underline flex items-center gap-1 font-semibold mt-1">Ver no mapa <ChevronRight class="w-3 h-3"/></a>
+          </div>
+        </div>
+
+        {/* Hours */}
+        <div class="flex flex-col gap-3 group">
+          <div class="flex items-center gap-3">
+             <Clock class="w-6 h-6 text-brand-gold" />
+             <h3 class="font-bold tracking-widest uppercase text-sm">{t('contact.info.hours')}</h3>
+          </div>
+          <div class="pl-9 space-y-1">
+             <p class="text-gray-300 text-sm leading-tight whitespace-pre-line">{t('contact.info.hours.desc')}</p>
+             <p class="text-gray-500 text-xs">{t('contact.info.hours.exc')}</p>
+          </div>
+        </div>
+
+        {/* Social */}
+        <div class="flex flex-col gap-3 group">
+          <div class="flex items-center gap-3">
+             <Share2 class="w-6 h-6 text-brand-gold" />
+             <h3 class="font-bold tracking-widest uppercase text-sm">{t('contact.info.social')}</h3>
+          </div>
+          <div class="pl-9 flex items-center gap-3 mt-1">
+             <a href="#" class="text-brand-gold hover:text-white transition-colors" aria-label="Instagram"><Instagram class="w-5 h-5"/></a>
+             <a href="#" class="text-brand-gold hover:text-white transition-colors" aria-label="YouTube"><Youtube class="w-5 h-5"/></a>
+             <a href="#" class="text-brand-gold hover:text-white transition-colors" aria-label="Facebook"><Facebook class="w-5 h-5"/></a>
+             <a href="#" class="text-brand-gold hover:text-white transition-colors" aria-label="Twitter/X"><Twitter class="w-5 h-5"/></a>
+          </div>
+        </div>
+      </section>
+
+      {/* Form and Map Section */}
+      <section class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+        {/* Left: Form */}
+        <div class="space-y-6">
+          <div>
+            <h2 class="font-display text-2xl font-bold uppercase tracking-widest text-white mb-2">{t('contact.form.title2')}</h2>
+            <p class="text-gray-400 text-sm">{t('contact.form.desc')}</p>
+          </div>
+
+          <form id="contact-form" method="POST" action="/api/contacto" class="space-y-6">
+            <div id="form-success" class="hidden bg-green-500/10 text-green-500 border border-green-500/20 p-4 rounded-sm text-sm font-semibold">
+              {t('contact.form.success')}
+            </div>
+            <div id="form-error" class="hidden bg-red-500/10 text-red-500 border border-red-500/20 p-4 rounded-sm text-sm font-semibold">
+              {t('contact.form.error')}
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Input type="text" name="name" label="" placeholder={t('contact.form.name.label')} required class="bg-brand-dark border-white/10 text-white placeholder:text-gray-500" />
+              <Input type="email" name="email" label="" placeholder={t('contact.form.email.label')} required class="bg-brand-dark border-white/10 text-white placeholder:text-gray-500" />
+            </div>
+
+            <div class="relative">
+               <select name="subject" class="flex w-full appearance-none rounded-sm border bg-brand-dark px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold border-white/10 hover:border-brand-gold/50 cursor-pointer">
+                 <option value="" disabled selected>{t('contact.form.subject.label')}</option>
+                 <option value="duvida">{t('contact.form.subject.opt1')}</option>
+                 <option value="suporte">{t('contact.form.subject.opt2')}</option>
+                 <option value="parceria">{t('contact.form.subject.opt3')}</option>
+               </select>
+               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-gold">
+                 <ChevronRight class="w-4 h-4 rotate-90" />
+               </div>
+            </div>
+
+            <div>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="5"
+                placeholder={t('contact.form.message.placeholder')}
+                class="flex w-full rounded-sm border bg-brand-dark px-4 py-3 text-sm text-white placeholder:text-gray-500 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold border-white/10 hover:border-brand-gold/50"
+              ></textarea>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <input type="checkbox" id="privacy" required class="mt-1 bg-brand-dark border-white/10 text-brand-gold focus:ring-brand-gold rounded-sm cursor-pointer" />
+              <label for="privacy" class="text-sm text-gray-400">
+                {t('contact.form.privacy')} <a href="#" class="text-brand-gold hover:underline">{t('contact.form.privacy.link')}</a>
+              </label>
+            </div>
+
+            <div class="pt-2">
+              <Button type="submit" class="!bg-brand-gold hover:!bg-brand-gold-dark !text-brand-black w-full flex items-center justify-center gap-2">
+                <Send class="w-4 h-4" /> {t('contact.form.submit')}
+              </Button>
+            </div>
+          </form>
+        </div>
+
+        {/* Right: Where We Are */}
+        <div class="space-y-6">
+          <div>
+            <h2 class="font-display text-2xl font-bold uppercase tracking-widest text-white mb-2">{t('contact.location.title')}</h2>
+            <p class="text-gray-400 text-sm">{t('contact.location.desc')}</p>
+          </div>
+
+          <div class="relative w-full h-[300px] bg-brand-dark rounded-sm border border-white/10 overflow-hidden group">
+             {/* Map Iframe */}
+             <iframe
+               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119934.33230678887!2d-63.26760578857416!3d-17.801048956976722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f1e81d770519bf%3A0x62f03672d5dbfb56!2sSanta%20Cruz%20de%20la%20Sierra%2C%20Bolivia!5e0!3m2!1sen!2sbr!4v1700000000000!5m2!1sen!2sbr"
+               width="100%"
+               height="100%"
+               style="border:0;"
+               allowfullscreen=""
+               loading="lazy"
+               referrerpolicy="no-referrer-when-downgrade"
+               class="absolute inset-0 w-full h-full object-cover dark:filter dark:grayscale dark:contrast-125 dark:opacity-70 grayscale"
+             ></iframe>
+             <div class="absolute inset-0 pointer-events-none bg-brand-dark/20 mix-blend-multiply"></div>
+          </div>
+
+          <Card class="flex flex-col sm:flex-row items-center gap-6 p-4 bg-brand-dark/50 border-white/10">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&auto=format&fit=crop" alt="Building" class="w-full sm:w-32 h-24 object-cover rounded-sm border border-white/5 shrink-0" />
+            <div class="space-y-2 w-full">
+              <h3 class="font-bold text-white tracking-wide">{t('contact.location.building')}</h3>
+              <p class="text-gray-400 text-sm whitespace-pre-line">{t('contact.location.address')}</p>
+              <a href="#" class="text-brand-gold text-xs font-bold uppercase tracking-widest hover:underline flex items-center gap-1 mt-2">
+                {t('contact.location.directions')} <ChevronRight class="w-3 h-3"/>
+              </a>
+            </div>
+          </Card>
+
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section class="space-y-8 border-t border-white/10 pt-16">
+        <div>
+           <div class="flex items-center gap-4 mb-2">
+             <h2 class="font-display text-2xl font-bold uppercase tracking-widest text-white">{t('contact.faq.title')}</h2>
+             <div class="h-px bg-brand-gold/50 w-16"></div>
+           </div>
+           <p class="text-gray-400 text-sm">{t('contact.faq.desc')}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+           {/* FAQ 1 */}
+           <a href="#" class="flex items-center justify-between p-6 bg-brand-dark border border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
+              <div class="flex items-center gap-4">
+                 <Users class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" />
+                 <span class="text-sm font-semibold text-gray-200 group-hover:text-white whitespace-pre-line">{t('contact.faq.q1')}</span>
+              </div>
+              <ChevronRight class="w-5 h-5 text-brand-gold" />
+           </a>
+           {/* FAQ 2 */}
+           <a href="#" class="flex items-center justify-between p-6 bg-brand-dark border border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
+              <div class="flex items-center gap-4">
+                 <Shield class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" />
+                 <span class="text-sm font-semibold text-gray-200 group-hover:text-white whitespace-pre-line">{t('contact.faq.q2')}</span>
+              </div>
+              <ChevronRight class="w-5 h-5 text-brand-gold" />
+           </a>
+           {/* FAQ 3 */}
+           <a href="#" class="flex items-center justify-between p-6 bg-brand-dark border border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
+              <div class="flex items-center gap-4">
+                 <Calendar class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" />
+                 <span class="text-sm font-semibold text-gray-200 group-hover:text-white whitespace-pre-line">{t('contact.faq.q3')}</span>
+              </div>
+              <ChevronRight class="w-5 h-5 text-brand-gold" />
+           </a>
+           {/* FAQ 4 */}
+           <a href="#" class="flex items-center justify-between p-6 bg-brand-dark border border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
+              <div class="flex items-center gap-4">
+                 <ShoppingCart class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" />
+                 <span class="text-sm font-semibold text-gray-200 group-hover:text-white whitespace-pre-line">{t('contact.faq.q4')}</span>
+              </div>
+              <ChevronRight class="w-5 h-5 text-brand-gold" />
+           </a>
+        </div>
+
+        <div class="flex justify-center mt-6">
+           <a href="/faq" class="text-brand-gold text-sm font-bold uppercase tracking-widest hover:underline flex items-center gap-2">
+             {t('contact.faq.all')} <ChevronRight class="w-4 h-4"/>
+           </a>
+        </div>
+      </section>
+
+      {/* CTA Banner */}
+      <section class="relative w-full rounded-sm overflow-hidden bg-brand-dark border border-brand-gold/20 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 mt-16">
+         {/* Gold Wave Background */}
+         <div class="absolute inset-0 z-0 opacity-10 pointer-events-none">
+            <svg class="w-full h-full text-brand-gold" preserveAspectRatio="none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <path fill="currentColor" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,197.3C960,213,1056,203,1152,186.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+         </div>
+
+         <div class="relative z-10 flex items-start gap-4">
+            <div class="text-brand-gold mt-1"><Map class="w-6 h-6" /></div>
+            <div>
+               <h2 class="font-display text-xl md:text-2xl font-bold uppercase tracking-widest text-white mb-1">{t('contact.cta.title')}</h2>
+               <p class="text-gray-400 text-sm md:text-base">{t('contact.cta.desc')}</p>
+            </div>
+         </div>
+
+         <a href="/nosotros" class="relative z-10 shrink-0 bg-brand-gold hover:bg-brand-gold-dark text-brand-black font-bold uppercase tracking-widest text-sm px-8 py-4 rounded-sm transition-colors flex items-center gap-2">
+            {t('contact.cta.btn')} <ChevronRight class="w-4 h-4"/>
+         </a>
+      </section>
+
+    </div>
+  </main>
 
   <script>
     const form = document.getElementById('contact-form') as HTMLFormElement;
