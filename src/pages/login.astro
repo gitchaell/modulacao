@@ -1,80 +1,152 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import WaveBackground from '@/components/ui/WaveBackground.astro';
+import PublicLayout from '@/layouts/PublicLayout.astro';
 import Input from '@/components/core/Input.astro';
 import Button from '@/components/core/Button.astro';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import { tenantConfig } from '@/config/tenant';
+import { Users, FileText, Calendar, Shield, Ticket } from 'lucide-astro';
 
 const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 
 // If user is already logged in, redirect them to the app
-const session = await import('@/utils/session').then(m => m.getSession(Astro.request, new Response()));
+const session = await import('@/utils/session').then(m => m.getSession(Astro.request, new Response() as any));
 if (session.userId) {
   return Astro.redirect('/app/comunidad');
 }
 ---
 
-<BaseLayout title={t('auth.login.title') + ` | ${tenantConfig.name}`}>
-  <div class="min-h-screen flex bg-brand-white dark:bg-brand-black">
+<PublicLayout title={t('auth.login.title') + ` | ${tenantConfig.name}`}>
+  <div class="w-full flex justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-[1200px] w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
-    <!-- Image/Brand Section (Left side) -->
-    <div class="hidden lg:flex flex-1 relative bg-brand-black items-center justify-center border-r border-gray-200 dark:border-white/5 overflow-hidden premium-shadow">
-      <!-- Decoración de ondas moduladoras abstracta -->
-      <div class="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black to-[#0a0a0a] z-0"></div>
-      <div class="absolute inset-0 z-0 opacity-40 mix-blend-screen">
-        <WaveBackground />
-      </div>
+      <!-- Left side: Content -->
+      <div class="flex flex-col gap-10 animate-smooth-fade">
 
-      <div class="relative z-10 text-center px-12 animate-smooth-fade">
-        <h1 class="text-6xl font-display font-bold text-white uppercase tracking-wider mb-2">
-          {tenantConfig.name}
-        </h1>
-        <span class="text-brand-gold block mt-2 text-2xl font-bold tracking-widest uppercase">{t('auth.login.workspace')}</span>
-
-        <p class="text-gray-400 max-w-md mx-auto text-lg leading-relaxed mt-10">
-          {t('auth.login.desc')}
-        </p>
-      </div>
-    </div>
-
-    <!-- Form Section (Right side) -->
-    <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-20 xl:px-24 bg-white dark:bg-brand-dark">
-      <div class="mx-auto w-full max-w-sm animate-smooth-fade" style="animation-delay: 0.1s;">
-
-        <div class="text-center mb-10">
-          <h2 class="font-display text-[32px] font-bold uppercase tracking-widest text-[#111111] dark:text-white mb-3">{t('auth.login.title')}</h2>
-          <p class="text-[15px] text-[#6b7280] dark:text-gray-400">{t('auth.login.subtitle')} de {tenantConfig.name}.</p>
+        <div>
+          <h1 class="text-3xl font-display font-bold text-brand-black dark:text-brand-white uppercase tracking-wider mb-2">
+            {t('auth.login.header_title')}
+          </h1>
+          <p class="text-gray-500 dark:text-gray-400">
+            {t('auth.login.header_subtitle')}
+          </p>
         </div>
 
-        <form class="space-y-6" method="POST" action="/api/auth/login">
-          <Input
-            type="email"
-            name="email"
-            label={t('auth.login.email')}
-            required
-            placeholder="usuario@ejemplo.com"
-            class="uppercase text-xs font-semibold tracking-wider text-gray-700"
-          />
-          <Input
-            type="password"
-            name="password"
-            label={t('auth.login.password')}
-            required
-            class="uppercase text-xs font-semibold tracking-wider text-gray-700"
-          />
+        <div class="space-y-4">
+          <h2 class="text-4xl lg:text-[42px] leading-tight font-display font-bold text-brand-black dark:text-brand-white uppercase tracking-wider whitespace-pre-line" set:html={t('auth.login.welcome_title').replace('\n', '<br />')} />
+          <p class="text-gray-600 dark:text-gray-400 max-w-md text-base leading-relaxed">
+            {t('auth.login.welcome_desc')}
+          </p>
+        </div>
 
-          <Button type="submit" fullWidth class="mt-8 !text-[#111111] !bg-[#dcb13c] hover:!bg-[#dcb13c]/90 uppercase tracking-widest font-semibold border-none rounded-sm !py-3">
-            {t('auth.login.submit')}
+        <div class="space-y-8 mt-4">
+
+          <div class="flex gap-4">
+            <div class="mt-1 shrink-0 text-brand-gold">
+              <Users class="w-6 h-6" />
+            </div>
+            <div>
+              <h3 class="text-brand-black dark:text-brand-white font-bold text-sm tracking-wide mb-1">{t('auth.login.feature1.title')}</h3>
+              <p class="text-gray-500 dark:text-gray-400 text-sm">{t('auth.login.feature1.desc')}</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="mt-1 shrink-0 text-brand-gold">
+              <FileText class="w-6 h-6" />
+            </div>
+            <div>
+              <h3 class="text-brand-black dark:text-brand-white font-bold text-sm tracking-wide mb-1">{t('auth.login.feature2.title')}</h3>
+              <p class="text-gray-500 dark:text-gray-400 text-sm">{t('auth.login.feature2.desc')}</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="mt-1 shrink-0 text-brand-gold">
+              <Calendar class="w-6 h-6" />
+            </div>
+            <div>
+              <h3 class="text-brand-black dark:text-brand-white font-bold text-sm tracking-wide mb-1">{t('auth.login.feature3.title')}</h3>
+              <p class="text-gray-500 dark:text-gray-400 text-sm">{t('auth.login.feature3.desc')}</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="mt-1 shrink-0 text-brand-gold">
+              <Shield class="w-6 h-6" />
+            </div>
+            <div>
+              <h3 class="text-brand-black dark:text-brand-white font-bold text-sm tracking-wide mb-1">{t('auth.login.feature4.title')}</h3>
+              <p class="text-gray-500 dark:text-gray-400 text-sm">{t('auth.login.feature4.desc')}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right side: Form Card -->
+      <div class="w-full max-w-md mx-auto lg:ml-auto lg:mr-0 animate-smooth-fade" style="animation-delay: 0.1s;">
+        <div class="bg-brand-white dark:bg-[#111111] p-8 sm:p-10 border border-gray-200 dark:border-white/5 premium-shadow rounded-xl">
+
+          <form class="space-y-5" method="POST" action="/api/auth/login">
+            <Input
+              type="email"
+              name="email"
+              label={t('auth.login.email')}
+              required
+              class="text-sm text-brand-black dark:text-brand-white !bg-gray-50 dark:!bg-[#1a1a1a] !border-gray-200 dark:!border-white/5 rounded-md"
+            />
+
+            <div class="relative">
+              <Input
+                type="password"
+                name="password"
+                label={t('auth.login.password')}
+                required
+                class="text-sm text-brand-black dark:text-brand-white !bg-gray-50 dark:!bg-[#1a1a1a] !border-gray-200 dark:!border-white/5 rounded-md pr-10"
+              />
+              <button type="button" class="absolute right-3 top-[38px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+
+            <Button type="submit" fullWidth class="mt-6 !bg-brand-gold hover:!bg-brand-gold-dark !text-brand-black uppercase tracking-widest font-bold border-none rounded-md !py-3.5 transition-colors">
+              {t('auth.login.submit')}
+            </Button>
+
+            <div class="text-center mt-4">
+              <a href="#" class="text-sm text-gray-500 hover:text-brand-gold dark:hover:text-brand-gold transition-colors">
+                {t('auth.login.forgot_password')}
+              </a>
+            </div>
+          </form>
+
+          <div class="relative my-8">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-200 dark:border-white/10"></div>
+            </div>
+            <div class="relative flex justify-center text-sm">
+              <span class="px-4 bg-brand-white dark:bg-[#111111] text-gray-500 uppercase tracking-wider text-xs font-semibold">
+                {t('auth.login.or')}
+              </span>
+            </div>
+          </div>
+
+          <Button type="button" variant="outline" fullWidth class="!border-gray-200 dark:!border-white/10 !text-brand-black dark:!text-brand-white hover:!bg-gray-50 dark:hover:!bg-white/5 uppercase tracking-widest font-bold rounded-md !py-3.5 flex items-center justify-center gap-2 text-xs">
+            <Ticket class="w-5 h-5 text-gray-400" />
+            {t('auth.login.invite_btn')}
           </Button>
-        </form>
 
-        <div class="mt-10 text-center border-t border-gray-100 dark:border-white/5 pt-8">
-          <p class="text-sm text-[#6b7280] dark:text-gray-400" set:html={t('auth.login.invite_only')} />
         </div>
 
+        <div class="mt-8 text-center text-sm">
+          <p class="text-gray-500 dark:text-gray-400 mb-2">{t('auth.login.not_member')}</p>
+          <a href="#" class="text-brand-gold hover:text-brand-gold-dark font-bold text-xs uppercase tracking-widest transition-colors">
+            {t('auth.login.join_now')}
+          </a>
+        </div>
       </div>
+
     </div>
   </div>
-</BaseLayout>
+</PublicLayout>
