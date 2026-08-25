@@ -1,5 +1,6 @@
 ---
-import AuthLayout from '@/layouts/AuthLayout.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import WaveBackground from '@/components/ui/WaveBackground.astro';
 import Input from '@/components/core/Input.astro';
 import Button from '@/components/core/Button.astro';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
@@ -15,22 +16,68 @@ if (session.userId) {
 }
 ---
 
-<AuthLayout title={t('auth.login.title')}>
-  <div class="text-center mb-8">
-    <h2 class="font-display text-3xl font-bold uppercase tracking-wider text-brand-black dark:text-white">{t('auth.login.title')}</h2>
-    <p class="text-base text-gray-500 font-semibold mt-2">Accede a tu cuenta de {tenantConfig.name}.</p>
+<BaseLayout title={t('auth.login.title') + ` | ${tenantConfig.name}`}>
+  <div class="min-h-screen flex bg-brand-white dark:bg-brand-black">
+
+    <!-- Image/Brand Section (Left side) -->
+    <div class="hidden lg:flex flex-1 relative bg-brand-black items-center justify-center border-r border-gray-200 dark:border-white/5 overflow-hidden premium-shadow">
+      <!-- Decoración de ondas moduladoras abstracta -->
+      <div class="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black to-[#0a0a0a] z-0"></div>
+      <div class="absolute inset-0 z-0 opacity-40 mix-blend-screen">
+        <WaveBackground />
+      </div>
+
+      <div class="relative z-10 text-center px-12 animate-smooth-fade">
+        <h1 class="text-6xl font-display font-bold text-white uppercase tracking-wider mb-2">
+          {tenantConfig.name}
+        </h1>
+        <span class="text-brand-gold block mt-2 text-2xl font-bold tracking-widest uppercase">Workspace</span>
+
+        <p class="text-gray-400 max-w-md mx-auto text-lg leading-relaxed mt-10">
+          Accede a tu cuenta para gestionar tu actividad, participar en la comunidad y descubrir todo lo que tenemos para ofrecerte.
+        </p>
+      </div>
+    </div>
+
+    <!-- Form Section (Right side) -->
+    <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-20 xl:px-24 bg-white dark:bg-brand-dark">
+      <div class="mx-auto w-full max-w-sm animate-smooth-fade" style="animation-delay: 0.1s;">
+
+        <div class="text-center mb-10">
+          <h2 class="font-display text-[32px] font-bold uppercase tracking-widest text-[#111111] dark:text-white mb-3">{t('auth.login.title')}</h2>
+          <p class="text-[15px] text-[#6b7280] dark:text-gray-400">Accede a tu cuenta de {tenantConfig.name}.</p>
+        </div>
+
+        <form class="space-y-6" method="POST" action="/api/auth/login">
+          <Input
+            type="email"
+            name="email"
+            label={t('auth.login.email')}
+            required
+            placeholder="usuario@ejemplo.com"
+            class="uppercase text-xs font-semibold tracking-wider text-gray-700"
+          />
+          <Input
+            type="password"
+            name="password"
+            label={t('auth.login.password')}
+            required
+            class="uppercase text-xs font-semibold tracking-wider text-gray-700"
+          />
+
+          <Button type="submit" fullWidth class="mt-8 !text-[#111111] !bg-[#dcb13c] hover:!bg-[#dcb13c]/90 uppercase tracking-widest font-semibold border-none rounded-sm !py-3">
+            {t('auth.login.submit')}
+          </Button>
+        </form>
+
+        <div class="mt-10 text-center border-t border-gray-100 dark:border-white/5 pt-8">
+          <p class="text-sm text-[#6b7280] dark:text-gray-400">
+            El acceso es estrictamente por invitación.<br>
+            Si recibiste una, revisa tu correo electrónico.
+          </p>
+        </div>
+
+      </div>
+    </div>
   </div>
-
-  <form class="space-y-6" method="POST" action="/api/auth/login">
-    <Input type="email" name="email" label={t('auth.login.email')} required placeholder="usuario@ejemplo.com" />
-    <Input type="password" name="password" label={t('auth.login.password')} required />
-
-    <Button type="submit" fullWidth class="mt-8">{t('auth.login.submit')}</Button>
-  </form>
-
-  <div class="mt-8 text-center border-t border-gray-200 dark:border-white/5 pt-6">
-    <p class="text-sm text-gray-500 font-semibold">
-      El acceso es estrictamente por invitación. <br/> Si recibiste una, revisa tu correo electrónico.
-    </p>
-  </div>
-</AuthLayout>
+</BaseLayout>
