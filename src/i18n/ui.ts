@@ -231,6 +231,15 @@ export const ui = {
 
     'common.date': 'Data',
     'common.status': 'Status',
+    'auth.login.title': 'Iniciar Sessão',
+    'auth.login.subtitle': 'Acesse sua conta',
+    'auth.login.workspace': 'Workspace',
+    'auth.login.desc': 'Acesse sua conta para gerenciar sua atividade, participar da comunidade e descobrir tudo o que temos a oferecer.',
+    'auth.login.email': 'E-mail',
+    'auth.login.password': 'Senha',
+    'auth.login.submit': 'Entrar no Workspace',
+    'auth.login.invite_only': 'O acesso é estritamente por convite.<br>Se você recebeu um, verifique seu e-mail.',
+    'auth.invite.title': 'Configurar Conta',
   },
   es: {
 
@@ -450,9 +459,13 @@ export const ui = {
     'admin.catalog.title': 'Gestión de Catálogo',
     'admin.catalog.create_btn': 'Añadir Producto',
     'auth.login.title': 'Iniciar Sesión',
+    'auth.login.subtitle': 'Accede a tu cuenta',
+    'auth.login.workspace': 'Workspace',
+    'auth.login.desc': 'Accede a tu cuenta para gestionar tu actividad, participar en la comunidad y descubrir todo lo que tenemos para ofrecerte.',
     'auth.login.email': 'Correo Electrónico',
     'auth.login.password': 'Contraseña',
     'auth.login.submit': 'Ingresar al Workspace',
+    'auth.login.invite_only': 'El acceso es estrictamente por invitación.<br>Si recibiste una, revisa tu correo electrónico.',
     'auth.invite.title': 'Configurar Cuenta',
   },
   en: {
@@ -672,9 +685,13 @@ export const ui = {
     'admin.catalog.title': 'Catalog Management',
     'admin.catalog.create_btn': 'Add Product',
     'auth.login.title': 'Sign In',
+    'auth.login.subtitle': 'Access your account',
+    'auth.login.workspace': 'Workspace',
+    'auth.login.desc': 'Access your account to manage your activity, participate in the community, and discover everything we have to offer.',
     'auth.login.email': 'Email Address',
     'auth.login.password': 'Password',
     'auth.login.submit': 'Enter Workspace',
+    'auth.login.invite_only': 'Access is strictly by invitation.<br>If you received one, check your email.',
     'auth.invite.title': 'Setup Account',
   },
 } as const;

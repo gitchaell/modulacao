@@ -31,10 +31,10 @@ if (session.userId) {
         <h1 class="text-6xl font-display font-bold text-white uppercase tracking-wider mb-2">
           {tenantConfig.name}
         </h1>
-        <span class="text-brand-gold block mt-2 text-2xl font-bold tracking-widest uppercase">Workspace</span>
+        <span class="text-brand-gold block mt-2 text-2xl font-bold tracking-widest uppercase">{t('auth.login.workspace')}</span>
 
         <p class="text-gray-400 max-w-md mx-auto text-lg leading-relaxed mt-10">
-          Accede a tu cuenta para gestionar tu actividad, participar en la comunidad y descubrir todo lo que tenemos para ofrecerte.
+          {t('auth.login.desc')}
         </p>
       </div>
     </div>
@@ -45,7 +45,7 @@ if (session.userId) {
 
         <div class="text-center mb-10">
           <h2 class="font-display text-[32px] font-bold uppercase tracking-widest text-[#111111] dark:text-white mb-3">{t('auth.login.title')}</h2>
-          <p class="text-[15px] text-[#6b7280] dark:text-gray-400">Accede a tu cuenta de {tenantConfig.name}.</p>
+          <p class="text-[15px] text-[#6b7280] dark:text-gray-400">{t('auth.login.subtitle')} de {tenantConfig.name}.</p>
         </div>
 
         <form class="space-y-6" method="POST" action="/api/auth/login">
@@ -71,10 +71,7 @@ if (session.userId) {
         </form>
 
         <div class="mt-10 text-center border-t border-gray-100 dark:border-white/5 pt-8">
-          <p class="text-sm text-[#6b7280] dark:text-gray-400">
-            El acceso es estrictamente por invitación.<br>
-            Si recibiste una, revisa tu correo electrónico.
-          </p>
+          <p class="text-sm text-[#6b7280] dark:text-gray-400" set:html={t('auth.login.invite_only')} />
         </div>
 
       </div>
