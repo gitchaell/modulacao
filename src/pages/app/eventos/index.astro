@@ -10,7 +10,7 @@ import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import { tenantConfig } from '@/config/tenant';
 
 const lang = getLangFromUrl(Astro.cookies);
-const t = useTranslations(lang);
+const t = await useTranslations(lang);
 
 const upcomingEvents = await db
   .select({

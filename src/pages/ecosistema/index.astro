@@ -5,7 +5,7 @@ import { Telescope, Map, Users } from '@lucide/astro';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 
 const lang = getLangFromUrl(Astro.cookies);
-const t = useTranslations(lang);
+const t = await useTranslations(lang);
 ---
 <PublicLayout title={t('nav.catalog')}>
   <div class="py-24 bg-brand-black border-b border-gray-200 dark:border-white/5 relative overflow-hidden">

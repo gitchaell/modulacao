@@ -5,7 +5,7 @@ import LanguageSelector from '@/components/ui/LanguageSelector.astro';
 import ThemeToggle from '@/components/ui/ThemeToggle.astro';
 
 const lang = getLangFromUrl(Astro.cookies);
-const t = useTranslations(lang);
+const t = await useTranslations(lang);
 ---
 <header class="w-full border-b border-black/5 dark:border-white/5 bg-brand-offwhite/90 dark:bg-[#0a0a0a]/90 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
   <div class="container mx-auto px-6 lg:px-12 max-w-[1400px] py-4 flex justify-between items-center">
