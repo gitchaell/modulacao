@@ -1,4 +1,5 @@
 ---
+import { usePageTranslations,  getLangFromUrl } from '@/utils/i18n';
 // src/components/home/Highlights.astro
 
 import Section from '@/components/core/Section.astro';
@@ -9,7 +10,8 @@ interface Props {
   pageDict: Record<string, string>;
 }
 const { pageDict } = Astro.props;
-const t = (key: string) => pageDict[key] || key;
+const lang = getLangFromUrl(Astro.cookies);
+const t = usePageTranslations(pageDict, lang);
 
 const highlights = [
   {

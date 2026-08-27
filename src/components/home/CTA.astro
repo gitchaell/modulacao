@@ -1,4 +1,5 @@
 ---
+import { usePageTranslations,  getLangFromUrl } from '@/utils/i18n';
 // src/components/home/CTA.astro
 
 import Section from '@/components/core/Section.astro';
@@ -9,7 +10,8 @@ interface Props {
   pageDict: Record<string, string>;
 }
 const { pageDict } = Astro.props;
-const t = (key: string) => pageDict[key] || key;
+const lang = getLangFromUrl(Astro.cookies);
+const t = usePageTranslations(pageDict, lang);
 ---
 <Section class="py-24 bg-brand-offwhite dark:bg-[#0a0a0a]" contained={true}>
   <div class="bg-gradient-to-r from-gray-100 dark:from-[#111] to-gray-200 dark:to-[#0a0a0a] border border-brand-gold/30 relative overflow-hidden flex flex-col md:flex-row rounded-sm">
