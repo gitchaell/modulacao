@@ -1,9 +1,14 @@
 ---
 // src/components/home/Hero.astro
-import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 
-const lang = getLangFromUrl(Astro.cookies);
-const t = useTranslations(lang);
+import Button from '@/components/core/Button.astro';
+import Typography from '@/components/core/Typography.astro';
+
+interface Props {
+  pageDict: Record<string, string>;
+}
+const { pageDict } = Astro.props;
+const t = (key: string) => pageDict[key] || key;
 ---
 <section class="relative bg-brand-offwhite dark:bg-[#0a0a0a] min-h-[75vh] flex items-center pt-24 pb-24 border-b border-black/5 dark:border-white/5 overflow-hidden">
   <!-- Placeholder Image Background -->
@@ -15,24 +20,25 @@ const t = useTranslations(lang);
 
   <div class="relative z-10 container mx-auto px-6 lg:px-12 max-w-[1400px]">
     <div class="max-w-2xl">
-      <h2 class="text-brand-gold font-black text-xs tracking-[0.2em] uppercase mb-4 leading-relaxed">
+      <Typography variant="h6" class="text-brand-gold font-black text-xs tracking-[0.2em] uppercase mb-4 leading-relaxed">
         MAIS QUE UM TIME,<br/>SOMOS UM ECOSSISTEMA
-      </h2>
-      <h1 class="font-display font-bold text-5xl md:text-6xl lg:text-[72px] leading-none mb-6 tracking-tight uppercase">
+      </Typography>
+      <Typography variant="h1" class="font-display font-bold text-5xl md:text-6xl lg:text-[72px] leading-none mb-6 tracking-tight uppercase">
         <span class="text-brand-black dark:text-brand-white block">PROPÓSITO</span>
         <span class="text-brand-gold block mt-1">QUE TRANSFORMA</span>
-      </h1>
-      <p class="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-10 max-w-[480px] leading-relaxed">
+      </Typography>
+      <Typography variant="lead" class="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-10 max-w-[480px] leading-relaxed">
         {t('home.hero.desc')}
-      </p>
+      </Typography>
+
       <div class="flex flex-col sm:flex-row gap-4 mb-12">
-        <a href="/nosotros" class="bg-brand-gold text-brand-black font-extrabold text-xs tracking-[0.15em] uppercase px-8 py-3.5 text-center hover:bg-brand-white transition-colors flex items-center justify-center gap-2 rounded-sm">
+        <Button as="a" href="/sobre" variant="primary" size="md" class="px-8 flex items-center gap-2">
           CONHEÇA A MODULAÇÃO
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <a href="/login" class="border border-white/20 text-brand-black dark:text-brand-white font-extrabold text-xs tracking-[0.15em] uppercase px-10 py-3.5 text-center hover:border-brand-white transition-colors rounded-sm flex items-center justify-center">
+        </Button>
+        <Button as="a" href="/login" variant="outline" size="md" class="px-10">
           FAÇA PARTE
-        </a>
+        </Button>
       </div>
 
       <div class="flex items-center gap-4">

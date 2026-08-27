@@ -18,7 +18,7 @@ const lang = getLangFromUrl(Astro.cookies);
 const t = useTranslations(lang);
 
 if (!session.userId) {
-  return Astro.redirect('/invitacion/invalid');
+  return Astro.redirect('/convite/invalid');
 }
 
 const [profile] = await db

@@ -1,10 +1,11 @@
 ---
 import PublicLayout from '@/layouts/PublicLayout.astro';
 import { Target, Eye, Gem, Users, Globe, Grid, Heart, ChevronRight, Briefcase, Palette, Microscope, Network } from '@lucide/astro';
-import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+import { getLangFromUrl, getPageTranslations } from '@/utils/i18n';
 
 const lang = getLangFromUrl(Astro.cookies);
-const t = useTranslations(lang);
+const pageDict = await getPageTranslations('about', lang);
+const t = (key: string) => pageDict[key] || key;
 
 const topics = [
   {

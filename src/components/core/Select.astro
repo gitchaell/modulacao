@@ -1,0 +1,46 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'select'> {
+  label?: string;
+  error?: string;
+  helperText?: string;
+  options: { label: string; value: string }[];
+}
+
+const { label, error, helperText, options, class: className, id, ...rest } = Astro.props;
+const selectId = id || Math.random().toString(36).substring(7);
+---
+<div class="flex flex-col gap-2 w-full">
+  {label && (
+    <label for={selectId} class="text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite">
+      {label}
+    </label>
+  )}
+  <div class="relative">
+    <select
+      id={selectId}
+      class={`flex h-12 w-full rounded-sm border bg-white dark:bg-brand-black/50 px-4 py-3 text-sm text-brand-black dark:text-white placeholder:text-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold disabled:cursor-not-allowed disabled:opacity-50 appearance-none ${error ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 dark:border-gray-700 hover:border-brand-gold/50'} ${className || ''}`}
+      aria-invalid={error ? "true" : "false"}
+      aria-describedby={error ? `${selectId}-error` : helperText ? `${selectId}-helper` : undefined}
+      {...rest}
+    >
+      {options.map((opt) => (
+        <option value={opt.value}>{opt.label}</option>
+      ))}
+    </select>
+    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500 dark:text-gray-400">
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+    </div>
+  </div>
+  {error && (
+    <span id={`${selectId}-error`} class="text-xs text-red-500 font-semibold" role="alert">
+      {error}
+    </span>
+  )}
+  {helperText && !error && (
+    <span id={`${selectId}-helper`} class="text-xs text-gray-500">
+      {helperText}
+    </span>
+  )}
+</div>

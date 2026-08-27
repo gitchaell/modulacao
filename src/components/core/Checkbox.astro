@@ -1,0 +1,35 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'input'> {
+  label: string;
+  error?: string;
+  helperText?: string;
+}
+
+const { label, error, helperText, class: className, id, ...rest } = Astro.props;
+const inputId = id || Math.random().toString(36).substring(7);
+---
+<div class="flex items-start">
+  <div class="flex h-6 items-center">
+    <input
+      id={inputId}
+      type="checkbox"
+      class={`h-4 w-4 rounded-sm border-gray-300 dark:border-gray-700 bg-white dark:bg-brand-black/50 text-brand-gold focus:ring-2 focus:ring-brand-gold focus:ring-offset-2 dark:focus:ring-offset-brand-black transition-colors ${error ? 'border-red-500' : ''} ${className || ''}`}
+      aria-invalid={error ? "true" : "false"}
+      aria-describedby={error ? `${inputId}-error` : helperText ? `${inputId}-helper` : undefined}
+      {...rest}
+    />
+  </div>
+  <div class="ml-3 text-sm leading-6">
+    <label for={inputId} class="font-medium text-brand-black dark:text-brand-offwhite">
+      {label}
+    </label>
+    {helperText && !error && (
+      <p id={`${inputId}-helper`} class="text-gray-500">{helperText}</p>
+    )}
+    {error && (
+      <p id={`${inputId}-error`} class="text-red-500 font-semibold" role="alert">{error}</p>
+    )}
+  </div>
+</div>

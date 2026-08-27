@@ -1,0 +1,26 @@
+---
+interface Props {
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body' | 'small' | 'lead';
+  as?: keyof HTMLElementTagNameMap;
+  class?: string;
+}
+
+const { variant = 'body', as: Component = (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(variant) ? variant : 'p') as keyof HTMLElementTagNameMap, class: className = '' } = Astro.props;
+
+const variants: Record<string, string> = {
+  h1: 'text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight',
+  h2: 'text-3xl md:text-4xl font-bold tracking-tight',
+  h3: 'text-2xl md:text-3xl font-semibold tracking-tight',
+  h4: 'text-xl md:text-2xl font-semibold',
+  h5: 'text-lg md:text-xl font-semibold',
+  h6: 'text-base font-semibold uppercase tracking-wider',
+  body: 'text-base leading-relaxed',
+  small: 'text-sm text-gray-500 dark:text-gray-400',
+  lead: 'text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed'
+};
+
+const baseStyles = 'text-brand-black dark:text-brand-white transition-colors duration-300';
+---
+<Component class={`${baseStyles} ${variants[variant] || ''} ${className}`}>
+  <slot />
+</Component>

@@ -1,0 +1,33 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'button'> {
+  checked?: boolean;
+  label?: string;
+}
+
+const { checked = false, label, class: className, id, ...rest } = Astro.props;
+const toggleId = id || Math.random().toString(36).substring(7);
+---
+<div class="flex items-center gap-3">
+  {label && (
+    <label for={toggleId} class="text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite">
+      {label}
+    </label>
+  )}
+  <button
+    type="button"
+    id={toggleId}
+    role="switch"
+    aria-checked={checked ? "true" : "false"}
+    class={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-brand-gold focus:ring-offset-2 dark:focus:ring-offset-brand-black ${checked ? 'bg-brand-gold' : 'bg-gray-200 dark:bg-gray-700'} ${className || ''}`}
+    {...rest}
+    onclick="this.setAttribute('aria-checked', this.getAttribute('aria-checked') === 'true' ? 'false' : 'true'); this.classList.toggle('bg-brand-gold'); this.classList.toggle('bg-gray-200'); this.classList.toggle('dark:bg-gray-700'); this.querySelector('span').classList.toggle('translate-x-5'); this.querySelector('span').classList.toggle('translate-x-0');"
+  >
+    <span class="sr-only">Toggle {label}</span>
+    <span
+      aria-hidden="true"
+      class={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${checked ? 'translate-x-5' : 'translate-x-0'}`}
+    ></span>
+  </button>
+</div>

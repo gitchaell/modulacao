@@ -1,0 +1,39 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+// Type-safe routes
+type AppRoutes =
+  | '/'
+  | '/sobre'
+  | '/publicacoes'
+  | '/artigos'
+  | '/futebol'
+  | '/shop'
+  | '/contato'
+  | '/login'
+  | '/buscar'
+  | '/eventos'
+  | '/faq'
+  | '/biblioteca'
+  | `/artigos/${string}`
+  | `/shop/${string}`;
+
+interface Props extends HTMLAttributes<'a'> {
+  href: AppRoutes | (string & {});
+  activeClass?: string;
+}
+
+const { href, class: className = '', activeClass = 'text-brand-gold', ...rest } = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname;
+const isActive = href === pathname || href === pathname.replace(/\/$/, '');
+
+// Note: For actual deployment, we'd add logic to handle language prefixes if we move away from cookies for i18n routing.
+---
+<a
+  href={href}
+  class={`transition-colors duration-200 hover:text-brand-gold ${isActive ? activeClass : ''} ${className}`}
+  {...rest}
+>
+  <slot />
+</a>
