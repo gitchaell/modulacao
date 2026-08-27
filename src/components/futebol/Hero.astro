@@ -1,0 +1,30 @@
+---
+import { ChevronRight } from '@lucide/astro';
+import { usePageTranslations } from '@/utils/i18n';
+
+interface Props {
+  pageDict: any;
+  lang: any;
+}
+
+const { pageDict, lang } = Astro.props;
+const t = usePageTranslations(pageDict, lang);
+---
+<section class="relative pt-24 pb-16 overflow-hidden min-h-[400px] flex flex-col justify-end">
+  <div class="absolute inset-0 z-[-2]">
+    <img src="https://images.unsplash.com/photo-1518605368461-1ee7e55dbdb6?auto=format&fit=crop&q=80&w=2000" alt="Futebol Background" class="object-cover w-full h-full opacity-40 mix-blend-overlay" />
+  </div>
+  <!-- Gradient overlay to match the dark bottom fading into the image -->
+  <div class="absolute inset-0 bg-gradient-to-t from-brand-white dark:from-brand-dark-bg via-brand-white/80 dark:via-brand-dark-bg/80 to-transparent z-[-1]"></div>
+
+  <div class="max-w-7xl mx-auto px-4 w-full relative z-10 mb-8">
+    <div class="flex items-center gap-2 text-sm text-brand-black/60 dark:text-brand-gray-light mb-6">
+      <a href="/" class="hover:text-brand-gold transition-colors">{t('futebol.hero.home')}</a>
+      <ChevronRight class="w-4 h-4" />
+      <span class="text-brand-black dark:text-brand-white">{t('futebol.hero.breadcrumb')}</span>
+    </div>
+
+    <h1 class="text-5xl md:text-7xl font-bold mb-4 text-brand-black dark:text-brand-white tracking-tight uppercase">{t('futebol.hero.title')}</h1>
+    <p class="text-brand-black/70 dark:text-brand-gray-light max-w-xl text-lg leading-relaxed" set:html={t('futebol.hero.desc')}></p>
+  </div>
+</section>

@@ -19,7 +19,7 @@ const allArticles = await db
   .orderBy(desc(articles.createdAt));
 
 const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat(lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(date));
+  return new Intl.DateTimeFormat(lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(date));
 };
 ---
 

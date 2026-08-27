@@ -23,7 +23,7 @@ const allEvents = await db
   .orderBy(desc(events.date));
 
 const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat(lang === 'es' ? 'es-ES' : 'en-US', {
+  return new Intl.DateTimeFormat(lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US', {
     year: 'numeric', month: 'short', day: 'numeric',
     hour: '2-digit', minute: '2-digit'
   }).format(new Date(date));

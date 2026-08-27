@@ -1,4 +1,5 @@
 ---
+import { getLangFromUrl } from '@/utils/i18n';
 import PublicLayout from '@/layouts/PublicLayout.astro';
 import { db } from '@/data/db/db';
 import { articles } from '@/data/db/schema';
@@ -21,8 +22,9 @@ if (!article) {
 
 const formatDate = (date: Date | null) => {
   if (!date) return '';
-  return new Intl.DateTimeFormat('es-ES', { dateStyle: 'long' }).format(new Date(date));
+  return new Intl.DateTimeFormat(lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'long' }).format(new Date(date));
 };
+const lang = getLangFromUrl(Astro.cookies);
 ---
 
 <PublicLayout title={article.title}>

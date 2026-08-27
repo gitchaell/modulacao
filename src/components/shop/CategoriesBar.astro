@@ -1,0 +1,37 @@
+---
+import { LayoutGrid, Shirt, ShoppingBag, Book, Image, GraduationCap, Users } from '@lucide/astro';
+import { usePageTranslations } from '@/utils/i18n';
+
+interface Props {
+  pageDict: any;
+  lang: any;
+}
+
+const { pageDict, lang } = Astro.props;
+const t = usePageTranslations(pageDict, lang);
+
+const categoriesMenu = [
+  { name: t('shop.categories.all'), icon: LayoutGrid, active: true },
+  { name: t('shop.categories.apparel'), icon: Shirt },
+  { name: t('shop.categories.accessories'), icon: ShoppingBag },
+  { name: t('shop.categories.books'), icon: Book },
+  { name: t('shop.categories.art'), icon: Image },
+  { name: t('shop.categories.courses'), icon: GraduationCap },
+  { name: t('shop.categories.services'), icon: Users },
+];
+---
+<div class="border-b border-gray-200 dark:border-white/10 sticky top-[72px] z-30 bg-brand-white/90 dark:bg-brand-black/90 backdrop-blur-md">
+  <div class="container mx-auto px-6">
+    <div class="flex items-center space-x-2 overflow-x-auto scrollbar-hide py-4">
+      {categoriesMenu.map(cat => {
+        const Icon = cat.icon;
+        return (
+          <button class={`flex items-center flex-shrink-0 px-6 py-3 rounded-lg border transition-all duration-300 ${cat.active ? 'border-brand-gold text-brand-gold bg-brand-gold/10 dark:bg-brand-gold/5' : 'border-transparent text-brand-black/60 dark:text-gray-400 hover:text-brand-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'}`}>
+            <Icon class="w-5 h-5 mr-3" />
+            <span class="text-sm font-medium tracking-wide whitespace-nowrap">{cat.name}</span>
+          </button>
+        );
+      })}
+    </div>
+  </div>
+</div>
