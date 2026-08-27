@@ -42,8 +42,9 @@ export async function getPageTranslations(page: string, lang: keyof typeof ui = 
   }
 }
 
-export function usePageTranslations(pageDict: Record<string, string>) {
+export function usePageTranslations(pageDict: Record<string, string>, lang: keyof typeof ui = defaultLang) {
+  const globalT = useTranslations(lang);
   return function t(key: string) {
-    return pageDict[key] || key;
+    return pageDict[key] || globalT(key);
   }
 }

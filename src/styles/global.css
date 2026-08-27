@@ -5,6 +5,8 @@
 @import "./fonts/geist-mono.css";
 @import "./fonts/space-grotesk.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Geist Sans", sans-serif;
   --font-mono: "Geist Mono", monospace;
