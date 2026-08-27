@@ -1,12 +1,12 @@
 ---
 import PublicLayout from '@/layouts/PublicLayout.astro';
-import { getLangFromUrl, getPageTranslations } from '@/utils/i18n';
+import { getLangFromUrl, getPageTranslations, usePageTranslations } from '@/utils/i18n';
 import Card from '@/components/core/Card.astro';
 import { HelpCircle } from '@lucide/astro';
 
 const lang = getLangFromUrl(Astro.cookies);
 const pageDict = await getPageTranslations('faq', lang);
-const t = (key: string) => pageDict[key] || key;
+const t = usePageTranslations(pageDict, lang);
 ---
 <PublicLayout title={t('faq.title')}>
   <div class="relative py-32 bg-brand-black overflow-hidden border-b border-gray-200 dark:border-white/5">

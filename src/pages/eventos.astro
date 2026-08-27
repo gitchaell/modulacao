@@ -5,12 +5,12 @@ import Badge from '@/components/core/Badge.astro';
 import { db } from '@/data/db/db';
 import { events, groups } from '@/data/db/schema';
 import { desc, eq } from 'drizzle-orm';
-import { getLangFromUrl, getPageTranslations } from '@/utils/i18n';
+import { getLangFromUrl, getPageTranslations , usePageTranslations} from '@/utils/i18n';
 import { tenantConfig } from '@/config/tenant';
 
 const lang = getLangFromUrl(Astro.cookies);
 const pageDict = await getPageTranslations('events', lang);
-const t = (key: string) => pageDict[key] || key;
+const t = usePageTranslations(pageDict, lang);
 
 const upcomingEvents = await db
   .select({

@@ -6,12 +6,13 @@ import { eq } from 'drizzle-orm';
 import Button from '@/components/core/Button.astro';
 import Card from '@/components/core/Card.astro';
 import Badge from '@/components/core/Badge.astro';
-import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+import { getLangFromUrl, useTranslations, usePageTranslations, getPageTranslations } from '@/utils/i18n';
 import { tenantConfig } from '@/config/tenant';
 
 const { id } = Astro.params;
 const lang = getLangFromUrl(Astro.cookies);
-const t = useTranslations(lang);
+const pageDict = await getPageTranslations('events', lang);
+const t = usePageTranslations(pageDict, lang);
 
 const [eventData] = await db
   .select({

@@ -5,7 +5,7 @@ import Badge from '@/components/core/Badge.astro';
 import { db } from '@/data/db/db';
 import { posts, users, events, articles, comments, reactions, profiles } from '@/data/db/schema';
 import { eq, desc, sql, } from 'drizzle-orm';
-import { getLangFromUrl, getPageTranslations } from '@/utils/i18n';
+import { getLangFromUrl, getPageTranslations , usePageTranslations} from '@/utils/i18n';
 import {
   MessageSquare,
   Share2,
@@ -23,7 +23,7 @@ import {
 
 const lang = getLangFromUrl(Astro.url);
 const pageDict = await getPageTranslations("publications", lang);
-const t = (key: string) => pageDict[key] || key;
+const t = usePageTranslations(pageDict, lang);
 
 // Data fetching for the feed
 const feedPosts = await db

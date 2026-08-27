@@ -2,11 +2,11 @@
 import PublicLayout from '@/layouts/PublicLayout.astro';
 import Input from '@/components/core/Input.astro';
 import Button from '@/components/core/Button.astro';
-import { getLangFromUrl, getPageTranslations } from '@/utils/i18n';
+import { getLangFromUrl, getPageTranslations, usePageTranslations } from '@/utils/i18n';
 
 const lang = getLangFromUrl(Astro.cookies);
 const pageDict = await getPageTranslations('search', lang);
-const t = (key: string) => pageDict[key] || key;
+const t = usePageTranslations(pageDict, lang);
 
 // Obtener parámetro de búsqueda inicial si existe
 const query = Astro.url.searchParams.get('q') || '';

@@ -1,6 +1,6 @@
 ---
 import PublicLayout from '@/layouts/PublicLayout.astro';
-import { getLangFromUrl, getPageTranslations } from '@/utils/i18n';
+import { getLangFromUrl, getPageTranslations , usePageTranslations} from '@/utils/i18n';
 import Card from '@/components/core/Card.astro';
 import { db } from '@/data/db/db';
 import { documents } from '@/data/db/schema';
@@ -8,7 +8,7 @@ import { FileText, Download } from '@lucide/astro';
 
 const lang = getLangFromUrl(Astro.cookies);
 const pageDict = await getPageTranslations('library', lang);
-const t = (key: string) => pageDict[key] || key;
+const t = usePageTranslations(pageDict, lang);
 
 // Fetch data
 const allDocuments = await db.select().from(documents).orderBy(documents.createdAt);

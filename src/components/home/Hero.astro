@@ -1,4 +1,5 @@
 ---
+import { usePageTranslations,  getLangFromUrl } from '@/utils/i18n';
 // src/components/home/Hero.astro
 
 import Button from '@/components/core/Button.astro';
@@ -8,7 +9,8 @@ interface Props {
   pageDict: Record<string, string>;
 }
 const { pageDict } = Astro.props;
-const t = (key: string) => pageDict[key] || key;
+const lang = getLangFromUrl(Astro.cookies);
+const t = usePageTranslations(pageDict, lang);
 ---
 <section class="relative bg-brand-offwhite dark:bg-[#0a0a0a] min-h-[75vh] flex items-center pt-24 pb-24 border-b border-black/5 dark:border-white/5 overflow-hidden">
   <!-- Placeholder Image Background -->
