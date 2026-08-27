@@ -22,7 +22,7 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(JSON.stringify({
       success: true,
       message: 'Invitation generated successfully',
-      inviteUrl: `/invitacion/${invitation.token}`
+      inviteUrl: `/convite/${invitation.token}`
     }), { status: 201, headers: { 'Content-Type': 'application/json' } });
 
   } catch (error: any) {

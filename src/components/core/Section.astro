@@ -1,0 +1,18 @@
+---
+interface Props {
+  id?: string;
+  class?: string;
+  contained?: boolean;
+}
+
+const { id, class: className = '', contained = true } = Astro.props;
+---
+<section id={id} class={`py-20 md:py-32 relative ${className}`}>
+  {contained ? (
+    <div class="container mx-auto px-6 lg:px-12 max-w-[1400px]">
+      <slot />
+    </div>
+  ) : (
+    <slot />
+  )}
+</section>

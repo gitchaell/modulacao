@@ -1,6 +1,6 @@
 ---
 import PublicLayout from '@/layouts/PublicLayout.astro';
-import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+import { getLangFromUrl, getPageTranslations } from '@/utils/i18n';
 
 import Hero from '@/components/home/Hero.astro';
 import Features from '@/components/home/Features.astro';
@@ -10,14 +10,15 @@ import Articles from '@/components/home/Articles.astro';
 import CTA from '@/components/home/CTA.astro';
 
 const lang = getLangFromUrl(Astro.cookies);
-const t = useTranslations(lang);
+const pageDict = await getPageTranslations('home', lang);
+const t = (key: string) => pageDict[key] || key;
 ---
 
-<PublicLayout title={t('nav.home')}>
-  <Hero />
-  <Features />
-  <Highlights />
-  <Events />
-  <Articles />
-  <CTA />
+<PublicLayout title={t('meta.title') || 'Home'}>
+  <Hero pageDict={pageDict} />
+  <Features pageDict={pageDict} />
+  <Highlights pageDict={pageDict} />
+  <Events pageDict={pageDict} />
+  <Articles pageDict={pageDict} />
+  <CTA pageDict={pageDict} />
 </PublicLayout>

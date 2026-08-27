@@ -2,14 +2,15 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Input from '@/components/core/Input.astro';
 import Button from '@/components/core/Button.astro';
-import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+import { getLangFromUrl, getPageTranslations } from '@/utils/i18n';
 import { tenantConfig } from '@/config/tenant';
 import { Users, FileText, Calendar, Shield, Mail, Lock } from 'lucide-astro';
 import Footer from '@/components/core/Footer.astro';
 import WaveBackground from '@/components/ui/WaveBackground.astro';
 
 const lang = getLangFromUrl(Astro.cookies);
-const t = useTranslations(lang);
+const pageDict = await getPageTranslations('login', lang);
+const t = (key: string) => pageDict[key] || key;
 
 // If user is already logged in, redirect them to the app
 const session = await import('@/utils/session').then(m => m.getSession(Astro.request, new Response() as any));
