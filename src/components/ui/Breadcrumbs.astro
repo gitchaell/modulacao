@@ -1,4 +1,6 @@
 ---
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 interface Crumb {
   label: string;
   href?: string;
@@ -23,7 +25,7 @@ const jsonLd = {
 ---
 
 <nav aria-label="Breadcrumb" class="mb-4">
-  <ol class="flex flex-wrap items-center space-x-2 text-sm text-gray-400">
+  <ol class="flex flex-wrap items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
     {crumbs.map((crumb, index) => (
       <li class="flex items-center">
         {index > 0 && (
