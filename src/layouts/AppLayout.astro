@@ -69,8 +69,12 @@ const t = useTranslations(lang);
     const sidebar = document.getElementById('app-sidebar');
     const overlay = document.getElementById('mobile-sidebar-overlay');
 
-    // BaseLayout already handles theme initialization. We don't need to do it here again,
-    // especially since this would conflict with the default 'dark' logic.
+    // Check local storage or match media for theme preference
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
 
     const toggleSidebar = () => {
       sidebar?.classList.toggle('-translate-x-full');
