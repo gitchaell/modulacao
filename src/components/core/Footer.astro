@@ -1,6 +1,10 @@
 ---
 // src/components/core/Footer.astro
 import SocialLinks from '@/components/ui/SocialLinks.astro';
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+
+const lang = getLangFromUrl(Astro.cookies);
+const t = await useTranslations(lang);
 ---
 <footer class="py-20 text-base font-semibold border-t border-black/5 dark:border-white/5 bg-brand-white dark:bg-[#0a0a0a] text-brand-black dark:text-brand-white mt-auto">
   <div class="max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
@@ -10,12 +14,12 @@ import SocialLinks from '@/components/ui/SocialLinks.astro';
       <div class="flex items-center gap-4 mb-8">
         <svg class="w-12 h-12 text-brand-gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         <div>
-          <div class="font-bold text-sm tracking-widest text-brand-black dark:text-brand-white">MODULAÇÃO</div>
-          <div class="font-bold text-sm tracking-widest text-brand-black dark:text-brand-white">SANTA CRUZ</div>
+          <div class="font-bold text-sm tracking-widest text-brand-black dark:text-brand-white">{t('footer.brand.name')}</div>
+          <div class="font-bold text-sm tracking-widest text-brand-black dark:text-brand-white">{t('footer.brand.location')}</div>
         </div>
       </div>
       <p class="text-base text-gray-600 dark:text-gray-400 leading-relaxed max-w-sm">
-        Unimos esporte, ciência, arte e propósito para transformar esforço em evolução e resultados em legado.
+        {t('footer.brand.desc')}
       </p>
 
       <SocialLinks class="flex gap-5 mt-8" />
@@ -23,7 +27,7 @@ import SocialLinks from '@/components/ui/SocialLinks.astro';
 
     <!-- Links Columns -->
     <div>
-      <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-3">NAVEGAÇÃO</h4>
+      <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-3">{t('footer.nav.navigation')}</h4>
       <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
         <li><a href="/" class="hover:text-brand-black dark:text-brand-white transition-colors">Início</a></li>
         <li><a href="/" class="hover:text-brand-black dark:text-brand-white transition-colors">Sobre Nós</a></li>
@@ -36,7 +40,7 @@ import SocialLinks from '@/components/ui/SocialLinks.astro';
     </div>
 
     <div>
-      <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-3">FUTEBOL</h4>
+      <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-3">{t('footer.nav.football')}</h4>
       <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
         <li><a href="/" class="hover:text-brand-black dark:text-brand-white transition-colors">Equipe</a></li>
         <li><a href="/" class="hover:text-brand-black dark:text-brand-white transition-colors">Campeonatos</a></li>
@@ -48,7 +52,7 @@ import SocialLinks from '@/components/ui/SocialLinks.astro';
     </div>
 
     <div>
-      <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-3">MEMBROS</h4>
+      <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-3">{t('footer.nav.members')}</h4>
       <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
         <li><a href="/" class="hover:text-brand-black dark:text-brand-white transition-colors">Área do Membro</a></li>
         <li><a href="/" class="hover:text-brand-black dark:text-brand-white transition-colors">Eventos</a></li>
@@ -58,7 +62,7 @@ import SocialLinks from '@/components/ui/SocialLinks.astro';
     </div>
 
     <div>
-      <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-3">INFORMAÇÕES</h4>
+      <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-3">{t('footer.nav.info')}</h4>
       <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
         <li><a href="/" class="hover:text-brand-black dark:text-brand-white transition-colors">FAQ</a></li>
         <li><a href="/" class="hover:text-brand-black dark:text-brand-white transition-colors">Termos de Uso</a></li>
@@ -69,7 +73,7 @@ import SocialLinks from '@/components/ui/SocialLinks.astro';
 
     <!-- Contact Column -->
     <div class="col-span-1 lg:col-span-1">
-      <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-3">CONTATO</h4>
+      <h4 class="font-bold text-xs uppercase tracking-widest text-brand-gold mb-3">{t('footer.nav.contact')}</h4>
       <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
         <li class="flex items-center gap-2">
           <svg class="text-brand-gold w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -90,9 +94,9 @@ import SocialLinks from '@/components/ui/SocialLinks.astro';
 
   <!-- Copyright -->
   <div class="max-w-[1400px] mx-auto px-6 mt-20 pt-8 border-t border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-gray-500">
-    <div>&copy; {new Date().getFullYear()} Modulação Dakila. Todos os direitos reservados.</div>
+    <div>&copy; {new Date().getFullYear()} {t('footer.copyright')}</div>
     <div class="flex items-center gap-2.5">
-      Parte do Ecossistema Dakila
+      {t('footer.ecosystem')}
       <svg class="w-5 h-5 text-brand-gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
     </div>
   </div>

@@ -25,7 +25,7 @@ const t = usePageTranslations(pageDict, lang);
 
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
     <!-- Upcoming Events List -->
-    <div class="border border-black/5 dark:border-white/5 bg-[#0d0d0d] p-8 rounded-sm flex flex-col">
+    <div class="border border-black/5 dark:border-white/5 bg-white dark:bg-[#0d0d0d] p-8 rounded-sm flex flex-col">
       <Typography variant="h6" class="uppercase tracking-widest mb-8">{t('home.events.events_subtitle') || 'PRÓXIMOS EVENTOS'}</Typography>
 
       <div class="space-y-6 flex-1">
@@ -84,7 +84,7 @@ const t = usePageTranslations(pageDict, lang);
     </div>
 
     <!-- Next Match -->
-    <div class="border border-black/5 dark:border-white/5 bg-[#0d0d0d] p-8 flex flex-col relative overflow-hidden rounded-sm">
+    <div class="border border-black/5 dark:border-white/5 bg-white dark:bg-[#0d0d0d] p-8 flex flex-col relative overflow-hidden rounded-sm">
       <div class="absolute top-0 right-0 p-8 opacity-[0.03]">
         <svg class="w-64 h-64 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
       </div>
@@ -106,7 +106,7 @@ const t = usePageTranslations(pageDict, lang);
           <div class="text-2xl font-display font-bold text-gray-600 mb-6">VS</div>
 
           <div class="flex flex-col items-center">
-            <div class="w-24 h-24 rounded-full border border-white/20 bg-[#111] flex items-center justify-center mb-4 p-5">
+            <div class="w-24 h-24 rounded-full border border-black/10 dark:border-white/20 bg-gray-100 dark:bg-[#111] flex items-center justify-center mb-4 p-5">
               <svg class="w-full h-full text-brand-black dark:text-brand-white opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
             </div>
             <span class="text-gray-600 dark:text-gray-400 font-bold text-base uppercase tracking-widest">FC RIVERA</span>
