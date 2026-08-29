@@ -1,0 +1,18 @@
+{
+  "articles.title": "Articles",
+  "articles.subtitle": "Explore reflections on philosophy, science, sports, and mindset.",
+  "articles.categories": "Categories",
+  "articles.view_all_categories": "View all categories",
+  "articles.most_read": "Most read articles",
+  "articles.newsletter.title": "Get new articles",
+  "articles.newsletter.desc": "Subscribe to our newsletter and receive inspiring content weekly.",
+  "articles.newsletter.placeholder": "Your email",
+  "articles.newsletter.btn": "Subscribe",
+  "articles.cta.title": "Explore deep knowledge",
+  "articles.cta.desc": "Every article is an invitation to expand your vision and transform your life.",
+  "articles.cta.btn": "I want to join",
+  "articles.by": "By",
+  "articles.empty": "No articles found at this time.",
+  "articles.article": "Article",
+  "articles.back": "Back to Articles"
+}

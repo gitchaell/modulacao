@@ -1,1 +1,6 @@
-{}
+{
+  "events.title": "Próximos Eventos",
+  "events.subtitle": "Descubre y participa en los eventos de la comunidad {name}.",
+  "events.empty": "No hay eventos programados en este momento.",
+  "events.global": "Evento Global"
+}

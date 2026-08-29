@@ -116,7 +116,7 @@ const formatTime = (date: Date | null) => {
         <div class="lg:col-span-8 flex flex-col gap-6">
 
             {/* Compose Box */}
-            <Card class="bg-[#151515] border-black/5 dark:border-white/5 !p-6" noPadding>
+            <Card class="bg-brand-white dark:bg-[#151515] border-black/5 dark:border-white/5 !p-6" noPadding>
                 <div class="flex gap-4 mb-4">
                     <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center flex-shrink-0">
                         <Users class="w-5 h-5 text-brand-black" />
@@ -147,7 +147,7 @@ const formatTime = (date: Date | null) => {
 
             {/* Posts Feed */}
             {feedPosts.map((postData) => (
-              <Card class="bg-[#151515] border-black/5 dark:border-white/5 flex flex-col" noPadding>
+              <Card class="bg-brand-white dark:bg-[#151515] border-black/5 dark:border-white/5 flex flex-col" noPadding>
                   <div class="p-6">
                       {/* Author Header */}
                       <div class="flex items-start justify-between mb-4">
@@ -234,7 +234,7 @@ const formatTime = (date: Date | null) => {
         <div class="lg:col-span-4 flex flex-col gap-6">
 
             {/* s */}
-            <div class="bg-[#151515] p-6 border border-black/5 dark:border-white/5 rounded-sm">
+            <div class="bg-brand-white dark:bg-[#151515] p-6 border border-black/5 dark:border-white/5 rounded-sm">
                 <div class="flex items-center justify-between mb-6">
                     <h3 class="text-brand-black dark:text-white font-bold tracking-widest uppercase">{t('publications.filters.title')}</h3>
                     <button class="text-xs text-brand-gold hover:underline">{t('publications.filters.clear')}</button>
@@ -297,7 +297,7 @@ const formatTime = (date: Date | null) => {
             </div>
 
             {/* Upcoming Events */}
-            <div class="bg-[#151515] p-6 border border-black/5 dark:border-white/5 rounded-sm">
+            <div class="bg-brand-white dark:bg-[#151515] p-6 border border-black/5 dark:border-white/5 rounded-sm">
                 <div class="flex items-center justify-between mb-6">
                     <h3 class="text-brand-black dark:text-white font-bold tracking-widest uppercase text-sm">Próximos {t('publications.compose.event')}s</h3>
                     <a href="/eventos" class="text-xs text-brand-gold hover:underline">{t('publications.sidebar.events.view_all')}</a>
@@ -323,7 +323,7 @@ const formatTime = (date: Date | null) => {
             </div>
 
             {/* Featured Publications */}
-            <div class="bg-[#151515] p-6 border border-black/5 dark:border-white/5 rounded-sm">
+            <div class="bg-brand-white dark:bg-[#151515] p-6 border border-black/5 dark:border-white/5 rounded-sm">
                 <div class="flex items-center justify-between mb-6">
                     <h3 class="text-brand-black dark:text-white font-bold tracking-widest uppercase text-sm">{t('publications.sidebar.featured.title')}</h3>
                     <a href="/publicacoes" class="text-xs text-brand-gold hover:underline">{t('publications.sidebar.featured.view_all')}</a>
@@ -349,7 +349,7 @@ const formatTime = (date: Date | null) => {
             </div>
 
             {/* Ecosystem CTA */}
-            <div class="bg-[#151515] p-6 border border-black/5 dark:border-white/5 rounded-sm relative overflow-hidden group">
+            <div class="bg-brand-white dark:bg-[#151515] p-6 border border-black/5 dark:border-white/5 rounded-sm relative overflow-hidden group">
                 <div class="absolute inset-0 bg-brand-gold/5 mix-blend-overlay"></div>
                 <div class="relative z-10 flex flex-col items-center text-center">
                      <div class="w-12 h-12 bg-brand-gold/10 text-brand-gold rounded-full flex items-center justify-center mb-4">

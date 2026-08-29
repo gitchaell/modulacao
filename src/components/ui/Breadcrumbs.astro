@@ -1,8 +1,4 @@
 ---
-import { getLangFromUrl, useTranslations } from '@/utils/i18n';
-
-const lang = getLangFromUrl(Astro.cookies);
-const t = await useTranslations(lang);
 interface Crumb {
   label: string;
   href?: string;
