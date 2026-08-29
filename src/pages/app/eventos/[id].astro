@@ -1,4 +1,5 @@
 ---
+import { getLangFromUrl } from '@/utils/i18n';
 import AppLayout from '@/layouts/AppLayout.astro';
 import Button from '@/components/core/Button.astro';
 import Card from '@/components/core/Card.astro';
@@ -49,7 +50,7 @@ const session = await getSession(Astro.request, response);
 const currentUserAttendance = attendeesList.find(a => a.profile.userId === session.userId);
 
 const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat('es-ES', {
+  return new Intl.DateTimeFormat(lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US', {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
@@ -58,6 +59,7 @@ const formatDate = (date: Date) => {
     minute: '2-digit'
   }).format(new Date(date));
 };
+const lang = getLangFromUrl(Astro.cookies);
 ---
 
 <AppLayout title={event.title}>

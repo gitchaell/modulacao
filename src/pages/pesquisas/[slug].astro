@@ -1,4 +1,5 @@
 ---
+import { getLangFromUrl } from '@/utils/i18n';
 import PublicLayout from '@/layouts/PublicLayout.astro';
 import { db } from '@/data/db/db';
 import { articles } from '@/data/db/schema';
@@ -21,8 +22,9 @@ if (!article) {
 
 const formatDate = (date: Date | null) => {
   if (!date) return '';
-  return new Intl.DateTimeFormat('es-ES', { dateStyle: 'long' }).format(new Date(date));
+  return new Intl.DateTimeFormat(lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'long' }).format(new Date(date));
 };
+const lang = getLangFromUrl(Astro.cookies);
 ---
 
 <PublicLayout title={article.title}>
@@ -34,10 +36,10 @@ const formatDate = (date: Date | null) => {
         <div class="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-widest text-brand-black bg-brand-gold rounded-full uppercase">
           Investigación
         </div>
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        <h1 class="text-4xl md:text-5xl font-bold text-brand-black dark:text-white mb-6 leading-tight">
           {article.title}
         </h1>
-        <div class="text-gray-400 font-semibold tracking-wide text-sm">
+        <div class="text-gray-600 dark:text-gray-400 font-semibold tracking-wide text-sm">
           {formatDate(article.publishedAt as unknown as Date)}
         </div>
       </div>
@@ -63,7 +65,7 @@ const formatDate = (date: Date | null) => {
 
     {/* Footer del artículo - Regresar */}
     <div class="container mx-auto px-6 max-w-3xl mt-16 pt-8 border-t border-brand-dark-card/50">
-      <a href="/pesquisas" class="inline-flex items-center text-brand-gold hover:text-white transition-colors">
+      <a href="/pesquisas" class="inline-flex items-center text-brand-gold hover:text-brand-black dark:text-white transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m15 18-6-6 6-6"/></svg>
         Volver a Pesquisas
       </a>

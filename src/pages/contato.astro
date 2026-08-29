@@ -31,10 +31,10 @@ const t = usePageTranslations(pageDict, lang);
       <div class="flex items-center text-sm text-gray-400 mb-6 font-medium">
         <a href="/" class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
         <span class="mx-2">&gt;</span>
-        <span class="text-white uppercase">{t('contact.hero.title')}</span>
+        <span class="text-brand-black dark:text-brand-white uppercase">{t('contact.hero.title')}</span>
       </div>
 
-      <h1 class="font-display text-5xl md:text-6xl font-bold uppercase tracking-widest text-white mb-6">
+      <h1 class="font-display text-5xl md:text-6xl font-bold uppercase tracking-widest text-brand-black dark:text-brand-white mb-6">
         {t('contact.hero.title')}
       </h1>
 
@@ -48,11 +48,11 @@ const t = usePageTranslations(pageDict, lang);
     </div>
   </section>
 
-  <main class="w-full bg-brand-black text-white py-16">
+  <main class="w-full bg-white dark:bg-[#050505] text-brand-black dark:text-brand-white py-16">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 space-y-24">
 
       {/* Info Grid (5 Columns) */}
-      <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 border-b border-white/10 pb-16">
+      <section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 border-b border-black/10 dark:border-white/10 pb-16">
         {/* Email */}
         <div class="flex flex-col gap-3 group">
           <div class="flex items-center gap-3">
@@ -108,10 +108,10 @@ const t = usePageTranslations(pageDict, lang);
              <h3 class="font-bold tracking-widest uppercase text-sm">{t('contact.info.social')}</h3>
           </div>
           <div class="pl-9 flex items-center gap-3 mt-1">
-             <a href="#" class="text-brand-gold hover:text-white transition-colors" aria-label="Instagram"><Instagram class="w-5 h-5"/></a>
-             <a href="#" class="text-brand-gold hover:text-white transition-colors" aria-label="YouTube"><Youtube class="w-5 h-5"/></a>
-             <a href="#" class="text-brand-gold hover:text-white transition-colors" aria-label="Facebook"><Facebook class="w-5 h-5"/></a>
-             <a href="#" class="text-brand-gold hover:text-white transition-colors" aria-label="Twitter/X"><Twitter class="w-5 h-5"/></a>
+             <a href="#" class="text-brand-gold hover:text-brand-black dark:text-brand-white transition-colors" aria-label="Instagram"><Instagram class="w-5 h-5"/></a>
+             <a href="#" class="text-brand-gold hover:text-brand-black dark:text-brand-white transition-colors" aria-label="YouTube"><Youtube class="w-5 h-5"/></a>
+             <a href="#" class="text-brand-gold hover:text-brand-black dark:text-brand-white transition-colors" aria-label="Facebook"><Facebook class="w-5 h-5"/></a>
+             <a href="#" class="text-brand-gold hover:text-brand-black dark:text-brand-white transition-colors" aria-label="Twitter/X"><Twitter class="w-5 h-5"/></a>
           </div>
         </div>
       </section>
@@ -122,7 +122,7 @@ const t = usePageTranslations(pageDict, lang);
         {/* Left: Form */}
         <div class="space-y-6">
           <div>
-            <h2 class="font-display text-2xl font-bold uppercase tracking-widest text-white mb-2">{t('contact.form.title2')}</h2>
+            <h2 class="font-display text-2xl font-bold uppercase tracking-widest text-brand-black dark:text-brand-white mb-2">{t('contact.form.title2')}</h2>
             <p class="text-gray-400 text-sm">{t('contact.form.desc')}</p>
           </div>
 
@@ -135,12 +135,12 @@ const t = usePageTranslations(pageDict, lang);
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Input type="text" name="name" label="" placeholder={t('contact.form.name.label')} required class="bg-brand-dark border-white/10 text-white placeholder:text-gray-500" />
-              <Input type="email" name="email" label="" placeholder={t('contact.form.email.label')} required class="bg-brand-dark border-white/10 text-white placeholder:text-gray-500" />
+              <Input type="text" name="name" label="" placeholder={t('contact.form.name.label')} required class="bg-gray-50 dark:bg-brand-dark border-black/10 dark:border-white/10 text-brand-black dark:text-brand-white placeholder:text-gray-500" />
+              <Input type="email" name="email" label="" placeholder={t('contact.form.email.label')} required class="bg-gray-50 dark:bg-brand-dark border-black/10 dark:border-white/10 text-brand-black dark:text-brand-white placeholder:text-gray-500" />
             </div>
 
             <div class="relative">
-               <select name="subject" class="flex w-full appearance-none rounded-sm border bg-brand-dark px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold border-white/10 hover:border-brand-gold/50 cursor-pointer">
+               <select name="subject" class="flex w-full appearance-none rounded-sm border bg-gray-50 dark:bg-brand-dark px-4 py-3 text-sm text-brand-black dark:text-brand-white focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold border-black/10 dark:border-white/10 hover:border-brand-gold/50 cursor-pointer">
                  <option value="" disabled selected>{t('contact.form.subject.label')}</option>
                  <option value="duvida">{t('contact.form.subject.opt1')}</option>
                  <option value="suporte">{t('contact.form.subject.opt2')}</option>
@@ -158,12 +158,12 @@ const t = usePageTranslations(pageDict, lang);
                 required
                 rows="5"
                 placeholder={t('contact.form.message.placeholder')}
-                class="flex w-full rounded-sm border bg-brand-dark px-4 py-3 text-sm text-white placeholder:text-gray-500 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold border-white/10 hover:border-brand-gold/50"
+                class="flex w-full rounded-sm border bg-gray-50 dark:bg-brand-dark px-4 py-3 text-sm text-brand-black dark:text-brand-white placeholder:text-gray-500 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold border-black/10 dark:border-white/10 hover:border-brand-gold/50"
               ></textarea>
             </div>
 
             <div class="flex items-start gap-3">
-              <input type="checkbox" id="privacy" required class="mt-1 bg-brand-dark border-white/10 text-brand-gold focus:ring-brand-gold rounded-sm cursor-pointer" />
+              <input type="checkbox" id="privacy" required class="mt-1 bg-gray-50 dark:bg-brand-dark border-black/10 dark:border-white/10 text-brand-gold focus:ring-brand-gold rounded-sm cursor-pointer" />
               <label for="privacy" class="text-sm text-gray-400">
                 {t('contact.form.privacy')} <a href="#" class="text-brand-gold hover:underline">{t('contact.form.privacy.link')}</a>
               </label>
@@ -180,11 +180,11 @@ const t = usePageTranslations(pageDict, lang);
         {/* Right: Where We Are */}
         <div class="space-y-6">
           <div>
-            <h2 class="font-display text-2xl font-bold uppercase tracking-widest text-white mb-2">{t('contact.location.title')}</h2>
+            <h2 class="font-display text-2xl font-bold uppercase tracking-widest text-brand-black dark:text-brand-white mb-2">{t('contact.location.title')}</h2>
             <p class="text-gray-400 text-sm">{t('contact.location.desc')}</p>
           </div>
 
-          <div class="relative w-full h-[300px] bg-brand-dark rounded-sm border border-white/10 overflow-hidden group">
+          <div class="relative w-full h-[300px] bg-gray-50 dark:bg-brand-dark rounded-sm border border-black/10 dark:border-white/10 overflow-hidden group">
              {/* Map Iframe */}
              <iframe
                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119934.33230678887!2d-63.26760578857416!3d-17.801048956976722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f1e81d770519bf%3A0x62f03672d5dbfb56!2sSanta%20Cruz%20de%20la%20Sierra%2C%20Bolivia!5e0!3m2!1sen!2sbr!4v1700000000000!5m2!1sen!2sbr"
@@ -196,13 +196,13 @@ const t = usePageTranslations(pageDict, lang);
                referrerpolicy="no-referrer-when-downgrade"
                class="absolute inset-0 w-full h-full object-cover dark:filter dark:grayscale dark:contrast-125 dark:opacity-70 grayscale"
              ></iframe>
-             <div class="absolute inset-0 pointer-events-none bg-brand-dark/20 mix-blend-multiply"></div>
+             <div class="absolute inset-0 pointer-events-none bg-gray-50 dark:bg-brand-dark/20 mix-blend-multiply"></div>
           </div>
 
-          <Card class="flex flex-col sm:flex-row items-center gap-6 p-4 bg-brand-dark/50 border-white/10">
+          <Card class="flex flex-col sm:flex-row items-center gap-6 p-4 bg-gray-50 dark:bg-brand-dark/50 border-black/10 dark:border-white/10">
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&auto=format&fit=crop" alt="Building" class="w-full sm:w-32 h-24 object-cover rounded-sm border border-white/5 shrink-0" />
             <div class="space-y-2 w-full">
-              <h3 class="font-bold text-white tracking-wide">{t('contact.location.building')}</h3>
+              <h3 class="font-bold text-brand-black dark:text-brand-white tracking-wide">{t('contact.location.building')}</h3>
               <p class="text-gray-400 text-sm whitespace-pre-line">{t('contact.location.address')}</p>
               <a href="#" class="text-brand-gold text-xs font-bold uppercase tracking-widest hover:underline flex items-center gap-1 mt-2">
                 {t('contact.location.directions')} <ChevronRight class="w-3 h-3"/>
@@ -214,10 +214,10 @@ const t = usePageTranslations(pageDict, lang);
       </section>
 
       {/* FAQ Section */}
-      <section class="space-y-8 border-t border-white/10 pt-16">
+      <section class="space-y-8 border-t border-black/10 dark:border-white/10 pt-16">
         <div>
            <div class="flex items-center gap-4 mb-2">
-             <h2 class="font-display text-2xl font-bold uppercase tracking-widest text-white">{t('contact.faq.title')}</h2>
+             <h2 class="font-display text-2xl font-bold uppercase tracking-widest text-brand-black dark:text-brand-white">{t('contact.faq.title')}</h2>
              <div class="h-px bg-brand-gold/50 w-16"></div>
            </div>
            <p class="text-gray-400 text-sm">{t('contact.faq.desc')}</p>
@@ -225,34 +225,34 @@ const t = usePageTranslations(pageDict, lang);
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
            {/* FAQ 1 */}
-           <a href="#" class="flex items-center justify-between p-6 bg-brand-dark border border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
+           <a href="#" class="flex items-center justify-between p-6 bg-gray-50 dark:bg-brand-dark border border-black/10 dark:border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
               <div class="flex items-center gap-4">
                  <Users class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" />
-                 <span class="text-sm font-semibold text-gray-200 group-hover:text-white whitespace-pre-line">{t('contact.faq.q1')}</span>
+                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-300 group-hover:text-brand-black dark:group-hover:text-brand-white whitespace-pre-line">{t('contact.faq.q1')}</span>
               </div>
               <ChevronRight class="w-5 h-5 text-brand-gold" />
            </a>
            {/* FAQ 2 */}
-           <a href="#" class="flex items-center justify-between p-6 bg-brand-dark border border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
+           <a href="#" class="flex items-center justify-between p-6 bg-gray-50 dark:bg-brand-dark border border-black/10 dark:border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
               <div class="flex items-center gap-4">
                  <Shield class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" />
-                 <span class="text-sm font-semibold text-gray-200 group-hover:text-white whitespace-pre-line">{t('contact.faq.q2')}</span>
+                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-300 group-hover:text-brand-black dark:group-hover:text-brand-white whitespace-pre-line">{t('contact.faq.q2')}</span>
               </div>
               <ChevronRight class="w-5 h-5 text-brand-gold" />
            </a>
            {/* FAQ 3 */}
-           <a href="#" class="flex items-center justify-between p-6 bg-brand-dark border border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
+           <a href="#" class="flex items-center justify-between p-6 bg-gray-50 dark:bg-brand-dark border border-black/10 dark:border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
               <div class="flex items-center gap-4">
                  <Calendar class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" />
-                 <span class="text-sm font-semibold text-gray-200 group-hover:text-white whitespace-pre-line">{t('contact.faq.q3')}</span>
+                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-300 group-hover:text-brand-black dark:group-hover:text-brand-white whitespace-pre-line">{t('contact.faq.q3')}</span>
               </div>
               <ChevronRight class="w-5 h-5 text-brand-gold" />
            </a>
            {/* FAQ 4 */}
-           <a href="#" class="flex items-center justify-between p-6 bg-brand-dark border border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
+           <a href="#" class="flex items-center justify-between p-6 bg-gray-50 dark:bg-brand-dark border border-black/10 dark:border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
               <div class="flex items-center gap-4">
                  <ShoppingCart class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" />
-                 <span class="text-sm font-semibold text-gray-200 group-hover:text-white whitespace-pre-line">{t('contact.faq.q4')}</span>
+                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-300 group-hover:text-brand-black dark:group-hover:text-brand-white whitespace-pre-line">{t('contact.faq.q4')}</span>
               </div>
               <ChevronRight class="w-5 h-5 text-brand-gold" />
            </a>
@@ -266,7 +266,7 @@ const t = usePageTranslations(pageDict, lang);
       </section>
 
       {/* CTA Banner */}
-      <section class="relative w-full rounded-sm overflow-hidden bg-brand-dark border border-brand-gold/20 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 mt-16">
+      <section class="relative w-full rounded-sm overflow-hidden bg-gray-50 dark:bg-brand-dark border border-brand-gold/20 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 mt-16">
          {/* Gold Wave Background */}
          <div class="absolute inset-0 z-0 opacity-10 pointer-events-none">
             <svg class="w-full h-full text-brand-gold" preserveAspectRatio="none" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -277,7 +277,7 @@ const t = usePageTranslations(pageDict, lang);
          <div class="relative z-10 flex items-start gap-4">
             <div class="text-brand-gold mt-1"><Map class="w-6 h-6" /></div>
             <div>
-               <h2 class="font-display text-xl md:text-2xl font-bold uppercase tracking-widest text-white mb-1">{t('contact.cta.title')}</h2>
+               <h2 class="font-display text-xl md:text-2xl font-bold uppercase tracking-widest text-brand-black dark:text-brand-white mb-1">{t('contact.cta.title')}</h2>
                <p class="text-gray-400 text-sm md:text-base">{t('contact.cta.desc')}</p>
             </div>
          </div>

@@ -1,4 +1,5 @@
 ---
+import { getLangFromUrl } from '@/utils/i18n';
 import PublicLayout from '@/layouts/PublicLayout.astro';
 import Card from '@/components/core/Card.astro';
 import { db } from '@/data/db/db';
@@ -13,8 +14,9 @@ const communiques = await db
 
 const formatDate = (date: Date | null) => {
   if (!date) return '';
-  return new Intl.DateTimeFormat('es-ES', { dateStyle: 'medium' }).format(new Date(date));
+  return new Intl.DateTimeFormat(lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'medium' }).format(new Date(date));
 };
+const lang = getLangFromUrl(Astro.cookies);
 ---
 
 <PublicLayout title="Comunicados Oficiales">

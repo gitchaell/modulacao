@@ -1,1 +1,6 @@
-{}
+{
+  "library.title": "Biblioteca",
+  "library.subtitle": "Acesse manuais, regulamentos e documentos oficiais da comunidade.",
+  "library.empty": "Não há documentos disponíveis na biblioteca no momento.",
+  "library.download": "Baixar"
+}

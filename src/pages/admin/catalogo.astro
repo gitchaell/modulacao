@@ -19,7 +19,7 @@ const allProducts = await db
   .orderBy(desc(products.createdAt));
 
 const formatDate = (date: Date) => {
-  return new Intl.DateTimeFormat(lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(date));
+  return new Intl.DateTimeFormat(lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(date));
 };
 ---
 

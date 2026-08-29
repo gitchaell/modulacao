@@ -1,1 +1,6 @@
-{}
+{
+  "library.title": "Library",
+  "library.subtitle": "Access manuals, regulations, and official community documents.",
+  "library.empty": "There are no documents available in the library at the moment.",
+  "library.download": "Download"
+}

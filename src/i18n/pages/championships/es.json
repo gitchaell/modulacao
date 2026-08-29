@@ -1,0 +1,10 @@
+{
+  "champ.title": "Campeonatos",
+  "champ.subtitle": "Explora nuestras últimas competiciones, estadísticas y clasificaciones.",
+  "champ.empty": "No hay campeonatos activos en este momento.",
+  "champ.ongoing": "En Curso",
+  "champ.finished": "Finalizado",
+  "champ.upcoming": "Próximamente",
+  "champ.details": "Ver Detalles",
+  "champ.general": "General"
+}

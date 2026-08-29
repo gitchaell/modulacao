@@ -1,0 +1,74 @@
+---
+import { ChevronDown } from '@lucide/astro';
+import { usePageTranslations } from '@/utils/i18n';
+
+interface Props {
+  pageDict: any;
+  lang: any;
+}
+
+const { pageDict, lang } = Astro.props;
+const t = usePageTranslations(pageDict, lang);
+
+const sidebarCategories = [
+  { name: t('shop.categories.all_lower'), count: 24, active: true },
+  { name: t('shop.categories.apparel_lower'), count: 6 },
+  { name: t('shop.categories.accessories_lower'), count: 6 },
+  { name: t('shop.categories.books_lower'), count: 4 },
+  { name: t('shop.categories.art_lower'), count: 3 },
+  { name: t('shop.categories.courses_lower'), count: 3 },
+  { name: t('shop.categories.services_lower'), count: 2 },
+];
+---
+<div class="hidden lg:block w-64 flex-shrink-0">
+  <div class="sticky top-[160px] space-y-10 bg-brand-white/80 dark:bg-transparent p-4 rounded-xl">
+
+    <!-- Categories -->
+    <div>
+      <h3 class="text-sm font-bold text-brand-black dark:text-white uppercase tracking-wider mb-6 flex items-center justify-between">
+        {t('shop.sidebar.title')}
+        <ChevronDown class="w-4 h-4 text-brand-gold" />
+      </h3>
+      <ul class="space-y-3">
+        {sidebarCategories.map(cat => (
+          <li>
+            <a href="#" class={`flex items-center justify-between text-sm group ${cat.active ? 'text-brand-gold font-medium' : 'text-brand-black/70 dark:text-gray-400 hover:text-brand-black dark:hover:text-white'}`}>
+              <span class="relative">
+                {cat.name}
+                <span class={`absolute -bottom-1 left-0 h-[1px] bg-brand-gold transition-all duration-300 ${cat.active ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+              </span>
+              <span class={`text-[10px] py-0.5 px-2 rounded-full ${cat.active ? 'bg-brand-gold/20 text-brand-gold' : 'bg-black/5 dark:bg-white/5 text-brand-black/50 dark:text-gray-500 group-hover:bg-black/10 dark:group-hover:bg-white/10'}`}>
+                {cat.count}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="h-px bg-gradient-to-r from-gray-200 dark:from-white/10 to-transparent"></div>
+
+    <!-- Filters (Price Example) -->
+    <div>
+      <h3 class="text-sm font-bold text-brand-black dark:text-white uppercase tracking-wider mb-6 flex items-center justify-between">
+        {t('shop.sidebar.price')}
+        <ChevronDown class="w-4 h-4 text-brand-gold" />
+      </h3>
+      <ul class="space-y-3">
+        {['all', 'under50', '50to100', '100to200', 'over200'].map((price, idx) => (
+          <li>
+            <label class="flex items-center space-x-3 cursor-pointer group">
+              <div class={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${idx === 0 ? 'border-brand-gold bg-brand-gold/20' : 'border-gray-300 dark:border-white/20 group-hover:border-brand-gold/50'}`}>
+                {idx === 0 && <div class="w-2 h-2 rounded-sm bg-brand-gold"></div>}
+              </div>
+              <span class={`text-sm ${idx === 0 ? 'text-brand-black dark:text-white font-medium' : 'text-brand-black/70 dark:text-gray-400 group-hover:text-brand-black dark:group-hover:text-gray-200'}`}>
+                {t(`shop.sidebar.price.${price}`)}
+              </span>
+            </label>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+  </div>
+</div>

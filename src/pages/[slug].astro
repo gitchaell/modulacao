@@ -1,4 +1,5 @@
 ---
+import { getLangFromUrl, getPageTranslations, usePageTranslations } from '@/utils/i18n';
 import PublicLayout from '@/layouts/PublicLayout.astro';
 import Card from '@/components/core/Card.astro';
 import { db } from '@/data/db/db';
@@ -39,11 +40,14 @@ const userPosts = await db
 
 const formatDate = (date: Date | null) => {
   if (!date) return '';
-  return new Intl.DateTimeFormat('es-ES', { dateStyle: 'long' }).format(new Date(date));
+  return new Intl.DateTimeFormat(lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'long' }).format(new Date(date));
 };
+const lang = getLangFromUrl(Astro.cookies);
+const pageDict = await getPageTranslations('profile', lang);
+const t = usePageTranslations(pageDict, lang);
 ---
 
-<PublicLayout title={`Perfil de ${profile.profiles.fullName}`}>
+<PublicLayout title={`${t('profile.title').replace('{name}', profile.profiles.fullName)}`}>
   <div class="bg-brand-offwhite dark:bg-brand-dark min-h-screen pb-24">
 
     <!-- Profile Header (Cover & Info) -->
@@ -52,7 +56,7 @@ const formatDate = (date: Date | null) => {
     </div>
 
     <div class="container mx-auto px-6 max-w-4xl relative z-10 -mt-24">
-      <div class="bg-brand-dark-card border border-brand-dark/50 rounded-2xl shadow-2xl p-8 flex flex-col md:flex-row items-center md:items-start gap-8">
+      <div class="bg-white dark:bg-brand-dark-card border border-brand-dark/50 rounded-2xl shadow-2xl p-8 flex flex-col md:flex-row items-center md:items-start gap-8">
 
         <!-- Avatar -->
         <div class="w-40 h-40 flex-shrink-0 rounded-full border-4 border-brand-dark-card overflow-hidden bg-brand-black shadow-lg flex items-center justify-center">
@@ -68,10 +72,10 @@ const formatDate = (date: Date | null) => {
           <div class="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-widest text-brand-black bg-brand-gold rounded-full uppercase">
             {profile.users.role}
           </div>
-          <h1 class="text-3xl font-bold text-white mb-1">{profile.profiles.fullName}</h1>
+          <h1 class="text-3xl font-bold text-brand-black dark:text-white mb-1">{profile.profiles.fullName}</h1>
           <p class="text-brand-gold text-lg mb-4">@{profile.profiles.slug}</p>
 
-          <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 text-gray-400 text-sm mb-6">
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 text-gray-600 dark:text-gray-400 text-sm mb-6">
             {(profile.profiles.city || profile.profiles.country) && (
               <span class="flex items-center gap-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -80,12 +84,12 @@ const formatDate = (date: Date | null) => {
             )}
             <span class="flex items-center gap-1">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Miembro desde {formatDate(profile.users.createdAt as unknown as Date)}
+              {t('profile.member_since')} {formatDate(profile.users.createdAt as unknown as Date)}
             </span>
           </div>
 
           {profile.profiles.bio && (
-            <p class="text-gray-300 leading-relaxed max-w-2xl">{profile.profiles.bio}</p>
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">{profile.profiles.bio}</p>
           )}
         </div>
       </div>
@@ -93,27 +97,27 @@ const formatDate = (date: Date | null) => {
 
     <!-- Recent Activity -->
     <div class="container mx-auto px-6 max-w-4xl mt-12">
-      <h2 class="text-2xl font-bold text-brand-gold uppercase tracking-wider mb-6">Actividad Reciente</h2>
+      <h2 class="text-2xl font-bold text-brand-gold uppercase tracking-wider mb-6">{t('profile.recent_activity')}</h2>
 
       <div class="space-y-6">
         {userPosts.length === 0 ? (
           <div class="bg-brand-black/50 border border-brand-dark-card rounded-lg p-12 text-center">
-            <p class="text-gray-500">Este usuario aún no ha publicado en la comunidad.</p>
+            <p class="text-gray-500">{t('profile.no_posts')}</p>
           </div>
         ) : (
           userPosts.map(post => (
-            <Card class="bg-brand-dark-card hover:border-brand-dark transition-colors">
+            <Card class="bg-white dark:bg-brand-dark-card hover:border-brand-dark transition-colors">
               <div class="flex items-center gap-3 mb-4">
                  <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold text-sm">
                     {profile.profiles.fullName.charAt(0).toUpperCase()}
                   </div>
                   <div>
-                    <div class="font-semibold text-white">{profile.profiles.fullName}</div>
+                    <div class="font-semibold text-brand-black dark:text-white">{profile.profiles.fullName}</div>
                     <div class="text-xs text-gray-500">{formatDate(post.createdAt as unknown as Date)}</div>
                   </div>
               </div>
 
-              <div class="text-gray-300 text-sm whitespace-pre-wrap mb-4 leading-relaxed">
+              <div class="text-gray-700 dark:text-gray-300 text-sm whitespace-pre-wrap mb-4 leading-relaxed">
                 {post.content}
               </div>
 
