@@ -3,7 +3,7 @@
 import SocialLinks from '@/components/ui/SocialLinks.astro';
 import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 
-const lang = getLangFromUrl(Astro.cookies);
+const lang = getLangFromUrl(Astro.url);
 const t = await useTranslations(lang);
 ---
 <footer class="py-20 text-base font-semibold border-t border-black/5 dark:border-white/5 bg-brand-white dark:bg-[#0a0a0a] text-brand-black dark:text-brand-white mt-auto">
