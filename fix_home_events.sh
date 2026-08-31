@@ -1,3 +1,4 @@
+cat << 'INNER_EOF' > src/components/home/Events.astro
 ---
 import { usePageTranslations,  getLangFromUrl } from '@/utils/i18n';
 // src/components/home/Events.astro
@@ -127,3 +128,4 @@ const events = [
     </Button>
   </div>
 </section>
+INNER_EOF

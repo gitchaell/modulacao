@@ -1,3 +1,4 @@
+cat << 'INNER_EOF' > src/components/home/CTA.astro
 ---
 import { usePageTranslations,  getLangFromUrl } from '@/utils/i18n';
 // src/components/home/CTA.astro
@@ -32,3 +33,4 @@ const t = usePageTranslations(pageDict, lang);
     </Button>
   </div>
 </section>
+INNER_EOF

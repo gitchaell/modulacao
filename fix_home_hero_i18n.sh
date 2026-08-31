@@ -1,3 +1,4 @@
+cat << 'INNER_EOF' > src/components/home/Hero.astro
 ---
 import { usePageTranslations,  getLangFromUrl } from '@/utils/i18n';
 // src/components/home/Hero.astro
@@ -55,3 +56,4 @@ const t = usePageTranslations(pageDict, lang);
     </div>
   </div>
 </section>
+INNER_EOF
