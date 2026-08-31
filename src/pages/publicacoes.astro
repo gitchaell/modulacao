@@ -104,10 +104,10 @@ const formatTime = (date: Date | null) => {
       {/* Top Tabs */}
       <div class="flex flex-wrap border-b border-black/10 dark:border-white/10 mb-8 pb-4 gap-8">
           <button class="text-brand-gold font-bold uppercase tracking-widest text-sm pb-4 border-b-2 border-brand-gold -mb-[18px]">{t('publications.tabs.all')}</button>
-          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.public')}</button>
-          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.members')}</button>
-          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.network')}</button>
-          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.saved')}</button>
+          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.public')}</button>
+          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.members')}</button>
+          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.network')}</button>
+          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.saved')}</button>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -169,7 +169,7 @@ const formatTime = (date: Date | null) => {
                                   <p class="text-xs text-gray-600 dark:text-gray-400">{t('publications.meta.public')} • {formatDateFull(postData.post.createdAt as unknown as Date)}</p>
                               </div>
                           </div>
-                          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-white transition-colors">
+                          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors">
 
                           </button>
                       </div>
@@ -203,11 +203,11 @@ const formatTime = (date: Date | null) => {
                               <span class="flex items-center text-lg">❤️🔥</span>
                               <span class="text-sm font-semibold text-brand-black dark:text-white">{postData.reactionCount || Math.floor(Math.random() * 500)}</span>
                           </button>
-                          <button class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-white transition-colors">
+                          <button class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors">
                               <MessageSquare class="w-5 h-5" />
                               <span class="text-sm font-semibold">{postData.commentCount || Math.floor(Math.random() * 50)}</span>
                           </button>
-                          <button class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-white transition-colors">
+                          <button class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors">
                               <Share2 class="w-5 h-5" />
                               <span class="text-sm font-semibold">{Math.floor(Math.random() * 30)}</span>
                           </button>
@@ -247,15 +247,15 @@ const formatTime = (date: Date | null) => {
                             <span class="flex items-center gap-2"> {t('publications.filters.type.all')}</span>
                             <span>126</span>
                         </li>
-                        <li class="flex items-center justify-between text-gray-300 text-sm hover:text-brand-black dark:text-white cursor-pointer px-2">
+                        <li class="flex items-center justify-between text-gray-300 text-sm hover:text-brand-black dark:hover:text-white cursor-pointer px-2">
                             <span class="flex items-center gap-2"><MessageSquare class="w-4 h-4"/> {t('publications.filters.type.communique')}</span>
                             <span>34</span>
                         </li>
-                        <li class="flex items-center justify-between text-gray-300 text-sm hover:text-brand-black dark:text-white cursor-pointer px-2">
+                        <li class="flex items-center justify-between text-gray-300 text-sm hover:text-brand-black dark:hover:text-white cursor-pointer px-2">
                             <span class="flex items-center gap-2"><CalendarIcon class="w-4 h-4"/> {t('publications.compose.event')}s</span>
                             <span>50</span>
                         </li>
-                        <li class="flex items-center justify-between text-gray-300 text-sm hover:text-brand-black dark:text-white cursor-pointer px-2">
+                        <li class="flex items-center justify-between text-gray-300 text-sm hover:text-brand-black dark:hover:text-white cursor-pointer px-2">
                             <span class="flex items-center gap-2"><ImageIcon class="w-4 h-4"/> {t('publications.filters.type.news')}</span>
                             <span>28</span>
                         </li>
@@ -269,11 +269,11 @@ const formatTime = (date: Date | null) => {
                             <span class="flex items-center gap-2"> {t('publications.tabs.all')}</span>
                             <span>126</span>
                         </li>
-                        <li class="flex items-center justify-between text-gray-300 text-sm hover:text-brand-black dark:text-white cursor-pointer px-2">
+                        <li class="flex items-center justify-between text-gray-300 text-sm hover:text-brand-black dark:hover:text-white cursor-pointer px-2">
                             <span class="flex items-center gap-2"><Users class="w-4 h-4"/> {t('publications.tabs.public')}</span>
                             <span>80</span>
                         </li>
-                        <li class="flex items-center justify-between text-gray-300 text-sm hover:text-brand-black dark:text-white cursor-pointer px-2">
+                        <li class="flex items-center justify-between text-gray-300 text-sm hover:text-brand-black dark:hover:text-white cursor-pointer px-2">
                             <span class="flex items-center gap-2"><Users class="w-4 h-4"/> {t('publications.filters.visibility.members')}</span>
                             <span>46</span>
                         </li>
