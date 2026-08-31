@@ -1,5 +1,7 @@
 import { ui, defaultLang } from '@/i18n/ui';
 
+const allTranslations = import.meta.glob('../i18n/pages/**/*.json', { eager: true });
+
 export function getLangFromUrl(urlOrCookies: URL | any) {
   if (urlOrCookies instanceof URL) {
     const [, lang] = urlOrCookies.pathname.split('/');
@@ -19,14 +21,18 @@ export async function getGlobalTranslations(lang: keyof typeof ui = defaultLang)
   let globalTranslations: Record<string, string> = {};
 
   try {
-    const defaultGlobal = await import(/* @vite-ignore */ `../i18n/pages/global/pt.json`);
-    globalTranslations = defaultGlobal.default;
+    const defaultGlobalModule = allTranslations[`../i18n/pages/global/pt.json`] as any;
+    if (defaultGlobalModule && defaultGlobalModule.default) {
+        globalTranslations = defaultGlobalModule.default;
+    }
   } catch(e) {}
 
   if (lang !== defaultLang) {
     try {
-      const langGlobal = await import(/* @vite-ignore */ `../i18n/pages/global/${lang}.json`);
-      globalTranslations = { ...globalTranslations, ...langGlobal.default };
+      const langGlobalModule = allTranslations[`../i18n/pages/global/${lang}.json`] as any;
+      if (langGlobalModule && langGlobalModule.default) {
+          globalTranslations = { ...globalTranslations, ...langGlobalModule.default };
+      }
     } catch(e) {}
   }
 
@@ -46,14 +52,18 @@ export async function getPageTranslations(page: string, lang: keyof typeof ui = 
   let pageTranslations = {};
 
   try {
-    const defaultPageTranslations = await import(/* @vite-ignore */ `../i18n/pages/${page}/pt.json`);
-    pageTranslations = defaultPageTranslations.default;
+    const defaultPageModule = allTranslations[`../i18n/pages/${page}/pt.json`] as any;
+    if (defaultPageModule && defaultPageModule.default) {
+        pageTranslations = defaultPageModule.default;
+    }
   } catch(e) {}
 
   if (lang !== defaultLang) {
       try {
-        const langPageTranslations = await import(/* @vite-ignore */ `../i18n/pages/${page}/${lang}.json`);
-        pageTranslations = { ...pageTranslations, ...langPageTranslations.default };
+        const langPageModule = allTranslations[`../i18n/pages/${page}/${lang}.json`] as any;
+        if (langPageModule && langPageModule.default) {
+            pageTranslations = { ...pageTranslations, ...langPageModule.default };
+        }
       } catch (e) {}
   }
 
