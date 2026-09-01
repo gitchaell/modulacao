@@ -42,7 +42,7 @@ const formatDate = (date: Date) => {
     <div class="p-4 border-b border-gray-200 dark:border-brand-dark flex justify-between items-center bg-gray-50 dark:bg-brand-black/50">
       <h3 class="font-semibold text-brand-black dark:text-white text-sm uppercase tracking-wider">Notificaciones</h3>
       {unreadCount > 0 && (
-        <button id="mark-all-read" class="text-xs font-semibold text-brand-gold hover:text-brand-black dark:hover:text-white transition-colors focus-visible">Marcar todo como leído</button>
+        <button id="mark-all-read" class="text-xs font-semibold text-brand-gold hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white transition-colors focus-visible">Marcar todo como leído</button>
       )}
     </div>
 
@@ -61,10 +61,10 @@ const formatDate = (date: Date) => {
             <div class="flex gap-3">
               <div class={`w-2 h-2 mt-1.5 rounded-full flex-shrink-0 transition-colors ${!notification.isRead ? 'bg-brand-gold shadow-[0_0_8px_rgba(212,175,55,0.5)]' : 'bg-transparent'}`}></div>
               <div>
-                <p class={`text-sm ${!notification.isRead ? 'text-brand-black font-semibold dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}>
+                <p class={`text-sm ${!notification.isRead ? 'text-brand-black dark:text-brand-white font-semibold dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}>
                   {notification.message}
                 </p>
-                <span class="text-xs uppercase font-semibold tracking-wider text-gray-400 dark:text-gray-500 mt-1.5 block">{formatDate(notification.createdAt as unknown as Date)}</span>
+                <span class="text-xs uppercase font-semibold tracking-wider text-gray-400 dark:text-gray-500 dark:text-gray-400 mt-1.5 block">{formatDate(notification.createdAt as unknown as Date)}</span>
               </div>
             </div>
           </a>

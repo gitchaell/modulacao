@@ -81,7 +81,7 @@ const lang = getLangFromUrl(Astro.cookies);
       <div class="lg:col-span-2 space-y-8">
         <div>
           <div class="flex items-center gap-3 mb-4">
-             <span class="inline-block px-3 py-1 text-xs font-bold tracking-widest text-brand-black bg-brand-gold rounded uppercase">Evento</span>
+             <span class="inline-block px-3 py-1 text-xs font-bold tracking-widest text-brand-black dark:text-brand-white bg-brand-gold rounded uppercase">Evento</span>
              {group && (
                <a href={`/app/grupos/${group.id}`} class="text-brand-gold text-sm hover:underline font-semibold">{group.name}</a>
              )}
@@ -126,7 +126,7 @@ const lang = getLangFromUrl(Astro.cookies);
         {/* Placeholder for map */}
         {event.mapUrl && (
           <Card noPadding class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 premium-shadow">
-          <div class="h-64 w-full flex items-center justify-center text-gray-500 relative overflow-hidden rounded-xl">
+          <div class="h-64 w-full flex items-center justify-center text-gray-500 dark:text-gray-400 relative overflow-hidden rounded-xl">
              <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
              <p class="z-10 text-sm font-semibold uppercase tracking-widest text-brand-gold">Vista del Mapa (Integración pendiente)</p>
           </div>
@@ -154,7 +154,7 @@ const lang = getLangFromUrl(Astro.cookies);
               <div class="space-y-4">
                 <input type="hidden" name="action" value="JOIN" />
                 <Button type="submit" variant="primary" fullWidth>Asistiré</Button>
-                <p class="text-xs text-gray-500 text-center">Al confirmar aceptas las normas de convivencia del evento.</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400 text-center">Al confirmar aceptas las normas de convivencia del evento.</p>
               </div>
             )}
           </form>
@@ -181,7 +181,7 @@ const lang = getLangFromUrl(Astro.cookies);
                     +{attending.length - 8}
                   </div>
                 )}
-                {attending.length === 0 && <p class="text-xs text-gray-500">Nadie confirmado aún.</p>}
+                {attending.length === 0 && <p class="text-xs text-gray-500 dark:text-gray-400">Nadie confirmado aún.</p>}
               </div>
             </div>
 

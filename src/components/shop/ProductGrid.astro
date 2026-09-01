@@ -64,7 +64,7 @@ const produtos = [
                 <Star class="w-3.5 h-3.5 fill-current" />
                 <Star class="w-3.5 h-3.5 fill-current" />
               </div>
-              <span class="text-[10px] text-brand-black/50 dark:text-gray-500">({product.reviews})</span>
+              <span class="text-[10px] text-brand-black dark:text-brand-white/50 dark:text-gray-500 dark:text-gray-400">({product.reviews})</span>
             </div>
             <h3 class="text-sm font-medium text-brand-black dark:text-white mb-2 line-clamp-2 group-hover:text-brand-gold transition-colors">{product.name}</h3>
             <p class="text-lg font-bold text-brand-black dark:text-white">{product.price}</p>
@@ -81,7 +81,7 @@ const produtos = [
         <h2 class="text-xl font-medium text-brand-black dark:text-white tracking-widest uppercase">{t('shop.products.title')}</h2>
         <div class="hidden sm:block ml-4 w-32 h-px bg-gradient-to-r from-brand-gold/50 to-transparent"></div>
       </div>
-      <span class="text-sm text-brand-black/50 dark:text-gray-400">{t('shop.filters.showing')}</span>
+      <span class="text-sm text-brand-black dark:text-brand-white/50 dark:text-gray-400">{t('shop.filters.showing')}</span>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -90,16 +90,16 @@ const produtos = [
           <div class="relative aspect-square overflow-hidden bg-gray-100 dark:bg-[#111]">
             <img src={product.img} alt={product.name} class="w-full h-full object-cover opacity-90 dark:opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105" loading="lazy" decoding="async" />
 
-            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-brand-white/80 dark:bg-black/50 backdrop-blur border border-gray-300 dark:border-white/10 flex items-center justify-center text-brand-black/50 dark:text-white/50 hover:text-brand-gold hover:border-brand-gold transition-colors opacity-0 group-hover:opacity-100">
+            <button class="absolute top-3 right-3 w-8 h-8 rounded-full bg-brand-white/80 dark:bg-black/50 backdrop-blur border border-gray-300 dark:border-white/10 flex items-center justify-center text-brand-black dark:text-brand-white/50 dark:text-white/50 hover:text-brand-gold hover:border-brand-gold transition-colors opacity-0 group-hover:opacity-100">
               <ShoppingBag class="w-4 h-4" />
             </button>
           </div>
 
           <div class="p-4">
-            <h3 class="text-sm text-brand-black/80 dark:text-gray-300 mb-2 line-clamp-1 group-hover:text-brand-gold transition-colors">{product.name}</h3>
+            <h3 class="text-sm text-brand-black dark:text-brand-white/80 dark:text-gray-300 mb-2 line-clamp-1 group-hover:text-brand-gold transition-colors">{product.name}</h3>
             <div class="flex items-center justify-between">
               <p class="font-bold text-brand-black dark:text-white">{product.price}</p>
-              <div class="flex items-center gap-1 text-[10px] text-brand-black/50 dark:text-gray-500">
+              <div class="flex items-center gap-1 text-[10px] text-brand-black dark:text-brand-white/50 dark:text-gray-500 dark:text-gray-400">
                 <Star class="w-3 h-3 text-brand-gold fill-current" />
                 {product.reviews}
               </div>

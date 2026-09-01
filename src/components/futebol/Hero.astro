@@ -18,13 +18,13 @@ const t = usePageTranslations(pageDict, lang);
   <div class="absolute inset-0 bg-gradient-to-t from-brand-white dark:from-brand-dark-bg via-brand-white/80 dark:via-brand-dark-bg/80 to-transparent z-[-1]"></div>
 
   <div class="max-w-7xl mx-auto px-4 w-full relative z-10 mb-8">
-    <div class="flex items-center gap-2 text-sm text-brand-black/60 dark:text-brand-gray-light mb-6">
+    <div class="flex items-center gap-2 text-sm text-brand-black dark:text-brand-white/60 dark:text-brand-gray-light mb-6">
       <a href="/" class="hover:text-brand-gold transition-colors">{t('futebol.hero.home')}</a>
       <ChevronRight class="w-4 h-4" />
       <span class="text-brand-black dark:text-brand-white">{t('futebol.hero.breadcrumb')}</span>
     </div>
 
     <h1 class="text-5xl md:text-7xl font-bold mb-4 text-brand-black dark:text-brand-white tracking-tight uppercase">{t('futebol.hero.title')}</h1>
-    <p class="text-brand-black/70 dark:text-brand-gray-light max-w-xl text-lg leading-relaxed" set:html={t('futebol.hero.desc')}></p>
+    <p class="text-brand-black dark:text-brand-white/70 dark:text-brand-gray-light max-w-xl text-lg leading-relaxed" set:html={t('futebol.hero.desc')}></p>
   </div>
 </section>

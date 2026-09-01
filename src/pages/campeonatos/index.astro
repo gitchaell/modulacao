@@ -40,7 +40,7 @@ const allChampionships = await db.select({
 
       {allChampionships.length === 0 ? (
         <Card class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 text-center py-24 premium-shadow relative overflow-hidden">
-           <p class="text-gray-500 font-semibold">{t('champ.empty')}</p>
+           <p class="text-gray-500 dark:text-gray-400 font-semibold">{t('champ.empty')}</p>
         </Card>
       ) : (
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -65,7 +65,7 @@ const allChampionships = await db.select({
                  <div class="text-xs font-bold tracking-widest text-brand-gold uppercase mb-2">{champ.seasonName || t('champ.general')} • {champ.type}</div>
                  <h2 class="font-display text-xl font-bold text-brand-black dark:text-white mb-4 group-hover:text-brand-gold transition-colors">{champ.name}</h2>
                  <div class="mt-auto">
-                   <a href="/campeonatos" class="block mt-auto"><Button variant="outline" size="sm" fullWidth class="group-hover:bg-brand-gold group-hover:text-brand-black transition-colors">{t('champ.details')}</Button></a>
+                   <a href="/campeonatos" class="block mt-auto"><Button variant="outline" size="sm" fullWidth class="group-hover:bg-brand-gold group-hover:text-brand-black dark:text-brand-white transition-colors">{t('champ.details')}</Button></a>
                  </div>
                </div>
              </Card>

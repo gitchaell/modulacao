@@ -43,7 +43,7 @@ const [profile] = await db
           <Avatar src={profile?.avatarUrl} alt={profile?.fullName || 'Avatar'} size="xl" fallback={(profile?.fullName || 'U').charAt(0).toUpperCase()} />
           <div>
             <label class="block text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite mb-2">Foto de Perfil</label>
-            <input type="file" name="avatar" accept="image/*" class="text-sm font-semibold text-gray-500 dark:text-gray-400 file:mr-4 file:py-2.5 file:px-6 file:rounded-sm file:border-0 file:text-xs file:font-bold file:tracking-widest file:uppercase file:bg-brand-gold/10 file:text-brand-gold hover:file:bg-brand-gold hover:file:text-brand-black focus-visible file:transition-colors cursor-pointer" />
+            <input type="file" name="avatar" accept="image/*" class="text-sm font-semibold text-gray-500 dark:text-gray-400 file:mr-4 file:py-2.5 file:px-6 file:rounded-sm file:border-0 file:text-xs file:font-bold file:tracking-widest file:uppercase file:bg-brand-gold/10 file:text-brand-gold hover:file:bg-brand-gold hover:file:text-brand-black dark:text-brand-white focus-visible file:transition-colors cursor-pointer" />
           </div>
         </div>
 

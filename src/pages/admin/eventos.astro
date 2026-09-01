@@ -45,24 +45,24 @@ const isPast = (date: Date) => new Date(date) < new Date();
 
     <!-- Create Event Modal Base -->
     <div id="create-event-modal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-      <div class="bg-brand-dark-card border border-brand-dark rounded-xl p-6 w-full max-w-lg">
-        <h2 class="text-xl font-bold text-white mb-4">Crear Nuevo Evento</h2>
+      <div class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-brand-dark rounded-xl p-6 w-full max-w-lg">
+        <h2 class="text-xl font-bold text-brand-black dark:text-white mb-4">Crear Nuevo Evento</h2>
         <form method="POST" action="/api/admin/events/create" class="space-y-4">
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Título</label>
-            <input type="text" name="title" required class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white" />
+            <input type="text" name="title" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Fecha y Hora</label>
-            <input type="datetime-local" name="date" required class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white" />
+            <input type="datetime-local" name="date" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Ubicación</label>
-            <input type="text" name="location" required class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white" />
+            <input type="text" name="location" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Descripción</label>
-            <textarea name="description" required rows="3" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white"></textarea>
+            <textarea name="description" required rows="3" class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white"></textarea>
           </div>
           <div class="flex justify-end gap-2 mt-4">
             <Button type="button" variant="ghost" onclick="document.getElementById('create-event-modal').classList.add('hidden')">Cancelar</Button>
@@ -74,25 +74,25 @@ const isPast = (date: Date) => new Date(date) < new Date();
 
     <!-- Edit Event Modal Base -->
     <div id="edit-event-modal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-      <div class="bg-brand-dark-card border border-brand-dark rounded-xl p-6 w-full max-w-lg">
-        <h2 class="text-xl font-bold text-white mb-4">Editar Evento</h2>
+      <div class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-brand-dark rounded-xl p-6 w-full max-w-lg">
+        <h2 class="text-xl font-bold text-brand-black dark:text-white mb-4">Editar Evento</h2>
         <form method="POST" action="/api/admin/events/update" class="space-y-4">
           <input type="hidden" name="id" id="edit-event-id" />
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Título</label>
-            <input type="text" name="title" id="edit-event-title" required class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white" />
+            <input type="text" name="title" id="edit-event-title" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Fecha y Hora</label>
-            <input type="datetime-local" name="date" id="edit-event-date" required class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white" />
+            <input type="datetime-local" name="date" id="edit-event-date" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Ubicación</label>
-            <input type="text" name="location" id="edit-event-location" required class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white" />
+            <input type="text" name="location" id="edit-event-location" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Descripción</label>
-            <textarea name="description" id="edit-event-description" required rows="3" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white"></textarea>
+            <textarea name="description" id="edit-event-description" required rows="3" class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white"></textarea>
           </div>
           <div class="flex justify-end gap-2 mt-4">
             <Button type="button" variant="ghost" onclick="document.getElementById('edit-event-modal').classList.add('hidden')">Cancelar</Button>
@@ -107,8 +107,8 @@ const isPast = (date: Date) => new Date(date) < new Date();
         {allEvents.map(({ event, group }) => (
           <tr class="hover:bg-gray-50 dark:hover:bg-brand-dark/50 transition-colors group/row">
             <td class="p-4">
-              <div class="font-display text-base font-bold text-brand-black dark:text-white mb-1 group-hover/row:text-brand-gold transition-colors">{event.title}</div>
-              <div class="text-xs text-gray-500">
+              <div class="font-display text-base font-bold text-brand-black dark:text-brand-black dark:text-white mb-1 group-hover/row:text-brand-gold transition-colors">{event.title}</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400">
                 <a href={`/app/eventos/${event.id}`} target="_blank" class="hover:underline hover:text-brand-gold transition-colors text-xs tracking-wider uppercase font-semibold flex items-center gap-1 focus-visible rounded-sm">
                   Ver en App
                   <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
@@ -121,7 +121,7 @@ const isPast = (date: Date) => new Date(date) < new Date();
               ) : (
                  <div class="text-gray-500 dark:text-gray-400 font-semibold mb-1">Global / Sin Grupo</div>
               )}
-              <div class="text-gray-400 dark:text-gray-500 text-sm font-semibold tracking-wide uppercase flex items-center gap-1.5">
+              <div class="text-gray-400 dark:text-gray-500 dark:text-gray-400 text-sm font-semibold tracking-wide uppercase flex items-center gap-1.5">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 {event.location}
               </div>

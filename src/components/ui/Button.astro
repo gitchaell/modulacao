@@ -18,9 +18,9 @@ const {
 const baseStyles = "font-bold text-sm tracking-[0.2em] uppercase px-8 py-4 text-center transition-colors flex items-center justify-center gap-2.5 rounded-sm focus-visible";
 
 const variants = {
-  primary: "bg-brand-gold text-brand-black hover:bg-brand-black dark:hover:bg-brand-white hover:text-brand-black dark:hover:text-brand-white dark:hover:text-brand-black",
-  outline: "border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black",
-  ghost: "text-brand-gold hover:text-brand-black dark:hover:text-brand-white"
+  primary: "bg-brand-gold text-brand-black dark:text-brand-white hover:bg-brand-black dark:hover:bg-brand-white dark:bg-brand-dark-card hover:text-brand-black dark:text-brand-white dark:hover:text-brand-white dark:hover:text-brand-black dark:text-brand-white",
+  outline: "border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black dark:text-brand-white",
+  ghost: "text-brand-gold hover:text-brand-black dark:text-brand-white dark:hover:text-brand-white"
 };
 
 const combinedClasses = `${baseStyles} ${variants[variant]} ${className}`;

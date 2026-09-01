@@ -77,7 +77,7 @@ const events = [
       {events.map(event => (
         <a href={`/eventos/${event.id}`} class="group flex flex-col sm:flex-row bg-[#FAFAFA] dark:bg-[#111] border border-black/5 dark:border-white/5 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md">
           {/* Date Block */}
-          <div class="bg-brand-black dark:bg-[#151515] text-brand-white p-6 sm:w-32 flex flex-row sm:flex-col items-center justify-between sm:justify-center border-b sm:border-b-0 sm:border-r border-white/10 group-hover:bg-brand-gold group-hover:text-brand-black transition-colors duration-300">
+          <div class="bg-brand-black dark:bg-[#151515] text-brand-white p-6 sm:w-32 flex flex-row sm:flex-col items-center justify-between sm:justify-center border-b sm:border-b-0 sm:border-r border-white/10 group-hover:bg-brand-gold group-hover:text-brand-black dark:text-brand-white transition-colors duration-300">
             <span class="text-sm font-bold tracking-widest uppercase">{event.date.month}</span>
             <span class="text-4xl sm:text-5xl font-display font-bold">{event.date.day}</span>
           </div>
@@ -94,7 +94,7 @@ const events = [
               <div class="flex items-center gap-4 mb-4">
                 <span class="font-display font-bold text-xl text-brand-black dark:text-brand-white">{event.teams?.home}</span>
                 <span class="text-brand-gold font-bold text-sm">X</span>
-                <span class="font-display font-bold text-xl text-brand-black/60 dark:text-brand-white/60">{event.teams?.away}</span>
+                <span class="font-display font-bold text-xl text-brand-black dark:text-brand-white/60 dark:text-brand-white/60">{event.teams?.away}</span>
               </div>
             ) : (
               <h3 class="font-display font-bold text-2xl text-brand-black dark:text-brand-white mb-4 group-hover:text-brand-gold transition-colors line-clamp-2">

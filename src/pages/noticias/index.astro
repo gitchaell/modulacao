@@ -5,7 +5,7 @@ import Card from '@/components/core/Card.astro';
 import { db } from '@/data/db/db';
 import { articles } from '@/data/db/schema';
 import { eq, desc } from 'drizzle-orm';
-import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+import { getLangFromUrl } from '@/utils/i18n';
 import { tenantConfig } from '@/config/tenant';
 
 const lang = getLangFromUrl(Astro.cookies);
@@ -35,7 +35,7 @@ const formatDate = (date: Date | null) => {
   <section class="py-20 bg-brand-offwhite dark:bg-brand-dark min-h-[50vh]">
     <div class="container mx-auto px-6 max-w-6xl">
       {newsArticles.length === 0 ? (
-        <div class="text-center py-24 text-gray-500 font-semibold">
+        <div class="text-center py-24 text-gray-500 dark:text-gray-400 font-semibold">
           <p>Aún no hay noticias publicadas.</p>
         </div>
       ) : (

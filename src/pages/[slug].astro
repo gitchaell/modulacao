@@ -56,7 +56,7 @@ const t = usePageTranslations(pageDict, lang);
     </div>
 
     <div class="container mx-auto px-6 max-w-4xl relative z-10 -mt-24">
-      <div class="bg-white dark:bg-brand-dark-card border border-brand-dark/50 rounded-2xl shadow-2xl p-8 flex flex-col md:flex-row items-center md:items-start gap-8">
+      <div class="bg-white dark:bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-brand-dark/50 rounded-2xl shadow-2xl p-8 flex flex-col md:flex-row items-center md:items-start gap-8">
 
         <!-- Avatar -->
         <div class="w-40 h-40 flex-shrink-0 rounded-full border-4 border-brand-dark-card overflow-hidden bg-brand-black shadow-lg flex items-center justify-center">
@@ -69,7 +69,7 @@ const t = usePageTranslations(pageDict, lang);
 
         <!-- Info -->
         <div class="flex-1 text-center md:text-left mt-2">
-          <div class="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-widest text-brand-black bg-brand-gold rounded-full uppercase">
+          <div class="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-widest text-brand-black dark:text-brand-white bg-brand-gold rounded-full uppercase">
             {profile.users.role}
           </div>
           <h1 class="text-3xl font-bold text-brand-black dark:text-white mb-1">{profile.profiles.fullName}</h1>
@@ -102,7 +102,7 @@ const t = usePageTranslations(pageDict, lang);
       <div class="space-y-6">
         {userPosts.length === 0 ? (
           <div class="bg-brand-black/50 border border-brand-dark-card rounded-lg p-12 text-center">
-            <p class="text-gray-500">{t('profile.no_posts')}</p>
+            <p class="text-gray-500 dark:text-gray-400">{t('profile.no_posts')}</p>
           </div>
         ) : (
           userPosts.map(post => (
@@ -113,7 +113,7 @@ const t = usePageTranslations(pageDict, lang);
                   </div>
                   <div>
                     <div class="font-semibold text-brand-black dark:text-white">{profile.profiles.fullName}</div>
-                    <div class="text-xs text-gray-500">{formatDate(post.createdAt as unknown as Date)}</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400">{formatDate(post.createdAt as unknown as Date)}</div>
                   </div>
               </div>
 

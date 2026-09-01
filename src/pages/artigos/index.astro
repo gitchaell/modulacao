@@ -57,7 +57,7 @@ const navItems = [
       <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-0"></div>
 
       <div class="container mx-auto px-6 relative z-10">
-        <div class="flex items-center text-xs font-semibold text-gray-500 mb-6 uppercase tracking-wider">
+        <div class="flex items-center text-xs font-semibold text-gray-500 dark:text-gray-400 mb-6 uppercase tracking-wider">
           <a href="/" class="hover:text-brand-gold transition-colors">Início</a>
           <span class="mx-2">></span>
           <span class="text-brand-black dark:text-white">Artigos</span>
@@ -78,7 +78,7 @@ const navItems = [
       {/* Top Nav Categories */}
       <div class="flex flex-wrap items-center gap-4 mb-8 border-b border-black/10 dark:border-white/10 pb-6">
         {navItems.map(item => (
-          <a href="#" class={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wider transition-colors ${item.active ? 'bg-brand-gold/10 text-brand-gold border border-brand-gold/30' : 'text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-brand-black dark:text-white hover:bg-white/5'}`}>
+          <a href="#" class={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wider transition-colors ${item.active ? 'bg-brand-gold/10 text-brand-gold border border-brand-gold/30' : 'text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:bg-white/5'}`}>
             {/* Pseudo-icon logic for now, using standard generic icons or lucide */}
             {item.label}
           </a>
@@ -117,7 +117,7 @@ const navItems = [
 
         <div class="flex items-center gap-2 self-end md:self-auto">
           <button class="p-2 bg-brand-gold/10 text-brand-gold rounded-md border border-brand-gold/30"><LayoutGrid class="w-4 h-4" /></button>
-          <button class="p-2 text-gray-500 hover:text-brand-black dark:hover:text-brand-black dark:text-white rounded-md border border-transparent"><List class="w-4 h-4" /></button>
+          <button class="p-2 text-gray-500 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white rounded-md border border-transparent"><List class="w-4 h-4" /></button>
         </div>
       </div>
 
@@ -159,7 +159,7 @@ const navItems = [
                   )}
                   <div class="flex flex-col">
                     <span class="text-brand-black dark:text-white text-sm font-semibold">{featuredArticle.author?.fullName || 'Autor'}</span>
-                    <div class="text-gray-500 text-xs flex items-center gap-2">
+                    <div class="text-gray-500 dark:text-gray-400 text-xs flex items-center gap-2">
                       <span>{formatDate(featuredArticle.publishedAt as Date)}</span>
                       <span class="w-1 h-1 rounded-full bg-gray-600"></span>
                       <span>8 MIN LEITURA</span>
@@ -207,7 +207,7 @@ const navItems = [
                     )}
                     <div class="flex flex-col">
                       <span class="text-brand-black dark:text-white text-sm font-semibold">{article.author?.fullName || 'Autor'}</span>
-                      <div class="text-gray-500 text-xs flex items-center gap-2">
+                      <div class="text-gray-500 dark:text-gray-400 text-xs flex items-center gap-2">
                         <span>{formatDate(article.publishedAt as Date)}</span>
                         <span class="w-1 h-1 rounded-full bg-gray-600"></span>
                         <span>4 MIN LEITURA</span>
@@ -221,14 +221,14 @@ const navItems = [
 
           {/* Pagination */}
           <div class="flex items-center justify-center gap-2 mt-8">
-            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-black/10 dark:border-white/10 text-gray-500 hover:text-brand-black dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">&lt;</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-black/10 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">&lt;</button>
             <button class="w-10 h-10 flex items-center justify-center rounded-md border border-brand-gold/50 text-brand-gold bg-brand-gold/10">1</button>
-            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">2</button>
-            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">3</button>
-            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">4</button>
-            <span class="text-gray-500 px-2">...</span>
-            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">8</button>
-            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-black/10 dark:border-white/10 text-gray-500 hover:text-brand-black dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">&gt;</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">2</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">3</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">4</button>
+            <span class="text-gray-500 dark:text-gray-400 px-2">...</span>
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">8</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-md border border-black/10 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">&gt;</button>
           </div>
 
         </div>
@@ -280,7 +280,7 @@ const navItems = [
                 <span class="text-gray-600 font-mono text-xs">12</span>
               </li>
             </ul>
-            <a href="#" class="inline-flex items-center gap-2 text-brand-gold text-xs font-bold uppercase tracking-widest mt-6 hover:text-brand-black dark:hover:text-brand-black dark:text-white transition-colors">
+            <a href="#" class="inline-flex items-center gap-2 text-brand-gold text-xs font-bold uppercase tracking-widest mt-6 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white transition-colors">
               {t('articles.view_all_categories')} <span class="text-lg leading-none">&rarr;</span>
             </a>
           </div>
@@ -302,7 +302,7 @@ const navItems = [
                   </div>
                   <div class="flex flex-col">
                     <h4 class="text-sm font-bold text-gray-200 group-hover:text-brand-gold transition-colors line-clamp-2 leading-tight mb-1">{article.title}</h4>
-                    <span class="text-xs text-gray-500 font-mono">{formatDate(article.publishedAt as Date)}</span>
+                    <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">{formatDate(article.publishedAt as Date)}</span>
                   </div>
                 </a>
               ))}

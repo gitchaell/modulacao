@@ -31,7 +31,7 @@ const lang = getLangFromUrl(Astro.cookies);
   <section class="py-20 bg-brand-offwhite dark:bg-brand-dark min-h-[50vh]">
     <div class="container mx-auto px-6 max-w-4xl space-y-6 animate-smooth-fade" style="animation-delay: 0.1s;">
       {communiques.length === 0 ? (
-        <div class="text-center py-20 text-gray-500">
+        <div class="text-center py-20 text-gray-500 dark:text-gray-400">
           <p>Aún no hay comunicados publicados.</p>
         </div>
       ) : (
@@ -45,14 +45,14 @@ const lang = getLangFromUrl(Astro.cookies);
                 <div class="text-xs text-brand-gold mb-2 font-semibold tracking-wider">
                   {formatDate(communique.publishedAt as unknown as Date)}
                 </div>
-                <h2 class="text-xl font-bold text-white mb-2 group-hover:text-brand-gold transition-colors">
+                <h2 class="text-xl font-bold text-brand-black dark:text-white mb-2 group-hover:text-brand-gold transition-colors">
                   {communique.title}
                 </h2>
                 <p class="text-gray-400 text-sm line-clamp-2">
                   {communique.excerpt}
                 </p>
               </div>
-              <div class="hidden sm:flex text-gray-500 group-hover:text-brand-gold transition-colors">
+              <div class="hidden sm:flex text-gray-500 dark:text-gray-400 group-hover:text-brand-gold transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
               </div>
             </Card>

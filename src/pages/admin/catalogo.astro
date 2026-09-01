@@ -36,24 +36,24 @@ const formatDate = (date: Date) => {
 
     <!-- Create Product Modal Base -->
     <div id="create-product-modal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-      <div class="bg-brand-dark-card border border-brand-dark rounded-xl p-6 w-full max-w-lg">
-        <h2 class="text-xl font-bold text-white mb-4">Añadir Nuevo Producto</h2>
+      <div class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-brand-dark rounded-xl p-6 w-full max-w-lg">
+        <h2 class="text-xl font-bold text-brand-black dark:text-white mb-4">Añadir Nuevo Producto</h2>
         <form method="POST" action="/api/admin/catalog/create" class="space-y-4">
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Nombre del Producto</label>
-            <input type="text" name="name" required class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white" />
+            <input type="text" name="name" required class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Precio (Texto)</label>
-            <input type="text" name="price" required placeholder="Ej: $15.00 o Consultar" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white" />
+            <input type="text" name="price" required placeholder="Ej: $15.00 o Consultar" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Número de WhatsApp de Contacto</label>
-            <input type="text" name="whatsappNumber" required placeholder="+1234567890" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white" />
+            <input type="text" name="whatsappNumber" required placeholder="+1234567890" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Descripción</label>
-            <textarea name="description" required rows="3" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white"></textarea>
+            <textarea name="description" required rows="3" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-brand-black dark:text-white"></textarea>
           </div>
           <div class="flex justify-end gap-2 mt-4">
             <Button type="button" variant="ghost" onclick="document.getElementById('create-product-modal').classList.add('hidden')">Cancelar</Button>
@@ -65,25 +65,25 @@ const formatDate = (date: Date) => {
 
     <!-- Edit Product Modal Base -->
     <div id="edit-product-modal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-      <div class="bg-brand-dark-card border border-brand-dark rounded-xl p-6 w-full max-w-lg">
-        <h2 class="text-xl font-bold text-white mb-4">Editar Producto</h2>
+      <div class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-brand-dark rounded-xl p-6 w-full max-w-lg">
+        <h2 class="text-xl font-bold text-brand-black dark:text-white mb-4">Editar Producto</h2>
         <form method="POST" action="/api/admin/catalog/update" class="space-y-4">
           <input type="hidden" name="id" id="edit-product-id" />
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Nombre del Producto</label>
-            <input type="text" name="name" id="edit-product-name" required class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white" />
+            <input type="text" name="name" id="edit-product-name" required class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Precio (Texto)</label>
-            <input type="text" name="price" id="edit-product-price" required placeholder="Ej: $15.00 o Consultar" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white" />
+            <input type="text" name="price" id="edit-product-price" required placeholder="Ej: $15.00 o Consultar" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Número de WhatsApp de Contacto</label>
-            <input type="text" name="whatsappNumber" id="edit-product-whatsapp" required placeholder="+1234567890" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white" />
+            <input type="text" name="whatsappNumber" id="edit-product-whatsapp" required placeholder="+1234567890" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-300 mb-1">Descripción</label>
-            <textarea name="description" id="edit-product-description" required rows="3" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-white"></textarea>
+            <textarea name="description" id="edit-product-description" required rows="3" class="w-full bg-brand-black border border-brand-dark rounded-md p-2 text-brand-black dark:text-white"></textarea>
           </div>
           <div class="flex justify-end gap-2 mt-4">
             <Button type="button" variant="ghost" onclick="document.getElementById('edit-product-modal').classList.add('hidden')">Cancelar</Button>

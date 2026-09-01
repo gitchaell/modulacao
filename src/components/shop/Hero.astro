@@ -27,15 +27,15 @@ const t = usePageTranslations(pageDict, lang);
 
   <div class="container mx-auto px-6 relative z-10">
     <div class="max-w-2xl">
-      <div class="flex items-center text-sm text-brand-black/50 dark:text-gray-400 mb-6">
-        <a href="/" class="hover:text-brand-black dark:hover:text-white transition-colors">{t('shop.hero.home')}</a>
+      <div class="flex items-center text-sm text-brand-black dark:text-brand-white/50 dark:text-gray-400 mb-6">
+        <a href="/" class="hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white transition-colors">{t('shop.hero.home')}</a>
         <ChevronRight class="w-4 h-4 mx-2" />
         <span class="text-brand-black dark:text-white">{t('shop.hero.breadcrumb')}</span>
       </div>
 
       <h1 class="text-5xl lg:text-6xl font-bold text-brand-black dark:text-white mb-6 font-display tracking-tight">{t('shop.hero.title')}</h1>
 
-      <p class="text-lg text-brand-black/70 dark:text-gray-300 leading-relaxed max-w-lg">
+      <p class="text-lg text-brand-black dark:text-brand-white/70 dark:text-gray-300 leading-relaxed max-w-lg">
         {t('shop.hero.desc')}
       </p>
     </div>

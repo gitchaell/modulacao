@@ -26,7 +26,7 @@ const inputId = id || Math.random().toString(36).substring(7);
       {label}
     </label>
     {helperText && !error && (
-      <p id={`${inputId}-helper`} class="text-gray-500">{helperText}</p>
+      <p id={`${inputId}-helper`} class="text-gray-500 dark:text-gray-400">{helperText}</p>
     )}
     {error && (
       <p id={`${inputId}-error`} class="text-red-500 font-semibold" role="alert">{error}</p>

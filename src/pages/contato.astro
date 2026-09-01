@@ -61,7 +61,7 @@ const t = usePageTranslations(pageDict, lang);
           </div>
           <div class="pl-9 space-y-1">
              <p class="text-gray-300 text-sm">contato@modulacao.org</p>
-             <p class="text-gray-500 text-xs">{t('contact.info.email.desc')}</p>
+             <p class="text-gray-500 dark:text-gray-400 text-xs">{t('contact.info.email.desc')}</p>
           </div>
         </div>
 
@@ -73,7 +73,7 @@ const t = usePageTranslations(pageDict, lang);
           </div>
           <div class="pl-9 space-y-1">
              <p class="text-gray-300 text-sm">+591 780 00000</p>
-             <p class="text-gray-500 text-xs">{t('contact.info.whatsapp.desc')}</p>
+             <p class="text-gray-500 dark:text-gray-400 text-xs">{t('contact.info.whatsapp.desc')}</p>
           </div>
         </div>
 
@@ -97,7 +97,7 @@ const t = usePageTranslations(pageDict, lang);
           </div>
           <div class="pl-9 space-y-1">
              <p class="text-gray-300 text-sm leading-tight whitespace-pre-line">{t('contact.info.hours.desc')}</p>
-             <p class="text-gray-500 text-xs">{t('contact.info.hours.exc')}</p>
+             <p class="text-gray-500 dark:text-gray-400 text-xs">{t('contact.info.hours.exc')}</p>
           </div>
         </div>
 
@@ -135,8 +135,8 @@ const t = usePageTranslations(pageDict, lang);
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Input type="text" name="name" label="" placeholder={t('contact.form.name.label')} required class="bg-gray-50 dark:bg-brand-dark border-black/10 dark:border-white/10 text-brand-black dark:text-brand-white placeholder:text-gray-500" />
-              <Input type="email" name="email" label="" placeholder={t('contact.form.email.label')} required class="bg-gray-50 dark:bg-brand-dark border-black/10 dark:border-white/10 text-brand-black dark:text-brand-white placeholder:text-gray-500" />
+              <Input type="text" name="name" label="" placeholder={t('contact.form.name.label')} required class="bg-gray-50 dark:bg-brand-dark border-black/10 dark:border-white/10 text-brand-black dark:text-brand-white placeholder:text-gray-500 dark:text-gray-400" />
+              <Input type="email" name="email" label="" placeholder={t('contact.form.email.label')} required class="bg-gray-50 dark:bg-brand-dark border-black/10 dark:border-white/10 text-brand-black dark:text-brand-white placeholder:text-gray-500 dark:text-gray-400" />
             </div>
 
             <div class="relative">
@@ -158,7 +158,7 @@ const t = usePageTranslations(pageDict, lang);
                 required
                 rows="5"
                 placeholder={t('contact.form.message.placeholder')}
-                class="flex w-full rounded-sm border bg-gray-50 dark:bg-brand-dark px-4 py-3 text-sm text-brand-black dark:text-brand-white placeholder:text-gray-500 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold border-black/10 dark:border-white/10 hover:border-brand-gold/50"
+                class="flex w-full rounded-sm border bg-gray-50 dark:bg-brand-dark px-4 py-3 text-sm text-brand-black dark:text-brand-white placeholder:text-gray-500 dark:text-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold border-black/10 dark:border-white/10 hover:border-brand-gold/50"
               ></textarea>
             </div>
 
@@ -170,7 +170,7 @@ const t = usePageTranslations(pageDict, lang);
             </div>
 
             <div class="pt-2">
-              <Button type="submit" class="!bg-brand-gold hover:!bg-brand-gold-dark !text-brand-black w-full flex items-center justify-center gap-2">
+              <Button type="submit" class="!bg-brand-gold hover:!bg-brand-gold-dark !text-brand-black dark:text-brand-white w-full flex items-center justify-center gap-2">
                 <Send class="w-4 h-4" /> {t('contact.form.submit')}
               </Button>
             </div>
@@ -228,7 +228,7 @@ const t = usePageTranslations(pageDict, lang);
            <a href="#" class="flex items-center justify-between p-6 bg-gray-50 dark:bg-brand-dark border border-black/10 dark:border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
               <div class="flex items-center gap-4">
                  <Users class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" />
-                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-300 group-hover:text-brand-black dark:group-hover:text-brand-white whitespace-pre-line">{t('contact.faq.q1')}</span>
+                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-300 group-hover:text-brand-black dark:text-brand-white dark:group-hover:text-brand-white whitespace-pre-line">{t('contact.faq.q1')}</span>
               </div>
               <ChevronRight class="w-5 h-5 text-brand-gold" />
            </a>
@@ -236,7 +236,7 @@ const t = usePageTranslations(pageDict, lang);
            <a href="#" class="flex items-center justify-between p-6 bg-gray-50 dark:bg-brand-dark border border-black/10 dark:border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
               <div class="flex items-center gap-4">
                  <Shield class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" />
-                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-300 group-hover:text-brand-black dark:group-hover:text-brand-white whitespace-pre-line">{t('contact.faq.q2')}</span>
+                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-300 group-hover:text-brand-black dark:text-brand-white dark:group-hover:text-brand-white whitespace-pre-line">{t('contact.faq.q2')}</span>
               </div>
               <ChevronRight class="w-5 h-5 text-brand-gold" />
            </a>
@@ -244,7 +244,7 @@ const t = usePageTranslations(pageDict, lang);
            <a href="#" class="flex items-center justify-between p-6 bg-gray-50 dark:bg-brand-dark border border-black/10 dark:border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
               <div class="flex items-center gap-4">
                  <Calendar class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" />
-                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-300 group-hover:text-brand-black dark:group-hover:text-brand-white whitespace-pre-line">{t('contact.faq.q3')}</span>
+                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-300 group-hover:text-brand-black dark:text-brand-white dark:group-hover:text-brand-white whitespace-pre-line">{t('contact.faq.q3')}</span>
               </div>
               <ChevronRight class="w-5 h-5 text-brand-gold" />
            </a>
@@ -252,7 +252,7 @@ const t = usePageTranslations(pageDict, lang);
            <a href="#" class="flex items-center justify-between p-6 bg-gray-50 dark:bg-brand-dark border border-black/10 dark:border-white/10 hover:border-brand-gold/50 rounded-sm group transition-all">
               <div class="flex items-center gap-4">
                  <ShoppingCart class="w-6 h-6 text-brand-gold group-hover:scale-110 transition-transform" />
-                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-300 group-hover:text-brand-black dark:group-hover:text-brand-white whitespace-pre-line">{t('contact.faq.q4')}</span>
+                 <span class="text-sm font-semibold text-gray-600 dark:text-gray-300 group-hover:text-brand-black dark:text-brand-white dark:group-hover:text-brand-white whitespace-pre-line">{t('contact.faq.q4')}</span>
               </div>
               <ChevronRight class="w-5 h-5 text-brand-gold" />
            </a>
@@ -282,7 +282,7 @@ const t = usePageTranslations(pageDict, lang);
             </div>
          </div>
 
-         <a href="/sobre" class="relative z-10 shrink-0 bg-brand-gold hover:bg-brand-gold-dark text-brand-black font-bold uppercase tracking-widest text-sm px-8 py-4 rounded-sm transition-colors flex items-center gap-2">
+         <a href="/sobre" class="relative z-10 shrink-0 bg-brand-gold hover:bg-brand-gold-dark text-brand-black dark:text-brand-white font-bold uppercase tracking-widest text-sm px-8 py-4 rounded-sm transition-colors flex items-center gap-2">
             {t('contact.cta.btn')} <ChevronRight class="w-4 h-4"/>
          </a>
       </section>
