@@ -29,35 +29,35 @@ const lang = getLangFromUrl(Astro.cookies);
   <div class="space-y-6">
     <div class="flex items-center justify-between">
       <div>
-        <h1 class="text-3xl font-display font-bold text-brand-black dark:text-white tracking-widest uppercase">Configuración Global</h1>
-        <p class="text-gray-500 dark:text-gray-400 mt-1 font-semibold">Administra la identidad y los ajustes principales de la plataforma.</p>
+        <h1 class="dark:text-white font-bold font-display text-3xl text-brand-black tracking-widest uppercase">Configuración Global</h1>
+        <p class="dark:text-gray-400 font-semibold mt-1 text-gray-500">Administra la identidad y los ajustes principales de la plataforma.</p>
       </div>
     </div>
 
-    <Card noPadding class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 premium-shadow">
+    <Card noPadding class="backdrop-blur-md bg-brand-white/80 border border-gray-200 dark:bg-brand-dark-card/80 dark:border-white/10 premium-shadow">
       <div class="p-8 space-y-8">
 
         <form id="config-form" method="POST" action="/api/admin/configuracion" class="space-y-8">
-          <div id="form-success" class="hidden bg-green-500/10 text-green-500 border border-green-500/20 p-4 rounded-sm text-sm font-semibold">
+          <div id="form-success" class="bg-green-500/10 border border-green-500/20 font-semibold hidden p-4 rounded-sm text-green-500 text-sm">
             Configuración actualizada exitosamente.
           </div>
-          <div id="form-error" class="hidden bg-red-500/10 text-red-500 border border-red-500/20 p-4 rounded-sm text-sm font-semibold">
+          <div id="form-error" class="bg-red-500/10 border border-red-500/20 font-semibold hidden p-4 rounded-sm text-red-500 text-sm">
             Ha ocurrido un error al actualizar la configuración.
           </div>
 
           <!-- Identidad -->
           <section>
-            <h2 class="text-xl font-bold text-brand-black dark:text-white mb-4 border-b border-gray-200 dark:border-brand-dark pb-2">Identidad de la Marca</h2>
+            <h2 class="border-b border-gray-200 dark:border-brand-dark dark:text-white font-bold mb-4 pb-2 text-brand-black text-xl">Identidad de la Marca</h2>
             <div class="space-y-4">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="gap-4 grid grid-cols-1 md:grid-cols-2">
                 <Input type="text" name="name" label="Nombre de la Institución" value={config.name} required minlength="3" />
                 <Input type="email" name="email" label="Correo de Contacto Principal" value={config.contactEmail} required />
               </div>
               <div>
-                <label class="block text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite mb-2">Logotipo</label>
-                <div class="flex items-center gap-4">
-                  <div class="w-16 h-16 bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-brand-dark rounded-sm flex items-center justify-center">
-                    <svg class="w-8 h-8 text-brand-gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <label class="block dark:text-brand-offwhite font-semibold mb-2 text-brand-black text-sm tracking-wide uppercase">Logotipo</label>
+                <div class="flex gap-4 items-center">
+                  <div class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-brand-dark flex h-16 items-center justify-center rounded-sm w-16">
+                    <svg class="h-8 text-brand-gold w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                   </div>
                   <Button variant="outline" type="button" size="sm">Subir Nuevo Logo</Button>
                 </div>
@@ -67,9 +67,9 @@ const lang = getLangFromUrl(Astro.cookies);
 
           <!-- Redes Sociales -->
           <section>
-            <h2 class="text-xl font-bold text-brand-black dark:text-white mb-4 border-b border-gray-200 dark:border-brand-dark pb-2">Redes Sociales</h2>
+            <h2 class="border-b border-gray-200 dark:border-brand-dark dark:text-white font-bold mb-4 pb-2 text-brand-black text-xl">Redes Sociales</h2>
             <div class="space-y-4">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="gap-4 grid grid-cols-1 md:grid-cols-2">
                 <Input type="url" name="instagram" label="Instagram URL" value={config.socials.instagram} placeholder="https://instagram.com/..." />
                 <Input type="url" name="youtube" label="YouTube URL" value={config.socials.youtube} placeholder="https://youtube.com/..." />
                 <Input type="url" name="facebook" label="Facebook URL" value={config.socials.facebook} placeholder="https://facebook.com/..." />
@@ -78,7 +78,7 @@ const lang = getLangFromUrl(Astro.cookies);
             </div>
           </section>
 
-          <div class="pt-6 border-t border-gray-200 dark:border-brand-dark flex justify-end">
+          <div class="border-gray-200 border-t dark:border-brand-dark flex justify-end pt-6">
             <Button type="submit">Guardar Configuración</Button>
           </div>
         </form>

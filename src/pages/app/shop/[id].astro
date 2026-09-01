@@ -41,77 +41,77 @@ const lang = getLangFromUrl(Astro.cookies);
   <div class="space-y-6">
 
     <!-- Breadcrumbs -->
-    <nav class="flex items-center text-sm text-gray-500 dark:text-gray-400">
-      <a href="/app/shop" class="hover:text-brand-gold transition-colors flex items-center">
-        <ArrowLeft class="w-4 h-4 mr-2" />
+    <nav class="dark:text-gray-400 flex items-center text-gray-500 text-sm">
+      <a href="/app/shop" class="flex hover:text-brand-gold items-center transition-colors">
+        <ArrowLeft class="h-4 mr-2 w-4" />
         Loja
       </a>
-      <ChevronRight class="w-4 h-4 mx-2 opacity-50" />
-      <span class="text-brand-black dark:text-brand-white truncate max-w-[200px]">{product.category}</span>
-      <ChevronRight class="w-4 h-4 mx-2 opacity-50" />
-      <span class="text-brand-gold truncate max-w-[200px]">{product.name}</span>
+      <ChevronRight class="h-4 mx-2 opacity-50 w-4" />
+      <span class="dark:text-brand-white max-w-[200px] text-brand-black truncate">{product.category}</span>
+      <ChevronRight class="h-4 mx-2 opacity-50 w-4" />
+      <span class="max-w-[200px] text-brand-gold truncate">{product.name}</span>
     </nav>
 
-    <div class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 rounded-2xl overflow-hidden premium-shadow">
+    <div class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card dark:border-white/5 overflow-hidden premium-shadow rounded-2xl">
       <div class="flex flex-col lg:flex-row">
 
         <!-- Left Column: Image Gallery -->
-        <div class="w-full lg:w-1/2 p-6 lg:p-10 border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-gray-100 dark:bg-black/20 flex flex-col items-center justify-center">
-          <div class="relative aspect-square w-full max-w-md rounded-xl overflow-hidden bg-brand-white dark:bg-[#111] mb-6 group premium-shadow">
-             <button class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-brand-white/80 dark:bg-gray-100 dark:bg-black/50 backdrop-blur-md flex items-center justify-center text-gray-500 dark:text-gray-400 hover:text-brand-gold dark:hover:text-brand-gold transition-colors border border-gray-200 dark:border-white/10 shadow-sm">
-                <Heart class="w-5 h-5" />
+        <div class="bg-gray-50 border-b border-gray-200 dark:bg-black/20 dark:bg-gray-100 dark:border-white/5 flex flex-col items-center justify-center lg:border-b-0 lg:border-r lg:p-10 lg:w-1/2 p-6 w-full">
+          <div class="aspect-square bg-brand-white dark:bg-[#111] dark:bg-brand-dark-card group max-w-md mb-6 overflow-hidden premium-shadow relative rounded-xl w-full">
+             <button class="absolute backdrop-blur-md bg-brand-white/80 border border-gray-200 dark:bg-black/50 dark:bg-gray-100 dark:border-white/10 dark:hover:text-brand-gold dark:text-gray-400 flex h-10 hover:text-brand-gold items-center justify-center right-4 rounded-full shadow-sm text-gray-500 top-4 transition-colors w-10 z-10">
+                <Heart class="h-5 w-5" />
              </button>
             <img
               src={product.images[0]}
               alt={product.name}
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              class="duration-700 group-hover:scale-105 h-full object-cover transition-transform w-full"
               loading="lazy"
               decoding="async"
             />
           </div>
 
-          <div class="flex gap-4 w-full max-w-md justify-start overflow-x-auto pb-2 scrollbar-hide">
+          <div class="flex gap-4 justify-start max-w-md overflow-x-auto pb-2 scrollbar-hide w-full">
             {product.images.map((img, i) => (
               <button class={`shrink-0 w-20 h-20 rounded-sm overflow-hidden border-2 transition-colors ${i === 0 ? 'border-brand-gold' : 'border-transparent hover:border-brand-gold/50'}`}>
-                <img src={img} alt={`${product.name} - view ${i + 1}`} class="w-full h-full object-cover" />
+                <img src={img} alt={`${product.name} - view ${i + 1}`} class="h-full object-cover w-full" />
               </button>
             ))}
           </div>
         </div>
 
         <!-- Right Column: Product Details -->
-        <div class="w-full lg:w-1/2 p-6 lg:p-10 flex flex-col">
+        <div class="flex flex-col lg:p-10 lg:w-1/2 p-6 w-full">
           <div class="mb-6">
-            <div class="text-xs font-bold text-brand-gold uppercase tracking-widest mb-2">{product.category}</div>
-            <h1 class="text-2xl md:text-3xl font-display font-bold text-brand-black dark:text-brand-white leading-tight mb-4">{product.name}</h1>
+            <div class="font-bold mb-2 text-brand-gold text-xs tracking-widest uppercase">{product.category}</div>
+            <h1 class="dark:text-brand-white font-bold font-display leading-tight mb-4 md:text-3xl text-2xl text-brand-black">{product.name}</h1>
 
-            <div class="flex items-center gap-4 mb-6">
+            <div class="flex gap-4 items-center mb-6">
               <div class="flex items-center">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <Star class={`w-4 h-4 ${star <= Math.floor(product.rating) ? 'fill-brand-gold text-brand-gold' : 'fill-gray-300 dark:fill-gray-700 text-gray-300 dark:text-gray-700'}`} />
                 ))}
               </div>
-              <span class="text-sm font-medium text-brand-black dark:text-brand-white">{product.rating}</span>
-              <span class="text-sm text-gray-500 dark:text-gray-400 underline cursor-pointer hover:text-brand-gold transition-colors">({product.reviews} avaliações)</span>
+              <span class="dark:text-brand-white font-medium text-brand-black text-sm">{product.rating}</span>
+              <span class="cursor-pointer dark:text-gray-400 hover:text-brand-gold text-gray-500 text-sm transition-colors underline">({product.reviews} avaliações)</span>
             </div>
 
-            <div class="flex items-end gap-3 mb-6">
-              <span class="text-3xl font-bold text-brand-gold">{product.price}</span>
+            <div class="flex gap-3 items-end mb-6">
+              <span class="font-bold text-3xl text-brand-gold">{product.price}</span>
               {product.originalPrice && (
-                <span class="text-lg text-gray-500 dark:text-gray-400 line-through mb-1">{product.originalPrice}</span>
+                <span class="dark:text-gray-400 line-through mb-1 text-gray-500 text-lg">{product.originalPrice}</span>
               )}
             </div>
 
-            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-8">
+            <p class="dark:text-gray-300 leading-relaxed mb-8 text-gray-600 text-sm">
               {product.description}
             </p>
           </div>
 
           <!-- Variants -->
-          <div class="space-y-6 mb-8 border-t border-gray-200 dark:border-white/5 pt-6">
+          <div class="border-gray-200 border-t dark:border-white/5 mb-8 pt-6 space-y-6">
             {product.variants.map((variant) => (
               <div>
-                <h4 class="text-sm font-medium text-brand-black dark:text-brand-white mb-3 uppercase tracking-wider">{variant.name}</h4>
+                <h4 class="dark:text-brand-white font-medium mb-3 text-brand-black text-sm tracking-wider uppercase">{variant.name}</h4>
                 <div class="flex flex-wrap gap-3">
                   {variant.options.map((opt, i) => (
                     <button class={`px-4 py-2 rounded-sm border text-sm font-medium transition-colors ${i === 0 ? 'border-brand-gold bg-brand-gold/10 text-brand-gold' : 'border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:border-brand-gold/50 hover:text-brand-gold'}`}>
@@ -123,34 +123,34 @@ const lang = getLangFromUrl(Astro.cookies);
             ))}
 
              <div>
-                <h4 class="text-sm font-medium text-brand-black dark:text-brand-white mb-3 uppercase tracking-wider">Quantidade</h4>
-                <div class="flex items-center max-w-[150px] border border-gray-200 dark:border-white/10 rounded-sm overflow-hidden">
-                  <button class="w-10 h-10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">-</button>
-                  <input type="text" value="1" class="w-full h-10 bg-transparent text-center text-brand-black dark:text-brand-white font-medium border-x border-gray-200 dark:border-white/10 focus:outline-none" readonly />
-                  <button class="w-10 h-10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">+</button>
+                <h4 class="dark:text-brand-white font-medium mb-3 text-brand-black text-sm tracking-wider uppercase">Quantidade</h4>
+                <div class="border border-gray-200 dark:border-white/10 flex items-center max-w-[150px] overflow-hidden rounded-sm">
+                  <button class="dark:hover:bg-white/5 dark:text-gray-400 flex h-10 hover:bg-gray-100 items-center justify-center text-gray-500 transition-colors w-10">-</button>
+                  <input type="text" value="1" class="bg-transparent border-gray-200 border-x dark:border-white/10 dark:text-brand-white focus:outline-none font-medium h-10 text-brand-black text-center w-full" readonly />
+                  <button class="dark:hover:bg-white/5 dark:text-gray-400 flex h-10 hover:bg-gray-100 items-center justify-center text-gray-500 transition-colors w-10">+</button>
                 </div>
-                <div class="mt-2 text-xs text-green-600 dark:text-green-400 flex items-center">
-                  <ShieldCheck class="w-3 h-3 mr-1" />
+                <div class="dark:text-green-400 flex items-center mt-2 text-green-600 text-xs">
+                  <ShieldCheck class="h-3 mr-1 w-3" />
                   Em estoque ({product.stock} disponíveis)
                 </div>
               </div>
           </div>
 
           <!-- Action Buttons -->
-          <div class="flex flex-col gap-4 mt-auto border-t border-gray-200 dark:border-white/5 pt-6">
+          <div class="border-gray-200 border-t dark:border-white/5 flex flex-col gap-4 mt-auto pt-6">
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              class="w-full bg-brand-gold hover:bg-[#C5A030] text-brand-black dark:text-brand-white font-semibold py-4 px-6 rounded-sm flex items-center justify-center transition-colors shadow-[0_0_20px_rgba(212,175,55,0.2)] group"
+              class="bg-brand-gold dark:text-brand-white flex font-semibold group hover:bg-[#C5A030] items-center justify-center px-6 py-4 rounded-sm shadow-[0_0_20px_rgba(212,175,55,0.2)] text-brand-black transition-colors w-full"
             >
-              <MessageCircle class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+              <MessageCircle class="group-hover:scale-110 h-5 mr-2 transition-transform w-5" />
               COMPRAR VIA WHATSAPP
             </a>
 
             <div class="flex gap-4">
-              <button class="flex-1 bg-brand-white dark:bg-brand-dark border border-gray-200 dark:border-white/10 hover:border-brand-gold/50 text-brand-black dark:text-brand-white font-medium py-3 px-4 rounded-sm flex items-center justify-center transition-colors group">
-                <Share2 class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-400 group-hover:text-brand-gold transition-colors" />
+              <button class="bg-brand-white border border-gray-200 dark:bg-brand-dark dark:border-white/10 dark:text-brand-white flex flex-1 font-medium group hover:border-brand-gold/50 items-center justify-center px-4 py-3 rounded-sm text-brand-black transition-colors">
+                <Share2 class="dark:text-gray-400 group-hover:text-brand-gold h-4 mr-2 text-gray-500 transition-colors w-4" />
                 Compartilhar
               </button>
             </div>
@@ -160,27 +160,27 @@ const lang = getLangFromUrl(Astro.cookies);
       </div>
 
       <!-- Additional Info Bar -->
-      <div class="bg-gray-50 dark:bg-[#0a0a0a] border-t border-gray-200 dark:border-white/5 p-6 lg:p-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
+      <div class="bg-gray-50 border-gray-200 border-t dark:bg-[#0a0a0a] dark:bg-brand-black dark:border-white/5 lg:p-8 p-6">
+        <div class="gap-6 grid grid-cols-1 lg:gap-10 md:grid-cols-3">
           <div class="flex items-start">
-            <Package class="w-6 h-6 text-brand-gold shrink-0 mr-4" />
+            <Package class="h-6 mr-4 shrink-0 text-brand-gold w-6" />
             <div>
-              <h4 class="text-brand-black dark:text-brand-white font-medium text-sm mb-1">Envio para todo o país</h4>
-              <p class="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">Consulte opções e prazos no atendimento.</p>
+              <h4 class="dark:text-brand-white font-medium mb-1 text-brand-black text-sm">Envio para todo o país</h4>
+              <p class="dark:text-gray-400 leading-relaxed text-gray-500 text-xs">Consulte opções e prazos no atendimento.</p>
             </div>
           </div>
           <div class="flex items-start">
-            <RotateCcw class="w-6 h-6 text-brand-gold shrink-0 mr-4" />
+            <RotateCcw class="h-6 mr-4 shrink-0 text-brand-gold w-6" />
             <div>
-              <h4 class="text-brand-black dark:text-brand-white font-medium text-sm mb-1">Trocas e Devoluções</h4>
-              <p class="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">Garantia de 7 dias após o recebimento.</p>
+              <h4 class="dark:text-brand-white font-medium mb-1 text-brand-black text-sm">Trocas e Devoluções</h4>
+              <p class="dark:text-gray-400 leading-relaxed text-gray-500 text-xs">Garantia de 7 dias após o recebimento.</p>
             </div>
           </div>
           <div class="flex items-start">
-            <HeartHandshake class="w-6 h-6 text-brand-gold shrink-0 mr-4" />
+            <HeartHandshake class="h-6 mr-4 shrink-0 text-brand-gold w-6" />
             <div>
-              <h4 class="text-brand-black dark:text-brand-white font-medium text-sm mb-1">Atendimento Humanizado</h4>
-              <p class="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">Suporte dedicado para tirar suas dúvidas.</p>
+              <h4 class="dark:text-brand-white font-medium mb-1 text-brand-black text-sm">Atendimento Humanizado</h4>
+              <p class="dark:text-gray-400 leading-relaxed text-gray-500 text-xs">Suporte dedicado para tirar suas dúvidas.</p>
             </div>
           </div>
         </div>
@@ -189,18 +189,18 @@ const lang = getLangFromUrl(Astro.cookies);
     </div>
 
     <!-- Description Tabs (Optional Expansion) -->
-    <div class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 rounded-2xl p-6 lg:p-10 premium-shadow mt-6">
-       <div class="border-b border-gray-200 dark:border-white/5 mb-6 flex gap-8">
-          <button class="pb-4 border-b-2 border-brand-gold text-brand-gold font-medium text-sm">Descrição Completa</button>
-          <button class="pb-4 border-b-2 border-transparent text-gray-500 hover:text-brand-black dark:text-gray-400 dark:hover:text-brand-white font-medium text-sm transition-colors">Especificações</button>
+    <div class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card dark:border-white/5 lg:p-10 mt-6 p-6 premium-shadow rounded-2xl">
+       <div class="border-b border-gray-200 dark:border-white/5 flex gap-8 mb-6">
+          <button class="border-b-2 border-brand-gold font-medium pb-4 text-brand-gold text-sm">Descrição Completa</button>
+          <button class="border-b-2 border-transparent dark:hover:text-brand-white dark:text-gray-400 font-medium hover:text-brand-black pb-4 text-gray-500 text-sm transition-colors">Especificações</button>
        </div>
 
-       <div class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+       <div class="dark:prose-invert dark:text-gray-300 leading-relaxed max-w-none prose text-gray-600 text-sm">
          <p>
             O <strong>{product.name}</strong> é desenvolvido com a mais alta tecnologia nutricional para garantir a máxima absorção e eficiência.
             Ideal para pessoas que buscam melhorar a qualidade de vida, aumentar a disposição no dia a dia e otimizar a recuperação muscular após atividades físicas.
          </p>
-         <h4 class="text-brand-black dark:text-brand-white font-medium mt-6 mb-3">Principais Benefícios:</h4>
+         <h4 class="dark:text-brand-white font-medium mb-3 mt-6 text-brand-black">Principais Benefícios:</h4>
          <ul class="list-disc pl-5 space-y-2">
             {product.features.map(feature => (
               <li>{feature}</li>

@@ -20,14 +20,14 @@ const sidebarCategories = [
   { name: t('shop.categories.services_lower'), count: 2 },
 ];
 ---
-<div class="hidden lg:block w-64 flex-shrink-0">
-  <div class="sticky top-[160px] space-y-10 bg-brand-white/80 dark:bg-transparent p-4 rounded-xl">
+<div class="flex-shrink-0 hidden lg:block w-64">
+  <div class="bg-brand-white/80 dark:bg-transparent p-4 rounded-xl space-y-10 sticky top-[160px]">
 
     <!-- Categories -->
     <div>
-      <h3 class="text-sm font-bold text-brand-black dark:text-white uppercase tracking-wider mb-6 flex items-center justify-between">
+      <h3 class="dark:text-white flex font-bold items-center justify-between mb-6 text-brand-black text-sm tracking-wider uppercase">
         {t('shop.sidebar.title')}
-        <ChevronDown class="w-4 h-4 text-brand-gold" />
+        <ChevronDown class="h-4 text-brand-gold w-4" />
       </h3>
       <ul class="space-y-3">
         {sidebarCategories.map(cat => (
@@ -46,20 +46,20 @@ const sidebarCategories = [
       </ul>
     </div>
 
-    <div class="h-px bg-gradient-to-r from-gray-200 dark:from-white/10 to-transparent"></div>
+    <div class="bg-gradient-to-r dark:from-white/10 from-gray-200 h-px to-transparent"></div>
 
     <!-- Filters (Price Example) -->
     <div>
-      <h3 class="text-sm font-bold text-brand-black dark:text-white uppercase tracking-wider mb-6 flex items-center justify-between">
+      <h3 class="dark:text-white flex font-bold items-center justify-between mb-6 text-brand-black text-sm tracking-wider uppercase">
         {t('shop.sidebar.price')}
-        <ChevronDown class="w-4 h-4 text-brand-gold" />
+        <ChevronDown class="h-4 text-brand-gold w-4" />
       </h3>
       <ul class="space-y-3">
         {['all', 'under50', '50to100', '100to200', 'over200'].map((price, idx) => (
           <li>
-            <label class="flex items-center space-x-3 cursor-pointer group">
+            <label class="cursor-pointer flex group items-center space-x-3">
               <div class={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${idx === 0 ? 'border-brand-gold bg-brand-gold/20' : 'border-gray-300 dark:border-white/20 group-hover:border-brand-gold/50'}`}>
-                {idx === 0 && <div class="w-2 h-2 rounded-sm bg-brand-gold"></div>}
+                {idx === 0 && <div class="bg-brand-gold h-2 rounded-sm w-2"></div>}
               </div>
               <span class={`text-sm ${idx === 0 ? 'text-brand-black dark:text-white font-medium' : 'text-gray-600 dark:text-gray-400 group-hover:text-brand-black dark:text-brand-white dark:group-hover:text-gray-700 dark:text-gray-200'}`}>
                 {t(`shop.sidebar.price.${price}`)}

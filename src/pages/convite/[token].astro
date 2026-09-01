@@ -17,15 +17,15 @@ const isValid = !!invitation;
 ---
 
 <AuthLayout title={t('auth.invite.title')}>
-  <div class="text-center mb-8">
-    <h2 class="font-display text-3xl font-bold uppercase tracking-wider text-brand-black dark:text-white">Bienvenido</h2>
-    <p class="text-base text-gray-500 dark:text-gray-400 font-semibold mt-2">Crea tu contraseña para acceder a la plataforma.</p>
+  <div class="mb-8 text-center">
+    <h2 class="dark:text-white font-bold font-display text-3xl text-brand-black tracking-wider uppercase">Bienvenido</h2>
+    <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500">Crea tu contraseña para acceder a la plataforma.</p>
   </div>
 
   {isValid ? (
     <form class="space-y-6" method="POST" action="/api/auth/setup-password">
       <input type="hidden" name="token" value={token} />
-      <Input type="email" label={t('auth.login.email')} value={invitation.email} disabled class="bg-gray-50 dark:bg-brand-black cursor-not-allowed" />
+      <Input type="email" label={t('auth.login.email')} value={invitation.email} disabled class="bg-gray-50 cursor-not-allowed dark:bg-brand-black" />
       <Input type="password" name="password" label="Nueva Contraseña" required minlength="8" helperText="Debe tener al menos 8 caracteres." />
       <Input type="password" name="confirmPassword" label="Confirmar Contraseña" required minlength="8" />
 
@@ -36,7 +36,7 @@ const isValid = !!invitation;
       <Alert variant="error" title="Enlace Inválido">
         El enlace de invitación es inválido, ya ha sido utilizado o ha expirado. Comunícate con el administrador para solicitar uno nuevo.
       </Alert>
-      <a href="/" class="text-brand-black dark:text-white font-semibold uppercase tracking-wider text-sm hover:text-brand-gold dark:hover:text-brand-gold transition-colors mt-8 inline-block focus-visible">Volver al inicio</a>
+      <a href="/" class="dark:hover:text-brand-gold dark:text-white focus-visible font-semibold hover:text-brand-gold inline-block mt-8 text-brand-black text-sm tracking-wider transition-colors uppercase">Volver al inicio</a>
     </div>
   )}
 </AuthLayout>

@@ -28,26 +28,26 @@ const [profile] = await db
 ---
 
 <AppLayout title={t('app.settings')}>
-  <div class="max-w-2xl mx-auto space-y-8 animate-smooth-fade">
+  <div class="animate-smooth-fade max-w-2xl mx-auto space-y-8">
 
     <div>
-      <h1 class="font-display text-3xl font-bold uppercase tracking-widest text-brand-gold">{t('app.settings')}</h1>
-      <p class="text-gray-500 dark:text-gray-400 mt-2 text-base font-semibold">Configura cómo te ven los demás miembros en {tenantConfig.name}.</p>
+      <h1 class="font-bold font-display text-3xl text-brand-gold tracking-widest uppercase">{t('app.settings')}</h1>
+      <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500">Configura cómo te ven los demás miembros en {tenantConfig.name}.</p>
     </div>
 
-    <Card class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md premium-shadow border border-gray-200 dark:border-white/10">
+    <Card class="backdrop-blur-md bg-brand-white/80 border border-gray-200 dark:bg-brand-dark-card/80 dark:border-white/10 premium-shadow">
       <form method="POST" action="/api/user/update-profile" enctype="multipart/form-data" class="space-y-8">
 
         <!-- Avatar Upload -->
-        <div class="flex items-center gap-6 pb-6 border-b border-gray-100 dark:border-white/5">
+        <div class="border-b border-gray-100 dark:border-white/5 flex gap-6 items-center pb-6">
           <Avatar src={profile?.avatarUrl} alt={profile?.fullName || 'Avatar'} size="xl" fallback={(profile?.fullName || 'U').charAt(0).toUpperCase()} />
           <div>
-            <label class="block text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite mb-2">Foto de Perfil</label>
-            <input type="file" name="avatar" accept="image/*" class="text-sm font-semibold text-gray-500 dark:text-gray-400 file:mr-4 file:py-2.5 file:px-6 file:rounded-sm file:border-0 file:text-xs file:font-bold file:tracking-widest file:uppercase file:bg-brand-gold/10 file:text-brand-gold hover:file:bg-brand-gold hover:file:text-brand-black dark:text-brand-white focus-visible file:transition-colors cursor-pointer" />
+            <label class="block dark:text-brand-offwhite font-semibold mb-2 text-brand-black text-sm tracking-wide uppercase">Foto de Perfil</label>
+            <input type="file" name="avatar" accept="image/*" class="cursor-pointer dark:text-brand-white dark:text-gray-400 file:bg-brand-gold/10 file:border-0 file:font-bold file:mr-4 file:px-6 file:py-2.5 file:rounded-sm file:text-brand-gold file:text-xs file:tracking-widest file:transition-colors file:uppercase focus-visible font-semibold hover:file:bg-brand-gold hover:file:text-brand-black text-gray-500 text-sm" />
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="gap-6 grid grid-cols-1 md:grid-cols-2">
           <Input
             name="fullName"
             label="Nombre Completo"
@@ -65,7 +65,7 @@ const [profile] = await db
           />
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="gap-6 grid grid-cols-1 md:grid-cols-2">
           <Input
             name="city"
             label="Ciudad"
@@ -82,15 +82,15 @@ const [profile] = await db
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite">Biografía</label>
+          <label class="dark:text-brand-offwhite font-semibold text-brand-black text-sm tracking-wide uppercase">Biografía</label>
           <textarea
             name="bio"
-            class="w-full bg-transparent border border-gray-300 dark:border-gray-700 rounded-sm p-4 text-sm text-brand-black dark:text-white placeholder:text-gray-500 dark:text-gray-400 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold resize-none h-32 hover:border-brand-gold/50 transition-colors"
+            class="bg-transparent border border-gray-300 dark:border-gray-700 dark:text-gray-400 dark:text-white focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold h-32 hover:border-brand-gold/50 p-4 placeholder:text-gray-500 resize-none rounded-sm text-brand-black text-sm transition-colors w-full"
             placeholder="Cuéntanos un poco sobre ti..."
           >{profile?.bio || ''}</textarea>
         </div>
 
-        <div class="pt-6 border-t border-gray-100 dark:border-white/5 flex justify-end">
+        <div class="border-gray-100 border-t dark:border-white/5 flex justify-end pt-6">
           <Button type="submit">{t('common.save')}</Button>
         </div>
       </form>

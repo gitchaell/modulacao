@@ -10,21 +10,21 @@ interface Props {
 const { pageDict, lang } = Astro.props;
 const t = usePageTranslations(pageDict, lang);
 ---
-<section class="relative pt-24 pb-16 overflow-hidden min-h-[400px] flex flex-col justify-end">
+<section class="flex flex-col justify-end min-h-[400px] overflow-hidden pb-16 pt-24 relative">
   <div class="absolute inset-0 z-[-2]">
-    <img src="https://images.unsplash.com/photo-1518605368461-1ee7e55dbdb6?auto=format&fit=crop&q=80&w=2000" alt="Futebol Background" class="object-cover w-full h-full opacity-40 mix-blend-overlay" />
+    <img src="https://images.unsplash.com/photo-1518605368461-1ee7e55dbdb6?auto=format&fit=crop&q=80&w=2000" alt="Futebol Background" class="h-full mix-blend-overlay object-cover opacity-40 w-full" />
   </div>
   <!-- Gradient overlay to match the dark bottom fading into the image -->
-  <div class="absolute inset-0 bg-gradient-to-t from-brand-white dark:from-brand-dark-bg via-brand-white/80 dark:via-brand-dark-bg/80 to-transparent z-[-1]"></div>
+  <div class="absolute bg-gradient-to-t dark:from-brand-dark-bg dark:via-brand-dark-bg/80 from-brand-white inset-0 to-transparent via-brand-white/80 z-[-1]"></div>
 
-  <div class="max-w-7xl mx-auto px-4 w-full relative z-10 mb-8">
-    <div class="flex items-center gap-2 text-sm text-brand-black dark:text-brand-white/60 dark:text-brand-gray-light mb-6">
+  <div class="max-w-7xl mb-8 mx-auto px-4 relative w-full z-10">
+    <div class="dark:text-brand-gray-light dark:text-brand-white/60 flex gap-2 items-center mb-6 text-brand-black text-sm">
       <a href="/" class="hover:text-brand-gold transition-colors">{t('futebol.hero.home')}</a>
-      <ChevronRight class="w-4 h-4" />
-      <span class="text-brand-black dark:text-brand-white">{t('futebol.hero.breadcrumb')}</span>
+      <ChevronRight class="h-4 w-4" />
+      <span class="dark:text-brand-white text-brand-black">{t('futebol.hero.breadcrumb')}</span>
     </div>
 
-    <h1 class="text-5xl md:text-7xl font-bold mb-4 text-brand-black dark:text-brand-white tracking-tight uppercase">{t('futebol.hero.title')}</h1>
-    <p class="text-brand-black dark:text-brand-white/70 dark:text-brand-gray-light max-w-xl text-lg leading-relaxed" set:html={t('futebol.hero.desc')}></p>
+    <h1 class="dark:text-brand-white font-bold mb-4 md:text-7xl text-5xl text-brand-black tracking-tight uppercase">{t('futebol.hero.title')}</h1>
+    <p class="dark:text-brand-gray-light dark:text-brand-white/70 leading-relaxed max-w-xl text-brand-black text-lg" set:html={t('futebol.hero.desc')}></p>
   </div>
 </section>

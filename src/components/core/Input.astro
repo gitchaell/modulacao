@@ -12,7 +12,7 @@ const inputId = id || Math.random().toString(36).substring(7);
 ---
 <div class="flex flex-col gap-2 w-full">
   {label && (
-    <label for={inputId} class="text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite">
+    <label for={inputId} class="dark:text-brand-offwhite font-semibold text-brand-black text-sm tracking-wide uppercase">
       {label}
     </label>
   )}
@@ -26,12 +26,12 @@ const inputId = id || Math.random().toString(36).substring(7);
     {...rest}
   />
   {error && (
-    <span id={`${inputId}-error`} class="text-xs text-red-500 font-semibold" role="alert">
+    <span id={`${inputId}-error`} class="font-semibold text-red-500 text-xs" role="alert">
       {error}
     </span>
   )}
   {helperText && !error && (
-    <span id={`${inputId}-helper`} class="text-xs text-gray-500 dark:text-gray-400">
+    <span id={`${inputId}-helper`} class="dark:text-gray-400 text-gray-500 text-xs">
       {helperText}
     </span>
   )}

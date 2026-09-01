@@ -14,50 +14,50 @@ const lang = getLangFromUrl(Astro.cookies);
 const t = await useTranslations(lang);
 ---
 <BaseLayout title={`${title} | ${tenantConfig.name}`}>
-  <div class="flex h-screen overflow-hidden bg-brand-offwhite dark:bg-brand-black relative">
+  <div class="bg-brand-offwhite dark:bg-brand-black flex h-screen overflow-hidden relative">
     <!-- Sidebar / Off-canvas for mobile -->
-    <div id="mobile-sidebar-overlay" class="fixed inset-0 bg-gray-100 dark:bg-brand-black/50 backdrop-blur-sm z-20 hidden opacity-0 md:hidden transition-opacity duration-300"></div>
-    <aside id="app-sidebar" class="fixed md:relative inset-y-0 left-0 w-80 bg-brand-white dark:bg-brand-dark border-r border-gray-200 dark:border-white/5 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-out z-30 premium-shadow">
-      <div class="h-16 px-6 border-b border-gray-200 dark:border-white/5 flex justify-between items-center bg-brand-white/80 dark:bg-brand-dark/80 backdrop-blur-md">
-        <a href="/" class="flex items-center gap-3 group focus-visible">
-          <svg class="w-7 h-7 text-brand-gold group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          <div class="font-bold text-lg text-brand-black dark:text-brand-white tracking-widest uppercase">{tenantConfig.name}</div>
+    <div id="mobile-sidebar-overlay" class="backdrop-blur-sm bg-gray-100 dark:bg-brand-black/50 duration-300 fixed hidden inset-0 md:hidden opacity-0 transition-opacity z-20"></div>
+    <aside id="app-sidebar" class="-translate-x-full bg-brand-white border-gray-200 border-r dark:bg-brand-dark dark:border-white/5 duration-300 ease-out fixed flex flex-col inset-y-0 left-0 md:relative md:translate-x-0 premium-shadow transform transition-transform w-80 z-30">
+      <div class="backdrop-blur-md bg-brand-white/80 border-b border-gray-200 dark:bg-brand-dark/80 dark:border-white/5 flex h-16 items-center justify-between px-6">
+        <a href="/" class="flex focus-visible gap-3 group items-center">
+          <svg class="duration-300 group-hover:scale-110 h-7 text-brand-gold transition-transform w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <div class="dark:text-brand-white font-bold text-brand-black text-lg tracking-widest uppercase">{tenantConfig.name}</div>
         </a>
-        <button id="close-sidebar-btn" class="md:hidden text-gray-500 hover:text-brand-black dark:text-gray-400 dark:hover:text-brand-white transition-colors focus-visible" aria-label="Close sidebar">
+        <button id="close-sidebar-btn" class="dark:hover:text-brand-white dark:text-gray-400 focus-visible hover:text-brand-black md:hidden text-gray-500 transition-colors" aria-label="Close sidebar">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
       </div>
-      <nav class="flex-1 px-4 py-6 flex flex-col gap-2 overflow-y-auto">
-        <a href="/app/comunidade" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-all hover:scale-[1.02] focus-visible">{t('app.community')}</a>
-        <a href="/app/grupos" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-all hover:scale-[1.02] focus-visible">{t('app.groups')}</a>
-        <a href="/app/eventos" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-all hover:scale-[1.02] focus-visible">{t('app.events')}</a>
-        <a href="/app/diretorio" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-all hover:scale-[1.02] focus-visible">{t('app.directory')}</a>
-        <a href="/campeonatos" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-all hover:scale-[1.02] focus-visible">{t('app.championships')}</a>
-        <a href="/biblioteca" class="px-4 py-3 rounded-sm text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-gray-300 hover:bg-brand-gold/10 hover:text-brand-gold dark:hover:text-brand-gold transition-all hover:scale-[1.02] focus-visible">{t('nav.library')}</a>
+      <nav class="flex flex-1 flex-col gap-2 overflow-y-auto px-4 py-6">
+        <a href="/app/comunidade" class="dark:hover:text-brand-gold dark:text-gray-300 focus-visible font-semibold hover:bg-brand-gold/10 hover:scale-[1.02] hover:text-brand-gold px-4 py-3 rounded-sm text-brand-black text-sm tracking-wide transition-all uppercase">{t('app.community')}</a>
+        <a href="/app/grupos" class="dark:hover:text-brand-gold dark:text-gray-300 focus-visible font-semibold hover:bg-brand-gold/10 hover:scale-[1.02] hover:text-brand-gold px-4 py-3 rounded-sm text-brand-black text-sm tracking-wide transition-all uppercase">{t('app.groups')}</a>
+        <a href="/app/eventos" class="dark:hover:text-brand-gold dark:text-gray-300 focus-visible font-semibold hover:bg-brand-gold/10 hover:scale-[1.02] hover:text-brand-gold px-4 py-3 rounded-sm text-brand-black text-sm tracking-wide transition-all uppercase">{t('app.events')}</a>
+        <a href="/app/diretorio" class="dark:hover:text-brand-gold dark:text-gray-300 focus-visible font-semibold hover:bg-brand-gold/10 hover:scale-[1.02] hover:text-brand-gold px-4 py-3 rounded-sm text-brand-black text-sm tracking-wide transition-all uppercase">{t('app.directory')}</a>
+        <a href="/campeonatos" class="dark:hover:text-brand-gold dark:text-gray-300 focus-visible font-semibold hover:bg-brand-gold/10 hover:scale-[1.02] hover:text-brand-gold px-4 py-3 rounded-sm text-brand-black text-sm tracking-wide transition-all uppercase">{t('app.championships')}</a>
+        <a href="/biblioteca" class="dark:hover:text-brand-gold dark:text-gray-300 focus-visible font-semibold hover:bg-brand-gold/10 hover:scale-[1.02] hover:text-brand-gold px-4 py-3 rounded-sm text-brand-black text-sm tracking-wide transition-all uppercase">{t('nav.library')}</a>
       </nav>
-      <div class="p-6 border-t border-gray-200 dark:border-white/5">
-        <a href="/app/configuracoes" class="flex items-center gap-4 group focus-visible p-2 -mx-2 rounded-sm hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+      <div class="border-gray-200 border-t dark:border-white/5 p-6">
+        <a href="/app/configuracoes" class="-mx-2 dark:hover:bg-white/5 flex focus-visible gap-4 group hover:bg-gray-50 items-center p-2 rounded-sm transition-colors">
           <Avatar alt="User Avatar" size="sm" fallback="U" />
           <div class="flex-1 min-w-0">
-            <div class="text-sm font-semibold text-brand-black dark:text-brand-white truncate group-hover:text-brand-gold transition-colors">{t('app.settings')}</div>
+            <div class="dark:text-brand-white font-semibold group-hover:text-brand-gold text-brand-black text-sm transition-colors truncate">{t('app.settings')}</div>
           </div>
         </a>
       </div>
     </aside>
     <!-- Main Content -->
-    <main class="flex-1 overflow-y-auto bg-brand-offwhite dark:bg-brand-black flex flex-col min-w-0 w-full relative">
-      <header class="h-16 px-4 md:px-8 border-b border-gray-200 dark:border-white/5 flex items-center justify-between md:justify-end bg-brand-white/80 dark:bg-brand-dark/80 backdrop-blur-md sticky top-0 z-10">
-        <button id="open-sidebar-btn" class="md:hidden text-brand-black dark:text-brand-white p-2 focus-visible hover:text-brand-gold transition-colors" aria-label="Open sidebar">
+    <main class="bg-brand-offwhite dark:bg-brand-black flex flex-1 flex-col min-w-0 overflow-y-auto relative w-full">
+      <header class="backdrop-blur-md bg-brand-white/80 border-b border-gray-200 dark:bg-brand-dark/80 dark:border-white/5 flex h-16 items-center justify-between md:justify-end md:px-8 px-4 sticky top-0 z-10">
+        <button id="open-sidebar-btn" class="dark:text-brand-white focus-visible hover:text-brand-gold md:hidden p-2 text-brand-black transition-colors" aria-label="Open sidebar">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
         </button>
-        <div class="flex items-center gap-6">
-          <a href="/buscar" class="text-brand-black dark:text-gray-400 hover:text-brand-gold dark:hover:text-brand-gold transition-colors focus-visible" aria-label="Search">
+        <div class="flex gap-6 items-center">
+          <a href="/buscar" class="dark:hover:text-brand-gold dark:text-gray-400 focus-visible hover:text-brand-gold text-brand-black transition-colors" aria-label="Search">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </a>
           <NotificationBell />
         </div>
       </header>
-      <div class="flex-1 p-6 md:p-8 lg:p-12 max-w-6xl mx-auto w-full">
+      <div class="flex-1 lg:p-12 max-w-6xl md:p-8 mx-auto p-6 w-full">
         <slot />
       </div>
     </main>

@@ -7,17 +7,17 @@ interface Props {
 const { headers, class: className = '' } = Astro.props;
 ---
 <div class={`w-full overflow-x-auto rounded-sm border border-gray-200 dark:border-gray-800 ${className}`}>
-  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-900/50 dark:text-gray-400 border-b border-gray-200 dark:border-gray-800">
+  <table class="dark:text-gray-400 text-gray-500 text-left text-sm w-full">
+    <thead class="bg-gray-50 border-b border-gray-200 dark:bg-gray-900/50 dark:border-gray-800 dark:text-gray-400 text-gray-700 text-xs uppercase">
       <tr>
         {headers.map((header) => (
-          <th scope="col" class="px-6 py-4 font-semibold tracking-wider">
+          <th scope="col" class="font-semibold px-6 py-4 tracking-wider">
             {header}
           </th>
         ))}
       </tr>
     </thead>
-    <tbody class="divide-y divide-gray-200 dark:divide-gray-800 bg-white dark:bg-transparent">
+    <tbody class="bg-white dark:bg-brand-dark-card dark:bg-transparent dark:divide-gray-800 divide-gray-200 divide-y">
       <slot />
     </tbody>
   </table>

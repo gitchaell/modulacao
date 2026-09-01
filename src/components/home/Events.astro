@@ -54,17 +54,17 @@ const events = [
   }
 ];
 ---
-<section class="py-24 bg-brand-white dark:bg-[#0a0a0a] border-y border-black/5 dark:border-white/5 relative overflow-hidden">
-  <div class="absolute -left-40 top-40 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl"></div>
+<section class="bg-brand-white border-black/5 border-y dark:bg-[#0a0a0a] dark:bg-brand-dark-card dark:border-white/5 overflow-hidden py-24 relative">
+  <div class="-left-40 absolute bg-brand-gold/5 blur-3xl h-96 rounded-full top-40 w-96"></div>
 
-  <div class="container mx-auto px-6 relative z-10 max-w-[1400px]">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+  <div class="container max-w-[1400px] mx-auto px-6 relative z-10">
+    <div class="flex flex-col gap-6 justify-between mb-16 md:flex-row md:items-end">
       <div class="max-w-2xl">
-        <Typography variant="h6" class="text-brand-gold font-bold text-sm tracking-[0.2em] uppercase mb-3 flex items-center gap-3">
-          <span class="h-[2px] w-12 bg-brand-gold"></span>
+        <Typography variant="h6" class="flex font-bold gap-3 items-center mb-3 text-brand-gold text-sm tracking-[0.2em] uppercase">
+          <span class="bg-brand-gold h-[2px] w-12"></span>
           {t('home.events.subtitle')}
         </Typography>
-        <Typography variant="h2" class="font-display font-bold text-4xl md:text-5xl uppercase tracking-tight text-brand-black dark:text-brand-white">
+        <Typography variant="h2" class="dark:text-brand-white font-bold font-display md:text-5xl text-4xl text-brand-black tracking-tight uppercase">
           {t('home.events.title')}
         </Typography>
       </div>
@@ -73,56 +73,56 @@ const events = [
       </Button>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="gap-6 grid grid-cols-1 md:grid-cols-2">
       {events.map(event => (
-        <a href={`/eventos/${event.id}`} class="group flex flex-col sm:flex-row bg-[#FAFAFA] dark:bg-[#111] border border-black/5 dark:border-white/5 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md">
+        <a href={`/eventos/${event.id}`} class="bg-[#FAFAFA] border border-black/5 dark:bg-[#111] dark:border-white/5 duration-300 flex flex-col group hover:border-brand-gold/50 hover:shadow-md overflow-hidden shadow-sm sm:flex-row transition-all">
           {/* Date Block */}
-          <div class="bg-brand-black dark:bg-[#151515] text-brand-black dark:text-brand-white p-6 sm:w-32 flex flex-row sm:flex-col items-center justify-between sm:justify-center border-b sm:border-b-0 sm:border-r border-gray-200 dark:border-white/10 group-hover:bg-brand-gold group-text-gray-400 dark:text-gray-500 hover:text-brand-black dark:hover:text-brand-white transition-colors duration-300">
-            <span class="text-sm font-bold tracking-widest uppercase">{event.date.month}</span>
-            <span class="text-4xl sm:text-5xl font-display font-bold">{event.date.day}</span>
+          <div class="bg-brand-black border-b border-gray-200 dark:bg-[#151515] dark:bg-brand-dark dark:border-white/10 dark:hover:text-brand-white dark:text-brand-white dark:text-gray-500 duration-300 flex flex-row group-hover:bg-brand-gold group-text-gray-400 hover:text-brand-black items-center justify-between p-6 sm:border-b-0 sm:border-r sm:flex-col sm:justify-center sm:w-32 text-brand-black transition-colors">
+            <span class="font-bold text-sm tracking-widest uppercase">{event.date.month}</span>
+            <span class="font-bold font-display sm:text-5xl text-4xl">{event.date.day}</span>
           </div>
 
           {/* Content Block */}
-          <div class="p-6 sm:p-8 flex-1 flex flex-col justify-center">
+          <div class="flex flex-1 flex-col justify-center p-6 sm:p-8">
             <div class="mb-4">
-              <span class="text-xs font-extrabold text-brand-black dark:text-brand-white bg-white/10 px-3 py-1.5 uppercase tracking-[0.2em] rounded-sm border border-black/5 dark:border-white/10 inline-block">
+              <span class="bg-white/10 border border-black/5 dark:border-white/10 dark:text-brand-white font-extrabold inline-block px-3 py-1.5 rounded-sm text-brand-black text-xs tracking-[0.2em] uppercase">
                 {event.category}
               </span>
             </div>
 
             {event.type === 'match' ? (
-              <div class="flex items-center gap-4 mb-4">
-                <span class="font-display font-bold text-xl text-brand-black dark:text-brand-white">{event.teams?.home}</span>
-                <span class="text-brand-gold font-bold text-sm">X</span>
-                <span class="font-display font-bold text-xl text-brand-black dark:text-brand-white/60 dark:text-brand-white/60">{event.teams?.away}</span>
+              <div class="flex gap-4 items-center mb-4">
+                <span class="dark:text-brand-white font-bold font-display text-brand-black text-xl">{event.teams?.home}</span>
+                <span class="font-bold text-brand-gold text-sm">X</span>
+                <span class="dark:text-brand-white/60 font-bold font-display text-brand-black text-xl">{event.teams?.away}</span>
               </div>
             ) : (
-              <h3 class="font-display font-bold text-2xl text-brand-black dark:text-brand-white mb-4 group-hover:text-brand-gold transition-colors line-clamp-2">
+              <h3 class="dark:text-brand-white font-bold font-display group-hover:text-brand-gold line-clamp-2 mb-4 text-2xl text-brand-black transition-colors">
                 {event.title}
               </h3>
             )}
 
-            <div class="flex flex-col sm:flex-row gap-4 mt-auto">
-              <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                <MapPin class="w-4 h-4 text-brand-gold" />
+            <div class="flex flex-col gap-4 mt-auto sm:flex-row">
+              <div class="dark:text-gray-400 flex gap-2 items-center text-gray-600 text-sm">
+                <MapPin class="h-4 text-brand-gold w-4" />
                 <span class="truncate">{event.location}</span>
               </div>
-              <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                <Clock class="w-4 h-4 text-brand-gold" />
+              <div class="dark:text-gray-400 flex gap-2 items-center text-gray-600 text-sm">
+                <Clock class="h-4 text-brand-gold w-4" />
                 <span>{event.time}</span>
               </div>
             </div>
           </div>
 
           {/* Arrow */}
-          <div class="hidden sm:flex items-center justify-center px-6 border-l border-black/5 dark:border-white/5 group-hover:border-brand-gold/20 transition-colors">
-            <ArrowRight class="w-6 h-6 text-gray-300 dark:text-white/20 group-hover:text-brand-gold group-hover:translate-x-2 transition-all duration-300" />
+          <div class="border-black/5 border-l dark:border-white/5 group-hover:border-brand-gold/20 hidden items-center justify-center px-6 sm:flex transition-colors">
+            <ArrowRight class="dark:text-white/20 duration-300 group-hover:text-brand-gold group-hover:translate-x-2 h-6 text-gray-300 transition-all w-6" />
           </div>
         </a>
       ))}
     </div>
 
-    <Button as="a" href="/eventos" variant="outline" class="w-full mt-8 md:hidden flex justify-center">
+    <Button as="a" href="/eventos" variant="outline" class="flex justify-center md:hidden mt-8 w-full">
       {t('home.events.btn')}
     </Button>
   </div>

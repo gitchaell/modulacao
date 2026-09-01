@@ -21,15 +21,15 @@ const inputId = id || Math.random().toString(36).substring(7);
       {...rest}
     />
   </div>
-  <div class="ml-3 text-sm leading-6">
-    <label for={inputId} class="font-medium text-brand-black dark:text-brand-offwhite">
+  <div class="leading-6 ml-3 text-sm">
+    <label for={inputId} class="dark:text-brand-offwhite font-medium text-brand-black">
       {label}
     </label>
     {helperText && !error && (
-      <p id={`${inputId}-helper`} class="text-gray-500 dark:text-gray-400">{helperText}</p>
+      <p id={`${inputId}-helper`} class="dark:text-gray-400 text-gray-500">{helperText}</p>
     )}
     {error && (
-      <p id={`${inputId}-error`} class="text-red-500 font-semibold" role="alert">{error}</p>
+      <p id={`${inputId}-error`} class="font-semibold text-red-500" role="alert">{error}</p>
     )}
   </div>
 </div>

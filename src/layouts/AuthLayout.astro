@@ -9,29 +9,29 @@ interface Props {
 const { title } = Astro.props;
 ---
 <BaseLayout title={`${title} | ${tenantConfig.name}`}>
-  <div class="min-h-screen flex bg-brand-offwhite dark:bg-brand-black">
+  <div class="bg-brand-offwhite dark:bg-brand-black flex min-h-screen">
     <!-- Image/Brand Section -->
-    <div class="hidden lg:flex flex-1 relative bg-gray-100 dark:bg-brand-black items-center justify-center border-r border-gray-200 dark:border-white/5 overflow-hidden premium-shadow">
+    <div class="bg-gray-100 border-gray-200 border-r dark:bg-brand-black dark:border-white/5 flex-1 hidden items-center justify-center lg:flex overflow-hidden premium-shadow relative">
       <!-- Decoración de ondas moduladoras abstracta -->
-      <div class="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black to-[#0a0a0a] z-0"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-gold/10 via-transparent to-transparent opacity-80 z-0"></div>
+      <div class="absolute bg-gradient-to-b from-brand-black inset-0 to-[#0a0a0a] via-brand-black z-0"></div>
+      <div class="absolute bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-gold/10 inset-0 opacity-80 to-transparent via-transparent z-0"></div>
 
-      <div class="absolute inset-0 z-0 opacity-40 mix-blend-screen">
+      <div class="absolute inset-0 mix-blend-screen opacity-40 z-0">
         <WaveBackground />
       </div>
 
-      <div class="relative z-10 text-center px-12 animate-smooth-fade">
-        <h1 class="text-5xl font-display font-bold text-brand-black dark:text-brand-white uppercase tracking-tighter mb-6 drop-shadow-lg">
-          {tenantConfig.name} <span class="text-brand-gold block mt-2 text-2xl tracking-widest">Workspace</span>
+      <div class="animate-smooth-fade px-12 relative text-center z-10">
+        <h1 class="dark:text-brand-white drop-shadow-lg font-bold font-display mb-6 text-5xl text-brand-black tracking-tighter uppercase">
+          {tenantConfig.name} <span class="block mt-2 text-2xl text-brand-gold tracking-widest">Workspace</span>
         </h1>
-        <p class="text-gray-500 dark:text-gray-400 max-w-md mx-auto text-lg leading-relaxed text-balance">
+        <p class="dark:text-gray-400 leading-relaxed max-w-md mx-auto text-balance text-gray-500 text-lg">
           Accede a tu cuenta para gestionar tu actividad, participar en la comunidad y descubrir todo lo que tenemos para ofrecerte.
         </p>
       </div>
     </div>
     <!-- Form Section -->
-    <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-20 xl:px-24 bg-brand-white dark:bg-brand-dark">
-      <div class="mx-auto w-full max-w-sm animate-smooth-fade" style="animation-delay: 0.1s;">
+    <div class="bg-brand-white dark:bg-brand-dark flex flex-1 flex-col justify-center lg:px-20 px-4 py-12 sm:px-6 xl:px-24">
+      <div class="animate-smooth-fade max-w-sm mx-auto w-full" style="animation-delay: 0.1s;">
         <slot />
       </div>
     </div>

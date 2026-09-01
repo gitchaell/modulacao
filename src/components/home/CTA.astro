@@ -12,22 +12,22 @@ const { pageDict } = Astro.props;
 const lang = getLangFromUrl(Astro.cookies);
 const t = usePageTranslations(pageDict, lang);
 ---
-<section class="py-24 bg-brand-gold relative overflow-hidden">
+<section class="bg-brand-gold overflow-hidden py-24 relative">
   <div class="absolute inset-0 z-0">
-    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 mix-blend-overlay"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-brand-black/20 to-transparent"></div>
+    <div class="absolute bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] inset-0 mix-blend-overlay opacity-10"></div>
+    <div class="absolute bg-gradient-to-t from-brand-black/20 inset-0 to-transparent"></div>
   </div>
 
-  <div class="relative z-10 container mx-auto px-6 text-center">
-    <Typography variant="h2" class="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-brand-black dark:text-brand-white mb-6 uppercase tracking-tight max-w-3xl mx-auto">
+  <div class="container mx-auto px-6 relative text-center z-10">
+    <Typography variant="h2" class="dark:text-brand-white font-bold font-display lg:text-6xl max-w-3xl mb-6 md:text-5xl mx-auto text-4xl text-brand-black tracking-tight uppercase">
       {t('home.cta.title1')} <br />
-      <span class="text-brand-black dark:text-brand-white">{t('home.cta.title2')}</span>
+      <span class="dark:text-brand-white text-brand-black">{t('home.cta.title2')}</span>
     </Typography>
-    <Typography variant="lead" class="text-brand-black dark:text-brand-white/80 font-medium mb-10 max-w-2xl mx-auto">
+    <Typography variant="lead" class="dark:text-brand-white/80 font-medium max-w-2xl mb-10 mx-auto text-brand-black">
       {t('home.cta.desc')}
     </Typography>
 
-    <Button as="a" href="/login" variant="primary" size="lg" class="px-12 py-5 bg-gray-100 dark:bg-brand-black text-brand-black dark:text-brand-white hover:bg-brand-white dark:bg-brand-dark-card hover:text-brand-black dark:text-brand-white">
+    <Button as="a" href="/login" variant="primary" size="lg" class="bg-gray-100 dark:bg-brand-black dark:bg-brand-dark-card dark:text-brand-white hover:bg-brand-white hover:text-brand-black px-12 py-5 text-brand-black">
       {t('home.cta.btn')}
     </Button>
   </div>

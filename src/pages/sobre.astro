@@ -48,57 +48,57 @@ const topics = [
 
 <PublicLayout title={t('nav.about')}>
   <!-- Layout Wrapper for sidebar + content -->
-  <div class="bg-brand-offwhite dark:bg-brand-black min-h-screen text-brand-black dark:text-brand-white relative">
+  <div class="bg-brand-offwhite dark:bg-brand-black dark:text-brand-white min-h-screen relative text-brand-black">
 
     <!-- Background Texture -->
-    <div class="fixed inset-0 pointer-events-none z-0 opacity-20" style="background-image: radial-gradient(circle at center, #D4AF37 0%, transparent 40%); mix-blend-mode: screen;"></div>
+    <div class="fixed inset-0 opacity-20 pointer-events-none z-0" style="background-image: radial-gradient(circle at center, #D4AF37 0%, transparent 40%); mix-blend-mode: screen;"></div>
 
-    <div class="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row relative z-10 pt-24 pb-24 gap-8">
+    <div class="container flex flex-col gap-8 lg:flex-row md:px-6 mx-auto pb-24 pt-24 px-4 relative z-10">
 
       <!-- Left Sidebar (Sticky) -->
-      <aside class="hidden lg:block w-64 shrink-0">
-        <div class="sticky top-32 bg-white dark:bg-brand-dark-card border border-black/5 dark:border-white/5 rounded-2xl p-6 overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+      <aside class="hidden lg:block shrink-0 w-64">
+        <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 overflow-hidden p-6 rounded-2xl sticky top-32">
+          <div class="-right-10 -top-10 absolute bg-brand-gold/10 blur-3xl h-32 pointer-events-none rounded-full w-32"></div>
 
           <nav class="flex flex-col space-y-4">
-            <a href="#grupo" class="flex items-center gap-3 text-brand-gold font-semibold group transition-colors">
-              <Users class="w-4 h-4" />
+            <a href="#grupo" class="flex font-semibold gap-3 group items-center text-brand-gold transition-colors">
+              <Users class="h-4 w-4" />
               <span>{t('about.nav.group')}</span>
             </a>
-            <a href="#historia" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white transition-colors">
-              <span class="w-4 h-4 flex items-center justify-center border border-gray-600 rounded-sm text-xs">&nbsp;</span>
+            <a href="#historia" class="dark:text-brand-white dark:text-gray-400 flex gap-3 hover:text-brand-black items-center text-gray-600 transition-colors">
+              <span class="border border-gray-600 flex h-4 items-center justify-center rounded-sm text-xs w-4">&nbsp;</span>
               <span>{t('about.nav.history')}</span>
             </a>
-            <a href="#missao" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white transition-colors">
-              <span class="w-4 h-4 flex items-center justify-center border border-gray-600 rounded-sm text-xs">&nbsp;</span>
+            <a href="#missao" class="dark:text-brand-white dark:text-gray-400 flex gap-3 hover:text-brand-black items-center text-gray-600 transition-colors">
+              <span class="border border-gray-600 flex h-4 items-center justify-center rounded-sm text-xs w-4">&nbsp;</span>
               <span>{t('about.nav.mission')}</span>
             </a>
-            <a href="#visao" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white transition-colors">
-              <span class="w-4 h-4 flex items-center justify-center border border-gray-600 rounded-sm text-xs">&nbsp;</span>
+            <a href="#visao" class="dark:text-brand-white dark:text-gray-400 flex gap-3 hover:text-brand-black items-center text-gray-600 transition-colors">
+              <span class="border border-gray-600 flex h-4 items-center justify-center rounded-sm text-xs w-4">&nbsp;</span>
               <span>{t('about.nav.vision')}</span>
             </a>
-            <a href="#valores" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white transition-colors">
-              <span class="w-4 h-4 flex items-center justify-center border border-gray-600 rounded-sm text-xs">&nbsp;</span>
+            <a href="#valores" class="dark:text-brand-white dark:text-gray-400 flex gap-3 hover:text-brand-black items-center text-gray-600 transition-colors">
+              <span class="border border-gray-600 flex h-4 items-center justify-center rounded-sm text-xs w-4">&nbsp;</span>
               <span>{t('about.nav.values')}</span>
             </a>
-            <a href="#filosofia" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white transition-colors">
-              <span class="w-4 h-4 flex items-center justify-center border border-gray-600 rounded-sm text-xs">&nbsp;</span>
+            <a href="#filosofia" class="dark:text-brand-white dark:text-gray-400 flex gap-3 hover:text-brand-black items-center text-gray-600 transition-colors">
+              <span class="border border-gray-600 flex h-4 items-center justify-center rounded-sm text-xs w-4">&nbsp;</span>
               <span>{t('about.topics.philosophy')}</span>
             </a>
-            <a href="#ciencia" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white transition-colors">
-              <span class="w-4 h-4 flex items-center justify-center border border-gray-600 rounded-sm text-xs">&nbsp;</span>
+            <a href="#ciencia" class="dark:text-brand-white dark:text-gray-400 flex gap-3 hover:text-brand-black items-center text-gray-600 transition-colors">
+              <span class="border border-gray-600 flex h-4 items-center justify-center rounded-sm text-xs w-4">&nbsp;</span>
               <span>{t('about.topics.science')}</span>
             </a>
-            <a href="#arte" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white transition-colors">
-              <span class="w-4 h-4 flex items-center justify-center border border-gray-600 rounded-sm text-xs">&nbsp;</span>
+            <a href="#arte" class="dark:text-brand-white dark:text-gray-400 flex gap-3 hover:text-brand-black items-center text-gray-600 transition-colors">
+              <span class="border border-gray-600 flex h-4 items-center justify-center rounded-sm text-xs w-4">&nbsp;</span>
               <span>{t('about.topics.art')}</span>
             </a>
-            <a href="#projetos" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white transition-colors">
-              <span class="w-4 h-4 flex items-center justify-center border border-gray-600 rounded-sm text-xs">&nbsp;</span>
+            <a href="#projetos" class="dark:text-brand-white dark:text-gray-400 flex gap-3 hover:text-brand-black items-center text-gray-600 transition-colors">
+              <span class="border border-gray-600 flex h-4 items-center justify-center rounded-sm text-xs w-4">&nbsp;</span>
               <span>{t('about.topics.projects')}</span>
             </a>
-            <a href="#ecossistema" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white transition-colors">
-              <span class="w-4 h-4 flex items-center justify-center border border-gray-600 rounded-sm text-xs">&nbsp;</span>
+            <a href="#ecossistema" class="dark:text-brand-white dark:text-gray-400 flex gap-3 hover:text-brand-black items-center text-gray-600 transition-colors">
+              <span class="border border-gray-600 flex h-4 items-center justify-center rounded-sm text-xs w-4">&nbsp;</span>
               <span>{t('about.topics.ecosystem')}</span>
             </a>
           </nav>
@@ -106,130 +106,130 @@ const topics = [
       </aside>
 
       <!-- Right Main Content -->
-      <main class="flex-1 w-full space-y-12">
+      <main class="flex-1 space-y-12 w-full">
 
         <!-- Hero: O Grupo -->
-        <section id="grupo" class="relative rounded-3xl overflow-hidden border border-black/10 dark:border-white/10 group min-h-[400px] flex items-end p-8 md:p-12">
+        <section id="grupo" class="border border-black/10 dark:border-white/10 flex group items-end md:p-12 min-h-[400px] overflow-hidden p-8 relative rounded-3xl">
           <img
             src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070&auto=format&fit=crop"
             alt="Grupo ao por do sol"
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            class="absolute duration-1000 group-hover:scale-105 h-full inset-0 object-cover transition-transform w-full"
           />
-          <div class="absolute inset-0 bg-gradient-to-r from-gray-200 dark:from-[#050505]/95 via-[#050505]/70 to-transparent"></div>
+          <div class="absolute bg-gradient-to-r dark:from-[#050505]/95 from-gray-200 inset-0 to-transparent via-[#050505]/70"></div>
 
-          <div class="relative z-10 max-w-2xl">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="text-brand-gold text-sm font-bold uppercase tracking-widest">{t('about.group.label')}</span>
-              <div class="h-px w-12 bg-brand-gold/30"></div>
+          <div class="max-w-2xl relative z-10">
+            <div class="flex gap-4 items-center mb-4">
+              <span class="font-bold text-brand-gold text-sm tracking-widest uppercase">{t('about.group.label')}</span>
+              <div class="bg-brand-gold/30 h-px w-12"></div>
             </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-brand-black dark:text-brand-white mb-6 uppercase tracking-wider">{t('about.hero.title')}</h1>
-            <p class="text-gray-700 dark:text-gray-300 text-lg md:text-xl font-semibold leading-relaxed mb-8">
+            <h1 class="dark:text-brand-white font-bold font-display lg:text-6xl mb-6 md:text-5xl text-4xl text-brand-black tracking-wider uppercase">{t('about.hero.title')}</h1>
+            <p class="dark:text-gray-300 font-semibold leading-relaxed mb-8 md:text-xl text-gray-700 text-lg">
               {t('about.group.title')}
             </p>
-            <a href="#historia" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-gold/50 text-brand-gold hover:bg-brand-gold text-gray-500 hover:text-brand-black dark:text-gray-400 dark:hover:text-brand-white transition-colors duration-300 font-bold text-sm tracking-widest uppercase">
+            <a href="#historia" class="border border-brand-gold/50 dark:hover:text-brand-white dark:text-gray-400 duration-300 font-bold hover:bg-brand-gold hover:text-brand-black inline-flex items-center justify-center px-6 py-3 rounded-full text-brand-gold text-gray-500 text-sm tracking-widest transition-colors uppercase">
               {t('about.group.btn')}
-              <ChevronRight class="w-4 h-4 ml-2" />
+              <ChevronRight class="h-4 ml-2 w-4" />
             </a>
           </div>
         </section>
 
         <!-- Stats -->
-        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 pb-8 border-b border-black/5 dark:border-white/5">
-          <div class="flex flex-col items-center justify-center text-center p-6 bg-white dark:bg-brand-dark-card border border-black/5 dark:border-white/5 rounded-2xl">
-            <Users class="w-8 h-8 text-brand-gold mb-4" />
-            <span class="text-2xl font-bold text-brand-black dark:text-brand-white mb-1">{t('about.stats.members')}</span>
-            <span class="text-gray-500 dark:text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider">{t('about.stats.members_label')}</span>
+        <section class="border-b border-black/5 dark:border-white/5 gap-4 grid grid-cols-2 md:grid-cols-4 pb-8">
+          <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col items-center justify-center p-6 rounded-2xl text-center">
+            <Users class="h-8 mb-4 text-brand-gold w-8" />
+            <span class="dark:text-brand-white font-bold mb-1 text-2xl text-brand-black">{t('about.stats.members')}</span>
+            <span class="dark:text-gray-400 dark:text-gray-500 text-gray-500 text-xs tracking-wider uppercase">{t('about.stats.members_label')}</span>
           </div>
-          <div class="flex flex-col items-center justify-center text-center p-6 bg-white dark:bg-brand-dark-card border border-black/5 dark:border-white/5 rounded-2xl">
-            <Globe class="w-8 h-8 text-brand-gold mb-4" />
-            <span class="text-2xl font-bold text-brand-black dark:text-brand-white mb-1">{t('about.stats.countries')}</span>
-            <span class="text-gray-500 dark:text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider">{t('about.stats.countries_label')}</span>
+          <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col items-center justify-center p-6 rounded-2xl text-center">
+            <Globe class="h-8 mb-4 text-brand-gold w-8" />
+            <span class="dark:text-brand-white font-bold mb-1 text-2xl text-brand-black">{t('about.stats.countries')}</span>
+            <span class="dark:text-gray-400 dark:text-gray-500 text-gray-500 text-xs tracking-wider uppercase">{t('about.stats.countries_label')}</span>
           </div>
-          <div class="flex flex-col items-center justify-center text-center p-6 bg-white dark:bg-brand-dark-card border border-black/5 dark:border-white/5 rounded-2xl">
-            <LayoutGrid class="w-8 h-8 text-brand-gold mb-4" />
-            <span class="text-2xl font-bold text-brand-black dark:text-brand-white mb-1">{t('about.stats.projects')}</span>
-            <span class="text-gray-500 dark:text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider">{t('about.stats.projects_label')}</span>
+          <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col items-center justify-center p-6 rounded-2xl text-center">
+            <LayoutGrid class="h-8 mb-4 text-brand-gold w-8" />
+            <span class="dark:text-brand-white font-bold mb-1 text-2xl text-brand-black">{t('about.stats.projects')}</span>
+            <span class="dark:text-gray-400 dark:text-gray-500 text-gray-500 text-xs tracking-wider uppercase">{t('about.stats.projects_label')}</span>
           </div>
-          <div class="flex flex-col items-center justify-center text-center p-6 bg-white dark:bg-brand-dark-card border border-black/5 dark:border-white/5 rounded-2xl">
-            <Heart class="w-8 h-8 text-brand-gold mb-4" />
-            <span class="text-2xl font-bold text-brand-black dark:text-brand-white mb-1">{t('about.stats.purpose')}</span>
-            <span class="text-gray-500 dark:text-gray-500 dark:text-gray-400 text-xs uppercase tracking-wider">{t('about.stats.purpose_label')}</span>
+          <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col items-center justify-center p-6 rounded-2xl text-center">
+            <Heart class="h-8 mb-4 text-brand-gold w-8" />
+            <span class="dark:text-brand-white font-bold mb-1 text-2xl text-brand-black">{t('about.stats.purpose')}</span>
+            <span class="dark:text-gray-400 dark:text-gray-500 text-gray-500 text-xs tracking-wider uppercase">{t('about.stats.purpose_label')}</span>
           </div>
         </section>
 
         <!-- Historia -->
-        <section id="historia" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white dark:bg-brand-dark-card border border-black/5 dark:border-white/5 rounded-3xl p-6 lg:p-8">
-          <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden group">
+        <section id="historia" class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 gap-8 grid grid-cols-1 items-center lg:p-8 md:grid-cols-2 p-6 rounded-3xl">
+          <div class="aspect-[4/3] group overflow-hidden relative rounded-2xl w-full">
             <img
               src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2048&auto=format&fit=crop"
               alt="Compass"
-              class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+              class="absolute duration-1000 group-hover:scale-105 h-full inset-0 object-cover transition-transform w-full"
             />
-            <div class="absolute inset-0 bg-brand-gold/10 mix-blend-normal dark:mix-blend-overlay"></div>
+            <div class="absolute bg-brand-gold/10 dark:mix-blend-overlay inset-0 mix-blend-normal"></div>
           </div>
-          <div class="p-4 lg:p-8">
-            <div class="flex items-center gap-4 mb-4">
-              <span class="text-brand-gold text-sm font-bold uppercase tracking-widest">{t('about.history.label')}</span>
-              <div class="h-px w-12 bg-brand-gold/30"></div>
+          <div class="lg:p-8 p-4">
+            <div class="flex gap-4 items-center mb-4">
+              <span class="font-bold text-brand-gold text-sm tracking-widest uppercase">{t('about.history.label')}</span>
+              <div class="bg-brand-gold/30 h-px w-12"></div>
             </div>
-            <h2 class="text-3xl font-display font-bold text-brand-black dark:text-brand-white mb-6 leading-tight">{t('about.history.title2')}</h2>
-            <p class="text-gray-600 dark:text-gray-400 text-lg mb-4 leading-relaxed">
+            <h2 class="dark:text-brand-white font-bold font-display leading-tight mb-6 text-3xl text-brand-black">{t('about.history.title2')}</h2>
+            <p class="dark:text-gray-400 leading-relaxed mb-4 text-gray-600 text-lg">
               {t('about.history.p1')}
             </p>
-            <p class="text-gray-600 dark:text-gray-400 text-lg mb-8 leading-relaxed">
+            <p class="dark:text-gray-400 leading-relaxed mb-8 text-gray-600 text-lg">
               {t('about.history.p2')}
             </p>
-            <a href="#filosofia" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-gold/50 text-brand-gold hover:bg-brand-gold text-gray-500 hover:text-brand-black dark:text-gray-400 dark:hover:text-brand-white transition-colors duration-300 font-bold text-sm tracking-widest uppercase">
+            <a href="#filosofia" class="border border-brand-gold/50 dark:hover:text-brand-white dark:text-gray-400 duration-300 font-bold hover:bg-brand-gold hover:text-brand-black inline-flex items-center justify-center px-6 py-3 rounded-full text-brand-gold text-gray-500 text-sm tracking-widest transition-colors uppercase">
               {t('about.history.btn')}
-              <ChevronRight class="w-4 h-4 ml-2" />
+              <ChevronRight class="h-4 ml-2 w-4" />
             </a>
           </div>
         </section>
 
         <!-- Missao, Visao, Valores Grid -->
-        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <section class="gap-6 grid grid-cols-1 lg:grid-cols-3">
 
           <!-- Missao -->
-          <div id="missao" class="bg-white dark:bg-brand-dark-card border border-black/5 dark:border-white/5 rounded-3xl p-8 hover:border-brand-gold/20 transition-colors flex flex-col">
-            <div class="flex items-center gap-4 mb-6">
-              <Target class="w-8 h-8 text-brand-gold" />
-              <h3 class="text-xl font-display font-bold text-brand-gold uppercase tracking-wider">{t('about.mission.label')}</h3>
+          <div id="missao" class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col hover:border-brand-gold/20 p-8 rounded-3xl transition-colors">
+            <div class="flex gap-4 items-center mb-6">
+              <Target class="h-8 text-brand-gold w-8" />
+              <h3 class="font-bold font-display text-brand-gold text-xl tracking-wider uppercase">{t('about.mission.label')}</h3>
             </div>
-            <div class="relative h-32 rounded-2xl overflow-hidden mb-6">
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" alt="Missao" class="absolute inset-0 w-full h-full object-cover opacity-60" />
+            <div class="h-32 mb-6 overflow-hidden relative rounded-2xl">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" alt="Missao" class="absolute h-full inset-0 object-cover opacity-60 w-full" />
             </div>
-            <p class="text-gray-600 dark:text-gray-400 font-semibold leading-relaxed flex-1">
+            <p class="dark:text-gray-400 flex-1 font-semibold leading-relaxed text-gray-600">
               {t('about.mission.desc')}
             </p>
           </div>
 
           <!-- Visao -->
-          <div id="visao" class="bg-white dark:bg-brand-dark-card border border-black/5 dark:border-white/5 rounded-3xl p-8 hover:border-brand-gold/20 transition-colors flex flex-col">
-            <div class="flex items-center gap-4 mb-6">
-              <Eye class="w-8 h-8 text-brand-gold" />
-              <h3 class="text-xl font-display font-bold text-brand-gold uppercase tracking-wider">{t('about.vision.label')}</h3>
+          <div id="visao" class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col hover:border-brand-gold/20 p-8 rounded-3xl transition-colors">
+            <div class="flex gap-4 items-center mb-6">
+              <Eye class="h-8 text-brand-gold w-8" />
+              <h3 class="font-bold font-display text-brand-gold text-xl tracking-wider uppercase">{t('about.vision.label')}</h3>
             </div>
-            <div class="relative h-32 rounded-2xl overflow-hidden mb-6">
-              <img src="https://images.unsplash.com/photo-1454372182658-c712e4c5a1db?q=80&w=2070&auto=format&fit=crop" alt="Visao" class="absolute inset-0 w-full h-full object-cover opacity-60" />
+            <div class="h-32 mb-6 overflow-hidden relative rounded-2xl">
+              <img src="https://images.unsplash.com/photo-1454372182658-c712e4c5a1db?q=80&w=2070&auto=format&fit=crop" alt="Visao" class="absolute h-full inset-0 object-cover opacity-60 w-full" />
             </div>
-            <p class="text-gray-600 dark:text-gray-400 font-semibold leading-relaxed flex-1">
+            <p class="dark:text-gray-400 flex-1 font-semibold leading-relaxed text-gray-600">
               {t('about.vision.desc')}
             </p>
           </div>
 
           <!-- Valores -->
-          <div id="valores" class="bg-white dark:bg-brand-dark-card border border-black/5 dark:border-white/5 rounded-3xl p-8 hover:border-brand-gold/20 transition-colors flex flex-col">
-            <div class="flex items-center gap-4 mb-6">
-              <Gem class="w-8 h-8 text-brand-gold" />
-              <h3 class="text-xl font-display font-bold text-brand-gold uppercase tracking-wider">{t('about.values.label')}</h3>
+          <div id="valores" class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col hover:border-brand-gold/20 p-8 rounded-3xl transition-colors">
+            <div class="flex gap-4 items-center mb-6">
+              <Gem class="h-8 text-brand-gold w-8" />
+              <h3 class="font-bold font-display text-brand-gold text-xl tracking-wider uppercase">{t('about.values.label')}</h3>
             </div>
-            <div class="relative h-32 rounded-2xl overflow-hidden mb-6">
-              <img src="https://images.unsplash.com/photo-1484807352052-23338990c6c6?q=80&w=2070&auto=format&fit=crop" alt="Valores" class="absolute inset-0 w-full h-full object-cover opacity-60" />
+            <div class="h-32 mb-6 overflow-hidden relative rounded-2xl">
+              <img src="https://images.unsplash.com/photo-1484807352052-23338990c6c6?q=80&w=2070&auto=format&fit=crop" alt="Valores" class="absolute h-full inset-0 object-cover opacity-60 w-full" />
             </div>
-            <div class="grid grid-cols-2 gap-x-2 gap-y-3 mt-auto">
+            <div class="gap-x-2 gap-y-3 grid grid-cols-2 mt-auto">
               {Array.from({length: 10}).map((_, i) => (
-                <div class="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
-                  <div class="w-1.5 h-1.5 rounded-full bg-brand-gold"></div>
+                <div class="dark:text-gray-300 flex gap-2 items-center text-gray-700 text-sm">
+                  <div class="bg-brand-gold h-1.5 rounded-full w-1.5"></div>
                   <span>{t(`about.values.v${i+1}` as any)}</span>
                 </div>
               ))}
@@ -241,55 +241,55 @@ const topics = [
         <!-- Topics List -->
         <section class="space-y-4">
           {topics.map(topic => (
-            <div id={topic.id} class="relative bg-white dark:bg-brand-dark-card border border-black/5 dark:border-white/5 rounded-3xl overflow-hidden group flex flex-col md:flex-row items-center p-6 md:p-8 hover:border-brand-gold/30 transition-colors cursor-pointer">
+            <div id={topic.id} class="bg-white border border-black/5 cursor-pointer dark:bg-brand-dark-card dark:border-white/5 flex flex-col group hover:border-brand-gold/30 items-center md:flex-row md:p-8 overflow-hidden p-6 relative rounded-3xl transition-colors">
               <!-- Background Image on hover or subtly behind -->
-              <div class="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none">
-                <img src={topic.image} alt={topic.title} class="w-full h-full object-cover mix-blend-normal dark:mix-blend-overlay" />
-                <div class="absolute inset-0 bg-gradient-to-r from-[#0f0f0f] via-[#0f0f0f]/80 to-transparent"></div>
+              <div class="absolute duration-500 group-hover:opacity-30 inset-0 opacity-10 pointer-events-none transition-opacity">
+                <img src={topic.image} alt={topic.title} class="dark:mix-blend-overlay h-full mix-blend-normal object-cover w-full" />
+                <div class="absolute bg-gradient-to-r from-[#0f0f0f] inset-0 to-transparent via-[#0f0f0f]/80"></div>
               </div>
 
               <!-- Content -->
-              <div class="relative z-10 flex items-center justify-center w-16 h-16 rounded-full border border-brand-gold/30 bg-brand-gold/10 shrink-0 text-brand-gold mb-4 md:mb-0 md:mr-8">
+              <div class="bg-brand-gold/10 border border-brand-gold/30 flex h-16 items-center justify-center mb-4 md:mb-0 md:mr-8 relative rounded-full shrink-0 text-brand-gold w-16 z-10">
                 {
                   (() => {
                     const Icon = topic.icon;
-                    return <Icon class="w-8 h-8" />;
+                    return <Icon class="h-8 w-8" />;
                   })()
                 }
               </div>
 
-              <div class="relative z-10 flex-1 text-center md:text-left pr-0 md:pr-12">
-                <h3 class="text-2xl font-display font-bold text-brand-black dark:text-brand-white uppercase tracking-wider mb-2">{topic.title}</h3>
-                <p class="text-gray-600 dark:text-gray-400 font-semibold">
+              <div class="flex-1 md:pr-12 md:text-left pr-0 relative text-center z-10">
+                <h3 class="dark:text-brand-white font-bold font-display mb-2 text-2xl text-brand-black tracking-wider uppercase">{topic.title}</h3>
+                <p class="dark:text-gray-400 font-semibold text-gray-600">
                   {topic.desc}
                 </p>
               </div>
 
-              <div class="relative z-10 hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-white/5 text-gray-500 dark:text-gray-500 dark:text-gray-400 group-hover:text-brand-gold group-hover:bg-brand-gold/10 transition-colors shrink-0">
-                <ChevronRight class="w-5 h-5" />
+              <div class="bg-white/5 dark:text-gray-400 dark:text-gray-500 group-hover:bg-brand-gold/10 group-hover:text-brand-gold h-10 hidden items-center justify-center md:flex relative rounded-full shrink-0 text-gray-500 transition-colors w-10 z-10">
+                <ChevronRight class="h-5 w-5" />
               </div>
             </div>
           ))}
         </section>
 
         <!-- CTA Final -->
-        <section class="relative bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#141414] dark:to-[#050505] border border-black/5 dark:border-white/5 rounded-3xl p-10 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-8 overflow-hidden">
+        <section class="bg-gradient-to-br border border-black/5 dark:border-white/5 dark:from-[#141414] dark:to-[#050505] flex flex-col from-gray-100 gap-8 items-center justify-between lg:p-16 md:flex-row overflow-hidden p-10 relative rounded-3xl to-gray-200">
           <div class="absolute inset-0 z-0">
             <!-- decorative wave or glow -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-gold/20 to-transparent opacity-50 shadow-[0_0_50px_10px_#D4AF37]"></div>
+            <div class="-translate-x-1/2 -translate-y-1/2 absolute bg-gradient-to-r from-transparent h-[1px] left-1/2 opacity-50 shadow-[0_0_50px_10px_#D4AF37] to-transparent top-1/2 via-brand-gold/20 w-full"></div>
           </div>
-          <div class="relative z-10 flex items-center gap-6">
-            <div class="hidden md:flex w-20 h-20 rounded-full border border-brand-gold/30 bg-brand-gold/10 items-center justify-center shrink-0">
-              <Users class="w-10 h-10 text-brand-gold" />
+          <div class="flex gap-6 items-center relative z-10">
+            <div class="bg-brand-gold/10 border border-brand-gold/30 h-20 hidden items-center justify-center md:flex rounded-full shrink-0 w-20">
+              <Users class="h-10 text-brand-gold w-10" />
             </div>
             <div>
-              <h2 class="text-3xl font-display font-bold text-brand-black dark:text-brand-white mb-2">{t('about.cta.title')}</h2>
-              <p class="text-gray-600 dark:text-gray-400 text-lg">{t('about.cta.desc')}</p>
+              <h2 class="dark:text-brand-white font-bold font-display mb-2 text-3xl text-brand-black">{t('about.cta.title')}</h2>
+              <p class="dark:text-gray-400 text-gray-600 text-lg">{t('about.cta.desc')}</p>
             </div>
           </div>
-          <button class="relative z-10 px-8 py-4 bg-brand-gold text-brand-black dark:text-brand-white font-bold uppercase tracking-widest text-sm rounded-full hover:bg-brand-gold-dark transition-colors duration-300 shrink-0">
+          <button class="bg-brand-gold dark:text-brand-white duration-300 font-bold hover:bg-brand-gold-dark px-8 py-4 relative rounded-full shrink-0 text-brand-black text-sm tracking-widest transition-colors uppercase z-10">
             {t('about.cta.btn')}
-            <ChevronRight class="w-4 h-4 inline-block ml-2 -mt-0.5" />
+            <ChevronRight class="-mt-0.5 h-4 inline-block ml-2 w-4" />
           </button>
         </section>
 

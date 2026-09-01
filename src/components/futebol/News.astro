@@ -11,30 +11,30 @@ interface Props {
 const { pageDict, lang } = Astro.props;
 const t = usePageTranslations(pageDict, lang);
 ---
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="gap-8 grid grid-cols-1 lg:grid-cols-12">
   <!-- Últimas Notícias -->
   <div class="lg:col-span-8">
-    <h2 class="text-xl font-bold text-brand-black dark:text-brand-white mb-4 tracking-wide uppercase">{t('futebol.news.title')}</h2>
+    <h2 class="dark:text-brand-white font-bold mb-4 text-brand-black text-xl tracking-wide uppercase">{t('futebol.news.title')}</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="gap-6 grid grid-cols-1 md:grid-cols-2">
       <!-- News Card 1 -->
-      <Card noPadding class="bg-brand-white dark:bg-brand-dark-card/60 border border-gray-200 dark:border-white/5 group h-full flex flex-col">
-        <div class="relative h-48 w-full overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&q=80&w=800" alt="Time celebrando" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
-          <div class="absolute top-4 left-4">
-            <div class="px-2 py-1 text-[10px] font-bold tracking-widest bg-black/80 backdrop-blur-md border border-gray-200 dark:border-white/10 text-brand-gold rounded-sm uppercase">{t('futebol.news.card1.badge')}</div>
+      <Card noPadding class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card/60 dark:border-white/5 flex flex-col group h-full">
+        <div class="h-48 overflow-hidden relative w-full">
+          <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&q=80&w=800" alt="Time celebrando" class="duration-700 group-hover:scale-105 h-full object-cover transform transition-transform w-full" loading="lazy" decoding="async" />
+          <div class="absolute left-4 top-4">
+            <div class="backdrop-blur-md bg-black/80 border border-gray-200 dark:border-white/10 font-bold px-2 py-1 rounded-sm text-[10px] text-brand-gold tracking-widest uppercase">{t('futebol.news.card1.badge')}</div>
           </div>
         </div>
-        <div class="p-6 flex-1 flex flex-col">
-          <h3 class="text-lg font-bold text-brand-black dark:text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-snug">
+        <div class="flex flex-1 flex-col p-6">
+          <h3 class="dark:text-brand-white font-bold group-hover:text-brand-gold leading-snug mb-2 text-brand-black text-lg transition-colors">
             {t('futebol.news.card1.title')}
           </h3>
-          <p class="text-sm text-brand-black dark:text-brand-white/70 dark:text-brand-gray-light mb-4 line-clamp-2 flex-1">
+          <p class="dark:text-brand-gray-light dark:text-brand-white/70 flex-1 line-clamp-2 mb-4 text-brand-black text-sm">
             {t('futebol.news.card1.desc')}
           </p>
-          <div class="flex items-center gap-4 text-xs text-brand-black dark:text-brand-white/50 dark:text-brand-gray-light/70 uppercase tracking-wide">
+          <div class="dark:text-brand-gray-light/70 dark:text-brand-white/50 flex gap-4 items-center text-brand-black text-xs tracking-wide uppercase">
             <span>{t('futebol.news.card1.date')}</span>
-            <span class="w-1 h-1 rounded-full bg-brand-gold/50"></span>
+            <span class="bg-brand-gold/50 h-1 rounded-full w-1"></span>
             <span>{t('futebol.news.card1.read_time')}</span>
           </div>
         </div>
@@ -43,46 +43,46 @@ const t = usePageTranslations(pageDict, lang);
       <!-- News Card 2 Stacked -->
       <div class="flex flex-col gap-6">
         <!-- News Card 2a -->
-        <Card noPadding class="bg-brand-white dark:bg-brand-dark-card/60 border border-gray-200 dark:border-white/5 group flex-1">
-           <div class="relative h-32 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&q=80&w=600" alt="Treino" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
-              <div class="absolute top-3 left-3">
-                <div class="px-2 py-1 text-[10px] font-bold tracking-widest bg-black/80 backdrop-blur-md border border-gray-200 dark:border-white/10 text-brand-black dark:text-white rounded-sm uppercase">{t('futebol.news.card2.badge')}</div>
+        <Card noPadding class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card/60 dark:border-white/5 flex-1 group">
+           <div class="h-32 overflow-hidden relative w-full">
+              <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&q=80&w=600" alt="Treino" class="duration-700 group-hover:scale-105 h-full object-cover transform transition-transform w-full" loading="lazy" decoding="async" />
+              <div class="absolute left-3 top-3">
+                <div class="backdrop-blur-md bg-black/80 border border-gray-200 dark:border-white/10 dark:text-white font-bold px-2 py-1 rounded-sm text-[10px] text-brand-black tracking-widest uppercase">{t('futebol.news.card2.badge')}</div>
               </div>
            </div>
            <div class="p-4">
-             <h3 class="text-base font-bold text-brand-black dark:text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-tight line-clamp-2">
+             <h3 class="dark:text-brand-white font-bold group-hover:text-brand-gold leading-tight line-clamp-2 mb-2 text-base text-brand-black transition-colors">
                {t('futebol.news.card2.title')}
              </h3>
-             <p class="text-xs text-brand-black dark:text-brand-white/70 dark:text-brand-gray-light mb-3 line-clamp-2">
+             <p class="dark:text-brand-gray-light dark:text-brand-white/70 line-clamp-2 mb-3 text-brand-black text-xs">
                {t('futebol.news.card2.desc')}
              </p>
-             <div class="flex items-center gap-3 text-[10px] text-brand-black dark:text-brand-white/50 dark:text-brand-gray-light/70 uppercase tracking-wide">
+             <div class="dark:text-brand-gray-light/70 dark:text-brand-white/50 flex gap-3 items-center text-[10px] text-brand-black tracking-wide uppercase">
                 <span>{t('futebol.news.card2.date')}</span>
-                <span class="w-1 h-1 rounded-full bg-brand-gold/50"></span>
+                <span class="bg-brand-gold/50 h-1 rounded-full w-1"></span>
                 <span>{t('futebol.news.card2.read_time')}</span>
              </div>
            </div>
         </Card>
 
         <!-- News Card 2b -->
-        <Card noPadding class="bg-brand-white dark:bg-brand-dark-card/60 border border-gray-200 dark:border-white/5 group flex-1">
-           <div class="relative h-32 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=600" alt="Base" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
-              <div class="absolute top-3 left-3">
-                <div class="px-2 py-1 text-[10px] font-bold tracking-widest bg-black/80 backdrop-blur-md border border-gray-200 dark:border-white/10 text-brand-black dark:text-white rounded-sm uppercase">{t('futebol.news.card3.badge')}</div>
+        <Card noPadding class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card/60 dark:border-white/5 flex-1 group">
+           <div class="h-32 overflow-hidden relative w-full">
+              <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&q=80&w=600" alt="Base" class="duration-700 group-hover:scale-105 h-full object-cover transform transition-transform w-full" loading="lazy" decoding="async" />
+              <div class="absolute left-3 top-3">
+                <div class="backdrop-blur-md bg-black/80 border border-gray-200 dark:border-white/10 dark:text-white font-bold px-2 py-1 rounded-sm text-[10px] text-brand-black tracking-widest uppercase">{t('futebol.news.card3.badge')}</div>
               </div>
            </div>
            <div class="p-4">
-             <h3 class="text-base font-bold text-brand-black dark:text-brand-white mb-2 group-hover:text-brand-gold transition-colors leading-tight line-clamp-2">
+             <h3 class="dark:text-brand-white font-bold group-hover:text-brand-gold leading-tight line-clamp-2 mb-2 text-base text-brand-black transition-colors">
                {t('futebol.news.card3.title')}
              </h3>
-             <p class="text-xs text-brand-black dark:text-brand-white/70 dark:text-brand-gray-light mb-3 line-clamp-2">
+             <p class="dark:text-brand-gray-light dark:text-brand-white/70 line-clamp-2 mb-3 text-brand-black text-xs">
                {t('futebol.news.card3.desc')}
              </p>
-             <div class="flex items-center gap-3 text-[10px] text-brand-black dark:text-brand-white/50 dark:text-brand-gray-light/70 uppercase tracking-wide">
+             <div class="dark:text-brand-gray-light/70 dark:text-brand-white/50 flex gap-3 items-center text-[10px] text-brand-black tracking-wide uppercase">
                 <span>{t('futebol.news.card3.date')}</span>
-                <span class="w-1 h-1 rounded-full bg-brand-gold/50"></span>
+                <span class="bg-brand-gold/50 h-1 rounded-full w-1"></span>
                 <span>{t('futebol.news.card3.read_time')}</span>
              </div>
            </div>
@@ -93,27 +93,27 @@ const t = usePageTranslations(pageDict, lang);
 
   <!-- Destaques -->
   <div class="lg:col-span-4">
-    <h2 class="text-xl font-bold text-brand-black dark:text-brand-white mb-4 tracking-wide uppercase">{t('futebol.highlights.title')}</h2>
+    <h2 class="dark:text-brand-white font-bold mb-4 text-brand-black text-xl tracking-wide uppercase">{t('futebol.highlights.title')}</h2>
 
-    <Card noPadding class="bg-brand-white dark:bg-brand-dark-card/60 border border-gray-200 dark:border-white/5 group h-full flex flex-col">
-      <div class="relative flex-1 min-h-[250px] w-full overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1508344928928-7155b67de238?auto=format&fit=crop&q=80&w=600" alt="Video highlight" class="object-cover w-full h-full transform transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
-        <div class="absolute inset-0 bg-black/40 group-hover:bg-gray-100 dark:bg-black/20 transition-colors duration-500"></div>
+    <Card noPadding class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card/60 dark:border-white/5 flex flex-col group h-full">
+      <div class="flex-1 min-h-[250px] overflow-hidden relative w-full">
+        <img src="https://images.unsplash.com/photo-1508344928928-7155b67de238?auto=format&fit=crop&q=80&w=600" alt="Video highlight" class="duration-700 group-hover:scale-105 h-full object-cover transform transition-transform w-full" loading="lazy" decoding="async" />
+        <div class="absolute bg-black/40 dark:bg-black/20 duration-500 group-hover:bg-gray-100 inset-0 transition-colors"></div>
 
-        <div class="absolute inset-0 flex items-center justify-center">
-          <div class="w-14 h-14 rounded-full bg-black/50 backdrop-blur-md border border-gray-300 dark:border-white/20 flex items-center justify-center text-brand-black dark:text-white cursor-pointer group-hover:scale-110 group-hover:bg-brand-gold group-hover:border-brand-gold group-hover:text-black transition-all duration-300">
-            <Play class="w-6 h-6 ml-1" />
+        <div class="absolute flex inset-0 items-center justify-center">
+          <div class="backdrop-blur-md bg-black/50 border border-gray-300 cursor-pointer dark:border-white/20 dark:text-white duration-300 flex group-hover:bg-brand-gold group-hover:border-brand-gold group-hover:scale-110 group-hover:text-black h-14 items-center justify-center rounded-full text-brand-black transition-all w-14">
+            <Play class="h-6 ml-1 w-6" />
           </div>
         </div>
       </div>
 
-      <div class="p-6 bg-brand-white dark:bg-brand-dark-card border-t border-gray-200 dark:border-white/5">
-        <h3 class="text-base font-bold text-brand-black dark:text-brand-white mb-3 group-hover:text-brand-gold transition-colors leading-tight">
+      <div class="bg-brand-white border-gray-200 border-t dark:bg-brand-dark-card dark:border-white/5 p-6">
+        <h3 class="dark:text-brand-white font-bold group-hover:text-brand-gold leading-tight mb-3 text-base text-brand-black transition-colors">
           {t('futebol.highlights.card.title')}
         </h3>
-        <div class="flex items-center gap-4 text-[10px] text-brand-black dark:text-brand-white/50 dark:text-brand-gray-light/70 uppercase tracking-wide">
+        <div class="dark:text-brand-gray-light/70 dark:text-brand-white/50 flex gap-4 items-center text-[10px] text-brand-black tracking-wide uppercase">
           <span>{t('futebol.highlights.card.date')}</span>
-          <span class="w-1 h-1 rounded-full bg-brand-gold/50"></span>
+          <span class="bg-brand-gold/50 h-1 rounded-full w-1"></span>
           <span>{t('futebol.highlights.card.duration')}</span>
         </div>
       </div>

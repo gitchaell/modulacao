@@ -12,29 +12,29 @@ const { pageDict } = Astro.props;
 const lang = getLangFromUrl(Astro.cookies);
 const t = usePageTranslations(pageDict, lang);
 ---
-<section class="relative bg-brand-offwhite dark:bg-[#0a0a0a] min-h-[75vh] flex items-center pt-24 pb-24 border-b border-black/5 dark:border-white/5 overflow-hidden">
+<section class="bg-brand-offwhite border-b border-black/5 dark:bg-[#0a0a0a] dark:bg-brand-dark-card dark:border-white/5 flex items-center min-h-[75vh] overflow-hidden pb-24 pt-24 relative">
   <!-- Placeholder Image Background -->
   <div class="absolute inset-0 z-0">
-    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop" alt="Hero Background" class="w-full h-full object-cover opacity-10 dark:opacity-20 mix-blend-normal dark:mix-blend-luminosity" />
-    <div class="absolute inset-0 bg-gradient-to-t from-white dark:from-[#0a0a0a] via-white/80 dark:via-[#0a0a0a]/50 to-transparent"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-white dark:from-[#0a0a0a] via-white/90 dark:via-[#0a0a0a]/90 to-transparent"></div>
+    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop" alt="Hero Background" class="dark:mix-blend-luminosity dark:opacity-20 h-full mix-blend-normal object-cover opacity-10 w-full" />
+    <div class="absolute bg-gradient-to-t dark:from-[#0a0a0a] dark:via-[#0a0a0a]/50 from-white inset-0 to-transparent via-white/80"></div>
+    <div class="absolute bg-gradient-to-r dark:from-[#0a0a0a] dark:via-[#0a0a0a]/90 from-white inset-0 to-transparent via-white/90"></div>
   </div>
 
-  <div class="relative z-10 container mx-auto px-6 lg:px-12 max-w-[1400px]">
+  <div class="container lg:px-12 max-w-[1400px] mx-auto px-6 relative z-10">
     <div class="max-w-2xl">
-      <Typography variant="h6" class="text-brand-gold font-black text-xs tracking-[0.2em] uppercase mb-4 leading-relaxed">
+      <Typography variant="h6" class="font-black leading-relaxed mb-4 text-brand-gold text-xs tracking-[0.2em] uppercase">
         {t('home.hero.subtitle')}
       </Typography>
-      <Typography variant="h1" class="font-display font-bold text-5xl md:text-6xl lg:text-[72px] leading-none mb-6 tracking-tight uppercase">
-        <span class="text-brand-black dark:text-brand-white block">{t('home.hero.title1')}</span>
-        <span class="text-brand-gold block mt-1">{t('home.hero.title2')}</span>
+      <Typography variant="h1" class="font-bold font-display leading-none lg:text-[72px] mb-6 md:text-6xl text-5xl tracking-tight uppercase">
+        <span class="block dark:text-brand-white text-brand-black">{t('home.hero.title1')}</span>
+        <span class="block mt-1 text-brand-gold">{t('home.hero.title2')}</span>
       </Typography>
-      <Typography variant="lead" class="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-10 max-w-[480px] leading-relaxed">
+      <Typography variant="lead" class="dark:text-gray-300 leading-relaxed max-w-[480px] mb-10 md:text-lg text-base text-gray-700">
         {t('home.hero.desc')}
       </Typography>
 
-      <div class="flex flex-col sm:flex-row gap-4 mb-12">
-        <Button as="a" href="/sobre" variant="primary" size="md" class="px-8 flex items-center gap-2">
+      <div class="flex flex-col gap-4 mb-12 sm:flex-row">
+        <Button as="a" href="/sobre" variant="primary" size="md" class="flex gap-2 items-center px-8">
           {t('home.hero.btnPrimary')}
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </Button>
@@ -43,13 +43,13 @@ const t = usePageTranslations(pageDict, lang);
         </Button>
       </div>
 
-      <div class="flex items-center gap-4">
-        <span class="text-brand-gold text-xs font-bold tracking-[0.15em] uppercase">{t('home.hero.followUs')}</span>
-        <div class="flex items-center gap-3">
-          <a href="/" class="text-brand-gold text-gray-400 dark:text-gray-500 hover:text-brand-black dark:hover:text-brand-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
-          <a href="/" class="text-brand-gold text-gray-400 dark:text-gray-500 hover:text-brand-black dark:hover:text-brand-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
-          <a href="/" class="text-brand-gold text-gray-400 dark:text-gray-500 hover:text-brand-black dark:hover:text-brand-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="/" class="text-brand-gold text-gray-400 dark:text-gray-500 hover:text-brand-black dark:hover:text-brand-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
+      <div class="flex gap-4 items-center">
+        <span class="font-bold text-brand-gold text-xs tracking-[0.15em] uppercase">{t('home.hero.followUs')}</span>
+        <div class="flex gap-3 items-center">
+          <a href="/" class="dark:hover:text-brand-white dark:text-gray-500 hover:text-brand-black text-brand-gold text-gray-400 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+          <a href="/" class="dark:hover:text-brand-white dark:text-gray-500 hover:text-brand-black text-brand-gold text-gray-400 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+          <a href="/" class="dark:hover:text-brand-white dark:text-gray-500 hover:text-brand-black text-brand-gold text-gray-400 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="/" class="dark:hover:text-brand-white dark:text-gray-500 hover:text-brand-black text-brand-gold text-gray-400 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
         </div>
       </div>
     </div>

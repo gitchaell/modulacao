@@ -15,22 +15,22 @@ const query = Astro.url.searchParams.get('q') || '';
 <PublicLayout title={t('common.search')}>
   <div class="bg-brand-offwhite dark:bg-brand-dark min-h-screen pb-24">
 
-    <div class="bg-gray-100 dark:bg-brand-black border-b border-gray-200 dark:border-white/5 py-24 relative overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-gold/10 via-brand-black to-brand-black opacity-80 z-0"></div>
-      <div class="relative z-10 container mx-auto px-6 max-w-4xl text-center animate-smooth-fade">
-        <h1 class="font-display text-4xl md:text-5xl font-bold uppercase tracking-widest text-brand-gold mb-8">{t('common.search')}</h1>
-        <form class="flex w-full max-w-2xl mx-auto gap-4 items-end" id="search-form">
-          <Input type="search" name="q" value={query} id="search-input" placeholder={t('common.search_placeholder')} class="flex-1 bg-brand-white dark:bg-brand-black/50" autocomplete="off" />
-          <Button type="submit" class="h-12 w-12 px-0 flex items-center justify-center shrink-0" aria-label="Buscar">
+    <div class="bg-gray-100 border-b border-gray-200 dark:bg-brand-black dark:border-white/5 overflow-hidden py-24 relative">
+      <div class="absolute bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-gold/10 inset-0 opacity-80 to-brand-black via-brand-black z-0"></div>
+      <div class="animate-smooth-fade container max-w-4xl mx-auto px-6 relative text-center z-10">
+        <h1 class="font-bold font-display mb-8 md:text-5xl text-4xl text-brand-gold tracking-widest uppercase">{t('common.search')}</h1>
+        <form class="flex gap-4 items-end max-w-2xl mx-auto w-full" id="search-form">
+          <Input type="search" name="q" value={query} id="search-input" placeholder={t('common.search_placeholder')} class="bg-brand-white dark:bg-brand-black/50 flex-1" autocomplete="off" />
+          <Button type="submit" class="flex h-12 items-center justify-center px-0 shrink-0 w-12" aria-label="Buscar">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </Button>
         </form>
       </div>
     </div>
 
-    <div class="container mx-auto px-6 max-w-4xl mt-12 animate-smooth-fade" style="animation-delay: 0.1s;">
-      <div id="loading-indicator" class="hidden text-center py-16 text-gray-500 dark:text-gray-400 font-semibold">
-        <svg class="animate-spin w-10 h-10 mx-auto mb-4 text-brand-gold" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+    <div class="animate-smooth-fade container max-w-4xl mt-12 mx-auto px-6" style="animation-delay: 0.1s;">
+      <div id="loading-indicator" class="dark:text-gray-400 font-semibold hidden py-16 text-center text-gray-500">
+        <svg class="animate-spin h-10 mb-4 mx-auto text-brand-gold w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
         Buscando...
       </div>
 
@@ -38,7 +38,7 @@ const query = Astro.url.searchParams.get('q') || '';
         <!-- Results will be injected here by client JS -->
       </div>
 
-      <div id="no-results" class="hidden text-center py-24 text-gray-500 dark:text-gray-400 font-semibold">
+      <div id="no-results" class="dark:text-gray-400 font-semibold hidden py-24 text-center text-gray-500">
         No se encontraron resultados para tu búsqueda.
       </div>
     </div>
@@ -76,10 +76,10 @@ const query = Astro.url.searchParams.get('q') || '';
 
           card.innerHTML = `
             <div class="flex items-center">
-              <span class="text-xs uppercase tracking-widest font-bold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-brand-black px-2.5 py-1 rounded-sm mr-4">${item.type}</span>
-              <span class="font-semibold text-brand-black dark:text-white group-hover:text-brand-gold transition-colors text-lg font-display">${item.label}</span>
+              <span class="bg-gray-100 dark:bg-brand-black dark:text-gray-400 font-bold mr-4 px-2.5 py-1 rounded-sm text-gray-500 text-xs tracking-widest uppercase">${item.type}</span>
+              <span class="dark:text-white font-display font-semibold group-hover:text-brand-gold text-brand-black text-lg transition-colors">${item.label}</span>
             </div>
-            <svg class="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-brand-gold group-hover:translate-x-1 transition-all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg class="dark:text-gray-400 group-hover:text-brand-gold group-hover:translate-x-1 h-5 text-gray-500 transition-all w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           `;
           container!.appendChild(card);
         });

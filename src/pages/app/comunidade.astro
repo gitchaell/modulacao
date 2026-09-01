@@ -39,26 +39,26 @@ const formatDate = (date: Date | null) => {
 ---
 
 <AppLayout title={t('app.community')}>
-  <div class="max-w-2xl mx-auto space-y-8 animate-smooth-fade">
+  <div class="animate-smooth-fade max-w-2xl mx-auto space-y-8">
 
     <!-- Cabecera -->
     <div>
-      <h1 class="font-display text-3xl font-bold uppercase tracking-widest text-brand-gold">{t('app.community')}</h1>
-      <p class="text-gray-500 dark:text-gray-400 mt-2 text-base font-semibold">Comparte y conéctate con otros miembros de {tenantConfig.name}.</p>
+      <h1 class="font-bold font-display text-3xl text-brand-gold tracking-widest uppercase">{t('app.community')}</h1>
+      <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500">Comparte y conéctate con otros miembros de {tenantConfig.name}.</p>
     </div>
 
     <!-- Creador de Post -->
-    <Card class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 premium-shadow">
+    <Card class="backdrop-blur-md bg-brand-white/80 border border-gray-200 dark:bg-brand-dark-card/80 dark:border-white/10 premium-shadow">
       <form method="POST" action="/api/community/post" enctype="multipart/form-data" class="space-y-4">
         <textarea
           name="content"
           placeholder="¿Qué quieres compartir con la comunidad?"
-          class="w-full bg-transparent border border-gray-300 dark:border-gray-700 rounded-sm p-4 text-brand-black dark:text-white placeholder:text-gray-500 dark:text-gray-400 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold resize-none h-24 hover:border-brand-gold/50 transition-colors"
+          class="bg-transparent border border-gray-300 dark:border-gray-700 dark:text-gray-400 dark:text-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold h-24 hover:border-brand-gold/50 p-4 placeholder:text-gray-500 resize-none rounded-sm text-brand-black transition-colors w-full"
           required
         ></textarea>
-        <div class="flex justify-between items-center pt-4 border-t border-gray-100 dark:border-white/5">
-          <div class="flex items-center gap-2">
-            <label class="cursor-pointer text-gray-500 dark:text-gray-400 hover:text-brand-gold transition-colors flex items-center gap-2 text-sm font-semibold uppercase tracking-wide focus-visible rounded-sm p-1">
+        <div class="border-gray-100 border-t dark:border-white/5 flex items-center justify-between pt-4">
+          <div class="flex gap-2 items-center">
+            <label class="cursor-pointer dark:text-gray-400 flex focus-visible font-semibold gap-2 hover:text-brand-gold items-center p-1 rounded-sm text-gray-500 text-sm tracking-wide transition-colors uppercase">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
               <span>Añadir Imagen</span>
               <input type="file" name="image" accept="image/*" class="hidden" />
@@ -72,94 +72,94 @@ const formatDate = (date: Date | null) => {
     <!-- Feed de Posts -->
     <div class="space-y-8">
       {allPosts.length === 0 ? (
-        <Card class="bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-white/5 text-center py-24 premium-shadow relative overflow-hidden">
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-50 dark:from-brand-dark via-transparent to-transparent opacity-50"></div>
-          <div class="relative z-10 flex flex-col items-center justify-center">
-            <div class="w-full max-w-md mx-auto mb-8 opacity-20">
+        <Card class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card dark:border-white/5 overflow-hidden premium-shadow py-24 relative text-center">
+          <div class="absolute bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] dark:from-brand-dark from-gray-50 inset-0 opacity-50 to-transparent via-transparent"></div>
+          <div class="flex flex-col items-center justify-center relative z-10">
+            <div class="max-w-md mb-8 mx-auto opacity-20 w-full">
               <svg viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="10" y="10" width="40" height="40" rx="20" class="fill-gray-300 dark:fill-gray-700" />
-                <rect x="65" y="15" width="120" height="12" rx="4" class="fill-gray-300 dark:fill-gray-700" />
-                <rect x="65" y="35" width="80" height="8" rx="4" class="fill-gray-200 dark:fill-gray-800" />
-                <rect x="10" y="70" width="380" height="10" rx="4" class="fill-gray-200 dark:fill-gray-800" />
-                <rect x="10" y="90" width="350" height="10" rx="4" class="fill-gray-200 dark:fill-gray-800" />
-                <rect x="10" y="110" width="280" height="10" rx="4" class="fill-gray-200 dark:fill-gray-800" />
+                <rect x="10" y="10" width="40" height="40" rx="20" class="dark:fill-gray-700 fill-gray-300" />
+                <rect x="65" y="15" width="120" height="12" rx="4" class="dark:fill-gray-700 fill-gray-300" />
+                <rect x="65" y="35" width="80" height="8" rx="4" class="dark:fill-gray-800 fill-gray-200" />
+                <rect x="10" y="70" width="380" height="10" rx="4" class="dark:fill-gray-800 fill-gray-200" />
+                <rect x="10" y="90" width="350" height="10" rx="4" class="dark:fill-gray-800 fill-gray-200" />
+                <rect x="10" y="110" width="280" height="10" rx="4" class="dark:fill-gray-800 fill-gray-200" />
               </svg>
             </div>
-            <h3 class="font-display text-xl font-bold text-brand-black dark:text-white mb-2">Aún no hay publicaciones</h3>
-            <p class="text-gray-500 dark:text-gray-400 text-sm font-semibold">Sé el primero en compartir algo con la comunidad {tenantConfig.name}.</p>
+            <h3 class="dark:text-white font-bold font-display mb-2 text-brand-black text-xl">Aún no hay publicaciones</h3>
+            <p class="dark:text-gray-400 font-semibold text-gray-500 text-sm">Sé el primero en compartir algo con la comunidad {tenantConfig.name}.</p>
           </div>
         </Card>
       ) : (
         allPosts.map(({ post, author }) => (
-          <Card class="bg-brand-white/90 dark:bg-brand-dark-card/90 backdrop-blur-sm border border-gray-200 dark:border-white/10 hover:border-brand-gold/50 transition-all premium-shadow">
-            <div class="flex items-start gap-4">
+          <Card class="backdrop-blur-sm bg-brand-white/90 border border-gray-200 dark:bg-brand-dark-card/90 dark:border-white/10 hover:border-brand-gold/50 premium-shadow transition-all">
+            <div class="flex gap-4 items-start">
               <a href={`/@${author.slug}`} class="flex-shrink-0 focus-visible rounded-full">
                 <Avatar src={author.avatarUrl} alt={author.fullName} size="lg" fallback={author.fullName.charAt(0)} />
               </a>
               <div class="flex-1 min-w-0">
                 <div class="flex items-center justify-between mb-1">
-                  <a href={`/@${author.slug}`} class="font-semibold text-brand-black dark:text-white hover:text-brand-gold transition-colors truncate">
+                  <a href={`/@${author.slug}`} class="dark:text-white font-semibold hover:text-brand-gold text-brand-black transition-colors truncate">
                     {author.fullName}
                   </a>
-                  <span class="text-xs text-gray-500 dark:text-gray-400 flex-shrink-0">
+                  <span class="dark:text-gray-400 flex-shrink-0 text-gray-500 text-xs">
                     {formatDate(post.createdAt as unknown as Date)}
                   </span>
                 </div>
 
-                <div class="text-gray-600 dark:text-gray-300 text-sm whitespace-pre-wrap mb-4 leading-relaxed">
+                <div class="dark:text-gray-300 leading-relaxed mb-4 text-gray-600 text-sm whitespace-pre-wrap">
                   {post.content}
                 </div>
 
                 {post.imageUrl && (
-                  <div class="rounded-sm overflow-hidden border border-gray-200 dark:border-white/5 mb-6">
-                    <img loading="lazy" decoding="async" src={post.imageUrl} alt="Publicación" class="w-full max-h-96 object-cover" />
+                  <div class="border border-gray-200 dark:border-white/5 mb-6 overflow-hidden rounded-sm">
+                    <img loading="lazy" decoding="async" src={post.imageUrl} alt="Publicación" class="max-h-96 object-cover w-full" />
                   </div>
                 )}
 
-                <div class="flex items-center gap-8 pt-4 border-t border-gray-100 dark:border-white/5">
-                  <button class="react-btn flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400 hover:text-brand-gold transition-colors group focus-visible" data-post-id={post.id}>
+                <div class="border-gray-100 border-t dark:border-white/5 flex gap-8 items-center pt-4">
+                  <button class="dark:text-gray-400 flex focus-visible font-semibold gap-2 group hover:text-brand-gold items-center react-btn text-gray-500 text-sm tracking-wide transition-colors uppercase" data-post-id={post.id}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
                     <span>Reaccionar</span>
                   </button>
-                  <button class="toggle-comments-btn flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400 hover:text-brand-gold transition-colors group focus-visible" data-post-id={post.id}>
+                  <button class="dark:text-gray-400 flex focus-visible font-semibold gap-2 group hover:text-brand-gold items-center text-gray-500 text-sm toggle-comments-btn tracking-wide transition-colors uppercase" data-post-id={post.id}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
                     <span>Comentar ({allComments.filter(c => c.comment.postId === post.id).length})</span>
                   </button>
                 </div>
 
                 <!-- Comments Section -->
-                <div id={`comments-section-${post.id}`} class="hidden mt-6 pt-6 border-t border-gray-100 dark:border-white/5">
-                  <div class="space-y-6 mb-6">
+                <div id={`comments-section-${post.id}`} class="border-gray-100 border-t dark:border-white/5 hidden mt-6 pt-6">
+                  <div class="mb-6 space-y-6">
                     {allComments.filter(c => c.comment.postId === post.id).map(c => (
-                      <div class="flex items-start gap-4">
+                      <div class="flex gap-4 items-start">
                         <a href={`/@${c.author.slug}`} class="flex-shrink-0 focus-visible rounded-full">
                           <Avatar src={c.author.avatarUrl} alt={c.author.fullName} size="sm" fallback={c.author.fullName.charAt(0)} />
                         </a>
-                        <div class="flex-1 bg-gray-50 dark:bg-brand-black/50 rounded-sm p-4 border border-gray-100 dark:border-white/5">
+                        <div class="bg-gray-50 border border-gray-100 dark:bg-brand-black/50 dark:border-white/5 flex-1 p-4 rounded-sm">
                           <div class="flex items-center justify-between mb-2">
-                            <a href={`/@${c.author.slug}`} class="font-semibold text-brand-black dark:text-white text-xs hover:text-brand-gold transition-colors">
+                            <a href={`/@${c.author.slug}`} class="dark:text-white font-semibold hover:text-brand-gold text-brand-black text-xs transition-colors">
                               {c.author.fullName}
                             </a>
-                            <span class="text-xs uppercase font-semibold tracking-wider text-gray-500 dark:text-gray-400">
+                            <span class="dark:text-gray-400 font-semibold text-gray-500 text-xs tracking-wider uppercase">
                               {formatDate(c.comment.createdAt as unknown as Date)}
                             </span>
                           </div>
-                          <p class="text-gray-600 dark:text-gray-300 text-sm whitespace-pre-wrap">{c.comment.content}</p>
+                          <p class="dark:text-gray-300 text-gray-600 text-sm whitespace-pre-wrap">{c.comment.content}</p>
                         </div>
                       </div>
                     ))}
                     {allComments.filter(c => c.comment.postId === post.id).length === 0 && (
-                       <p class="text-xs uppercase tracking-wide font-semibold text-gray-500 dark:text-gray-400 text-center">No hay comentarios aún. ¡Sé el primero!</p>
+                       <p class="dark:text-gray-400 font-semibold text-center text-gray-500 text-xs tracking-wide uppercase">No hay comentarios aún. ¡Sé el primero!</p>
                     )}
                   </div>
 
                   <!-- Comment Form -->
-                  <form method="POST" action="/api/community/comment" class="flex items-start gap-4">
+                  <form method="POST" action="/api/community/comment" class="flex gap-4 items-start">
                     <input type="hidden" name="postId" value={post.id} />
                     <textarea
                       name="content"
                       placeholder="Escribe un comentario..."
-                      class="flex-1 bg-brand-white dark:bg-brand-black/50 border border-gray-300 dark:border-gray-700 rounded-sm p-3 text-sm text-brand-black dark:text-white focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold resize-none min-h-[48px] hover:border-brand-gold/50 transition-colors shadow-inner"
+                      class="bg-brand-white border border-gray-300 dark:bg-brand-black/50 dark:border-gray-700 dark:text-white flex-1 focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold hover:border-brand-gold/50 min-h-[48px] p-3 resize-none rounded-sm shadow-inner text-brand-black text-sm transition-colors"
                       required
                     ></textarea>
                     <Button type="submit" size="sm" class="h-auto self-stretch">Enviar</Button>

@@ -10,30 +10,30 @@ interface Props {
 const { pageDict, lang } = Astro.props;
 const t = usePageTranslations(pageDict, lang);
 ---
-<section class="max-w-7xl mx-auto px-4 mb-12 border-b border-black/10 dark:border-white/10">
-  <div class="flex overflow-x-auto space-x-8 no-scrollbar">
-    <a href="#" class="text-brand-gold border-b-2 border-brand-gold pb-4 px-2 whitespace-nowrap font-medium flex items-center gap-2 transition-colors">
-      <LayoutDashboard class="w-5 h-5" />
+<section class="border-b border-black/10 dark:border-white/10 max-w-7xl mb-12 mx-auto px-4">
+  <div class="flex no-scrollbar overflow-x-auto space-x-8">
+    <a href="#" class="border-b-2 border-brand-gold flex font-medium gap-2 items-center pb-4 px-2 text-brand-gold transition-colors whitespace-nowrap">
+      <LayoutDashboard class="h-5 w-5" />
       {t('futebol.tabs.overview')}
     </a>
-    <a href="#" class="text-brand-black dark:text-brand-white/70 dark:text-brand-gray-light hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-brand-white pb-4 px-2 whitespace-nowrap font-medium flex items-center gap-2 transition-colors">
-      <Users class="w-5 h-5" />
+    <a href="#" class="dark:hover:text-brand-black dark:text-brand-gray-light dark:text-brand-white dark:text-brand-white/70 flex font-medium gap-2 hover:text-brand-black items-center pb-4 px-2 text-brand-black transition-colors whitespace-nowrap">
+      <Users class="h-5 w-5" />
       {t('futebol.tabs.teams')}
     </a>
-    <a href="#" class="text-brand-black dark:text-brand-white/70 dark:text-brand-gray-light hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-brand-white pb-4 px-2 whitespace-nowrap font-medium flex items-center gap-2 transition-colors">
-      <Trophy class="w-5 h-5" />
+    <a href="#" class="dark:hover:text-brand-black dark:text-brand-gray-light dark:text-brand-white dark:text-brand-white/70 flex font-medium gap-2 hover:text-brand-black items-center pb-4 px-2 text-brand-black transition-colors whitespace-nowrap">
+      <Trophy class="h-5 w-5" />
       {t('futebol.tabs.championships')}
     </a>
-    <a href="#" class="text-brand-black dark:text-brand-white/70 dark:text-brand-gray-light hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-brand-white pb-4 px-2 whitespace-nowrap font-medium flex items-center gap-2 transition-colors">
-      <CalendarDays class="w-5 h-5" />
+    <a href="#" class="dark:hover:text-brand-black dark:text-brand-gray-light dark:text-brand-white dark:text-brand-white/70 flex font-medium gap-2 hover:text-brand-black items-center pb-4 px-2 text-brand-black transition-colors whitespace-nowrap">
+      <CalendarDays class="h-5 w-5" />
       {t('futebol.tabs.calendar')}
     </a>
-    <a href="#" class="text-brand-black dark:text-brand-white/70 dark:text-brand-gray-light hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-brand-white pb-4 px-2 whitespace-nowrap font-medium flex items-center gap-2 transition-colors">
-      <Users class="w-5 h-5" />
+    <a href="#" class="dark:hover:text-brand-black dark:text-brand-gray-light dark:text-brand-white dark:text-brand-white/70 flex font-medium gap-2 hover:text-brand-black items-center pb-4 px-2 text-brand-black transition-colors whitespace-nowrap">
+      <Users class="h-5 w-5" />
       {t('futebol.tabs.players')}
     </a>
-    <a href="#" class="text-brand-black dark:text-brand-white/70 dark:text-brand-gray-light hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-brand-white pb-4 px-2 whitespace-nowrap font-medium flex items-center gap-2 transition-colors">
-      <ChartBar class="w-5 h-5" />
+    <a href="#" class="dark:hover:text-brand-black dark:text-brand-gray-light dark:text-brand-white dark:text-brand-white/70 flex font-medium gap-2 hover:text-brand-black items-center pb-4 px-2 text-brand-black transition-colors whitespace-nowrap">
+      <ChartBar class="h-5 w-5" />
       {t('futebol.tabs.stats')}
     </a>
   </div>

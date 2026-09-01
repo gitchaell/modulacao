@@ -21,81 +21,81 @@ if (session.userId) {
 
 <BaseLayout title={t('auth.login.title') + ` | ${tenantConfig.name}`}>
   <!-- Add wave pattern explicitly to match the dark aesthetic behind -->
-  <div class="fixed inset-0 w-full h-full z-[-1] opacity-40 pointer-events-none bg-brand-white dark:bg-[#0a0a0a]">
+  <div class="bg-brand-white dark:bg-[#0a0a0a] dark:bg-brand-dark-card fixed h-full inset-0 opacity-40 pointer-events-none w-full z-[-1]">
     <WaveBackground />
   </div>
 
-  <div class="w-full flex-grow flex flex-col justify-center py-16 px-4 sm:px-6 lg:px-8 relative z-10 pt-24">
+  <div class="flex flex-col flex-grow justify-center lg:px-8 pt-24 px-4 py-16 relative sm:px-6 w-full z-10">
     <!-- Main 2-column layout mirroring the design -->
-    <div class="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6 lg:gap-8 items-stretch">
+    <div class="gap-6 grid grid-cols-1 items-stretch lg:gap-8 lg:grid-cols-[1.2fr_0.8fr] max-w-[1400px] mx-auto w-full">
 
       <!-- Left side: Content Panels -->
-      <div class="flex flex-col gap-6 animate-smooth-fade">
+      <div class="animate-smooth-fade flex flex-col gap-6">
 
         <!-- Top Image Banner in Left Side -->
-        <div class="w-full h-64 md:h-80 rounded-2xl overflow-hidden relative border border-black/5 dark:border-white/5 premium-shadow">
-          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Earth from Space" class="w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-transparent to-transparent"></div>
+        <div class="border border-black/5 dark:border-white/5 h-64 md:h-80 overflow-hidden premium-shadow relative rounded-2xl w-full">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Earth from Space" class="h-full object-cover w-full" />
+          <div class="absolute bg-gradient-to-t from-[#0a0a0a]/90 inset-0 to-transparent via-transparent"></div>
         </div>
 
         <!-- Highlight & Text content box -->
-        <div class="bg-white/80 dark:bg-[#111111]/80 backdrop-blur-md border border-black/5 dark:border-white/5 rounded-2xl p-8 sm:p-12 premium-shadow flex-grow">
+        <div class="backdrop-blur-md bg-white/80 border border-black/5 dark:bg-[#111111]/80 dark:border-white/5 flex-grow p-8 premium-shadow rounded-2xl sm:p-12">
           <div class="max-w-2xl">
-            <h2 class="text-4xl lg:text-5xl leading-tight font-display font-bold text-brand-black dark:text-brand-white uppercase tracking-wider mb-6">
+            <h2 class="dark:text-brand-white font-bold font-display leading-tight lg:text-5xl mb-6 text-4xl text-brand-black tracking-wider uppercase">
               BEM-VINDO À<br />
               <span class="text-brand-gold">ÁREA DE MEMBROS</span>
             </h2>
-            <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-12">
+            <p class="dark:text-gray-400 leading-relaxed mb-12 text-gray-600 text-lg">
               {t('auth.login.welcome_desc')}
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="gap-8 grid grid-cols-1 mb-12 md:grid-cols-2">
               <div class="flex gap-4">
                 <div class="mt-1 shrink-0 text-brand-gold">
-                  <Users class="w-6 h-6" />
+                  <Users class="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 class="text-brand-black dark:text-brand-white font-bold text-sm tracking-wide mb-1">{t('auth.login.feature1.title')}</h3>
-                  <p class="text-gray-600 dark:text-gray-400 text-sm">{t('auth.login.feature1.desc')}</p>
+                  <h3 class="dark:text-brand-white font-bold mb-1 text-brand-black text-sm tracking-wide">{t('auth.login.feature1.title')}</h3>
+                  <p class="dark:text-gray-400 text-gray-600 text-sm">{t('auth.login.feature1.desc')}</p>
                 </div>
               </div>
 
               <div class="flex gap-4">
                 <div class="mt-1 shrink-0 text-brand-gold">
-                  <FileText class="w-6 h-6" />
+                  <FileText class="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 class="text-brand-black dark:text-brand-white font-bold text-sm tracking-wide mb-1">{t('auth.login.feature2.title')}</h3>
-                  <p class="text-gray-600 dark:text-gray-400 text-sm">{t('auth.login.feature2.desc')}</p>
+                  <h3 class="dark:text-brand-white font-bold mb-1 text-brand-black text-sm tracking-wide">{t('auth.login.feature2.title')}</h3>
+                  <p class="dark:text-gray-400 text-gray-600 text-sm">{t('auth.login.feature2.desc')}</p>
                 </div>
               </div>
 
               <div class="flex gap-4">
                 <div class="mt-1 shrink-0 text-brand-gold">
-                  <Calendar class="w-6 h-6" />
+                  <Calendar class="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 class="text-brand-black dark:text-brand-white font-bold text-sm tracking-wide mb-1">{t('auth.login.feature3.title')}</h3>
-                  <p class="text-gray-600 dark:text-gray-400 text-sm">{t('auth.login.feature3.desc')}</p>
+                  <h3 class="dark:text-brand-white font-bold mb-1 text-brand-black text-sm tracking-wide">{t('auth.login.feature3.title')}</h3>
+                  <p class="dark:text-gray-400 text-gray-600 text-sm">{t('auth.login.feature3.desc')}</p>
                 </div>
               </div>
 
               <div class="flex gap-4">
                 <div class="mt-1 shrink-0 text-brand-gold">
-                  <Shield class="w-6 h-6" />
+                  <Shield class="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 class="text-brand-black dark:text-brand-white font-bold text-sm tracking-wide mb-1">{t('auth.login.feature4.title')}</h3>
-                  <p class="text-gray-600 dark:text-gray-400 text-sm">{t('auth.login.feature4.desc')}</p>
+                  <h3 class="dark:text-brand-white font-bold mb-1 text-brand-black text-sm tracking-wide">{t('auth.login.feature4.title')}</h3>
+                  <p class="dark:text-gray-400 text-gray-600 text-sm">{t('auth.login.feature4.desc')}</p>
                 </div>
               </div>
             </div>
 
             <!-- "Ainda não é membro?" section matching the design -->
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pt-8 border-t border-black/10 dark:border-white/10 gap-6">
+            <div class="border-black/10 border-t dark:border-white/10 flex flex-col gap-6 items-start justify-between pt-8 sm:flex-row sm:items-center">
               <div>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">{t('auth.login.not_member')}</p>
-                <a href="#" class="text-brand-gold hover:text-brand-black dark:text-brand-white transition-colors text-sm font-bold tracking-wide flex items-center gap-2 group">
+                <p class="dark:text-gray-400 mb-1 text-gray-600 text-sm">{t('auth.login.not_member')}</p>
+                <a href="#" class="dark:text-brand-white flex font-bold gap-2 group hover:text-brand-black items-center text-brand-gold text-sm tracking-wide transition-colors">
                   {t('auth.login.join_now')}
                 </a>
               </div>
@@ -106,35 +106,35 @@ if (session.userId) {
       </div>
 
       <!-- Right side: Login Form Card Panel -->
-      <div class="flex flex-col h-full animate-smooth-fade" style="animation-delay: 0.1s;">
-        <div class="bg-white/90 dark:bg-[#111111]/90 backdrop-blur-md p-8 sm:p-12 border border-black/5 dark:border-white/5 premium-shadow rounded-2xl h-full flex flex-col justify-center relative overflow-hidden">
+      <div class="animate-smooth-fade flex flex-col h-full" style="animation-delay: 0.1s;">
+        <div class="backdrop-blur-md bg-white/90 border border-black/5 dark:bg-[#111111]/90 dark:border-white/5 flex flex-col h-full justify-center overflow-hidden p-8 premium-shadow relative rounded-2xl sm:p-12">
 
           <!-- Subtle gold gradient decoration at the top -->
-          <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-30"></div>
+          <div class="absolute bg-gradient-to-r from-transparent h-1 left-0 opacity-30 to-transparent top-0 via-brand-gold w-full"></div>
 
           <div class="mb-10 text-center">
-            <h1 class="text-3xl font-display font-bold text-brand-black dark:text-brand-white uppercase tracking-wider mb-3">
+            <h1 class="dark:text-brand-white font-bold font-display mb-3 text-3xl text-brand-black tracking-wider uppercase">
               {t('auth.login.header_title')}
             </h1>
-            <p class="text-gray-600 dark:text-gray-400">
+            <p class="dark:text-gray-400 text-gray-600">
               {t('auth.login.header_subtitle')}
             </p>
           </div>
 
-          <form class="space-y-6 max-w-sm mx-auto w-full" method="POST" action="/api/auth/login">
+          <form class="max-w-sm mx-auto space-y-6 w-full" method="POST" action="/api/auth/login">
 
             <!-- Email Input -->
             <div class="relative">
-              <label class="block text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-widest mb-2">{t('auth.login.email')}</label>
+              <label class="block dark:text-gray-400 font-bold mb-2 text-gray-600 text-xs tracking-widest uppercase">{t('auth.login.email')}</label>
               <div class="relative">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail class="h-5 w-5 text-gray-500 dark:text-gray-400" />
+                <div class="absolute flex inset-y-0 items-center left-0 pl-3 pointer-events-none">
+                  <Mail class="dark:text-gray-400 h-5 text-gray-500 w-5" />
                 </div>
                 <input
                   type="email"
                   name="email"
                   required
-                  class="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-[#1a1a1a] border border-black/10 dark:border-white/10 rounded-sm text-brand-black dark:text-brand-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-brand-gold focus:border-brand-gold transition-colors text-sm"
+                  class="bg-gray-50 border border-black/10 dark:bg-[#1a1a1a] dark:bg-brand-black dark:border-white/10 dark:text-brand-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold pl-10 placeholder-gray-500 pr-4 py-3 rounded-sm text-brand-black text-sm transition-colors w-full"
                   placeholder="seu@email.com"
                 />
               </div>
@@ -142,41 +142,41 @@ if (session.userId) {
 
             <!-- Password Input -->
             <div class="relative">
-              <label class="block text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-widest mb-2">{t('auth.login.password')}</label>
+              <label class="block dark:text-gray-400 font-bold mb-2 text-gray-600 text-xs tracking-widest uppercase">{t('auth.login.password')}</label>
               <div class="relative">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock class="h-5 w-5 text-gray-500 dark:text-gray-400" />
+                <div class="absolute flex inset-y-0 items-center left-0 pl-3 pointer-events-none">
+                  <Lock class="dark:text-gray-400 h-5 text-gray-500 w-5" />
                 </div>
                 <input
                   type="password"
                   name="password"
                   required
-                  class="w-full pl-10 pr-10 py-3 bg-gray-50 dark:bg-[#1a1a1a] border border-black/10 dark:border-white/10 rounded-sm text-brand-black dark:text-brand-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-brand-gold focus:border-brand-gold transition-colors text-sm"
+                  class="bg-gray-50 border border-black/10 dark:bg-[#1a1a1a] dark:bg-brand-black dark:border-white/10 dark:text-brand-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold pl-10 placeholder-gray-500 pr-10 py-3 rounded-sm text-brand-black text-sm transition-colors w-full"
                   placeholder="••••••••"
                 />
-                <button type="button" id="toggle-password" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:text-gray-300 transition-colors">
+                <button type="button" id="toggle-password" class="absolute dark:text-gray-300 dark:text-gray-400 flex hover:text-gray-600 inset-y-0 items-center pr-3 right-0 text-gray-500 transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
                 </button>
               </div>
             </div>
 
             <div class="flex justify-end mt-2">
-              <a href="#" class="text-xs text-gray-600 dark:text-gray-400 hover:text-brand-gold transition-colors">
+              <a href="#" class="dark:text-gray-400 hover:text-brand-gold text-gray-600 text-xs transition-colors">
                 {t('auth.login.forgot_password')}
               </a>
             </div>
 
-            <Button type="submit" fullWidth class="mt-8 !bg-brand-gold hover:!bg-brand-gold-dark !text-brand-black dark:!text-brand-white uppercase tracking-widest font-bold border-none rounded-sm !py-4 transition-colors">
+            <Button type="submit" fullWidth class="!bg-brand-gold !py-4 !text-brand-black border-none dark:!text-brand-white font-bold hover:!bg-brand-gold-dark mt-8 rounded-sm tracking-widest transition-colors uppercase">
               {t('auth.login.header_title')}
             </Button>
 
-            <div class="relative my-8 flex items-center">
-              <div class="flex-grow border-t border-black/10 dark:border-white/10"></div>
-              <span class="flex-shrink-0 mx-4 text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest">{t('auth.login.or')}</span>
-              <div class="flex-grow border-t border-black/10 dark:border-white/10"></div>
+            <div class="flex items-center my-8 relative">
+              <div class="border-black/10 border-t dark:border-white/10 flex-grow"></div>
+              <span class="dark:text-gray-400 flex-shrink-0 mx-4 text-gray-500 text-xs tracking-widest uppercase">{t('auth.login.or')}</span>
+              <div class="border-black/10 border-t dark:border-white/10 flex-grow"></div>
             </div>
 
-            <Button type="button" variant="outline" fullWidth class="!bg-transparent !border-black/10 dark:border-white/10 hover:!border-white/30 hover:!bg-white/5 !text-brand-black dark:!text-brand-white uppercase tracking-widest font-bold rounded-sm !py-4 transition-colors">
+            <Button type="button" variant="outline" fullWidth class="!bg-transparent !border-black/10 !py-4 !text-brand-black border-gray-200 dark:!text-brand-white dark:border-white/10 font-bold hover:!bg-white/5 hover:!border-white/30 rounded-sm tracking-widest transition-colors uppercase">
               {t('auth.login.invite_btn')}
             </Button>
 

@@ -19,7 +19,7 @@ const initial = fallback || alt.charAt(0).toUpperCase();
 ---
 <div class={`relative inline-flex items-center justify-center overflow-hidden rounded-full bg-brand-gold/20 text-brand-gold-dark dark:text-brand-gold border border-brand-gold/30 shrink-0 ${sizes[size]}`}>
   {src ? (
-    <img src={src} alt={alt} class="w-full h-full object-cover" loading="lazy" decoding="async" />
+    <img src={src} alt={alt} class="h-full object-cover w-full" loading="lazy" decoding="async" />
   ) : (
     <span class="font-semibold">{initial}</span>
   )}
