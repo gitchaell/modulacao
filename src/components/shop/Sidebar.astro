@@ -32,7 +32,7 @@ const sidebarCategories = [
       <ul class="space-y-3">
         {sidebarCategories.map(cat => (
           <li>
-            <a href="#" class={`flex items-center justify-between text-sm group ${cat.active ? 'text-brand-gold font-medium' : 'text-brand-black dark:text-brand-white/70 dark:text-gray-400 hover:text-brand-black dark:hover:text-white'}`}>
+            <a href="#" class={`flex items-center justify-between text-sm group ${cat.active ? 'text-brand-gold font-medium' : 'text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white'}`}>
               <span class="relative">
                 {cat.name}
                 <span class={`absolute -bottom-1 left-0 h-[1px] bg-brand-gold transition-all duration-300 ${cat.active ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
@@ -61,7 +61,7 @@ const sidebarCategories = [
               <div class={`w-4 h-4 rounded border flex items-center justify-center transition-colors ${idx === 0 ? 'border-brand-gold bg-brand-gold/20' : 'border-gray-300 dark:border-white/20 group-hover:border-brand-gold/50'}`}>
                 {idx === 0 && <div class="w-2 h-2 rounded-sm bg-brand-gold"></div>}
               </div>
-              <span class={`text-sm ${idx === 0 ? 'text-brand-black dark:text-white font-medium' : 'text-brand-black dark:text-brand-white/70 dark:text-gray-400 group-hover:text-brand-black dark:text-brand-white dark:group-hover:text-gray-700 dark:text-gray-200'}`}>
+              <span class={`text-sm ${idx === 0 ? 'text-brand-black dark:text-white font-medium' : 'text-gray-600 dark:text-gray-400 group-hover:text-brand-black dark:text-brand-white dark:group-hover:text-gray-700 dark:text-gray-200'}`}>
                 {t(`shop.sidebar.price.${price}`)}
               </span>
             </label>
