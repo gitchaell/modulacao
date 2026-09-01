@@ -53,7 +53,7 @@ const formatDate = (date: Date | null) => {
         <textarea
           name="content"
           placeholder="¿Qué quieres compartir con la comunidad?"
-          class="w-full bg-transparent border border-gray-300 dark:border-gray-700 rounded-sm p-4 text-brand-black dark:text-white placeholder:text-gray-400 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold resize-none h-24 hover:border-brand-gold/50 transition-colors"
+          class="w-full bg-transparent border border-gray-300 dark:border-gray-700 rounded-sm p-4 text-brand-black dark:text-white placeholder:text-gray-500 dark:text-gray-400 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold resize-none h-24 hover:border-brand-gold/50 transition-colors"
           required
         ></textarea>
         <div class="flex justify-between items-center pt-4 border-t border-gray-100 dark:border-white/5">
@@ -106,7 +106,7 @@ const formatDate = (date: Date | null) => {
                   </span>
                 </div>
 
-                <div class="text-gray-300 text-sm whitespace-pre-wrap mb-4 leading-relaxed">
+                <div class="text-gray-600 dark:text-gray-300 text-sm whitespace-pre-wrap mb-4 leading-relaxed">
                   {post.content}
                 </div>
 
@@ -140,7 +140,7 @@ const formatDate = (date: Date | null) => {
                             <a href={`/@${c.author.slug}`} class="font-semibold text-brand-black dark:text-white text-xs hover:text-brand-gold transition-colors">
                               {c.author.fullName}
                             </a>
-                            <span class="text-xs uppercase font-semibold tracking-wider text-gray-400">
+                            <span class="text-xs uppercase font-semibold tracking-wider text-gray-500 dark:text-gray-400">
                               {formatDate(c.comment.createdAt as unknown as Date)}
                             </span>
                           </div>
@@ -149,7 +149,7 @@ const formatDate = (date: Date | null) => {
                       </div>
                     ))}
                     {allComments.filter(c => c.comment.postId === post.id).length === 0 && (
-                       <p class="text-xs uppercase tracking-wide font-semibold text-gray-400 text-center">No hay comentarios aún. ¡Sé el primero!</p>
+                       <p class="text-xs uppercase tracking-wide font-semibold text-gray-500 dark:text-gray-400 text-center">No hay comentarios aún. ¡Sé el primero!</p>
                     )}
                   </div>
 
@@ -202,11 +202,11 @@ const formatDate = (date: Date | null) => {
           if (res.ok) {
             const data = await res.json();
             if(data.action === 'added') {
-               target.classList.remove('text-gray-400');
+               target.classList.remove('text-gray-500 dark:text-gray-400');
                target.classList.add('text-brand-gold');
                target.querySelector('svg')?.setAttribute('fill', 'currentColor');
             } else {
-               target.classList.add('text-gray-400');
+               target.classList.add('text-gray-500 dark:text-gray-400');
                target.classList.remove('text-brand-gold');
                target.querySelector('svg')?.setAttribute('fill', 'none');
             }

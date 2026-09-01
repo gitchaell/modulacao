@@ -49,20 +49,20 @@ const isPast = (date: Date) => new Date(date) < new Date();
         <h2 class="text-xl font-bold text-brand-black dark:text-white mb-4">Crear Nuevo Evento</h2>
         <form method="POST" action="/api/admin/events/create" class="space-y-4">
           <div>
-            <label class="block text-sm font-semibold text-gray-300 mb-1">Título</label>
-            <input type="text" name="title" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
+            <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Título</label>
+            <input type="text" name="title" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
           </div>
           <div>
-            <label class="block text-sm font-semibold text-gray-300 mb-1">Fecha y Hora</label>
-            <input type="datetime-local" name="date" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
+            <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Fecha y Hora</label>
+            <input type="datetime-local" name="date" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
           </div>
           <div>
-            <label class="block text-sm font-semibold text-gray-300 mb-1">Ubicación</label>
-            <input type="text" name="location" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
+            <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Ubicación</label>
+            <input type="text" name="location" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
           </div>
           <div>
-            <label class="block text-sm font-semibold text-gray-300 mb-1">Descripción</label>
-            <textarea name="description" required rows="3" class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white"></textarea>
+            <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Descripción</label>
+            <textarea name="description" required rows="3" class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white"></textarea>
           </div>
           <div class="flex justify-end gap-2 mt-4">
             <Button type="button" variant="ghost" onclick="document.getElementById('create-event-modal').classList.add('hidden')">Cancelar</Button>
@@ -79,20 +79,20 @@ const isPast = (date: Date) => new Date(date) < new Date();
         <form method="POST" action="/api/admin/events/update" class="space-y-4">
           <input type="hidden" name="id" id="edit-event-id" />
           <div>
-            <label class="block text-sm font-semibold text-gray-300 mb-1">Título</label>
-            <input type="text" name="title" id="edit-event-title" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
+            <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Título</label>
+            <input type="text" name="title" id="edit-event-title" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
           </div>
           <div>
-            <label class="block text-sm font-semibold text-gray-300 mb-1">Fecha y Hora</label>
-            <input type="datetime-local" name="date" id="edit-event-date" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
+            <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Fecha y Hora</label>
+            <input type="datetime-local" name="date" id="edit-event-date" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
           </div>
           <div>
-            <label class="block text-sm font-semibold text-gray-300 mb-1">Ubicación</label>
-            <input type="text" name="location" id="edit-event-location" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white" />
+            <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Ubicación</label>
+            <input type="text" name="location" id="edit-event-location" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
           </div>
           <div>
-            <label class="block text-sm font-semibold text-gray-300 mb-1">Descripción</label>
-            <textarea name="description" id="edit-event-description" required rows="3" class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-md p-2 text-brand-black dark:text-white"></textarea>
+            <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Descripción</label>
+            <textarea name="description" id="edit-event-description" required rows="3" class="w-full bg-gray-100 dark:bg-brand-black border border-gray-300 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white"></textarea>
           </div>
           <div class="flex justify-end gap-2 mt-4">
             <Button type="button" variant="ghost" onclick="document.getElementById('edit-event-modal').classList.add('hidden')">Cancelar</Button>
@@ -138,12 +138,12 @@ const isPast = (date: Date) => new Date(date) < new Date();
             </td>
             <td class="p-4 text-right">
               <div class="flex items-center justify-end gap-2 opacity-50 group-hover/row:opacity-100 transition-opacity">
-                <button class="edit-event-btn p-2 rounded-sm text-gray-400 hover:text-brand-gold transition-colors focus-visible" data-id={event.id} data-title={event.title} data-description={event.description} data-location={event.location} data-date={new Date(event.date).toISOString().slice(0, 16)} aria-label="Editar">
+                <button class="edit-event-btn p-2 rounded-sm text-gray-500 dark:text-gray-400 hover:text-brand-gold transition-colors focus-visible" data-id={event.id} data-title={event.title} data-description={event.description} data-location={event.location} data-date={new Date(event.date).toISOString().slice(0, 16)} aria-label="Editar">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
                 </button>
                 <form method="POST" action="/api/admin/events/delete" class="inline-block m-0 p-0" onsubmit="return confirm('¿Eliminar este evento?')">
                   <input type="hidden" name="id" value={event.id} />
-                  <button type="submit" class="delete-event-btn p-2 rounded-sm text-gray-400 hover:text-red-500 transition-colors focus-visible" aria-label="Eliminar">
+                  <button type="submit" class="delete-event-btn p-2 rounded-sm text-gray-500 dark:text-gray-400 hover:text-red-500 transition-colors focus-visible" aria-label="Eliminar">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
                   </button>
                 </form>

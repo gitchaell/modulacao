@@ -71,9 +71,9 @@ const formatDate = (date: Date) => {
               <td class="p-4">
                 <Badge variant={user.role === 'ADMIN' ? 'error' : 'gold'}>{user.role}</Badge>
               </td>
-              <td class="p-4 text-xs font-semibold tracking-wider uppercase text-gray-400">{formatDate(user.createdAt as unknown as Date)}</td>
+              <td class="p-4 text-xs font-semibold tracking-wider uppercase text-gray-500 dark:text-gray-400">{formatDate(user.createdAt as unknown as Date)}</td>
               <td class="p-4 text-right">
-                <button class="p-2 text-gray-400 hover:text-brand-gold transition-colors focus-visible rounded-sm cursor-not-allowed opacity-50" aria-label="Gestionar Usuario" disabled>
+                <button class="p-2 text-gray-500 dark:text-gray-400 hover:text-brand-gold transition-colors focus-visible rounded-sm cursor-not-allowed opacity-50" aria-label="Gestionar Usuario" disabled>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
                 </button>
               </td>
@@ -112,12 +112,12 @@ const formatDate = (date: Date) => {
           </div>
           <ul class="divide-y divide-gray-100 dark:divide-white/5 max-h-96 overflow-y-auto">
             {pendingInvitations.map(inv => (
-              <li class="p-6 hover:bg-gray-50 dark:hover:bg-brand-black/20 transition-colors">
+              <li class="p-6 hover:bg-gray-50 dark:hover:bg-gray-100 dark:bg-brand-black/20 transition-colors">
                 <div class="flex justify-between items-start mb-4">
                   <span class="text-sm text-brand-black dark:text-white font-semibold truncate mr-2">{inv.email}</span>
                   <Badge variant={inv.role === 'ADMIN' ? 'error' : 'gold'}>{inv.role}</Badge>
                 </div>
-                <div class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-3">Expira: {formatDate(inv.expiresAt as unknown as Date)}</div>
+                <div class="text-xs font-semibold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-3">Expira: {formatDate(inv.expiresAt as unknown as Date)}</div>
                 <div class="flex gap-2">
                   <input type="text" readonly value={`${Astro.url.origin}/convite/${inv.token}`} class="flex-1 bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-gray-800 rounded-sm px-3 py-2 text-xs text-gray-500 dark:text-gray-400 focus:outline-none focus:ring-1 focus:ring-brand-gold" aria-label="Link de invitación" />
                 </div>

@@ -72,7 +72,7 @@ const lang = getLangFromUrl(Astro.cookies);
 
           <div class="flex gap-4 w-full max-w-md justify-start overflow-x-auto pb-2 scrollbar-hide">
             {product.images.map((img, i) => (
-              <button class={`shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-colors ${i === 0 ? 'border-brand-gold' : 'border-transparent hover:border-brand-gold/50'}`}>
+              <button class={`shrink-0 w-20 h-20 rounded-sm overflow-hidden border-2 transition-colors ${i === 0 ? 'border-brand-gold' : 'border-transparent hover:border-brand-gold/50'}`}>
                 <img src={img} alt={`${product.name} - view ${i + 1}`} class="w-full h-full object-cover" />
               </button>
             ))}
@@ -98,7 +98,7 @@ const lang = getLangFromUrl(Astro.cookies);
             <div class="flex items-end gap-3 mb-6">
               <span class="text-3xl font-bold text-brand-gold">{product.price}</span>
               {product.originalPrice && (
-                <span class="text-lg text-gray-400 line-through mb-1">{product.originalPrice}</span>
+                <span class="text-lg text-gray-500 dark:text-gray-400 line-through mb-1">{product.originalPrice}</span>
               )}
             </div>
 
@@ -114,7 +114,7 @@ const lang = getLangFromUrl(Astro.cookies);
                 <h4 class="text-sm font-medium text-brand-black dark:text-white mb-3 uppercase tracking-wider">{variant.name}</h4>
                 <div class="flex flex-wrap gap-3">
                   {variant.options.map((opt, i) => (
-                    <button class={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${i === 0 ? 'border-brand-gold bg-brand-gold/10 text-brand-gold' : 'border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:border-brand-gold/50 hover:text-brand-gold'}`}>
+                    <button class={`px-4 py-2 rounded-sm border text-sm font-medium transition-colors ${i === 0 ? 'border-brand-gold bg-brand-gold/10 text-brand-gold' : 'border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:border-brand-gold/50 hover:text-brand-gold'}`}>
                       {opt}
                     </button>
                   ))}
@@ -124,7 +124,7 @@ const lang = getLangFromUrl(Astro.cookies);
 
              <div>
                 <h4 class="text-sm font-medium text-brand-black dark:text-white mb-3 uppercase tracking-wider">Quantidade</h4>
-                <div class="flex items-center max-w-[150px] border border-gray-200 dark:border-white/10 rounded-lg overflow-hidden">
+                <div class="flex items-center max-w-[150px] border border-gray-200 dark:border-white/10 rounded-sm overflow-hidden">
                   <button class="w-10 h-10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">-</button>
                   <input type="text" value="1" class="w-full h-10 bg-transparent text-center text-brand-black dark:text-white font-medium border-x border-gray-200 dark:border-white/10 focus:outline-none" readonly />
                   <button class="w-10 h-10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">+</button>
@@ -142,14 +142,14 @@ const lang = getLangFromUrl(Astro.cookies);
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              class="w-full bg-brand-gold hover:bg-[#C5A030] text-brand-black dark:text-brand-white font-semibold py-4 px-6 rounded-lg flex items-center justify-center transition-colors shadow-[0_0_20px_rgba(212,175,55,0.2)] group"
+              class="w-full bg-brand-gold hover:bg-[#C5A030] text-brand-black dark:text-brand-white font-semibold py-4 px-6 rounded-sm flex items-center justify-center transition-colors shadow-[0_0_20px_rgba(212,175,55,0.2)] group"
             >
               <MessageCircle class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
               COMPRAR VIA WHATSAPP
             </a>
 
             <div class="flex gap-4">
-              <button class="flex-1 bg-brand-white dark:bg-brand-dark border border-gray-200 dark:border-white/10 hover:border-brand-gold/50 text-brand-black dark:text-white font-medium py-3 px-4 rounded-lg flex items-center justify-center transition-colors group">
+              <button class="flex-1 bg-brand-white dark:bg-brand-dark border border-gray-200 dark:border-white/10 hover:border-brand-gold/50 text-brand-black dark:text-white font-medium py-3 px-4 rounded-sm flex items-center justify-center transition-colors group">
                 <Share2 class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-400 group-hover:text-brand-gold transition-colors" />
                 Compartilhar
               </button>

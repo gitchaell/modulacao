@@ -18,7 +18,7 @@ const inputId = id || Math.random().toString(36).substring(7);
   )}
   <input
     id={inputId}
-    class={`flex h-12 w-full rounded-sm border bg-white dark:bg-brand-black/50 px-4 py-3 text-sm text-brand-black dark:text-white placeholder:text-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold disabled:cursor-not-allowed disabled:opacity-50 ${error ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 dark:border-gray-700 hover:border-brand-gold/50'} ${className || ''}`}
+    class={`flex h-12 w-full rounded-sm border bg-white dark:bg-brand-black/50 px-4 py-3 text-sm text-brand-black dark:text-white placeholder:text-gray-500 dark:text-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold disabled:cursor-not-allowed disabled:opacity-50 ${error ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 dark:border-gray-700 hover:border-brand-gold/50'} ${className || ''}`}
     aria-label={label || rest['aria-label']}
     aria-invalid={error ? "true" : "false"}
     aria-required={rest.required ? "true" : undefined}

@@ -28,7 +28,7 @@ const t = usePageTranslations(pageDict, lang);
     </div>
 
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 mt-16">
-      <div class="flex items-center text-sm text-gray-400 mb-6 font-medium">
+      <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-6 font-medium">
         <a href="/" class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
         <span class="mx-2">&gt;</span>
         <span class="text-brand-black dark:text-brand-white uppercase">{t('contact.hero.title')}</span>
@@ -42,7 +42,7 @@ const t = usePageTranslations(pageDict, lang);
         {t('contact.info.desc')}
       </h2>
 
-      <p class="text-gray-300 text-base md:text-lg max-w-xl leading-relaxed whitespace-pre-line">
+      <p class="text-gray-600 dark:text-gray-300 text-base md:text-lg max-w-xl leading-relaxed whitespace-pre-line">
         {t('contact.info.desc2')}
       </p>
     </div>
@@ -60,7 +60,7 @@ const t = usePageTranslations(pageDict, lang);
              <h3 class="font-bold tracking-widest uppercase text-sm">{t('contact.info.email.label')}</h3>
           </div>
           <div class="pl-9 space-y-1">
-             <p class="text-gray-300 text-sm">contato@modulacao.org</p>
+             <p class="text-gray-600 dark:text-gray-300 text-sm">contato@modulacao.org</p>
              <p class="text-gray-500 dark:text-gray-400 text-xs">{t('contact.info.email.desc')}</p>
           </div>
         </div>
@@ -72,7 +72,7 @@ const t = usePageTranslations(pageDict, lang);
              <h3 class="font-bold tracking-widest uppercase text-sm">{t('contact.info.whatsapp')}</h3>
           </div>
           <div class="pl-9 space-y-1">
-             <p class="text-gray-300 text-sm">+591 780 00000</p>
+             <p class="text-gray-600 dark:text-gray-300 text-sm">+591 780 00000</p>
              <p class="text-gray-500 dark:text-gray-400 text-xs">{t('contact.info.whatsapp.desc')}</p>
           </div>
         </div>
@@ -84,7 +84,7 @@ const t = usePageTranslations(pageDict, lang);
              <h3 class="font-bold tracking-widest uppercase text-sm">{t('contact.info.address.label')}</h3>
           </div>
           <div class="pl-9 space-y-1">
-             <p class="text-gray-300 text-sm leading-tight whitespace-pre-line">{t('contact.info.address.desc')}</p>
+             <p class="text-gray-600 dark:text-gray-300 text-sm leading-tight whitespace-pre-line">{t('contact.info.address.desc')}</p>
              <a href="#" class="text-brand-gold text-xs hover:underline flex items-center gap-1 font-semibold mt-1">Ver no mapa <ChevronRight class="w-3 h-3"/></a>
           </div>
         </div>
@@ -96,7 +96,7 @@ const t = usePageTranslations(pageDict, lang);
              <h3 class="font-bold tracking-widest uppercase text-sm">{t('contact.info.hours')}</h3>
           </div>
           <div class="pl-9 space-y-1">
-             <p class="text-gray-300 text-sm leading-tight whitespace-pre-line">{t('contact.info.hours.desc')}</p>
+             <p class="text-gray-600 dark:text-gray-300 text-sm leading-tight whitespace-pre-line">{t('contact.info.hours.desc')}</p>
              <p class="text-gray-500 dark:text-gray-400 text-xs">{t('contact.info.hours.exc')}</p>
           </div>
         </div>
@@ -123,7 +123,7 @@ const t = usePageTranslations(pageDict, lang);
         <div class="space-y-6">
           <div>
             <h2 class="font-display text-2xl font-bold uppercase tracking-widest text-brand-black dark:text-brand-white mb-2">{t('contact.form.title2')}</h2>
-            <p class="text-gray-400 text-sm">{t('contact.form.desc')}</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">{t('contact.form.desc')}</p>
           </div>
 
           <form id="contact-form" method="POST" action="/api/contacto" class="space-y-6">
@@ -164,7 +164,7 @@ const t = usePageTranslations(pageDict, lang);
 
             <div class="flex items-start gap-3">
               <input type="checkbox" id="privacy" required class="mt-1 bg-gray-50 dark:bg-brand-dark border-black/10 dark:border-white/10 text-brand-gold focus:ring-brand-gold rounded-sm cursor-pointer" />
-              <label for="privacy" class="text-sm text-gray-400">
+              <label for="privacy" class="text-sm text-gray-500 dark:text-gray-400">
                 {t('contact.form.privacy')} <a href="#" class="text-brand-gold hover:underline">{t('contact.form.privacy.link')}</a>
               </label>
             </div>
@@ -181,7 +181,7 @@ const t = usePageTranslations(pageDict, lang);
         <div class="space-y-6">
           <div>
             <h2 class="font-display text-2xl font-bold uppercase tracking-widest text-brand-black dark:text-brand-white mb-2">{t('contact.location.title')}</h2>
-            <p class="text-gray-400 text-sm">{t('contact.location.desc')}</p>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">{t('contact.location.desc')}</p>
           </div>
 
           <div class="relative w-full h-[300px] bg-gray-50 dark:bg-brand-dark rounded-sm border border-black/10 dark:border-white/10 overflow-hidden group">
@@ -203,7 +203,7 @@ const t = usePageTranslations(pageDict, lang);
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&auto=format&fit=crop" alt="Building" class="w-full sm:w-32 h-24 object-cover rounded-sm border border-white/5 shrink-0" />
             <div class="space-y-2 w-full">
               <h3 class="font-bold text-brand-black dark:text-brand-white tracking-wide">{t('contact.location.building')}</h3>
-              <p class="text-gray-400 text-sm whitespace-pre-line">{t('contact.location.address')}</p>
+              <p class="text-gray-500 dark:text-gray-400 text-sm whitespace-pre-line">{t('contact.location.address')}</p>
               <a href="#" class="text-brand-gold text-xs font-bold uppercase tracking-widest hover:underline flex items-center gap-1 mt-2">
                 {t('contact.location.directions')} <ChevronRight class="w-3 h-3"/>
               </a>
@@ -220,7 +220,7 @@ const t = usePageTranslations(pageDict, lang);
              <h2 class="font-display text-2xl font-bold uppercase tracking-widest text-brand-black dark:text-brand-white">{t('contact.faq.title')}</h2>
              <div class="h-px bg-brand-gold/50 w-16"></div>
            </div>
-           <p class="text-gray-400 text-sm">{t('contact.faq.desc')}</p>
+           <p class="text-gray-500 dark:text-gray-400 text-sm">{t('contact.faq.desc')}</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -278,7 +278,7 @@ const t = usePageTranslations(pageDict, lang);
             <div class="text-brand-gold mt-1"><Map class="w-6 h-6" /></div>
             <div>
                <h2 class="font-display text-xl md:text-2xl font-bold uppercase tracking-widest text-brand-black dark:text-brand-white mb-1">{t('contact.cta.title')}</h2>
-               <p class="text-gray-400 text-sm md:text-base">{t('contact.cta.desc')}</p>
+               <p class="text-gray-500 dark:text-gray-400 text-sm md:text-base">{t('contact.cta.desc')}</p>
             </div>
          </div>
 

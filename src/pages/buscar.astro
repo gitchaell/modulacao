@@ -15,7 +15,7 @@ const query = Astro.url.searchParams.get('q') || '';
 <PublicLayout title={t('common.search')}>
   <div class="bg-brand-offwhite dark:bg-brand-dark min-h-screen pb-24">
 
-    <div class="bg-brand-black border-b border-gray-200 dark:border-white/5 py-24 relative overflow-hidden">
+    <div class="bg-gray-100 dark:bg-brand-black border-b border-gray-200 dark:border-white/5 py-24 relative overflow-hidden">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-gold/10 via-brand-black to-brand-black opacity-80 z-0"></div>
       <div class="relative z-10 container mx-auto px-6 max-w-4xl text-center animate-smooth-fade">
         <h1 class="font-display text-4xl md:text-5xl font-bold uppercase tracking-widest text-brand-gold mb-8">{t('common.search')}</h1>
@@ -79,7 +79,7 @@ const query = Astro.url.searchParams.get('q') || '';
               <span class="text-xs uppercase tracking-widest font-bold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-brand-black px-2.5 py-1 rounded-sm mr-4">${item.type}</span>
               <span class="font-semibold text-brand-black dark:text-white group-hover:text-brand-gold transition-colors text-lg font-display">${item.label}</span>
             </div>
-            <svg class="w-5 h-5 text-gray-400 group-hover:text-brand-gold group-hover:translate-x-1 transition-all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg class="w-5 h-5 text-gray-500 dark:text-gray-400 group-hover:text-brand-gold group-hover:translate-x-1 transition-all" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           `;
           container!.appendChild(card);
         });
