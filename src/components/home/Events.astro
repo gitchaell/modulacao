@@ -77,7 +77,7 @@ const events = [
       {events.map(event => (
         <a href={`/eventos/${event.id}`} class="bg-[#FAFAFA] border border-black/5 dark:bg-[#111] dark:border-white/5 duration-300 flex flex-col group hover:border-brand-gold/50 hover:shadow-md overflow-hidden shadow-sm sm:flex-row transition-all">
           {/* Date Block */}
-          <div class="bg-brand-black border-b border-gray-200 dark:bg-[#151515] dark:bg-brand-dark dark:border-white/10 dark:hover:text-brand-white dark:text-brand-white dark:text-gray-500 duration-300 flex flex-row group-hover:bg-brand-gold group-text-gray-400 hover:text-brand-black items-center justify-between p-6 sm:border-b-0 sm:border-r sm:flex-col sm:justify-center sm:w-32 text-brand-black transition-colors">
+          <div class="bg-gray-100 dark:bg-brand-black border-b border-gray-200 dark:bg-[#151515] dark:bg-brand-dark dark:border-white/10 dark:hover:text-brand-white dark:text-brand-white dark:text-gray-500 duration-300 flex flex-row group-hover:bg-brand-gold group-text-gray-500 dark:text-gray-400 hover:text-brand-black items-center justify-between p-6 sm:border-b-0 sm:border-r sm:flex-col sm:justify-center sm:w-32 text-brand-black transition-colors">
             <span class="font-bold text-sm tracking-widest uppercase">{event.date.month}</span>
             <span class="font-bold font-display sm:text-5xl text-4xl">{event.date.day}</span>
           </div>
@@ -116,7 +116,7 @@ const events = [
 
           {/* Arrow */}
           <div class="border-black/5 border-l dark:border-white/5 group-hover:border-brand-gold/20 hidden items-center justify-center px-6 sm:flex transition-colors">
-            <ArrowRight class="dark:text-white/20 duration-300 group-hover:text-brand-gold group-hover:translate-x-2 h-6 text-gray-300 transition-all w-6" />
+            <ArrowRight class="dark:text-white/20 duration-300 group-hover:text-brand-gold group-hover:translate-x-2 h-6 text-gray-600 dark:text-gray-300 transition-all w-6" />
           </div>
         </a>
       ))}

@@ -50,7 +50,7 @@ const articles = [
         </Typography>
         <div class="bg-brand-gold h-[2px] w-12"></div>
       </div>
-      <Link href="/artigos" class="border border-black/10 dark:border-white/10 dark:hover:text-brand-white dark:text-gray-500 flex font-extrabold gap-2 hover:bg-brand-gold hover:border-brand-gold hover:text-brand-black items-center px-5 py-2 rounded-sm text-brand-gold text-gray-400 text-xs tracking-[0.15em] transition-colors uppercase">
+      <Link href="/artigos" class="border border-black/10 dark:border-white/10 dark:hover:text-brand-white dark:text-gray-500 flex font-extrabold gap-2 hover:bg-brand-gold hover:border-brand-gold hover:text-brand-black items-center px-5 py-2 rounded-sm text-brand-gold text-gray-500 dark:text-gray-400 text-xs tracking-[0.15em] transition-colors uppercase">
         {t('home.articles.view_all') || 'VER TODOS'} <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </Link>
     </div>
@@ -66,7 +66,7 @@ const articles = [
           <div class="p-6">
             <Typography variant="h5" class="group-hover:text-brand-gold leading-tight mb-2 transition-colors">{article.title}</Typography>
             <Typography variant="small" class="leading-normal line-clamp-2 mb-5">{article.desc}</Typography>
-            <div class="dark:text-gray-400 flex font-bold gap-4 items-center text-gray-500 text-xs tracking-widest uppercase">
+            <div class="dark:text-gray-400 flex font-bold gap-4 items-center text-gray-500 dark:text-gray-400 text-xs tracking-widest uppercase">
               <span class="flex gap-1.5 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> {article.date}</span>
               <span class="flex gap-1.5 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> {article.readTime}</span>
             </div>

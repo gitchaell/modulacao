@@ -40,7 +40,7 @@ const allMembers = await dbQuery.orderBy(desc(profiles.updatedAt));
     <div class="flex flex-col gap-6 justify-between md:flex-row md:items-center">
       <div>
         <h1 class="font-bold font-display text-3xl text-brand-gold tracking-widest uppercase">{t('app.directory')}</h1>
-        <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500">Conoce y conecta con los miembros de {tenantConfig.name}.</p>
+        <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500 dark:text-gray-400">Conoce y conecta con los miembros de {tenantConfig.name}.</p>
       </div>
       <form class="flex gap-2 items-end md:w-[400px] w-full" action="/app/diretorio" method="GET">
         <Input type="search" name="q" value={query} placeholder="Buscar por nombre, país..." class="flex-1 h-12" />
@@ -58,10 +58,10 @@ const allMembers = await dbQuery.orderBy(desc(profiles.updatedAt));
             <Avatar src={member.avatarUrl} alt={member.fullName} size="xl" fallback={member.fullName.charAt(0)}  />
 
             <h3 class="dark:text-white font-bold font-display group-hover:text-brand-gold px-4 text-brand-black text-xl transition-colors truncate w-full">{member.fullName}</h3>
-            <p class="dark:group-hover:text-brand-gold dark:text-gray-400 font-bold group-hover:text-brand-gold mt-1 px-2 text-gray-500 text-sm tracking-widest transition-colors truncate uppercase">@{member.slug}</p>
+            <p class="dark:group-hover:text-brand-gold dark:text-gray-400 font-bold group-hover:text-brand-gold mt-1 px-2 text-gray-500 dark:text-gray-400 text-sm tracking-widest transition-colors truncate uppercase">@{member.slug}</p>
 
             {(member.city || member.country) && (
-              <p class="dark:text-gray-400 flex font-semibold gap-2 items-center justify-center mt-6 text-gray-500 text-xs">
+              <p class="dark:text-gray-400 flex font-semibold gap-2 items-center justify-center mt-6 text-gray-500 dark:text-gray-400 text-xs">
                 {member.country && <Flag country={member.country} />}
                 {member.city}{member.city && member.country ? ', ' : ''}{member.country}
               </p>
@@ -72,7 +72,7 @@ const allMembers = await dbQuery.orderBy(desc(profiles.updatedAt));
 
       {allMembers.length === 0 && (
          <div class="col-span-full py-24 text-center">
-            <p class="dark:text-gray-400 font-semibold text-gray-500 text-lg">No se encontraron miembros con ese término de búsqueda.</p>
+            <p class="dark:text-gray-400 font-semibold text-gray-500 dark:text-gray-400 text-lg">No se encontraron miembros con ese término de búsqueda.</p>
          </div>
       )}
     </div>

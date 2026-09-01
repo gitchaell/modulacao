@@ -7,7 +7,7 @@ interface Props {
 const { headers, class: className = '' } = Astro.props;
 ---
 <div class={`w-full overflow-x-auto rounded-sm border border-gray-200 dark:border-gray-800 ${className}`}>
-  <table class="dark:text-gray-400 text-gray-500 text-left text-sm w-full">
+  <table class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-left text-sm w-full">
     <thead class="bg-gray-50 border-b border-gray-200 dark:bg-gray-900/50 dark:border-gray-800 dark:text-gray-400 text-gray-700 text-xs uppercase">
       <tr>
         {headers.map((header) => (

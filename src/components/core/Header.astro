@@ -15,7 +15,7 @@ const t = await useTranslations(lang);
 
     <!-- Desktop Navigation -->
     <nav class="gap-5 hidden items-center lg:flex xl:gap-7">
-      <a href="/" class="dark:hover:text-white focus-visible font-extrabold hover:text-brand-black text-brand-gold text-xs tracking-[0.15em] transition-colors uppercase">{t('nav.home')}</a>
+      <a href="/" class="dark:hover:text-brand-black dark:text-white focus-visible font-extrabold hover:text-brand-black text-brand-gold text-xs tracking-[0.15em] transition-colors uppercase">{t('nav.home')}</a>
       <a href="/sobre" class="dark:text-brand-white focus-visible font-extrabold hover:text-brand-gold text-brand-black text-xs tracking-[0.15em] transition-colors uppercase">{t('nav.about')}</a>
       <a href="/publicacoes" class="dark:text-brand-white focus-visible font-extrabold hover:text-brand-gold text-brand-black text-xs tracking-[0.15em] transition-colors uppercase">{t('nav.publications')}</a>
       <a href="/artigos" class="dark:text-brand-white focus-visible font-extrabold hover:text-brand-gold text-brand-black text-xs tracking-[0.15em] transition-colors uppercase">{t('nav.articles')}</a>
@@ -26,7 +26,7 @@ const t = await useTranslations(lang);
 
     <!-- Right Actions -->
     <div class="gap-4 hidden items-center lg:flex">
-      <button class="border border-black/10 dark:border-white/10 dark:hover:text-white flex h-10 hover:text-brand-black items-center justify-center px-3 rounded-sm text-brand-gold transition-colors" aria-label="Search">
+      <button class="border border-black/10 dark:border-white/10 dark:hover:text-brand-black dark:text-white flex h-10 hover:text-brand-black items-center justify-center px-3 rounded-sm text-brand-gold transition-colors" aria-label="Search">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       </button>
 
@@ -38,7 +38,7 @@ const t = await useTranslations(lang);
         <LanguageSelector />
       </div>
 
-      <a href="/login" class="border border-brand-gold dark:hover:text-brand-white dark:text-gray-500 flex font-extrabold gap-2 h-10 hover:bg-brand-gold hover:text-brand-black items-center ml-2 px-4 rounded-sm text-brand-gold text-gray-400 text-xs tracking-[0.15em] transition-colors uppercase">
+      <a href="/login" class="border border-brand-gold dark:hover:text-brand-white dark:text-gray-500 flex font-extrabold gap-2 h-10 hover:bg-brand-gold hover:text-brand-black items-center ml-2 px-4 rounded-sm text-brand-gold text-gray-500 dark:text-gray-400 text-xs tracking-[0.15em] transition-colors uppercase">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         SEJA UM MEMBRO
       </a>
@@ -54,7 +54,7 @@ const t = await useTranslations(lang);
 <!-- Mobile Navigation Menu -->
 <div id="mobile-menu" class="-translate-y-4 backdrop-blur-lg bg-[#0a0a0a]/95 border-b border-gray-200 dark:border-white/10 duration-300 ease-in-out fixed hidden inset-0 lg:hidden opacity-0 pt-20 shadow-lg transition-all z-40">
   <nav class="flex flex-col gap-6 mt-4 px-8 py-6">
-    <a href="/" class="dark:hover:text-brand-white dark:text-gray-500 focus-visible font-semibold hover:text-brand-black text-base text-brand-gold text-gray-400 tracking-wide transition-colors uppercase">{t('nav.home')}</a>
+    <a href="/" class="dark:hover:text-brand-white dark:text-gray-500 focus-visible font-semibold hover:text-brand-black text-base text-brand-gold text-gray-500 dark:text-gray-400 tracking-wide transition-colors uppercase">{t('nav.home')}</a>
     <a href="/sobre" class="dark:text-brand-white focus-visible font-semibold hover:text-brand-gold text-base text-brand-black tracking-wide transition-colors uppercase">{t('nav.about')}</a>
     <a href="/publicacoes" class="dark:text-brand-white focus-visible font-semibold hover:text-brand-gold text-base text-brand-black tracking-wide transition-colors uppercase">{t('nav.publications')}</a>
     <a href="/artigos" class="dark:text-brand-white focus-visible font-semibold hover:text-brand-gold text-base text-brand-black tracking-wide transition-colors uppercase">{t('nav.articles')}</a>

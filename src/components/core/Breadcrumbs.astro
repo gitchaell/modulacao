@@ -12,7 +12,7 @@ interface Props {
 const { crumbs, class: className = '' } = Astro.props;
 ---
 <nav aria-label="Breadcrumb" class={className}>
-  <ol class="dark:text-gray-400 flex items-center space-x-2 text-gray-500 text-sm">
+  <ol class="dark:text-gray-400 flex items-center space-x-2 text-gray-500 dark:text-gray-400 text-sm">
     {crumbs.map((crumb, index) => (
       <li class="flex items-center">
         {index > 0 && (
