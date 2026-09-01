@@ -32,7 +32,7 @@ const sidebarCategories = [
       <ul class="space-y-3">
         {sidebarCategories.map(cat => (
           <li>
-            <a href="#" class={`flex items-center justify-between text-sm group ${cat.active ? 'text-brand-gold font-medium' : 'text-brand-black dark:text-brand-white/70 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white'}`}>
+            <a href="#" class={`flex items-center justify-between text-sm group ${cat.active ? 'text-brand-gold font-medium' : 'text-brand-black dark:text-brand-white/70 dark:text-gray-400 hover:text-brand-black dark:hover:text-white'}`}>
               <span class="relative">
                 {cat.name}
                 <span class={`absolute -bottom-1 left-0 h-[1px] bg-brand-gold transition-all duration-300 ${cat.active ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>

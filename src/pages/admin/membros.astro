@@ -57,7 +57,7 @@ const formatDate = (date: Date) => {
         </div>
         <Table headers={['Miembro', 'Email', 'Rol', 'Registro', '']}>
           {allUsers.map(({ user, profile }) => (
-            <tr class="hover:bg-gray-50 dark:hover:bg-white dark:bg-brand-dark-card/50 transition-colors group">
+            <tr class="hover:bg-gray-50 dark:hover:bg-brand-dark/50 transition-colors group">
               <td class="p-4">
                 <div class="flex items-center gap-4">
                   <Avatar src={profile?.avatarUrl} alt={profile?.fullName || user.email} size="sm" fallback={(profile?.fullName || user.email).charAt(0).toUpperCase()} />
@@ -112,7 +112,7 @@ const formatDate = (date: Date) => {
           </div>
           <ul class="divide-y divide-gray-100 dark:divide-white/5 max-h-96 overflow-y-auto">
             {pendingInvitations.map(inv => (
-              <li class="p-6 hover:bg-gray-50 dark:hover:bg-gray-100 dark:bg-brand-black/20 transition-colors">
+              <li class="p-6 hover:bg-gray-50 dark:hover:bg-brand-black/20 transition-colors">
                 <div class="flex justify-between items-start mb-4">
                   <span class="text-sm text-brand-black dark:text-white font-semibold truncate mr-2">{inv.email}</span>
                   <Badge variant={inv.role === 'ADMIN' ? 'error' : 'gold'}>{inv.role}</Badge>

@@ -78,7 +78,7 @@ const navItems = [
       {/* Top Nav Categories */}
       <div class="flex flex-wrap items-center gap-4 mb-8 border-b border-black/10 dark:border-white/10 pb-6">
         {navItems.map(item => (
-          <a href="#" class={`flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-bold uppercase tracking-wider transition-colors ${item.active ? 'bg-brand-gold/10 text-brand-gold border border-brand-gold/30' : 'text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:bg-white/5'}`}>
+          <a href="#" class={`flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-bold uppercase tracking-wider transition-colors ${item.active ? 'bg-brand-gold/10 text-brand-gold border border-brand-gold/30' : 'text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white hover:bg-white/5'}`}>
             {/* Pseudo-icon logic for now, using standard generic icons or lucide */}
             {item.label}
           </a>
@@ -117,7 +117,7 @@ const navItems = [
 
         <div class="flex items-center gap-2 self-end md:self-auto">
           <button class="p-2 bg-brand-gold/10 text-brand-gold rounded-sm border border-brand-gold/30"><LayoutGrid class="w-4 h-4" /></button>
-          <button class="p-2 text-gray-500 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white rounded-sm border border-transparent"><List class="w-4 h-4" /></button>
+          <button class="p-2 text-gray-500 dark:text-gray-400 hover:text-brand-black dark:hover:text-white rounded-sm border border-transparent"><List class="w-4 h-4" /></button>
         </div>
       </div>
 
@@ -221,14 +221,14 @@ const navItems = [
 
           {/* Pagination */}
           <div class="flex items-center justify-center gap-2 mt-8">
-            <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-black/10 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">&lt;</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-black/10 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:text-brand-black dark:hover:text-white hover:border-brand-gold/50 transition-colors">&lt;</button>
             <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-brand-gold/50 text-brand-gold bg-brand-gold/10">1</button>
-            <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">2</button>
-            <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">3</button>
-            <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">4</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white hover:border-brand-gold/50 transition-colors">2</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white hover:border-brand-gold/50 transition-colors">3</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white hover:border-brand-gold/50 transition-colors">4</button>
             <span class="text-gray-500 dark:text-gray-400 px-2">...</span>
-            <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">8</button>
-            <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-black/10 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white hover:border-brand-gold/50 transition-colors">&gt;</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-black/10 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white hover:border-brand-gold/50 transition-colors">8</button>
+            <button class="w-10 h-10 flex items-center justify-center rounded-sm border border-black/10 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:text-brand-black dark:hover:text-white hover:border-brand-gold/50 transition-colors">&gt;</button>
           </div>
 
         </div>
@@ -280,7 +280,7 @@ const navItems = [
                 <span class="text-gray-600 font-mono text-xs">12</span>
               </li>
             </ul>
-            <a href="#" class="inline-flex items-center gap-2 text-brand-gold text-xs font-bold uppercase tracking-widest mt-6 hover:text-brand-black dark:text-brand-white dark:hover:text-brand-black dark:text-white transition-colors">
+            <a href="#" class="inline-flex items-center gap-2 text-brand-gold text-xs font-bold uppercase tracking-widest mt-6 hover:text-brand-black dark:hover:text-white transition-colors">
               {t('articles.view_all_categories')} <span class="text-lg leading-none">&rarr;</span>
             </a>
           </div>
