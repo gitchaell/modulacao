@@ -47,7 +47,7 @@ const lang = getLangFromUrl(Astro.cookies);
 
           <!-- Identidad -->
           <section>
-            <h2 class="text-xl font-bold text-brand-black dark:text-white mb-4 border-b border-brand-dark pb-2">Identidad de la Marca</h2>
+            <h2 class="text-xl font-bold text-brand-black dark:text-white mb-4 border-b border-gray-200 dark:border-brand-dark pb-2">Identidad de la Marca</h2>
             <div class="space-y-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input type="text" name="name" label="Nombre de la Institución" value={config.name} required minlength="3" />
@@ -56,7 +56,7 @@ const lang = getLangFromUrl(Astro.cookies);
               <div>
                 <label class="block text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite mb-2">Logotipo</label>
                 <div class="flex items-center gap-4">
-                  <div class="w-16 h-16 bg-gray-100 dark:bg-brand-black border border-brand-dark rounded-sm flex items-center justify-center">
+                  <div class="w-16 h-16 bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-brand-dark rounded-sm flex items-center justify-center">
                     <svg class="w-8 h-8 text-brand-gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                   </div>
                   <Button variant="outline" type="button" size="sm">Subir Nuevo Logo</Button>
@@ -67,7 +67,7 @@ const lang = getLangFromUrl(Astro.cookies);
 
           <!-- Redes Sociales -->
           <section>
-            <h2 class="text-xl font-bold text-brand-black dark:text-white mb-4 border-b border-brand-dark pb-2">Redes Sociales</h2>
+            <h2 class="text-xl font-bold text-brand-black dark:text-white mb-4 border-b border-gray-200 dark:border-brand-dark pb-2">Redes Sociales</h2>
             <div class="space-y-4">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input type="url" name="instagram" label="Instagram URL" value={config.socials.instagram} placeholder="https://instagram.com/..." />
@@ -78,7 +78,7 @@ const lang = getLangFromUrl(Astro.cookies);
             </div>
           </section>
 
-          <div class="pt-6 border-t border-brand-dark flex justify-end">
+          <div class="pt-6 border-t border-gray-200 dark:border-brand-dark flex justify-end">
             <Button type="submit">Guardar Configuración</Button>
           </div>
         </form>

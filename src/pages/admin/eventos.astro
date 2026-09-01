@@ -105,7 +105,7 @@ const isPast = (date: Date) => new Date(date) < new Date();
     <Card noPadding class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 overflow-hidden premium-shadow">
       <Table headers={['Evento', 'Grupo / Ubicación', 'Fecha y Hora', 'Estado', '']}>
         {allEvents.map(({ event, group }) => (
-          <tr class="hover:bg-gray-50 dark:hover:bg-brand-dark/50 transition-colors group/row">
+          <tr class="hover:bg-gray-50 dark:hover:bg-white dark:bg-brand-dark-card/50 transition-colors group/row">
             <td class="p-4">
               <div class="font-display text-base font-bold text-brand-black dark:text-brand-black dark:text-white mb-1 group-hover/row:text-brand-gold transition-colors">{event.title}</div>
               <div class="text-xs text-gray-500 dark:text-gray-400">

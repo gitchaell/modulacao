@@ -21,13 +21,13 @@ const t = usePageTranslations(pageDict, lang);
   <div class="relative z-10 container mx-auto px-6 text-center">
     <Typography variant="h2" class="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-brand-black dark:text-brand-white mb-6 uppercase tracking-tight max-w-3xl mx-auto">
       {t('home.cta.title1')} <br />
-      <span class="text-brand-white">{t('home.cta.title2')}</span>
+      <span class="text-brand-black dark:text-brand-white">{t('home.cta.title2')}</span>
     </Typography>
     <Typography variant="lead" class="text-brand-black dark:text-brand-white/80 font-medium mb-10 max-w-2xl mx-auto">
       {t('home.cta.desc')}
     </Typography>
 
-    <Button as="a" href="/login" variant="primary" size="lg" class="px-12 py-5 bg-gray-100 dark:bg-brand-black text-brand-white hover:bg-brand-white dark:bg-brand-dark-card hover:text-brand-black dark:text-brand-white">
+    <Button as="a" href="/login" variant="primary" size="lg" class="px-12 py-5 bg-gray-100 dark:bg-brand-black text-brand-black dark:text-brand-white hover:bg-brand-white dark:bg-brand-dark-card hover:text-brand-black dark:text-brand-white">
       {t('home.cta.btn')}
     </Button>
   </div>

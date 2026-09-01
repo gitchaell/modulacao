@@ -41,19 +41,19 @@ const formatDate = (date: Date) => {
         <form method="POST" action="/api/admin/catalog/create" class="space-y-4">
           <div>
             <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Nombre del Producto</label>
-            <input type="text" name="name" required class="w-full bg-gray-100 dark:bg-brand-black border border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
+            <input type="text" name="name" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Precio (Texto)</label>
-            <input type="text" name="price" required placeholder="Ej: $15.00 o Consultar" class="w-full bg-gray-100 dark:bg-brand-black border border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
+            <input type="text" name="price" required placeholder="Ej: $15.00 o Consultar" class="w-full bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Número de WhatsApp de Contacto</label>
-            <input type="text" name="whatsappNumber" required placeholder="+1234567890" class="w-full bg-gray-100 dark:bg-brand-black border border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
+            <input type="text" name="whatsappNumber" required placeholder="+1234567890" class="w-full bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Descripción</label>
-            <textarea name="description" required rows="3" class="w-full bg-gray-100 dark:bg-brand-black border border-brand-dark rounded-sm p-2 text-brand-black dark:text-white"></textarea>
+            <textarea name="description" required rows="3" class="w-full bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white"></textarea>
           </div>
           <div class="flex justify-end gap-2 mt-4">
             <Button type="button" variant="ghost" onclick="document.getElementById('create-product-modal').classList.add('hidden')">Cancelar</Button>
@@ -71,19 +71,19 @@ const formatDate = (date: Date) => {
           <input type="hidden" name="id" id="edit-product-id" />
           <div>
             <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Nombre del Producto</label>
-            <input type="text" name="name" id="edit-product-name" required class="w-full bg-gray-100 dark:bg-brand-black border border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
+            <input type="text" name="name" id="edit-product-name" required class="w-full bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Precio (Texto)</label>
-            <input type="text" name="price" id="edit-product-price" required placeholder="Ej: $15.00 o Consultar" class="w-full bg-gray-100 dark:bg-brand-black border border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
+            <input type="text" name="price" id="edit-product-price" required placeholder="Ej: $15.00 o Consultar" class="w-full bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Número de WhatsApp de Contacto</label>
-            <input type="text" name="whatsappNumber" id="edit-product-whatsapp" required placeholder="+1234567890" class="w-full bg-gray-100 dark:bg-brand-black border border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
+            <input type="text" name="whatsappNumber" id="edit-product-whatsapp" required placeholder="+1234567890" class="w-full bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white" />
           </div>
           <div>
             <label class="block text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">Descripción</label>
-            <textarea name="description" id="edit-product-description" required rows="3" class="w-full bg-gray-100 dark:bg-brand-black border border-brand-dark rounded-sm p-2 text-brand-black dark:text-white"></textarea>
+            <textarea name="description" id="edit-product-description" required rows="3" class="w-full bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-brand-dark rounded-sm p-2 text-brand-black dark:text-white"></textarea>
           </div>
           <div class="flex justify-end gap-2 mt-4">
             <Button type="button" variant="ghost" onclick="document.getElementById('edit-product-modal').classList.add('hidden')">Cancelar</Button>
@@ -96,7 +96,7 @@ const formatDate = (date: Date) => {
     <Card noPadding class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 overflow-hidden premium-shadow">
       <Table headers={['Producto', 'Precio', 'Variantes', 'WhatsApp', '']}>
         {allProducts.map((product) => (
-          <tr class="hover:bg-gray-50 dark:hover:bg-brand-dark/50 transition-colors group">
+          <tr class="hover:bg-gray-50 dark:hover:bg-white dark:bg-brand-dark-card/50 transition-colors group">
             <td class="p-4">
               <div class="flex items-center gap-4">
                 <div class="w-12 h-12 rounded-sm bg-gray-50 dark:bg-brand-black border border-gray-200 dark:border-white/5 flex items-center justify-center overflow-hidden flex-shrink-0">

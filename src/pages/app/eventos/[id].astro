@@ -66,7 +66,7 @@ const lang = getLangFromUrl(Astro.cookies);
   <div class="max-w-4xl mx-auto pb-24">
 
     <!-- Hero Image -->
-    <div class="w-full h-72 md:h-96 rounded-2xl overflow-hidden bg-gray-100 dark:bg-brand-black border-2 border-brand-dark-card relative mb-8 shadow-xl">
+    <div class="w-full h-72 md:h-96 rounded-2xl overflow-hidden bg-gray-100 dark:bg-brand-black border-2 border-gray-200 dark:border-brand-dark relative mb-8 shadow-xl">
        {event.coverImageUrl ? (
           <img loading="lazy" decoding="async" src={event.coverImageUrl} alt={event.title} class="w-full h-full object-cover opacity-80" />
         ) : (
@@ -177,7 +177,7 @@ const lang = getLangFromUrl(Astro.cookies);
                   </a>
                 ))}
                 {attending.length > 8 && (
-                  <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-brand-black border-2 border-brand-dark flex items-center justify-center text-xs text-gray-500 dark:text-gray-400">
+                  <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-brand-black border-2 border-gray-200 dark:border-brand-dark flex items-center justify-center text-xs text-gray-500 dark:text-gray-400">
                     +{attending.length - 8}
                   </div>
                 )}

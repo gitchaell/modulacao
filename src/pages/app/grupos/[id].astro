@@ -36,7 +36,7 @@ const lang = getLangFromUrl(Astro.cookies);
   <div class="max-w-4xl mx-auto space-y-8">
 
     <!-- Cabecera del Grupo -->
-    <div class="relative h-64 bg-gray-100 dark:bg-brand-black border border-brand-dark-card rounded-2xl overflow-hidden shadow-2xl">
+    <div class="relative h-64 bg-gray-100 dark:bg-brand-black border border-gray-200 dark:border-brand-dark rounded-2xl overflow-hidden shadow-2xl">
        {group.coverImageUrl ? (
           <img loading="lazy" decoding="async" src={group.coverImageUrl} alt={group.name} class="w-full h-full object-cover opacity-60" />
         ) : (
@@ -52,7 +52,7 @@ const lang = getLangFromUrl(Astro.cookies);
     </div>
 
     <!-- Pestañas (Visual) -->
-    <div class="flex border-b border-brand-dark-card/50">
+    <div class="flex border-b border-gray-200 dark:border-brand-dark/50">
       <button class="px-6 py-3 text-brand-gold border-b-2 border-brand-gold font-semibold">Miembros ({membersList.length})</button>
     </div>
 

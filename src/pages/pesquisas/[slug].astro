@@ -30,7 +30,7 @@ const lang = getLangFromUrl(Astro.cookies);
 <PublicLayout title={article.title}>
   <article class="bg-brand-offwhite dark:bg-brand-dark min-h-screen pb-24">
     {/* Cabecera del artículo */}
-    <header class="py-20 bg-gray-100 dark:bg-brand-black border-b border-brand-dark-card/50 text-center relative overflow-hidden">
+    <header class="py-20 bg-gray-100 dark:bg-brand-black border-b border-gray-200 dark:border-brand-dark/50 text-center relative overflow-hidden">
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-gold/10 via-brand-black to-brand-black opacity-60"></div>
       <div class="relative z-10 container mx-auto px-6 max-w-4xl">
         <div class="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-widest text-brand-black dark:text-brand-white bg-brand-gold rounded-full uppercase">
@@ -48,7 +48,7 @@ const lang = getLangFromUrl(Astro.cookies);
     {/* Imagen de portada si existe */}
     {article.coverImageUrl && (
       <div class="container mx-auto max-w-5xl -mt-10 mb-12 px-6 relative z-20">
-        <div class="aspect-video w-full rounded-xl overflow-hidden shadow-2xl border border-brand-dark-card">
+        <div class="aspect-video w-full rounded-xl overflow-hidden shadow-2xl border border-gray-200 dark:border-brand-dark">
           <img loading="lazy" decoding="async" src={article.coverImageUrl} alt={article.title} class="w-full h-full object-cover" />
         </div>
       </div>
@@ -64,7 +64,7 @@ const lang = getLangFromUrl(Astro.cookies);
     </div>
 
     {/* Footer del artículo - Regresar */}
-    <div class="container mx-auto px-6 max-w-3xl mt-16 pt-8 border-t border-brand-dark-card/50">
+    <div class="container mx-auto px-6 max-w-3xl mt-16 pt-8 border-t border-gray-200 dark:border-brand-dark/50">
       <a href="/pesquisas" class="inline-flex items-center text-brand-gold hover:text-brand-black dark:text-white transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m15 18-6-6 6-6"/></svg>
         Volver a Pesquisas

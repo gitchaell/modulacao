@@ -55,7 +55,7 @@ const formatDate = (date: Date) => {
         userNotifications.map(notification => (
           <a
             href={notification.linkUrl || '#'}
-            class={`block p-4 hover:bg-gray-50 dark:hover:bg-brand-dark/50 transition-colors focus-visible ${!notification.isRead ? 'bg-brand-gold/10 dark:bg-brand-gold/5 border-l-2 border-brand-gold' : 'border-l-2 border-transparent'}`}
+            class={`block p-4 hover:bg-gray-50 dark:hover:bg-white dark:bg-brand-dark-card/50 transition-colors focus-visible ${!notification.isRead ? 'bg-brand-gold/10 dark:bg-brand-gold/5 border-l-2 border-brand-gold' : 'border-l-2 border-transparent'}`}
             data-notification-id={notification.id}
           >
             <div class="flex gap-3">

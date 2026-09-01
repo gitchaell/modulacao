@@ -101,7 +101,7 @@ const formatDate = (date: Date) => {
     <Card noPadding class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 overflow-hidden premium-shadow">
       <Table headers={['Título', 'Tipo', 'Estado', 'Fecha Pub.', '']}>
         {allArticles.map((article) => (
-          <tr class="hover:bg-gray-50 dark:hover:bg-brand-dark/50 transition-colors group">
+          <tr class="hover:bg-gray-50 dark:hover:bg-white dark:bg-brand-dark-card/50 transition-colors group">
             <td class="p-4">
               <div class="font-display font-semibold text-brand-black dark:text-brand-black dark:text-white line-clamp-1 group-hover:text-brand-gold transition-colors">{article.title}</div>
               <div class="text-xs font-bold tracking-widest text-gray-500 dark:text-gray-400 uppercase mt-0.5 truncate max-w-xs">{article.slug}</div>

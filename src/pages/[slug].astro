@@ -59,7 +59,7 @@ const t = usePageTranslations(pageDict, lang);
       <div class="bg-white dark:bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-brand-dark/50 rounded-2xl shadow-2xl p-8 flex flex-col md:flex-row items-center md:items-start gap-8">
 
         <!-- Avatar -->
-        <div class="w-40 h-40 flex-shrink-0 rounded-full border-4 border-brand-dark-card overflow-hidden bg-gray-100 dark:bg-brand-black shadow-lg flex items-center justify-center">
+        <div class="w-40 h-40 flex-shrink-0 rounded-full border-4 border-gray-200 dark:border-brand-dark overflow-hidden bg-gray-100 dark:bg-brand-black shadow-lg flex items-center justify-center">
           {profile.profiles.avatarUrl ? (
              <img loading="lazy" decoding="async" src={profile.profiles.avatarUrl} alt={profile.profiles.fullName} class="w-full h-full object-cover" />
           ) : (
@@ -101,12 +101,12 @@ const t = usePageTranslations(pageDict, lang);
 
       <div class="space-y-6">
         {userPosts.length === 0 ? (
-          <div class="bg-gray-100 dark:bg-brand-black/50 border border-brand-dark-card rounded-sm p-12 text-center">
+          <div class="bg-gray-100 dark:bg-brand-black/50 border border-gray-200 dark:border-brand-dark rounded-sm p-12 text-center">
             <p class="text-gray-500 dark:text-gray-400">{t('profile.no_posts')}</p>
           </div>
         ) : (
           userPosts.map(post => (
-            <Card class="bg-white dark:bg-brand-dark-card hover:border-brand-dark transition-colors">
+            <Card class="bg-white dark:bg-brand-dark-card hover:border-gray-200 dark:border-brand-dark transition-colors">
               <div class="flex items-center gap-3 mb-4">
                  <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold text-sm">
                     {profile.profiles.fullName.charAt(0).toUpperCase()}
