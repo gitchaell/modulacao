@@ -1,7 +1,7 @@
 ---
 import PublicLayout from '@/layouts/PublicLayout.astro';
 import Card from '@/components/core/Card.astro';
-import Badge from '@/components/core/Badge.astro';
+
 import { db } from '@/data/db/db';
 import { articles } from '@/data/db/schema';
 import { eq, desc } from 'drizzle-orm';
@@ -9,7 +9,7 @@ import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import { tenantConfig } from '@/config/tenant';
 
 const lang = getLangFromUrl(Astro.cookies);
-const t = await useTranslations(lang);
+
 
 const newsArticles = await db
   .select()

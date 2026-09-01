@@ -2,7 +2,7 @@
 import PublicLayout from '@/layouts/PublicLayout.astro';
 import { getLangFromUrl, getPageTranslations, usePageTranslations } from '@/utils/i18n';
 import Card from '@/components/core/Card.astro';
-import { HelpCircle } from '@lucide/astro';
+
 
 const lang = getLangFromUrl(Astro.cookies);
 const pageDict = await getPageTranslations('faq', lang);
@@ -23,7 +23,7 @@ const t = usePageTranslations(pageDict, lang);
         <div class="p-8 md:p-12">
           <div class="flex items-center gap-6 mb-8 border-b border-gray-100 dark:border-white/5 pb-6">
             <div class="w-16 h-16 rounded-sm bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0">
-              <HelpCircle class="w-8 h-8" />
+              <div class="w-8 h-8"></div>
             </div>
             <h2 class="font-display text-3xl font-bold text-brand-black dark:text-white uppercase tracking-wider">{t('about.faq.title')}</h2>
           </div>

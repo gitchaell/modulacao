@@ -1,6 +1,6 @@
 ---
 import PublicLayout from '@/layouts/PublicLayout.astro';
-import { Target, Eye, Gem, Users, Globe, Grid, Heart, ChevronRight, Briefcase, Palette, Microscope, Network } from '@lucide/astro';
+import { Target, Eye, Gem, Users, Globe, LayoutGrid, Heart, ChevronRight, Briefcase, Palette, Microscope, Network } from '@lucide/astro';
 import { getLangFromUrl, getPageTranslations , usePageTranslations} from '@/utils/i18n';
 
 const lang = getLangFromUrl(Astro.cookies);
@@ -146,7 +146,7 @@ const topics = [
             <span class="text-gray-500 dark:text-gray-500 text-xs uppercase tracking-wider">{t('about.stats.countries_label')}</span>
           </div>
           <div class="flex flex-col items-center justify-center text-center p-6 bg-white dark:bg-[#0f0f0f] border border-black/5 dark:border-white/5 rounded-2xl">
-            <Grid class="w-8 h-8 text-brand-gold mb-4" />
+            <LayoutGrid class="w-8 h-8 text-brand-gold mb-4" />
             <span class="text-2xl font-bold text-brand-black dark:text-white mb-1">{t('about.stats.projects')}</span>
             <span class="text-gray-500 dark:text-gray-500 text-xs uppercase tracking-wider">{t('about.stats.projects_label')}</span>
           </div>
