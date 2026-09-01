@@ -86,9 +86,9 @@ const formatTime = (date: Date | null) => {
       <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-6 font-semibold uppercase tracking-wider">
          <a href="/" class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
          <ChevronRight class="w-4 h-4 mx-2 opacity-50" />
-         <span class="text-brand-black dark:text-white">{t('nav.publications')}</span>
+         <span class="text-brand-black dark:text-brand-white">{t('nav.publications')}</span>
       </div>
-      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-widest text-brand-black dark:text-white mb-6">
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-widest text-brand-black dark:text-brand-white mb-6">
         PUBLICAÇÕES<br/>
         <span class="text-brand-gold">{t('publications.hero.subtitle')}</span>
       </h1>
@@ -104,10 +104,10 @@ const formatTime = (date: Date | null) => {
       {/* Top Tabs */}
       <div class="flex flex-wrap border-b border-black/10 dark:border-white/10 mb-8 pb-4 gap-8">
           <button class="text-brand-gold font-bold uppercase tracking-widest text-sm pb-4 border-b-2 border-brand-gold -mb-[18px]">{t('publications.tabs.all')}</button>
-          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.public')}</button>
-          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.members')}</button>
-          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.network')}</button>
-          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.saved')}</button>
+          <button class="text-gray-600 hover:text-brand-black dark:text-gray-400 dark:hover:text-brand-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.public')}</button>
+          <button class="text-gray-600 hover:text-brand-black dark:text-gray-400 dark:hover:text-brand-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.members')}</button>
+          <button class="text-gray-600 hover:text-brand-black dark:text-gray-400 dark:hover:text-brand-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.network')}</button>
+          <button class="text-gray-600 hover:text-brand-black dark:text-gray-400 dark:hover:text-brand-white transition-colors font-bold uppercase tracking-widest text-sm pb-4">{t('publications.tabs.saved')}</button>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -121,7 +121,7 @@ const formatTime = (date: Date | null) => {
                     <div class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center flex-shrink-0">
                         <Users class="w-5 h-5 text-brand-black dark:text-brand-white" />
                     </div>
-                    <input type="text" placeholder={t('publications.compose.placeholder')} class="w-full bg-brand-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded px-4 text-brand-black dark:text-white focus:outline-none focus:border-brand-gold/50" />
+                    <input type="text" placeholder={t('publications.compose.placeholder')} class="w-full bg-brand-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 rounded px-4 text-brand-black dark:text-brand-white focus:outline-none focus:border-brand-gold/50" />
                 </div>
                 <div class="flex flex-wrap items-center justify-between mt-4">
                     <button class="flex items-center text-gray-600 dark:text-gray-400 hover:text-brand-gold transition-colors text-sm font-semibold">
@@ -161,7 +161,7 @@ const formatTime = (date: Date | null) => {
                               </div>
                               <div>
                                   <div class="flex items-center gap-2">
-                                      <h3 class="text-brand-black dark:text-white font-bold">{postData.profile.fullName}</h3>
+                                      <h3 class="text-brand-black dark:text-brand-white font-bold">{postData.profile.fullName}</h3>
                                       {postData.author.role === 'ADMIN' && (
                                           <Badge variant="gold" class="!px-1 !py-0 !text-[10px]">{t('publications.badge.verified')}</Badge>
                                       )}
@@ -169,7 +169,7 @@ const formatTime = (date: Date | null) => {
                                   <p class="text-xs text-gray-600 dark:text-gray-400">{t('publications.meta.public')} • {formatDateFull(postData.post.createdAt as unknown as Date)}</p>
                               </div>
                           </div>
-                          <button class="text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors">
+                          <button class="text-gray-600 hover:text-brand-black dark:text-gray-400 dark:hover:text-brand-white transition-colors">
 
                           </button>
                       </div>
@@ -184,13 +184,13 @@ const formatTime = (date: Date | null) => {
                              <Badge variant="success" class="mb-3">{t('publications.badge.event')}</Badge>
                          )}
 
-                         <h2 class="text-xl font-bold text-brand-black dark:text-white mb-2">{postData.post.content.substring(0, 50)}...</h2>
+                         <h2 class="text-xl font-bold text-brand-black dark:text-brand-white mb-2">{postData.post.content.substring(0, 50)}...</h2>
                          <p class="text-gray-600 dark:text-gray-400 text-sm">{postData.post.content}</p>
                       </div>
 
                       {/* Post Media (Placeholder based on post type) */}
                       {postData.post.imageUrl && (
-                          <div class="rounded-sm overflow-hidden bg-black mb-4">
+                          <div class="rounded-sm overflow-hidden bg-gray-100 dark:bg-black mb-4">
                               <img src={postData.post.imageUrl} alt="Post media" class="w-full h-auto max-h-[400px] object-cover" />
                           </div>
                       )}
@@ -201,13 +201,13 @@ const formatTime = (date: Date | null) => {
                       <div class="flex items-center gap-6">
                           <button class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-red-500 transition-colors">
                               <span class="flex items-center text-lg">❤️🔥</span>
-                              <span class="text-sm font-semibold text-brand-black dark:text-white">{postData.reactionCount || Math.floor(Math.random() * 500)}</span>
+                              <span class="text-sm font-semibold text-brand-black dark:text-brand-white">{postData.reactionCount || Math.floor(Math.random() * 500)}</span>
                           </button>
-                          <button class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors">
+                          <button class="flex items-center gap-2 text-gray-600 hover:text-brand-black dark:text-gray-400 dark:hover:text-brand-white transition-colors">
                               <MessageSquare class="w-5 h-5" />
                               <span class="text-sm font-semibold">{postData.commentCount || Math.floor(Math.random() * 50)}</span>
                           </button>
-                          <button class="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-brand-black dark:hover:text-white transition-colors">
+                          <button class="flex items-center gap-2 text-gray-600 hover:text-brand-black dark:text-gray-400 dark:hover:text-brand-white transition-colors">
                               <Share2 class="w-5 h-5" />
                               <span class="text-sm font-semibold">{Math.floor(Math.random() * 30)}</span>
                           </button>
@@ -236,7 +236,7 @@ const formatTime = (date: Date | null) => {
             {/* s */}
             <div class="bg-brand-white dark:bg-[#151515] p-6 border border-black/5 dark:border-white/5 rounded-sm">
                 <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-brand-black dark:text-white font-bold tracking-widest uppercase">{t('publications.filters.title')}</h3>
+                    <h3 class="text-brand-black dark:text-brand-white font-bold tracking-widest uppercase">{t('publications.filters.title')}</h3>
                     <button class="text-xs text-brand-gold hover:underline">{t('publications.filters.clear')}</button>
                 </div>
 
@@ -247,15 +247,15 @@ const formatTime = (date: Date | null) => {
                             <span class="flex items-center gap-2"> {t('publications.filters.type.all')}</span>
                             <span>126</span>
                         </li>
-                        <li class="flex items-center justify-between text-gray-600 dark:text-gray-300 text-sm hover:text-brand-black dark:hover:text-white cursor-pointer px-2">
+                        <li class="flex items-center justify-between text-gray-600 dark:text-gray-300 text-sm hover:text-brand-black dark:hover:text-brand-white cursor-pointer px-2">
                             <span class="flex items-center gap-2"><MessageSquare class="w-4 h-4"/> {t('publications.filters.type.communique')}</span>
                             <span>34</span>
                         </li>
-                        <li class="flex items-center justify-between text-gray-600 dark:text-gray-300 text-sm hover:text-brand-black dark:hover:text-white cursor-pointer px-2">
+                        <li class="flex items-center justify-between text-gray-600 dark:text-gray-300 text-sm hover:text-brand-black dark:hover:text-brand-white cursor-pointer px-2">
                             <span class="flex items-center gap-2"><CalendarIcon class="w-4 h-4"/> {t('publications.compose.event')}s</span>
                             <span>50</span>
                         </li>
-                        <li class="flex items-center justify-between text-gray-600 dark:text-gray-300 text-sm hover:text-brand-black dark:hover:text-white cursor-pointer px-2">
+                        <li class="flex items-center justify-between text-gray-600 dark:text-gray-300 text-sm hover:text-brand-black dark:hover:text-brand-white cursor-pointer px-2">
                             <span class="flex items-center gap-2"><ImageIcon class="w-4 h-4"/> {t('publications.filters.type.news')}</span>
                             <span>28</span>
                         </li>
@@ -269,11 +269,11 @@ const formatTime = (date: Date | null) => {
                             <span class="flex items-center gap-2"> {t('publications.tabs.all')}</span>
                             <span>126</span>
                         </li>
-                        <li class="flex items-center justify-between text-gray-600 dark:text-gray-300 text-sm hover:text-brand-black dark:hover:text-white cursor-pointer px-2">
+                        <li class="flex items-center justify-between text-gray-600 dark:text-gray-300 text-sm hover:text-brand-black dark:hover:text-brand-white cursor-pointer px-2">
                             <span class="flex items-center gap-2"><Users class="w-4 h-4"/> {t('publications.tabs.public')}</span>
                             <span>80</span>
                         </li>
-                        <li class="flex items-center justify-between text-gray-600 dark:text-gray-300 text-sm hover:text-brand-black dark:hover:text-white cursor-pointer px-2">
+                        <li class="flex items-center justify-between text-gray-600 dark:text-gray-300 text-sm hover:text-brand-black dark:hover:text-brand-white cursor-pointer px-2">
                             <span class="flex items-center gap-2"><Users class="w-4 h-4"/> {t('publications.filters.visibility.members')}</span>
                             <span>46</span>
                         </li>
@@ -283,13 +283,13 @@ const formatTime = (date: Date | null) => {
                 <div class="space-y-4">
                     <div>
                         <label class="text-sm text-gray-600 dark:text-gray-400 font-semibold block mb-2">{t('publications.filters.community')}</label>
-                        <select class="w-full bg-brand-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 text-brand-black dark:text-white rounded p-2 text-sm focus:outline-none focus:border-brand-gold/50">
+                        <select class="w-full bg-brand-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 text-brand-black dark:text-brand-white rounded p-2 text-sm focus:outline-none focus:border-brand-gold/50">
                             <option>{t('publications.tabs.all')} as comunidades</option>
                         </select>
                     </div>
                     <div>
                         <label class="text-sm text-gray-600 dark:text-gray-400 font-semibold block mb-2">{t('publications.filters.sort')}</label>
-                        <select class="w-full bg-brand-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 text-brand-black dark:text-white rounded p-2 text-sm focus:outline-none focus:border-brand-gold/50">
+                        <select class="w-full bg-brand-white dark:bg-[#0a0a0a] border border-black/10 dark:border-white/10 text-brand-black dark:text-brand-white rounded p-2 text-sm focus:outline-none focus:border-brand-gold/50">
                             <option>{t('publications.filters.sort.recent')}</option>
                         </select>
                     </div>
@@ -299,7 +299,7 @@ const formatTime = (date: Date | null) => {
             {/* Upcoming Events */}
             <div class="bg-brand-white dark:bg-[#151515] p-6 border border-black/5 dark:border-white/5 rounded-sm">
                 <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-brand-black dark:text-white font-bold tracking-widest uppercase text-sm">Próximos {t('publications.compose.event')}s</h3>
+                    <h3 class="text-brand-black dark:text-brand-white font-bold tracking-widest uppercase text-sm">Próximos {t('publications.compose.event')}s</h3>
                     <a href="/eventos" class="text-xs text-brand-gold hover:underline">{t('publications.sidebar.events.view_all')}</a>
                 </div>
                 <div class="space-y-4">
@@ -310,7 +310,7 @@ const formatTime = (date: Date | null) => {
                                 <span class="text-gray-600 dark:text-gray-400 text-[10px] uppercase">{formatDateShort(event.date as unknown as Date).split(' ')[2]}</span>
                             </div>
                             <div>
-                                <h4 class="text-brand-black dark:text-white text-sm font-bold group-hover:text-brand-gold transition-colors">{event.title}</h4>
+                                <h4 class="text-brand-black dark:text-brand-white text-sm font-bold group-hover:text-brand-gold transition-colors">{event.title}</h4>
                                 <div class="flex items-center text-xs text-gray-600 dark:text-gray-400 mt-1 gap-2">
                                     <span class="flex items-center"><Clock class="w-3 h-3 mr-1" /> {formatTime(event.date as unknown as Date)}</span>
                                     <span class="flex items-center"><MapPin class="w-3 h-3 mr-1" /> {event.location}</span>
@@ -325,7 +325,7 @@ const formatTime = (date: Date | null) => {
             {/* Featured Publications */}
             <div class="bg-brand-white dark:bg-[#151515] p-6 border border-black/5 dark:border-white/5 rounded-sm">
                 <div class="flex items-center justify-between mb-6">
-                    <h3 class="text-brand-black dark:text-white font-bold tracking-widest uppercase text-sm">{t('publications.sidebar.featured.title')}</h3>
+                    <h3 class="text-brand-black dark:text-brand-white font-bold tracking-widest uppercase text-sm">{t('publications.sidebar.featured.title')}</h3>
                     <a href="/publicacoes" class="text-xs text-brand-gold hover:underline">{t('publications.sidebar.featured.view_all')}</a>
                 </div>
                 <div class="space-y-4">
@@ -339,7 +339,7 @@ const formatTime = (date: Date | null) => {
                                  )}
                              </div>
                              <div>
-                                 <h4 class="text-brand-black dark:text-white text-sm font-bold group-hover:text-brand-gold transition-colors line-clamp-2 leading-tight mb-1">{article.title}</h4>
+                                 <h4 class="text-brand-black dark:text-brand-white text-sm font-bold group-hover:text-brand-gold transition-colors line-clamp-2 leading-tight mb-1">{article.title}</h4>
                                  <p class="text-xs text-gray-600 dark:text-gray-400">{formatDateShort(article.publishedAt as unknown as Date)} • {Math.floor(Math.random() * 500)} reações</p>
                              </div>
                          </div>
@@ -355,7 +355,7 @@ const formatTime = (date: Date | null) => {
                      <div class="w-12 h-12 bg-brand-gold/10 text-brand-gold rounded-full flex items-center justify-center mb-4">
                          <Users class="w-6 h-6" />
                      </div>
-                     <h3 class="text-brand-black dark:text-white font-bold text-lg mb-2">{t('publications.cta.title')}</h3>
+                     <h3 class="text-brand-black dark:text-brand-white font-bold text-lg mb-2">{t('publications.cta.title')}</h3>
                      <p class="text-gray-600 dark:text-gray-400 text-sm mb-6 text-balance">{t('publications.cta.desc')}</p>
                      <button class="bg-brand-gold text-brand-black dark:text-brand-white font-bold uppercase tracking-widest text-sm px-6 py-3 rounded hover:bg-brand-gold-dark transition-colors flex items-center w-full justify-center">
                          {t('publications.cta.btn')} <ChevronRight class="w-4 h-4 ml-2" />

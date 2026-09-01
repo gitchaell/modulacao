@@ -52,7 +52,7 @@ const formatDate = (date: Date) => {
       <!-- Lista de Miembros (Ocupa 2 columnas) -->
       <Card noPadding class="lg:col-span-2 bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 overflow-hidden premium-shadow">
         <div class="p-6 border-b border-gray-200 dark:border-white/5 flex justify-between items-center bg-gray-50 dark:bg-brand-black/50">
-          <h2 class="font-display text-lg font-bold text-brand-black dark:text-white uppercase tracking-wider">Usuarios Registrados</h2>
+          <h2 class="font-display text-lg font-bold text-brand-black dark:text-brand-white uppercase tracking-wider">Usuarios Registrados</h2>
           <Badge variant="neutral">{allUsers.length}</Badge>
         </div>
         <Table headers={['Miembro', 'Email', 'Rol', 'Registro', '']}>
@@ -62,7 +62,7 @@ const formatDate = (date: Date) => {
                 <div class="flex items-center gap-4">
                   <Avatar src={profile?.avatarUrl} alt={profile?.fullName || user.email} size="sm" fallback={(profile?.fullName || user.email).charAt(0).toUpperCase()} />
                   <div>
-                    <div class="font-semibold text-brand-black dark:text-white group-hover:text-brand-gold transition-colors">{profile?.fullName || 'Sin Configurar'}</div>
+                    <div class="font-semibold text-brand-black dark:text-brand-white group-hover:text-brand-gold transition-colors">{profile?.fullName || 'Sin Configurar'}</div>
                     <div class="text-xs font-bold tracking-widest uppercase text-gray-500 dark:text-brand-gold mt-0.5">@{profile?.slug || 'n/a'}</div>
                   </div>
                 </div>
@@ -90,12 +90,12 @@ const formatDate = (date: Date) => {
       <!-- Panel de Invitaciones -->
       <div class="space-y-6">
         <Card class="bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 premium-shadow" >
-          <h2 class="font-display text-lg font-bold text-brand-black dark:text-white uppercase tracking-wider mb-6">{t('admin.members.invite_btn')}</h2>
+          <h2 class="font-display text-lg font-bold text-brand-black dark:text-brand-white uppercase tracking-wider mb-6">{t('admin.members.invite_btn')}</h2>
           <form id="inviteForm" class="space-y-6">
             <Input type="email" id="inviteEmail" label="Correo Electrónico" placeholder="usuario@ejemplo.com" required />
             <div class="flex flex-col gap-2 w-full">
               <label class="text-sm font-semibold tracking-wide uppercase text-brand-black dark:text-brand-offwhite">Rol Inicial</label>
-              <select id="inviteRole" class="flex h-12 w-full rounded-sm border border-gray-300 dark:border-gray-700 bg-transparent px-4 py-3 text-sm text-brand-black dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold hover:border-brand-gold/50 transition-colors">
+              <select id="inviteRole" class="flex h-12 w-full rounded-sm border border-gray-300 dark:border-gray-700 bg-transparent px-4 py-3 text-sm text-brand-black dark:text-brand-white focus:outline-none focus:ring-2 focus:ring-brand-gold focus:border-brand-gold hover:border-brand-gold/50 transition-colors">
                 <option value="MEMBER" class="bg-brand-white dark:bg-brand-black">Miembro</option>
                 <option value="ADMIN" class="bg-brand-white dark:bg-brand-black">Administrador</option>
               </select>
@@ -114,7 +114,7 @@ const formatDate = (date: Date) => {
             {pendingInvitations.map(inv => (
               <li class="p-6 hover:bg-gray-50 dark:hover:bg-brand-black/20 transition-colors">
                 <div class="flex justify-between items-start mb-4">
-                  <span class="text-sm text-brand-black dark:text-white font-semibold truncate mr-2">{inv.email}</span>
+                  <span class="text-sm text-brand-black dark:text-brand-white font-semibold truncate mr-2">{inv.email}</span>
                   <Badge variant={inv.role === 'ADMIN' ? 'error' : 'gold'}>{inv.role}</Badge>
                 </div>
                 <div class="text-xs font-semibold tracking-widest uppercase text-gray-500 dark:text-gray-400 mb-3">Expira: {formatDate(inv.expiresAt as unknown as Date)}</div>

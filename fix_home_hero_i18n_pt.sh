@@ -1,1 +1,0 @@
-sed -i 's/"home.hero.subtitle": "Explorando a Verdadeira Realidade...",/"home.hero.subtitle": "MAIS QUE UM TIME,\\nSOMOS UM ECOSSISTEMA",\n  "home.hero.title1": "PROPÓSITO",\n  "home.hero.title2": "QUE TRANSFORMA",\n  "home.hero.btnPrimary": "CONHEÇA A MODULAÇÃO",\n  "home.hero.btnSecondary": "FAÇA PARTE",\n  "home.hero.followUs": "SIGA-NOS",/g' src/i18n/pages/home/pt.json

@@ -1,3 +1,0 @@
-sed -i 's/"home.cta.title": "FAÇA PARTE DO\\nECOSSISTEMA DAKILA",/"home.cta.title1": "FAÇA PARTE DO",\n  "home.cta.title2": "ECOSSISTEMA DAKILA",\n  "home.cta.btn": "INSCREVA-SE AGORA",/g' src/i18n/pages/home/pt.json
-sed -i 's/"home.cta.title": "ÚNETE AL\\nECOSISTEMA DAKILA",/"home.cta.title1": "ÚNETE AL",\n  "home.cta.title2": "ECOSISTEMA DAKILA",\n  "home.cta.btn": "INSCRÍBETE AHORA",/g' src/i18n/pages/home/es.json
-sed -i 's/"home.cta.title": "JOIN THE\\nDAKILA ECOSYSTEM",/"home.cta.title1": "JOIN THE",\n  "home.cta.title2": "DAKILA ECOSYSTEM",\n  "home.cta.btn": "SIGN UP NOW",/g' src/i18n/pages/home/en.json
