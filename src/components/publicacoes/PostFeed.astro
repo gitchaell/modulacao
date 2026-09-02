@@ -1,0 +1,86 @@
+---
+import Card from '@/components/core/Card.astro';
+import Badge from '@/components/core/Badge.astro';
+import { MessageSquare, Share2, Bookmark } from '@lucide/astro';
+
+interface Props {
+  feedPosts: any[];
+  formatDateFull: (date: Date | null) => string;
+  t: (key: string) => string;
+}
+
+const { feedPosts, formatDateFull, t } = Astro.props;
+---
+
+{feedPosts.map((postData) => (
+  <Card class="bg-brand-white border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col" noPadding>
+      <div class="p-6">
+          {/* Author Header */}
+          <div class="flex items-start justify-between mb-4">
+              <div class="flex gap-3 items-center">
+                  <div class="bg-brand-gold border-2 border-brand-dark-card flex h-12 items-center justify-center overflow-hidden rounded-full w-12">
+                      {postData.profile?.avatarUrl ? (
+                          <img src={postData.profile.avatarUrl} alt={postData.profile.fullName} class="h-full object-cover w-full" />
+                      ) : (
+                          <span class="dark:text-brand-white font-bold text-brand-black">{postData.profile.fullName.charAt(0)}</span>
+                      )}
+                  </div>
+                  <div>
+                      <div class="flex gap-2 items-center">
+                          <h3 class="dark:text-brand-white font-bold text-brand-black">{postData.profile.fullName}</h3>
+                          {postData.author.role === 'ADMIN' && (
+                              <Badge variant="gold" class="!px-1 !py-0 !text-[10px]">{t('publications.badge.verified')}</Badge>
+                          )}
+                      </div>
+                      <p class="dark:text-gray-400 text-gray-600 text-xs">{t('publications.meta.public')} • {formatDateFull(postData.post.createdAt as unknown as Date)}</p>
+                  </div>
+              </div>
+              <button class="dark:hover:text-brand-white dark:text-gray-400 hover:text-brand-black text-gray-600 transition-colors">
+
+              </button>
+          </div>
+
+          {/* Post Content */}
+          <div class="mb-4">
+             {postData.post.type === 'TEXT' ? (
+                 <Badge variant="neutral" class="mb-3">{t('publications.badge.communique')}</Badge>
+             ) : postData.post.type === 'IMAGE' ? (
+                 <Badge variant="gold" class="mb-3">{t('publications.badge.article')}</Badge>
+             ) : (
+                 <Badge variant="success" class="mb-3">{t('publications.badge.event')}</Badge>
+             )}
+
+             <h2 class="dark:text-brand-white font-bold mb-2 text-brand-black text-xl">{postData.post.content.substring(0, 50)}...</h2>
+             <p class="dark:text-gray-400 text-gray-600 text-sm">{postData.post.content}</p>
+          </div>
+
+          {/* Post Media (Placeholder based on post type) */}
+          {postData.post.imageUrl && (
+              <div class="bg-gray-100 dark:bg-black mb-4 overflow-hidden rounded-sm">
+                  <img src={postData.post.imageUrl} alt="Post media" class="h-auto max-h-[400px] object-cover w-full" />
+              </div>
+          )}
+      </div>
+
+      {/* Actions Footer */}
+      <div class="border-black/5 border-t dark:border-white/5 flex items-center justify-between px-6 py-4">
+          <div class="flex gap-6 items-center">
+              <button class="dark:text-gray-400 flex gap-2 hover:text-red-500 items-center text-gray-600 transition-colors">
+                  <span class="flex items-center text-lg">❤️🔥</span>
+                  <span class="dark:text-brand-white font-semibold text-brand-black text-sm">{postData.reactionCount || Math.floor(Math.random() * 500)}</span>
+              </button>
+              <button class="dark:hover:text-brand-white dark:text-gray-400 flex gap-2 hover:text-brand-black items-center text-gray-600 transition-colors">
+                  <MessageSquare class="h-5 w-5" />
+                  <span class="font-semibold text-sm">{postData.commentCount || Math.floor(Math.random() * 50)}</span>
+              </button>
+              <button class="dark:hover:text-brand-white dark:text-gray-400 flex gap-2 hover:text-brand-black items-center text-gray-600 transition-colors">
+                  <Share2 class="h-5 w-5" />
+                  <span class="font-semibold text-sm">{Math.floor(Math.random() * 30)}</span>
+              </button>
+          </div>
+          <button class="dark:text-gray-400 hover:text-brand-gold text-gray-600 transition-colors">
+              <Bookmark class="h-5 w-5" />
+          </button>
+      </div>
+  </Card>
+))}

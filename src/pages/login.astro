@@ -21,7 +21,7 @@ if (session.userId) {
 
 <BaseLayout title={t('auth.login.title') + ` | ${tenantConfig.name}`}>
   <!-- Add wave pattern explicitly to match the dark aesthetic behind -->
-  <div class="bg-brand-white dark:bg-[#0a0a0a] dark:bg-brand-dark-card fixed h-full inset-0 opacity-40 pointer-events-none w-full z-[-1]">
+  <div class="bg-brand-white dark:bg-brand-black dark:bg-brand-dark-card fixed h-full inset-0 opacity-40 pointer-events-none w-full z-[-1]">
     <WaveBackground />
   </div>
 
@@ -35,15 +35,15 @@ if (session.userId) {
         <!-- Top Image Banner in Left Side -->
         <div class="border border-black/5 dark:border-white/5 h-64 md:h-80 overflow-hidden premium-shadow relative rounded-2xl w-full">
           <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Earth from Space" class="h-full object-cover w-full" />
-          <div class="absolute bg-gradient-to-t from-[#0a0a0a]/90 inset-0 to-transparent via-transparent"></div>
+          <div class="absolute bg-gradient-to-t from-brand-black/90 inset-0 to-transparent via-transparent"></div>
         </div>
 
         <!-- Highlight & Text content box -->
-        <div class="backdrop-blur-md bg-white/80 border border-black/5 dark:bg-[#111111]/80 dark:border-white/5 flex-grow p-8 premium-shadow rounded-2xl sm:p-12">
+        <div class="backdrop-blur-md bg-white/80 border border-black/5 dark:bg-brand-dark/80 dark:border-white/5 flex-grow p-8 premium-shadow rounded-2xl sm:p-12">
           <div class="max-w-2xl">
             <h2 class="dark:text-brand-white font-bold font-display leading-tight lg:text-5xl mb-6 text-4xl text-brand-black tracking-wider uppercase">
               BEM-VINDO À<br />
-              <span class="text-brand-gold">ÁREA DE MEMBROS</span>
+              <span class="text-brand-gold">{t('login.member_area')}</span>
             </h2>
             <p class="dark:text-gray-400 leading-relaxed mb-12 text-gray-600 text-lg">
               {t('auth.login.welcome_desc')}
@@ -107,7 +107,7 @@ if (session.userId) {
 
       <!-- Right side: Login Form Card Panel -->
       <div class="animate-smooth-fade flex flex-col h-full" style="animation-delay: 0.1s;">
-        <div class="backdrop-blur-md bg-white/90 border border-black/5 dark:bg-[#111111]/90 dark:border-white/5 flex flex-col h-full justify-center overflow-hidden p-8 premium-shadow relative rounded-2xl sm:p-12">
+        <div class="backdrop-blur-md bg-white/90 border border-black/5 dark:bg-brand-dark/90 dark:border-white/5 flex flex-col h-full justify-center overflow-hidden p-8 premium-shadow relative rounded-2xl sm:p-12">
 
           <!-- Subtle gold gradient decoration at the top -->
           <div class="absolute bg-gradient-to-r from-transparent h-1 left-0 opacity-30 to-transparent top-0 via-brand-gold w-full"></div>
@@ -128,13 +128,13 @@ if (session.userId) {
               <label class="block dark:text-gray-400 font-bold mb-2 text-gray-600 text-xs tracking-widest uppercase">{t('auth.login.email')}</label>
               <div class="relative">
                 <div class="absolute flex inset-y-0 items-center left-0 pl-3 pointer-events-none">
-                  <Mail class="dark:text-gray-400 h-5 text-gray-500 dark:text-gray-400 w-5" />
+                  <Mail class="dark:text-gray-400 h-5 text-gray-500 w-5" />
                 </div>
                 <input
                   type="email"
                   name="email"
                   required
-                  class="bg-gray-50 border border-black/10 dark:bg-[#1a1a1a] dark:bg-brand-black dark:border-white/10 dark:text-brand-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold pl-10 placeholder-gray-500 pr-4 py-3 rounded-sm text-brand-black text-sm transition-colors w-full"
+                  class="bg-gray-50 border border-black/10 dark:bg-brand-dark-card dark:bg-brand-black dark:border-white/10 dark:text-brand-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold pl-10 placeholder-gray-500 pr-4 py-3 rounded-sm text-brand-black text-sm transition-colors w-full"
                   placeholder="seu@email.com"
                 />
               </div>
@@ -145,16 +145,16 @@ if (session.userId) {
               <label class="block dark:text-gray-400 font-bold mb-2 text-gray-600 text-xs tracking-widest uppercase">{t('auth.login.password')}</label>
               <div class="relative">
                 <div class="absolute flex inset-y-0 items-center left-0 pl-3 pointer-events-none">
-                  <Lock class="dark:text-gray-400 h-5 text-gray-500 dark:text-gray-400 w-5" />
+                  <Lock class="dark:text-gray-400 h-5 text-gray-500 w-5" />
                 </div>
                 <input
                   type="password"
                   name="password"
                   required
-                  class="bg-gray-50 border border-black/10 dark:bg-[#1a1a1a] dark:bg-brand-black dark:border-white/10 dark:text-brand-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold pl-10 placeholder-gray-500 pr-10 py-3 rounded-sm text-brand-black text-sm transition-colors w-full"
+                  class="bg-gray-50 border border-black/10 dark:bg-brand-dark-card dark:bg-brand-black dark:border-white/10 dark:text-brand-white focus:border-brand-gold focus:outline-none focus:ring-1 focus:ring-brand-gold pl-10 placeholder-gray-500 pr-10 py-3 rounded-sm text-brand-black text-sm transition-colors w-full"
                   placeholder="••••••••"
                 />
-                <button type="button" id="toggle-password" class="absolute dark:text-gray-300 dark:text-gray-400 flex hover:text-gray-600 inset-y-0 items-center pr-3 right-0 text-gray-500 dark:text-gray-400 transition-colors">
+                <button type="button" id="toggle-password" class="absolute dark:text-gray-300 dark:text-gray-400 flex hover:text-gray-600 inset-y-0 items-center pr-3 right-0 text-gray-500 transition-colors">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
                 </button>
               </div>
@@ -172,7 +172,7 @@ if (session.userId) {
 
             <div class="flex items-center my-8 relative">
               <div class="border-black/10 border-t dark:border-white/10 flex-grow"></div>
-              <span class="dark:text-gray-400 flex-shrink-0 mx-4 text-gray-500 dark:text-gray-400 text-xs tracking-widest uppercase">{t('auth.login.or')}</span>
+              <span class="dark:text-gray-400 flex-shrink-0 mx-4 text-gray-500 text-xs tracking-widest uppercase">{t('auth.login.or')}</span>
               <div class="border-black/10 border-t dark:border-white/10 flex-grow"></div>
             </div>
 

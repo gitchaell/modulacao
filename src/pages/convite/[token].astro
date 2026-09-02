@@ -18,8 +18,8 @@ const isValid = !!invitation;
 
 <AuthLayout title={t('auth.invite.title')}>
   <div class="mb-8 text-center">
-    <h2 class="dark:text-white font-bold font-display text-3xl text-brand-black tracking-wider uppercase">Bienvenido</h2>
-    <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500 dark:text-gray-400">Crea tu contraseña para acceder a la plataforma.</p>
+    <h2 class="dark:text-white font-bold font-display text-3xl text-brand-black tracking-wider uppercase">{t('invite.welcome')}</h2>
+    <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500">{t('invite.create_password')}</p>
   </div>
 
   {isValid ? (
@@ -29,14 +29,14 @@ const isValid = !!invitation;
       <Input type="password" name="password" label="Nueva Contraseña" required minlength="8" helperText="Debe tener al menos 8 caracteres." />
       <Input type="password" name="confirmPassword" label="Confirmar Contraseña" required minlength="8" />
 
-      <Button type="submit" fullWidth class="mt-8">Crear Cuenta</Button>
+      <Button type="submit" fullWidth class="mt-8">{t('invite.submit')}</Button>
     </form>
   ) : (
     <div class="text-center">
       <Alert variant="error" title="Enlace Inválido">
         El enlace de invitación es inválido, ya ha sido utilizado o ha expirado. Comunícate con el administrador para solicitar uno nuevo.
       </Alert>
-      <a href="/" class="dark:hover:text-brand-gold dark:text-white focus-visible font-semibold hover:text-brand-gold inline-block mt-8 text-brand-black text-sm tracking-wider transition-colors uppercase">Volver al inicio</a>
+      <a href="/" class="dark:hover:text-brand-gold dark:text-white focus-visible font-semibold hover:text-brand-gold inline-block mt-8 text-brand-black text-sm tracking-wider transition-colors uppercase">{t('invite.back')}</a>
     </div>
   )}
 </AuthLayout>

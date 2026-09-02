@@ -1,11 +1,12 @@
 ---
 import PublicLayout from '@/layouts/PublicLayout.astro';
 import { getLangFromUrl, getPageTranslations , usePageTranslations} from '@/utils/i18n';
-import Button from '@/components/core/Button.astro';
-import Input from '@/components/core/Input.astro';
 import Card from '@/components/core/Card.astro';
-import { MapPin, Phone, Mail, Clock, Share2, Users, Shield, Calendar, ShoppingCart, ChevronRight, Send, Map } from '@lucide/astro';
-import { Instagram, Youtube, Facebook, Twitter } from 'lucide-astro';
+import { Users, Shield, Calendar, ShoppingCart, ChevronRight, Map } from '@lucide/astro';
+
+import ContactForm from '@/components/contato/ContactForm.astro';
+import ContactInfoGrid from '@/components/contato/ContactInfoGrid.astro';
+
 
 const lang = getLangFromUrl(Astro.cookies);
 const pageDict = await getPageTranslations('contact', lang);
@@ -28,7 +29,7 @@ const t = usePageTranslations(pageDict, lang);
     </div>
 
     <div class="lg:px-8 max-w-7xl mt-16 mx-auto px-6 relative w-full z-10">
-      <div class="dark:text-gray-400 flex font-medium items-center mb-6 text-gray-500 dark:text-gray-400 text-sm">
+      <div class="dark:text-gray-400 flex font-medium items-center mb-6 text-gray-500 text-sm">
         <a href="/" class="hover:text-brand-gold transition-colors">{t('nav.home')}</a>
         <span class="mx-2">&gt;</span>
         <span class="dark:text-brand-white text-brand-black uppercase">{t('contact.hero.title')}</span>
@@ -52,136 +53,19 @@ const t = usePageTranslations(pageDict, lang);
     <div class="lg:px-8 max-w-7xl mx-auto px-6 space-y-24">
 
       {/* Info Grid (5 Columns) */}
-      <section class="border-b border-black/10 dark:border-white/10 gap-8 grid grid-cols-1 lg:grid-cols-5 md:grid-cols-3 pb-16">
-        {/* Email */}
-        <div class="flex flex-col gap-3 group">
-          <div class="flex gap-3 items-center">
-             <Mail class="h-6 text-brand-gold w-6" />
-             <h3 class="font-bold text-sm tracking-widest uppercase">{t('contact.info.email.label')}</h3>
-          </div>
-          <div class="pl-9 space-y-1">
-             <p class="dark:text-gray-300 text-gray-600 text-sm">contato@modulacao.org</p>
-             <p class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-xs">{t('contact.info.email.desc')}</p>
-          </div>
-        </div>
-
-        {/* WhatsApp */}
-        <div class="flex flex-col gap-3 group">
-          <div class="flex gap-3 items-center">
-             <Phone class="h-6 text-brand-gold w-6" />
-             <h3 class="font-bold text-sm tracking-widest uppercase">{t('contact.info.whatsapp')}</h3>
-          </div>
-          <div class="pl-9 space-y-1">
-             <p class="dark:text-gray-300 text-gray-600 text-sm">+591 780 00000</p>
-             <p class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-xs">{t('contact.info.whatsapp.desc')}</p>
-          </div>
-        </div>
-
-        {/* Address */}
-        <div class="flex flex-col gap-3 group">
-          <div class="flex gap-3 items-center">
-             <MapPin class="h-6 text-brand-gold w-6" />
-             <h3 class="font-bold text-sm tracking-widest uppercase">{t('contact.info.address.label')}</h3>
-          </div>
-          <div class="pl-9 space-y-1">
-             <p class="dark:text-gray-300 leading-tight text-gray-600 text-sm whitespace-pre-line">{t('contact.info.address.desc')}</p>
-             <a href="#" class="flex font-semibold gap-1 hover:underline items-center mt-1 text-brand-gold text-xs">Ver no mapa <ChevronRight class="h-3 w-3"/></a>
-          </div>
-        </div>
-
-        {/* Hours */}
-        <div class="flex flex-col gap-3 group">
-          <div class="flex gap-3 items-center">
-             <Clock class="h-6 text-brand-gold w-6" />
-             <h3 class="font-bold text-sm tracking-widest uppercase">{t('contact.info.hours')}</h3>
-          </div>
-          <div class="pl-9 space-y-1">
-             <p class="dark:text-gray-300 leading-tight text-gray-600 text-sm whitespace-pre-line">{t('contact.info.hours.desc')}</p>
-             <p class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-xs">{t('contact.info.hours.exc')}</p>
-          </div>
-        </div>
-
-        {/* Social */}
-        <div class="flex flex-col gap-3 group">
-          <div class="flex gap-3 items-center">
-             <Share2 class="h-6 text-brand-gold w-6" />
-             <h3 class="font-bold text-sm tracking-widest uppercase">{t('contact.info.social')}</h3>
-          </div>
-          <div class="flex gap-3 items-center mt-1 pl-9">
-             <a href="#" class="dark:hover:text-brand-white dark:text-gray-400 hover:text-brand-black text-brand-gold text-gray-500 dark:text-gray-400 transition-colors" aria-label="Instagram"><Instagram class="h-5 w-5"/></a>
-             <a href="#" class="dark:hover:text-brand-white dark:text-gray-400 hover:text-brand-black text-brand-gold text-gray-500 dark:text-gray-400 transition-colors" aria-label="YouTube"><Youtube class="h-5 w-5"/></a>
-             <a href="#" class="dark:hover:text-brand-white dark:text-gray-400 hover:text-brand-black text-brand-gold text-gray-500 dark:text-gray-400 transition-colors" aria-label="Facebook"><Facebook class="h-5 w-5"/></a>
-             <a href="#" class="dark:hover:text-brand-white dark:text-gray-400 hover:text-brand-black text-brand-gold text-gray-500 dark:text-gray-400 transition-colors" aria-label="Twitter/X"><Twitter class="h-5 w-5"/></a>
-          </div>
-        </div>
-      </section>
+      <ContactInfoGrid t={t} />
 
       {/* Form and Map Section */}
       <section class="gap-16 grid grid-cols-1 lg:grid-cols-2">
 
         {/* Left: Form */}
-        <div class="space-y-6">
-          <div>
-            <h2 class="dark:text-brand-white font-bold font-display mb-2 text-2xl text-brand-black tracking-widest uppercase">{t('contact.form.title2')}</h2>
-            <p class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-sm">{t('contact.form.desc')}</p>
-          </div>
-
-          <form id="contact-form" method="POST" action="/api/contacto" class="space-y-6">
-            <div id="form-success" class="bg-green-500/10 border border-green-500/20 font-semibold hidden p-4 rounded-sm text-green-500 text-sm">
-              {t('contact.form.success')}
-            </div>
-            <div id="form-error" class="bg-red-500/10 border border-red-500/20 font-semibold hidden p-4 rounded-sm text-red-500 text-sm">
-              {t('contact.form.error')}
-            </div>
-
-            <div class="gap-6 grid grid-cols-1 md:grid-cols-2">
-              <Input type="text" name="name" label="" placeholder={t('contact.form.name.label')} required class="bg-gray-50 border-black/10 dark:bg-brand-dark dark:border-white/10 dark:text-brand-white dark:text-gray-400 placeholder:text-gray-500 dark:text-gray-400 text-brand-black" />
-              <Input type="email" name="email" label="" placeholder={t('contact.form.email.label')} required class="bg-gray-50 border-black/10 dark:bg-brand-dark dark:border-white/10 dark:text-brand-white dark:text-gray-400 placeholder:text-gray-500 dark:text-gray-400 text-brand-black" />
-            </div>
-
-            <div class="relative">
-               <select name="subject" class="appearance-none bg-gray-50 border border-black/10 cursor-pointer dark:bg-brand-dark dark:border-white/10 dark:text-brand-white flex focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold hover:border-brand-gold/50 px-4 py-3 rounded-sm text-brand-black text-sm w-full">
-                 <option value="" disabled selected>{t('contact.form.subject.label')}</option>
-                 <option value="duvida">{t('contact.form.subject.opt1')}</option>
-                 <option value="suporte">{t('contact.form.subject.opt2')}</option>
-                 <option value="parceria">{t('contact.form.subject.opt3')}</option>
-               </select>
-               <div class="absolute flex inset-y-0 items-center pointer-events-none px-4 right-0 text-brand-gold">
-                 <ChevronRight class="h-4 rotate-90 w-4" />
-               </div>
-            </div>
-
-            <div>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows="5"
-                placeholder={t('contact.form.message.placeholder')}
-                class="bg-gray-50 border border-black/10 dark:bg-brand-dark dark:border-white/10 dark:text-brand-white dark:text-gray-400 duration-300 flex focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold hover:border-brand-gold/50 placeholder:text-gray-500 dark:text-gray-400 px-4 py-3 rounded-sm text-brand-black text-sm transition-all w-full"
-              ></textarea>
-            </div>
-
-            <div class="flex gap-3 items-start">
-              <input type="checkbox" id="privacy" required class="bg-gray-50 border-black/10 cursor-pointer dark:bg-brand-dark dark:border-white/10 focus:ring-brand-gold mt-1 rounded-sm text-brand-gold" />
-              <label for="privacy" class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-sm">
-                {t('contact.form.privacy')} <a href="#" class="hover:underline text-brand-gold">{t('contact.form.privacy.link')}</a>
-              </label>
-            </div>
-
-            <div class="pt-2">
-              <Button type="submit" class="!bg-brand-gold !text-brand-black dark:!text-brand-black dark:text-brand-white flex gap-2 hover:!bg-brand-gold-dark items-center justify-center w-full">
-                <Send class="h-4 w-4" /> {t('contact.form.submit')}
-              </Button>
-            </div>
-          </form>
-        </div>
+        <ContactForm t={t} />
 
         {/* Right: Where We Are */}
         <div class="space-y-6">
           <div>
             <h2 class="dark:text-brand-white font-bold font-display mb-2 text-2xl text-brand-black tracking-widest uppercase">{t('contact.location.title')}</h2>
-            <p class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-sm">{t('contact.location.desc')}</p>
+            <p class="dark:text-gray-400 text-gray-500 text-sm">{t('contact.location.desc')}</p>
           </div>
 
           <div class="bg-gray-50 border border-black/10 dark:bg-brand-dark dark:border-white/10 group h-[300px] overflow-hidden relative rounded-sm w-full">
@@ -203,7 +87,7 @@ const t = usePageTranslations(pageDict, lang);
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&auto=format&fit=crop" alt="Building" class="border border-gray-200 dark:border-white/5 h-24 object-cover rounded-sm shrink-0 sm:w-32 w-full" />
             <div class="space-y-2 w-full">
               <h3 class="dark:text-brand-white font-bold text-brand-black tracking-wide">{t('contact.location.building')}</h3>
-              <p class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-sm whitespace-pre-line">{t('contact.location.address')}</p>
+              <p class="dark:text-gray-400 text-gray-500 text-sm whitespace-pre-line">{t('contact.location.address')}</p>
               <a href="#" class="flex font-bold gap-1 hover:underline items-center mt-2 text-brand-gold text-xs tracking-widest uppercase">
                 {t('contact.location.directions')} <ChevronRight class="h-3 w-3"/>
               </a>
@@ -220,7 +104,7 @@ const t = usePageTranslations(pageDict, lang);
              <h2 class="dark:text-brand-white font-bold font-display text-2xl text-brand-black tracking-widest uppercase">{t('contact.faq.title')}</h2>
              <div class="bg-brand-gold/50 h-px w-16"></div>
            </div>
-           <p class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-sm">{t('contact.faq.desc')}</p>
+           <p class="dark:text-gray-400 text-gray-500 text-sm">{t('contact.faq.desc')}</p>
         </div>
 
         <div class="gap-6 grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2">
@@ -278,7 +162,7 @@ const t = usePageTranslations(pageDict, lang);
             <div class="mt-1 text-brand-gold"><Map class="h-6 w-6" /></div>
             <div>
                <h2 class="dark:text-brand-white font-bold font-display mb-1 md:text-2xl text-brand-black text-xl tracking-widest uppercase">{t('contact.cta.title')}</h2>
-               <p class="dark:text-gray-400 md:text-base text-gray-500 dark:text-gray-400 text-sm">{t('contact.cta.desc')}</p>
+               <p class="dark:text-gray-400 md:text-base text-gray-500 text-sm">{t('contact.cta.desc')}</p>
             </div>
          </div>
 
@@ -290,35 +174,5 @@ const t = usePageTranslations(pageDict, lang);
     </div>
   </main>
 
-  <script>
-    const form = document.getElementById('contact-form') as HTMLFormElement;
-    const successMsg = document.getElementById('form-success');
-    const errorMsg = document.getElementById('form-error');
 
-    if (form) {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        successMsg?.classList.add('hidden');
-        errorMsg?.classList.add('hidden');
-
-        const formData = new FormData(form);
-
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST',
-            body: formData,
-          });
-
-          if (res.ok) {
-            successMsg?.classList.remove('hidden');
-            form.reset();
-          } else {
-            errorMsg?.classList.remove('hidden');
-          }
-        } catch (error) {
-          errorMsg?.classList.remove('hidden');
-        }
-      });
-    }
-  </script>
 </PublicLayout>

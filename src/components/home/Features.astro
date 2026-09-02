@@ -12,7 +12,7 @@ const { pageDict } = Astro.props;
 const lang = getLangFromUrl(Astro.cookies);
 const t = usePageTranslations(pageDict, lang);
 ---
-<Section class="bg-brand-offwhite border-b border-black/5 dark:bg-[#0a0a0a] dark:bg-brand-dark-card dark:border-white/5 py-16" contained={true}>
+<Section class="bg-brand-offwhite border-b border-black/5 dark:bg-brand-black dark:bg-brand-dark-card dark:border-white/5 py-16" contained={true}>
   <div class="divide-x-0 gap-8 grid grid-cols-2 lg:divide-white/10 lg:divide-x lg:gap-4 lg:grid-cols-5">
     <!-- Feature 1 -->
     <div class="flex flex-col items-center lg:px-4 text-center">

@@ -43,7 +43,7 @@ const formatDate = (date: Date) => {
     <div class="flex flex-col gap-4 justify-between sm:flex-row sm:items-center">
       <div>
         <h1 class="font-bold font-display text-3xl text-brand-gold tracking-widest uppercase">{t('admin.members.title')}</h1>
-        <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500 dark:text-gray-400">Administra los usuarios registrados y envía nuevas invitaciones.</p>
+        <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500">{t('admin.members.desc')}</p>
       </div>
     </div>
 
@@ -52,7 +52,7 @@ const formatDate = (date: Date) => {
       <!-- Lista de Miembros (Ocupa 2 columnas) -->
       <Card noPadding class="backdrop-blur-md bg-brand-white/80 border border-gray-200 dark:bg-brand-dark-card/80 dark:border-white/10 lg:col-span-2 overflow-hidden premium-shadow">
         <div class="bg-gray-50 border-b border-gray-200 dark:bg-brand-black/50 dark:border-white/5 flex items-center justify-between p-6">
-          <h2 class="dark:text-brand-white font-bold font-display text-brand-black text-lg tracking-wider uppercase">Usuarios Registrados</h2>
+          <h2 class="dark:text-brand-white font-bold font-display text-brand-black text-lg tracking-wider uppercase">{t('admin.members.registered')}</h2>
           <Badge variant="neutral">{allUsers.length}</Badge>
         </div>
         <Table headers={['Miembro', 'Email', 'Rol', 'Registro', '']}>
@@ -71,9 +71,9 @@ const formatDate = (date: Date) => {
               <td class="p-4">
                 <Badge variant={user.role === 'ADMIN' ? 'error' : 'gold'}>{user.role}</Badge>
               </td>
-              <td class="dark:text-gray-400 font-semibold p-4 text-gray-500 dark:text-gray-400 text-xs tracking-wider uppercase">{formatDate(user.createdAt as unknown as Date)}</td>
+              <td class="dark:text-gray-400 font-semibold p-4 text-gray-500 text-xs tracking-wider uppercase">{formatDate(user.createdAt as unknown as Date)}</td>
               <td class="p-4 text-right">
-                <button class="cursor-not-allowed dark:text-gray-400 focus-visible hover:text-brand-gold opacity-50 p-2 rounded-sm text-gray-500 dark:text-gray-400 transition-colors" aria-label="Gestionar Usuario" disabled>
+                <button class="cursor-not-allowed dark:text-gray-400 focus-visible hover:text-brand-gold opacity-50 p-2 rounded-sm text-gray-500 transition-colors" aria-label="Gestionar Usuario" disabled>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
                 </button>
               </td>
@@ -81,7 +81,7 @@ const formatDate = (date: Date) => {
           ))}
           {allUsers.length === 0 && (
             <tr>
-              <td colspan="5" class="dark:text-gray-400 font-semibold p-12 text-center text-gray-500 dark:text-gray-400">No hay usuarios registrados.</td>
+              <td colspan="5" class="dark:text-gray-400 font-semibold p-12 text-center text-gray-500">{t('admin.members.empty_reg')}</td>
             </tr>
           )}
         </Table>
@@ -94,20 +94,20 @@ const formatDate = (date: Date) => {
           <form id="inviteForm" class="space-y-6">
             <Input type="email" id="inviteEmail" label="Correo Electrónico" placeholder="usuario@ejemplo.com" required />
             <div class="flex flex-col gap-2 w-full">
-              <label class="dark:text-brand-offwhite font-semibold text-brand-black text-sm tracking-wide uppercase">Rol Inicial</label>
+              <label class="dark:text-brand-offwhite font-semibold text-brand-black text-sm tracking-wide uppercase">{t('admin.members.initial_role')}</label>
               <select id="inviteRole" class="bg-transparent border border-gray-300 dark:border-gray-700 dark:text-brand-white flex focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold h-12 hover:border-brand-gold/50 px-4 py-3 rounded-sm text-brand-black text-sm transition-colors w-full">
-                <option value="MEMBER" class="bg-brand-white dark:bg-brand-black">Miembro</option>
-                <option value="ADMIN" class="bg-brand-white dark:bg-brand-black">Administrador</option>
+                <option value="MEMBER" class="bg-brand-white dark:bg-brand-black">{t('admin.members.role_member')}</option>
+                <option value="ADMIN" class="bg-brand-white dark:bg-brand-black">{t('admin.members.role_admin')}</option>
               </select>
             </div>
-            <Button type="submit" fullWidth class="mt-2">Generar Link</Button>
+            <Button type="submit" fullWidth class="mt-2">{t('admin.members.generate_link')}</Button>
             <p id="inviteMessage" class="font-semibold hidden mt-2 text-center text-xs" role="alert"></p>
           </form>
         </Card>
 
         <Card class="backdrop-blur-md bg-brand-white/80 border border-gray-200 dark:bg-brand-dark-card/80 dark:border-white/10 premium-shadow" noPadding>
           <div class="bg-gray-50 border-b border-gray-200 dark:bg-brand-black/50 dark:border-white/5 flex items-center justify-between p-6">
-            <h2 class="dark:text-gray-300 font-bold text-gray-600 text-sm tracking-wider uppercase">Pendientes</h2>
+            <h2 class="dark:text-gray-300 font-bold text-gray-600 text-sm tracking-wider uppercase">{t('admin.members.pending')}</h2>
             <Badge variant="neutral">{pendingInvitations.length}</Badge>
           </div>
           <ul class="dark:divide-white/5 divide-gray-100 divide-y max-h-96 overflow-y-auto">
@@ -117,14 +117,14 @@ const formatDate = (date: Date) => {
                   <span class="dark:text-brand-white font-semibold mr-2 text-brand-black text-sm truncate">{inv.email}</span>
                   <Badge variant={inv.role === 'ADMIN' ? 'error' : 'gold'}>{inv.role}</Badge>
                 </div>
-                <div class="dark:text-gray-400 font-semibold mb-3 text-gray-500 dark:text-gray-400 text-xs tracking-widest uppercase">Expira: {formatDate(inv.expiresAt as unknown as Date)}</div>
+                <div class="dark:text-gray-400 font-semibold mb-3 text-gray-500 text-xs tracking-widest uppercase">Expira: {formatDate(inv.expiresAt as unknown as Date)}</div>
                 <div class="flex gap-2">
-                  <input type="text" readonly value={`${Astro.url.origin}/convite/${inv.token}`} class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-gray-800 dark:text-gray-400 flex-1 focus:outline-none focus:ring-1 focus:ring-brand-gold px-3 py-2 rounded-sm text-gray-500 dark:text-gray-400 text-xs" aria-label="Link de invitación" />
+                  <input type="text" readonly value={`${Astro.url.origin}/convite/${inv.token}`} class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-gray-800 dark:text-gray-400 flex-1 focus:outline-none focus:ring-1 focus:ring-brand-gold px-3 py-2 rounded-sm text-gray-500 text-xs" aria-label="Link de invitación" />
                 </div>
               </li>
             ))}
             {pendingInvitations.length === 0 && (
-              <li class="dark:text-gray-400 font-semibold p-8 text-center text-gray-500 dark:text-gray-400 text-sm">No hay invitaciones pendientes.</li>
+              <li class="dark:text-gray-400 font-semibold p-8 text-center text-gray-500 text-sm">{t('admin.members.empty_pending')}</li>
             )}
           </ul>
         </Card>

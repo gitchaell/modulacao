@@ -32,7 +32,7 @@ const [profile] = await db
 
     <div>
       <h1 class="font-bold font-display text-3xl text-brand-gold tracking-widest uppercase">{t('app.settings')}</h1>
-      <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500 dark:text-gray-400">Configura cómo te ven los demás miembros en {tenantConfig.name}.</p>
+      <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500">Configura cómo te ven los demás miembros en {tenantConfig.name}.</p>
     </div>
 
     <Card class="backdrop-blur-md bg-brand-white/80 border border-gray-200 dark:bg-brand-dark-card/80 dark:border-white/10 premium-shadow">
@@ -42,8 +42,8 @@ const [profile] = await db
         <div class="border-b border-gray-100 dark:border-white/5 flex gap-6 items-center pb-6">
           <Avatar src={profile?.avatarUrl} alt={profile?.fullName || 'Avatar'} size="xl" fallback={(profile?.fullName || 'U').charAt(0).toUpperCase()} />
           <div>
-            <label class="block dark:text-brand-offwhite font-semibold mb-2 text-brand-black text-sm tracking-wide uppercase">Foto de Perfil</label>
-            <input type="file" name="avatar" accept="image/*" class="cursor-pointer dark:text-brand-white dark:text-gray-400 file:bg-brand-gold/10 file:border-0 file:font-bold file:mr-4 file:px-6 file:py-2.5 file:rounded-sm file:text-brand-gold file:text-xs file:tracking-widest file:transition-colors file:uppercase focus-visible font-semibold hover:file:bg-brand-gold hover:file:text-brand-black text-gray-500 dark:text-gray-400 text-sm" />
+            <label class="block dark:text-brand-offwhite font-semibold mb-2 text-brand-black text-sm tracking-wide uppercase">{t('settings.profile_photo')}</label>
+            <input type="file" name="avatar" accept="image/*" class="cursor-pointer dark:text-brand-white dark:text-gray-400 file:bg-brand-gold/10 file:border-0 file:font-bold file:mr-4 file:px-6 file:py-2.5 file:rounded-sm file:text-brand-gold file:text-xs file:tracking-widest file:transition-colors file:uppercase focus-visible font-semibold hover:file:bg-brand-gold hover:file:text-brand-black text-gray-500 text-sm" />
           </div>
         </div>
 
@@ -82,10 +82,10 @@ const [profile] = await db
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="dark:text-brand-offwhite font-semibold text-brand-black text-sm tracking-wide uppercase">Biografía</label>
+          <label class="dark:text-brand-offwhite font-semibold text-brand-black text-sm tracking-wide uppercase">{t('settings.bio')}</label>
           <textarea
             name="bio"
-            class="bg-transparent border border-gray-300 dark:border-gray-700 dark:text-gray-400 dark:text-white focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold h-32 hover:border-brand-gold/50 p-4 placeholder:text-gray-500 dark:text-gray-400 resize-none rounded-sm text-brand-black text-sm transition-colors w-full"
+            class="bg-transparent border border-gray-300 dark:border-gray-700 dark:text-gray-400 dark:text-white focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold h-32 hover:border-brand-gold/50 p-4 placeholder:text-gray-500 resize-none rounded-sm text-brand-black text-sm transition-colors w-full"
             placeholder="Cuéntanos un poco sobre ti..."
           >{profile?.bio || ''}</textarea>
         </div>

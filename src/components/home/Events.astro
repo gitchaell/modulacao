@@ -54,7 +54,7 @@ const events = [
   }
 ];
 ---
-<section class="bg-brand-white border-black/5 border-y dark:bg-[#0a0a0a] dark:bg-brand-dark-card dark:border-white/5 overflow-hidden py-24 relative">
+<section class="bg-brand-white border-black/5 border-y dark:bg-brand-black dark:bg-brand-dark-card dark:border-white/5 overflow-hidden py-24 relative">
   <div class="-left-40 absolute bg-brand-gold/5 blur-3xl h-96 rounded-full top-40 w-96"></div>
 
   <div class="container max-w-[1400px] mx-auto px-6 relative z-10">
@@ -75,9 +75,9 @@ const events = [
 
     <div class="gap-6 grid grid-cols-1 md:grid-cols-2">
       {events.map(event => (
-        <a href={`/eventos/${event.id}`} class="bg-[#FAFAFA] border border-black/5 dark:bg-[#111] dark:border-white/5 duration-300 flex flex-col group hover:border-brand-gold/50 hover:shadow-md overflow-hidden shadow-sm sm:flex-row transition-all">
+        <a href={`/eventos/${event.id}`} class="bg-brand-offwhite border border-black/5 dark:bg-brand-dark dark:border-white/5 duration-300 flex flex-col group hover:border-brand-gold/50 hover:shadow-md overflow-hidden shadow-sm sm:flex-row transition-all">
           {/* Date Block */}
-          <div class="bg-gray-100 dark:bg-brand-black border-b border-gray-200 dark:bg-[#151515] dark:bg-brand-dark dark:border-white/10 dark:hover:text-brand-white dark:text-brand-white dark:text-gray-500 duration-300 flex flex-row group-hover:bg-brand-gold group-text-gray-500 dark:text-gray-400 hover:text-brand-black items-center justify-between p-6 sm:border-b-0 sm:border-r sm:flex-col sm:justify-center sm:w-32 text-brand-black transition-colors">
+          <div class="bg-gray-100 dark:bg-brand-black border-b border-gray-200 dark:bg-brand-dark-card dark:bg-brand-dark dark:border-white/10 dark:hover:text-brand-white dark:text-brand-white dark:text-gray-500 duration-300 flex flex-row group-hover:bg-brand-gold group-text-gray-500 dark:text-gray-400 hover:text-brand-black items-center justify-between p-6 sm:border-b-0 sm:border-r sm:flex-col sm:justify-center sm:w-32 text-brand-black transition-colors">
             <span class="font-bold text-sm tracking-widest uppercase">{event.date.month}</span>
             <span class="font-bold font-display sm:text-5xl text-4xl">{event.date.day}</span>
           </div>

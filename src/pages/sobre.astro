@@ -1,7 +1,12 @@
 ---
 import PublicLayout from '@/layouts/PublicLayout.astro';
-import { Target, Eye, Gem, Users, Globe, LayoutGrid, Heart, ChevronRight, Briefcase, Palette, Microscope, Network } from '@lucide/astro';
+import { Target, Users, ChevronRight, Briefcase, Palette, Microscope, Network } from '@lucide/astro';
 import { getLangFromUrl, getPageTranslations , usePageTranslations} from '@/utils/i18n';
+
+import Stats from '@/components/sobre/Stats.astro';
+import MissionVisionValues from '@/components/sobre/MissionVisionValues.astro';
+import Topics from '@/components/sobre/Topics.astro';
+
 
 const lang = getLangFromUrl(Astro.cookies);
 const pageDict = await getPageTranslations('about', lang);
@@ -115,7 +120,7 @@ const topics = [
             alt="Grupo ao por do sol"
             class="absolute duration-1000 group-hover:scale-105 h-full inset-0 object-cover transition-transform w-full"
           />
-          <div class="absolute bg-gradient-to-r dark:from-[#050505]/95 from-gray-200 inset-0 to-transparent via-[#050505]/70"></div>
+          <div class="absolute bg-gradient-to-r dark:from-brand-black/95 from-gray-200 inset-0 to-transparent via-brand-black/70"></div>
 
           <div class="max-w-2xl relative z-10">
             <div class="flex gap-4 items-center mb-4">
@@ -126,7 +131,7 @@ const topics = [
             <p class="dark:text-gray-300 font-semibold leading-relaxed mb-8 md:text-xl text-gray-700 text-lg">
               {t('about.group.title')}
             </p>
-            <a href="#historia" class="border border-brand-gold/50 dark:hover:text-brand-white dark:text-gray-400 duration-300 font-bold hover:bg-brand-gold hover:text-brand-black inline-flex items-center justify-center px-6 py-3 rounded-full text-brand-gold text-gray-500 dark:text-gray-400 text-sm tracking-widest transition-colors uppercase">
+            <a href="#historia" class="border border-brand-gold/50 dark:hover:text-brand-white dark:text-gray-400 duration-300 font-bold hover:bg-brand-gold hover:text-brand-black inline-flex items-center justify-center px-6 py-3 rounded-full text-brand-gold text-gray-500 text-sm tracking-widest transition-colors uppercase">
               {t('about.group.btn')}
               <ChevronRight class="h-4 ml-2 w-4" />
             </a>
@@ -134,28 +139,7 @@ const topics = [
         </section>
 
         <!-- Stats -->
-        <section class="border-b border-black/5 dark:border-white/5 gap-4 grid grid-cols-2 md:grid-cols-4 pb-8">
-          <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col items-center justify-center p-6 rounded-2xl text-center">
-            <Users class="h-8 mb-4 text-brand-gold w-8" />
-            <span class="dark:text-brand-white font-bold mb-1 text-2xl text-brand-black">{t('about.stats.members')}</span>
-            <span class="dark:text-gray-400 dark:text-gray-500 text-gray-500 dark:text-gray-400 text-xs tracking-wider uppercase">{t('about.stats.members_label')}</span>
-          </div>
-          <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col items-center justify-center p-6 rounded-2xl text-center">
-            <Globe class="h-8 mb-4 text-brand-gold w-8" />
-            <span class="dark:text-brand-white font-bold mb-1 text-2xl text-brand-black">{t('about.stats.countries')}</span>
-            <span class="dark:text-gray-400 dark:text-gray-500 text-gray-500 dark:text-gray-400 text-xs tracking-wider uppercase">{t('about.stats.countries_label')}</span>
-          </div>
-          <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col items-center justify-center p-6 rounded-2xl text-center">
-            <LayoutGrid class="h-8 mb-4 text-brand-gold w-8" />
-            <span class="dark:text-brand-white font-bold mb-1 text-2xl text-brand-black">{t('about.stats.projects')}</span>
-            <span class="dark:text-gray-400 dark:text-gray-500 text-gray-500 dark:text-gray-400 text-xs tracking-wider uppercase">{t('about.stats.projects_label')}</span>
-          </div>
-          <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col items-center justify-center p-6 rounded-2xl text-center">
-            <Heart class="h-8 mb-4 text-brand-gold w-8" />
-            <span class="dark:text-brand-white font-bold mb-1 text-2xl text-brand-black">{t('about.stats.purpose')}</span>
-            <span class="dark:text-gray-400 dark:text-gray-500 text-gray-500 dark:text-gray-400 text-xs tracking-wider uppercase">{t('about.stats.purpose_label')}</span>
-          </div>
-        </section>
+        <Stats t={t} />
 
         <!-- Historia -->
         <section id="historia" class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 gap-8 grid grid-cols-1 items-center lg:p-8 md:grid-cols-2 p-6 rounded-3xl">
@@ -179,7 +163,7 @@ const topics = [
             <p class="dark:text-gray-400 leading-relaxed mb-8 text-gray-600 text-lg">
               {t('about.history.p2')}
             </p>
-            <a href="#filosofia" class="border border-brand-gold/50 dark:hover:text-brand-white dark:text-gray-400 duration-300 font-bold hover:bg-brand-gold hover:text-brand-black inline-flex items-center justify-center px-6 py-3 rounded-full text-brand-gold text-gray-500 dark:text-gray-400 text-sm tracking-widest transition-colors uppercase">
+            <a href="#filosofia" class="border border-brand-gold/50 dark:hover:text-brand-white dark:text-gray-400 duration-300 font-bold hover:bg-brand-gold hover:text-brand-black inline-flex items-center justify-center px-6 py-3 rounded-full text-brand-gold text-gray-500 text-sm tracking-widest transition-colors uppercase">
               {t('about.history.btn')}
               <ChevronRight class="h-4 ml-2 w-4" />
             </a>
@@ -187,93 +171,13 @@ const topics = [
         </section>
 
         <!-- Missao, Visao, Valores Grid -->
-        <section class="gap-6 grid grid-cols-1 lg:grid-cols-3">
-
-          <!-- Missao -->
-          <div id="missao" class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col hover:border-brand-gold/20 p-8 rounded-3xl transition-colors">
-            <div class="flex gap-4 items-center mb-6">
-              <Target class="h-8 text-brand-gold w-8" />
-              <h3 class="font-bold font-display text-brand-gold text-xl tracking-wider uppercase">{t('about.mission.label')}</h3>
-            </div>
-            <div class="h-32 mb-6 overflow-hidden relative rounded-2xl">
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" alt="Missao" class="absolute h-full inset-0 object-cover opacity-60 w-full" />
-            </div>
-            <p class="dark:text-gray-400 flex-1 font-semibold leading-relaxed text-gray-600">
-              {t('about.mission.desc')}
-            </p>
-          </div>
-
-          <!-- Visao -->
-          <div id="visao" class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col hover:border-brand-gold/20 p-8 rounded-3xl transition-colors">
-            <div class="flex gap-4 items-center mb-6">
-              <Eye class="h-8 text-brand-gold w-8" />
-              <h3 class="font-bold font-display text-brand-gold text-xl tracking-wider uppercase">{t('about.vision.label')}</h3>
-            </div>
-            <div class="h-32 mb-6 overflow-hidden relative rounded-2xl">
-              <img src="https://images.unsplash.com/photo-1454372182658-c712e4c5a1db?q=80&w=2070&auto=format&fit=crop" alt="Visao" class="absolute h-full inset-0 object-cover opacity-60 w-full" />
-            </div>
-            <p class="dark:text-gray-400 flex-1 font-semibold leading-relaxed text-gray-600">
-              {t('about.vision.desc')}
-            </p>
-          </div>
-
-          <!-- Valores -->
-          <div id="valores" class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col hover:border-brand-gold/20 p-8 rounded-3xl transition-colors">
-            <div class="flex gap-4 items-center mb-6">
-              <Gem class="h-8 text-brand-gold w-8" />
-              <h3 class="font-bold font-display text-brand-gold text-xl tracking-wider uppercase">{t('about.values.label')}</h3>
-            </div>
-            <div class="h-32 mb-6 overflow-hidden relative rounded-2xl">
-              <img src="https://images.unsplash.com/photo-1484807352052-23338990c6c6?q=80&w=2070&auto=format&fit=crop" alt="Valores" class="absolute h-full inset-0 object-cover opacity-60 w-full" />
-            </div>
-            <div class="gap-x-2 gap-y-3 grid grid-cols-2 mt-auto">
-              {Array.from({length: 10}).map((_, i) => (
-                <div class="dark:text-gray-300 flex gap-2 items-center text-gray-700 text-sm">
-                  <div class="bg-brand-gold h-1.5 rounded-full w-1.5"></div>
-                  <span>{t(`about.values.v${i+1}` as any)}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </section>
+        <MissionVisionValues t={t} />
 
         <!-- Topics List -->
-        <section class="space-y-4">
-          {topics.map(topic => (
-            <div id={topic.id} class="bg-white border border-black/5 cursor-pointer dark:bg-brand-dark-card dark:border-white/5 flex flex-col group hover:border-brand-gold/30 items-center md:flex-row md:p-8 overflow-hidden p-6 relative rounded-3xl transition-colors">
-              <!-- Background Image on hover or subtly behind -->
-              <div class="absolute duration-500 group-hover:opacity-30 inset-0 opacity-10 pointer-events-none transition-opacity">
-                <img src={topic.image} alt={topic.title} class="dark:mix-blend-overlay h-full mix-blend-normal object-cover w-full" />
-                <div class="absolute bg-gradient-to-r from-[#0f0f0f] inset-0 to-transparent via-[#0f0f0f]/80"></div>
-              </div>
-
-              <!-- Content -->
-              <div class="bg-brand-gold/10 border border-brand-gold/30 flex h-16 items-center justify-center mb-4 md:mb-0 md:mr-8 relative rounded-full shrink-0 text-brand-gold w-16 z-10">
-                {
-                  (() => {
-                    const Icon = topic.icon;
-                    return <Icon class="h-8 w-8" />;
-                  })()
-                }
-              </div>
-
-              <div class="flex-1 md:pr-12 md:text-left pr-0 relative text-center z-10">
-                <h3 class="dark:text-brand-white font-bold font-display mb-2 text-2xl text-brand-black tracking-wider uppercase">{topic.title}</h3>
-                <p class="dark:text-gray-400 font-semibold text-gray-600">
-                  {topic.desc}
-                </p>
-              </div>
-
-              <div class="bg-white/5 dark:text-gray-400 dark:text-gray-500 group-hover:bg-brand-gold/10 group-hover:text-brand-gold h-10 hidden items-center justify-center md:flex relative rounded-full shrink-0 text-gray-500 dark:text-gray-400 transition-colors w-10 z-10">
-                <ChevronRight class="h-5 w-5" />
-              </div>
-            </div>
-          ))}
-        </section>
+        <Topics topics={topics} t={t} />
 
         <!-- CTA Final -->
-        <section class="bg-gradient-to-br border border-black/5 dark:border-white/5 dark:from-[#141414] dark:to-[#050505] flex flex-col from-gray-100 gap-8 items-center justify-between lg:p-16 md:flex-row overflow-hidden p-10 relative rounded-3xl to-gray-200">
+        <section class="bg-gradient-to-br border border-black/5 dark:border-white/5 dark:from-brand-dark dark:to-brand-black flex flex-col from-gray-100 gap-8 items-center justify-between lg:p-16 md:flex-row overflow-hidden p-10 relative rounded-3xl to-gray-200">
           <div class="absolute inset-0 z-0">
             <!-- decorative wave or glow -->
             <div class="-translate-x-1/2 -translate-y-1/2 absolute bg-gradient-to-r from-transparent h-[1px] left-1/2 opacity-50 shadow-[0_0_50px_10px_#D4AF37] to-transparent top-1/2 via-brand-gold/20 w-full"></div>

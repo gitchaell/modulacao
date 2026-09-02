@@ -1,0 +1,74 @@
+---
+import { MapPin, Phone, Mail, Clock, Share2, ChevronRight } from '@lucide/astro';
+import { Instagram, Youtube, Facebook, Twitter } from 'lucide-astro';
+
+interface Props {
+  t: (key: string) => string;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="border-b border-black/10 dark:border-white/10 gap-8 grid grid-cols-1 lg:grid-cols-5 md:grid-cols-3 pb-16">
+  {/* Email */}
+  <div class="flex flex-col gap-3 group">
+    <div class="flex gap-3 items-center">
+       <Mail class="h-6 text-brand-gold w-6" />
+       <h3 class="font-bold text-sm tracking-widest uppercase">{t('contact.info.email.label')}</h3>
+    </div>
+    <div class="pl-9 space-y-1">
+       <p class="dark:text-gray-300 text-gray-600 text-sm">{t('contato.email')}</p>
+       <p class="dark:text-gray-400 text-gray-500 text-xs">{t('contact.info.email.desc')}</p>
+    </div>
+  </div>
+
+  {/* WhatsApp */}
+  <div class="flex flex-col gap-3 group">
+    <div class="flex gap-3 items-center">
+       <Phone class="h-6 text-brand-gold w-6" />
+       <h3 class="font-bold text-sm tracking-widest uppercase">{t('contact.info.whatsapp')}</h3>
+    </div>
+    <div class="pl-9 space-y-1">
+       <p class="dark:text-gray-300 text-gray-600 text-sm">+591 780 00000</p>
+       <p class="dark:text-gray-400 text-gray-500 text-xs">{t('contact.info.whatsapp.desc')}</p>
+    </div>
+  </div>
+
+  {/* Address */}
+  <div class="flex flex-col gap-3 group">
+    <div class="flex gap-3 items-center">
+       <MapPin class="h-6 text-brand-gold w-6" />
+       <h3 class="font-bold text-sm tracking-widest uppercase">{t('contact.info.address.label')}</h3>
+    </div>
+    <div class="pl-9 space-y-1">
+       <p class="dark:text-gray-300 leading-tight text-gray-600 text-sm whitespace-pre-line">{t('contact.info.address.desc')}</p>
+       <a href="#" class="flex font-semibold gap-1 hover:underline items-center mt-1 text-brand-gold text-xs">{t('contato.view_map')} <ChevronRight class="h-3 w-3"/></a>
+    </div>
+  </div>
+
+  {/* Hours */}
+  <div class="flex flex-col gap-3 group">
+    <div class="flex gap-3 items-center">
+       <Clock class="h-6 text-brand-gold w-6" />
+       <h3 class="font-bold text-sm tracking-widest uppercase">{t('contact.info.hours')}</h3>
+    </div>
+    <div class="pl-9 space-y-1">
+       <p class="dark:text-gray-300 leading-tight text-gray-600 text-sm whitespace-pre-line">{t('contact.info.hours.desc')}</p>
+       <p class="dark:text-gray-400 text-gray-500 text-xs">{t('contact.info.hours.exc')}</p>
+    </div>
+  </div>
+
+  {/* Social */}
+  <div class="flex flex-col gap-3 group">
+    <div class="flex gap-3 items-center">
+       <Share2 class="h-6 text-brand-gold w-6" />
+       <h3 class="font-bold text-sm tracking-widest uppercase">{t('contact.info.social')}</h3>
+    </div>
+    <div class="flex gap-3 items-center mt-1 pl-9">
+       <a href="#" class="dark:hover:text-brand-white dark:text-gray-400 hover:text-brand-black text-brand-gold text-gray-500 transition-colors" aria-label="Instagram"><Instagram class="h-5 w-5"/></a>
+       <a href="#" class="dark:hover:text-brand-white dark:text-gray-400 hover:text-brand-black text-brand-gold text-gray-500 transition-colors" aria-label="YouTube"><Youtube class="h-5 w-5"/></a>
+       <a href="#" class="dark:hover:text-brand-white dark:text-gray-400 hover:text-brand-black text-brand-gold text-gray-500 transition-colors" aria-label="Facebook"><Facebook class="h-5 w-5"/></a>
+       <a href="#" class="dark:hover:text-brand-white dark:text-gray-400 hover:text-brand-black text-brand-gold text-gray-500 transition-colors" aria-label="Twitter/X"><Twitter class="h-5 w-5"/></a>
+    </div>
+  </div>
+</section>
