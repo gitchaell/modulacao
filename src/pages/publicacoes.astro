@@ -4,16 +4,12 @@ import Sidebar from '@/components/publicacoes/Sidebar.astro';
 
 import PublicLayout from '@/layouts/PublicLayout.astro';
 import Card from '@/components/core/Card.astro';
-import Badge from '@/components/core/Badge.astro';
 import { db } from '@/data/db/db';
 import { posts, users, events, articles, comments, reactions, profiles } from '@/data/db/schema';
 import { eq, desc, sql, } from 'drizzle-orm';
 import { getLangFromUrl, getPageTranslations , usePageTranslations} from '@/utils/i18n';
 import {
 
-  MessageSquare,
-  Share2,
-  Bookmark,
   ChevronRight,
   MapPin,
   Clock,
