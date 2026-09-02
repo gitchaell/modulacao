@@ -28,7 +28,7 @@ const formatDate = (date: Date | null) => {
     <div class="absolute bg-[radial-gradient(circle_at_left,_var(--tw-gradient-stops))] from-brand-gold/10 inset-0 opacity-80 to-brand-black via-brand-black z-0"></div>
     <div class="animate-smooth-fade container max-w-6xl mx-auto px-6 relative z-10">
       <h1 class="font-bold font-display mb-6 md:text-5xl text-4xl text-brand-gold tracking-widest uppercase">{t('nav.championships')}</h1>
-      <p class="dark:text-gray-400 font-semibold text-balance text-gray-500 text-lg">Explora nuestras últimas investigaciones y observaciones astronómicas.</p>
+      <p class="dark:text-gray-400 font-semibold text-balance text-gray-500 text-lg">{t('pesquisas.description')}</p>
     </div>
   </div>
 
@@ -36,7 +36,7 @@ const formatDate = (date: Date | null) => {
     <div class="container max-w-6xl mx-auto px-6">
       {newsArticles.length === 0 ? (
         <div class="dark:text-gray-400 font-semibold py-24 text-center text-gray-500">
-          <p>Aún no hay investigaciones publicadas.</p>
+          <p>{t('pesquisas.empty')}</p>
         </div>
       ) : (
         <div class="gap-10 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2">

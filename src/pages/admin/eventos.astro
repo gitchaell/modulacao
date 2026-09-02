@@ -46,27 +46,27 @@ const isPast = (date: Date) => new Date(date) < new Date();
     <!-- Create Event Modal Base -->
     <div id="create-event-modal" class="bg-black/80 fixed flex hidden inset-0 items-center justify-center p-4 z-50">
       <div class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card dark:border-brand-dark max-w-lg p-6 rounded-xl w-full">
-        <h2 class="dark:text-white font-bold mb-4 text-brand-black text-xl">Crear Nuevo Evento</h2>
+        <h2 class="dark:text-white font-bold mb-4 text-brand-black text-xl">{t('admin.events.create')}</h2>
         <form method="POST" action="/api/admin/events/create" class="space-y-4">
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Título</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.events.title')}</label>
             <input type="text" name="title" required class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Fecha y Hora</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.events.datetime')}</label>
             <input type="datetime-local" name="date" required class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Ubicación</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.events.location')}</label>
             <input type="text" name="location" required class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Descripción</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.events.desc')}</label>
             <textarea name="description" required rows="3" class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full"></textarea>
           </div>
           <div class="flex gap-2 justify-end mt-4">
-            <Button type="button" variant="ghost" onclick="document.getElementById('create-event-modal').classList.add('hidden')">Cancelar</Button>
-            <Button type="submit">Crear Evento</Button>
+            <Button type="button" variant="ghost" onclick="document.getElementById('create-event-modal').classList.add('hidden')">{t('admin.events.cancel')}</Button>
+            <Button type="submit">{t('admin.events.save')}</Button>
           </div>
         </form>
       </div>
@@ -75,28 +75,28 @@ const isPast = (date: Date) => new Date(date) < new Date();
     <!-- Edit Event Modal Base -->
     <div id="edit-event-modal" class="bg-black/80 fixed flex hidden inset-0 items-center justify-center p-4 z-50">
       <div class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card dark:border-brand-dark max-w-lg p-6 rounded-xl w-full">
-        <h2 class="dark:text-white font-bold mb-4 text-brand-black text-xl">Editar Evento</h2>
+        <h2 class="dark:text-white font-bold mb-4 text-brand-black text-xl">{t('admin.events.edit')}</h2>
         <form method="POST" action="/api/admin/events/update" class="space-y-4">
           <input type="hidden" name="id" id="edit-event-id" />
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Título</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.events.title')}</label>
             <input type="text" name="title" id="edit-event-title" required class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Fecha y Hora</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.events.datetime')}</label>
             <input type="datetime-local" name="date" id="edit-event-date" required class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Ubicación</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.events.location')}</label>
             <input type="text" name="location" id="edit-event-location" required class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Descripción</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.events.desc')}</label>
             <textarea name="description" id="edit-event-description" required rows="3" class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full"></textarea>
           </div>
           <div class="flex gap-2 justify-end mt-4">
-            <Button type="button" variant="ghost" onclick="document.getElementById('edit-event-modal').classList.add('hidden')">Cancelar</Button>
-            <Button type="submit">Actualizar Evento</Button>
+            <Button type="button" variant="ghost" onclick="document.getElementById('edit-event-modal').classList.add('hidden')">{t('admin.events.cancel')}</Button>
+            <Button type="submit">{t('admin.events.update')}</Button>
           </div>
         </form>
       </div>
@@ -119,7 +119,7 @@ const isPast = (date: Date) => new Date(date) < new Date();
               {group ? (
                  <div class="font-semibold mb-1 text-brand-gold">{group.name}</div>
               ) : (
-                 <div class="dark:text-gray-400 font-semibold mb-1 text-gray-500">Global / Sin Grupo</div>
+                 <div class="dark:text-gray-400 font-semibold mb-1 text-gray-500">{t('admin.events.global')}</div>
               )}
               <div class="dark:text-gray-400 dark:text-gray-500 flex font-semibold gap-1.5 items-center text-gray-500 text-sm tracking-wide uppercase">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -131,9 +131,9 @@ const isPast = (date: Date) => new Date(date) < new Date();
             </td>
             <td class="p-4">
               {isPast(event.date as unknown as Date) ? (
-                <Badge variant="neutral">Finalizado</Badge>
+                <Badge variant="neutral">{t('admin.events.status_finished')}</Badge>
               ) : (
-                <Badge variant="gold">Próximo</Badge>
+                <Badge variant="gold">{t('admin.events.status_upcoming')}</Badge>
               )}
             </td>
             <td class="p-4 text-right">

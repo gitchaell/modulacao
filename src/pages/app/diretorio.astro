@@ -72,7 +72,7 @@ const allMembers = await dbQuery.orderBy(desc(profiles.updatedAt));
 
       {allMembers.length === 0 && (
          <div class="col-span-full py-24 text-center">
-            <p class="dark:text-gray-400 font-semibold text-gray-500 text-lg">No se encontraron miembros con ese término de búsqueda.</p>
+            <p class="dark:text-gray-400 font-semibold text-gray-500 text-lg">{t('directory.empty')}</p>
          </div>
       )}
     </div>

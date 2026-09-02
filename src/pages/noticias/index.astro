@@ -1,11 +1,11 @@
 ---
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import PublicLayout from '@/layouts/PublicLayout.astro';
 import Card from '@/components/core/Card.astro';
 
 import { db } from '@/data/db/db';
 import { articles } from '@/data/db/schema';
 import { eq, desc } from 'drizzle-orm';
-import { getLangFromUrl } from '@/utils/i18n';
 import { tenantConfig } from '@/config/tenant';
 
 const lang = getLangFromUrl(Astro.cookies);
@@ -21,13 +21,14 @@ const formatDate = (date: Date | null) => {
   if (!date) return '';
   return new Intl.DateTimeFormat(lang === 'es' ? 'es-ES' : 'en-US', { dateStyle: 'medium' }).format(new Date(date));
 };
+const t = await useTranslations(lang);
 ---
 
 <PublicLayout title="Noticias">
   <div class="bg-gray-100 border-b border-gray-200 dark:bg-brand-black dark:border-white/5 overflow-hidden py-24 relative">
     <div class="absolute bg-[radial-gradient(circle_at_left,_var(--tw-gradient-stops))] from-brand-gold/10 inset-0 opacity-80 to-brand-black via-brand-black z-0"></div>
     <div class="animate-smooth-fade container max-w-6xl mx-auto px-6 relative z-10">
-      <h1 class="font-bold font-display mb-6 md:text-5xl text-4xl text-brand-gold tracking-widest uppercase">Noticias</h1>
+      <h1 class="font-bold font-display mb-6 md:text-5xl text-4xl text-brand-gold tracking-widest uppercase">{t('news.title')}</h1>
       <p class="dark:text-gray-400 font-semibold text-balance text-gray-500 text-lg">Últimas novedades y actualizaciones de {tenantConfig.name}.</p>
     </div>
   </div>
@@ -36,7 +37,7 @@ const formatDate = (date: Date | null) => {
     <div class="container max-w-6xl mx-auto px-6">
       {newsArticles.length === 0 ? (
         <div class="dark:text-gray-400 font-semibold py-24 text-center text-gray-500">
-          <p>Aún no hay noticias publicadas.</p>
+          <p>{t('news.empty')}</p>
         </div>
       ) : (
         <div class="gap-10 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2">

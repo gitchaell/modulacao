@@ -69,15 +69,15 @@ const [productsCount] = await db.select({ count: sql<number>`count(*)` }).from(p
         <div class="space-y-4">
           <a href="/admin/membros#invite" class="bg-gray-50 block border border-transparent dark:bg-brand-black dark:bg-brand-dark-card dark:hover:bg-gray-100 focus-visible group hover:bg-gray-100 hover:border-brand-gold/50 p-4 rounded-sm transition-colors">
             <h3 class="dark:text-white font-bold group-hover:text-brand-gold text-brand-black transition-colors">{t('admin.members.invite_btn')}</h3>
-            <p class="dark:text-gray-400 mt-1 text-gray-500 text-sm">Invita a nuevos miembros a unirse a la plataforma.</p>
+            <p class="dark:text-gray-400 mt-1 text-gray-500 text-sm">{t('admin.dashboard.invite_desc')}</p>
           </a>
           <a href="/admin/noticias#create" class="bg-gray-50 block border border-transparent dark:bg-brand-black dark:bg-brand-dark-card dark:hover:bg-gray-100 focus-visible group hover:bg-gray-100 hover:border-brand-gold/50 p-4 rounded-sm transition-colors">
             <h3 class="dark:text-white font-bold group-hover:text-brand-gold text-brand-black transition-colors">{t('admin.news.create_btn')}</h3>
-            <p class="dark:text-gray-400 mt-1 text-gray-500 text-sm">Redacta una nueva noticia o aviso oficial.</p>
+            <p class="dark:text-gray-400 mt-1 text-gray-500 text-sm">{t('admin.dashboard.news_desc')}</p>
           </a>
           <a href="/admin/eventos#create" class="bg-gray-50 block border border-transparent dark:bg-brand-black dark:bg-brand-dark-card dark:hover:bg-gray-100 focus-visible group hover:bg-gray-100 hover:border-brand-gold/50 p-4 rounded-sm transition-colors">
             <h3 class="dark:text-white font-bold group-hover:text-brand-gold text-brand-black transition-colors">{t('admin.events.create_btn')}</h3>
-            <p class="dark:text-gray-400 mt-1 text-gray-500 text-sm">Configura fecha, mapa y cupos para el próximo encuentro.</p>
+            <p class="dark:text-gray-400 mt-1 text-gray-500 text-sm">{t('admin.dashboard.events_desc')}</p>
           </a>
         </div>
       </Card>

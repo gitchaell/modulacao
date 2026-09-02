@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl } from '@/utils/i18n';
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import AppLayout from '@/layouts/AppLayout.astro';
 import { ArrowLeft, ChevronRight, MessageCircle, Star, ShieldCheck, HeartHandshake, Package, RotateCcw, Share2, Heart } from '@lucide/astro';
 
@@ -35,6 +35,7 @@ const product = {
 const whatsappMessage = encodeURIComponent(`Olá! Gostaria de mais informações sobre o produto: ${product.name} (ID: ${product.id})`);
 const whatsappLink = `https://wa.me/${product.whatsappNumber}?text=${whatsappMessage}`;
 const lang = getLangFromUrl(Astro.cookies);
+const t = await useTranslations(lang);
 ---
 
 <AppLayout title={product.name}>
@@ -123,7 +124,7 @@ const lang = getLangFromUrl(Astro.cookies);
             ))}
 
              <div>
-                <h4 class="dark:text-brand-white font-medium mb-3 text-brand-black text-sm tracking-wider uppercase">Quantidade</h4>
+                <h4 class="dark:text-brand-white font-medium mb-3 text-brand-black text-sm tracking-wider uppercase">{t('shop.quantity')}</h4>
                 <div class="border border-gray-200 dark:border-white/10 flex items-center max-w-[150px] overflow-hidden rounded-sm">
                   <button class="dark:hover:bg-white/5 dark:text-gray-400 flex h-10 hover:bg-gray-100 items-center justify-center text-gray-500 transition-colors w-10">-</button>
                   <input type="text" value="1" class="bg-transparent border-gray-200 border-x dark:border-white/10 dark:text-brand-white focus:outline-none font-medium h-10 text-brand-black text-center w-full" readonly />
@@ -165,22 +166,22 @@ const lang = getLangFromUrl(Astro.cookies);
           <div class="flex items-start">
             <Package class="h-6 mr-4 shrink-0 text-brand-gold w-6" />
             <div>
-              <h4 class="dark:text-brand-white font-medium mb-1 text-brand-black text-sm">Envio para todo o país</h4>
-              <p class="dark:text-gray-400 leading-relaxed text-gray-500 text-xs">Consulte opções e prazos no atendimento.</p>
+              <h4 class="dark:text-brand-white font-medium mb-1 text-brand-black text-sm">{t('shop.shipping.title')}</h4>
+              <p class="dark:text-gray-400 leading-relaxed text-gray-500 text-xs">{t('shop.shipping.desc')}</p>
             </div>
           </div>
           <div class="flex items-start">
             <RotateCcw class="h-6 mr-4 shrink-0 text-brand-gold w-6" />
             <div>
-              <h4 class="dark:text-brand-white font-medium mb-1 text-brand-black text-sm">Trocas e Devoluções</h4>
-              <p class="dark:text-gray-400 leading-relaxed text-gray-500 text-xs">Garantia de 7 dias após o recebimento.</p>
+              <h4 class="dark:text-brand-white font-medium mb-1 text-brand-black text-sm">{t('shop.returns.title')}</h4>
+              <p class="dark:text-gray-400 leading-relaxed text-gray-500 text-xs">{t('shop.returns.desc')}</p>
             </div>
           </div>
           <div class="flex items-start">
             <HeartHandshake class="h-6 mr-4 shrink-0 text-brand-gold w-6" />
             <div>
-              <h4 class="dark:text-brand-white font-medium mb-1 text-brand-black text-sm">Atendimento Humanizado</h4>
-              <p class="dark:text-gray-400 leading-relaxed text-gray-500 text-xs">Suporte dedicado para tirar suas dúvidas.</p>
+              <h4 class="dark:text-brand-white font-medium mb-1 text-brand-black text-sm">{t('shop.support.title')}</h4>
+              <p class="dark:text-gray-400 leading-relaxed text-gray-500 text-xs">{t('shop.support.desc')}</p>
             </div>
           </div>
         </div>
@@ -191,8 +192,8 @@ const lang = getLangFromUrl(Astro.cookies);
     <!-- Description Tabs (Optional Expansion) -->
     <div class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card dark:border-white/5 lg:p-10 mt-6 p-6 premium-shadow rounded-2xl">
        <div class="border-b border-gray-200 dark:border-white/5 flex gap-8 mb-6">
-          <button class="border-b-2 border-brand-gold font-medium pb-4 text-brand-gold text-sm">Descrição Completa</button>
-          <button class="border-b-2 border-transparent dark:hover:text-brand-white dark:text-gray-400 font-medium hover:text-brand-black pb-4 text-gray-500 text-sm transition-colors">Especificações</button>
+          <button class="border-b-2 border-brand-gold font-medium pb-4 text-brand-gold text-sm">{t('shop.desc.full')}</button>
+          <button class="border-b-2 border-transparent dark:hover:text-brand-white dark:text-gray-400 font-medium hover:text-brand-black pb-4 text-gray-500 text-sm transition-colors">{t('shop.desc.specs')}</button>
        </div>
 
        <div class="dark:prose-invert dark:text-gray-300 leading-relaxed max-w-none prose text-gray-600 text-sm">
@@ -200,7 +201,7 @@ const lang = getLangFromUrl(Astro.cookies);
             O <strong>{product.name}</strong> é desenvolvido com a mais alta tecnologia nutricional para garantir a máxima absorção e eficiência.
             Ideal para pessoas que buscam melhorar a qualidade de vida, aumentar a disposição no dia a dia e otimizar a recuperação muscular após atividades físicas.
          </p>
-         <h4 class="dark:text-brand-white font-medium mb-3 mt-6 text-brand-black">Principais Benefícios:</h4>
+         <h4 class="dark:text-brand-white font-medium mb-3 mt-6 text-brand-black">{t('shop.desc.benefits')}</h4>
          <ul class="list-disc pl-5 space-y-2">
             {product.features.map(feature => (
               <li>{feature}</li>

@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl } from '@/utils/i18n';
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import AdminLayout from '@/layouts/AdminLayout.astro';
 import Card from '@/components/core/Card.astro';
 import Input from '@/components/core/Input.astro';
@@ -23,14 +23,15 @@ const config = {
 };
 
 const lang = getLangFromUrl(Astro.cookies);
+const t = await useTranslations(lang);
 ---
 
 <AdminLayout title="Configuración Global">
   <div class="space-y-6">
     <div class="flex items-center justify-between">
       <div>
-        <h1 class="dark:text-white font-bold font-display text-3xl text-brand-black tracking-widest uppercase">Configuración Global</h1>
-        <p class="dark:text-gray-400 font-semibold mt-1 text-gray-500">Administra la identidad y los ajustes principales de la plataforma.</p>
+        <h1 class="dark:text-white font-bold font-display text-3xl text-brand-black tracking-widest uppercase">{t('admin.settings.title')}</h1>
+        <p class="dark:text-gray-400 font-semibold mt-1 text-gray-500">{t('admin.settings.desc')}</p>
       </div>
     </div>
 
@@ -47,19 +48,19 @@ const lang = getLangFromUrl(Astro.cookies);
 
           <!-- Identidad -->
           <section>
-            <h2 class="border-b border-gray-200 dark:border-brand-dark dark:text-white font-bold mb-4 pb-2 text-brand-black text-xl">Identidad de la Marca</h2>
+            <h2 class="border-b border-gray-200 dark:border-brand-dark dark:text-white font-bold mb-4 pb-2 text-brand-black text-xl">{t('admin.settings.brand')}</h2>
             <div class="space-y-4">
               <div class="gap-4 grid grid-cols-1 md:grid-cols-2">
                 <Input type="text" name="name" label="Nombre de la Institución" value={config.name} required minlength="3" />
                 <Input type="email" name="email" label="Correo de Contacto Principal" value={config.contactEmail} required />
               </div>
               <div>
-                <label class="block dark:text-brand-offwhite font-semibold mb-2 text-brand-black text-sm tracking-wide uppercase">Logotipo</label>
+                <label class="block dark:text-brand-offwhite font-semibold mb-2 text-brand-black text-sm tracking-wide uppercase">{t('admin.settings.logo')}</label>
                 <div class="flex gap-4 items-center">
                   <div class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-brand-dark flex h-16 items-center justify-center rounded-sm w-16">
                     <svg class="h-8 text-brand-gold w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                   </div>
-                  <Button variant="outline" type="button" size="sm">Subir Nuevo Logo</Button>
+                  <Button variant="outline" type="button" size="sm">{t('admin.settings.upload_logo')}</Button>
                 </div>
               </div>
             </div>
@@ -67,7 +68,7 @@ const lang = getLangFromUrl(Astro.cookies);
 
           <!-- Redes Sociales -->
           <section>
-            <h2 class="border-b border-gray-200 dark:border-brand-dark dark:text-white font-bold mb-4 pb-2 text-brand-black text-xl">Redes Sociales</h2>
+            <h2 class="border-b border-gray-200 dark:border-brand-dark dark:text-white font-bold mb-4 pb-2 text-brand-black text-xl">{t('admin.settings.social')}</h2>
             <div class="space-y-4">
               <div class="gap-4 grid grid-cols-1 md:grid-cols-2">
                 <Input type="url" name="instagram" label="Instagram URL" value={config.socials.instagram} placeholder="https://instagram.com/..." />
@@ -79,7 +80,7 @@ const lang = getLangFromUrl(Astro.cookies);
           </section>
 
           <div class="border-gray-200 border-t dark:border-brand-dark flex justify-end pt-6">
-            <Button type="submit">Guardar Configuración</Button>
+            <Button type="submit">{t('admin.settings.save')}</Button>
           </div>
         </form>
 

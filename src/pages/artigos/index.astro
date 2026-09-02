@@ -58,14 +58,14 @@ const navItems = [
 
       <div class="container mx-auto px-6 relative z-10">
         <div class="dark:text-gray-400 flex font-semibold items-center mb-6 text-gray-500 text-xs tracking-wider uppercase">
-          <a href="/" class="hover:text-brand-gold transition-colors">Início</a>
+          <a href="/" class="hover:text-brand-gold transition-colors">{t('articles.nav.home')}</a>
           <span class="mx-2">></span>
-          <span class="dark:text-brand-white text-brand-black">Artigos</span>
+          <span class="dark:text-brand-white text-brand-black">{t('articles.nav.articles')}</span>
         </div>
 
         <div class="max-w-2xl">
-          <h1 class="dark:text-brand-white font-bold mb-2 text-5xl text-brand-black tracking-tight uppercase">ARTIGOS</h1>
-          <h2 class="font-semibold mb-6 text-2xl text-brand-gold tracking-wide uppercase">CONHECIMENTO QUE TRANSFORMA</h2>
+          <h1 class="dark:text-brand-white font-bold mb-2 text-5xl text-brand-black tracking-tight uppercase">{t('articles.hero.badge')}</h1>
+          <h2 class="font-semibold mb-6 text-2xl text-brand-gold tracking-wide uppercase">{t('articles.hero.title')}</h2>
           <p class="dark:text-gray-400 leading-relaxed max-w-md text-gray-600 text-lg">
             Exploramos ideias, experiências e descobertas que inspiram evolução, consciência e propósito.
           </p>
@@ -95,21 +95,21 @@ const navItems = [
 
           <div class="hidden md:block min-w-[160px] relative">
             <select class="appearance-none bg-gray-100 border border-black/10 cursor-pointer dark:bg-black/50 dark:border-white/10 dark:text-brand-white focus:border-brand-gold/50 focus:outline-none pl-4 pr-10 py-2 rounded-sm text-brand-black text-sm w-full">
-              <option>Todos os autores</option>
+              <option>{t('articles.filter.all_authors')}</option>
             </select>
             <ChevronDown class="absolute h-4 pointer-events-none right-3 text-brand-gold top-2.5 w-4" />
           </div>
 
           <div class="hidden md:block min-w-[140px] relative">
             <select class="appearance-none bg-gray-100 border border-black/10 cursor-pointer dark:bg-black/50 dark:border-white/10 dark:text-brand-white focus:border-brand-gold/50 focus:outline-none pl-4 pr-10 py-2 rounded-sm text-brand-black text-sm w-full">
-              <option>Mais recentes</option>
+              <option>{t('articles.filter.latest')}</option>
             </select>
             <ChevronDown class="absolute h-4 pointer-events-none right-3 text-brand-gold top-2.5 w-4" />
           </div>
 
           <div class="hidden lg:block min-w-[140px] relative">
             <select class="appearance-none bg-gray-100 border border-black/10 cursor-pointer dark:bg-black/50 dark:border-white/10 dark:text-brand-white focus:border-brand-gold/50 focus:outline-none pl-4 pr-10 py-2 rounded-sm text-brand-black text-sm w-full">
-              <option>Dificuldade</option>
+              <option>{t('articles.filter.difficulty')}</option>
             </select>
             <ChevronDown class="absolute h-4 pointer-events-none right-3 text-brand-gold top-2.5 w-4" />
           </div>

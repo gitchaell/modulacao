@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl } from '@/utils/i18n';
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
 import AppLayout from '@/layouts/AppLayout.astro';
 import Card from '@/components/core/Card.astro';
 import { db } from '@/data/db/db';
@@ -30,6 +30,7 @@ const membersList = await db
   .where(eq(groupMembers.groupId, group.id));
 
 const lang = getLangFromUrl(Astro.cookies);
+const t = await useTranslations(lang);
 ---
 
 <AppLayout title={group.name}>
@@ -77,7 +78,7 @@ const lang = getLangFromUrl(Astro.cookies);
               <div class="dark:text-white font-semibold group-hover:text-brand-gold text-brand-black transition-colors">{profile.fullName}</div>
               <div class="flex gap-2 text-brand-gold text-xs">
                 <span>@{profile.slug}</span>
-                {role === 'ADMIN' && <span class="bg-brand-gold/20 px-1.5 py-0.5 rounded text-brand-gold text-xs">ADMIN</span>}
+                {role === 'ADMIN' && <span class="bg-brand-gold/20 px-1.5 py-0.5 rounded text-brand-gold text-xs">{t('group.admin')}</span>}
               </div>
             </div>
             </Card>

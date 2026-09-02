@@ -40,9 +40,9 @@ const formatDate = (date: Date) => {
 
   <div id="notification-dropdown" class="absolute bg-brand-white border border-gray-200 dark:bg-brand-dark-card dark:border-brand-dark hidden mt-2 origin-top-right overflow-hidden premium-shadow right-0 rounded-sm transform transition-all w-80 z-50">
     <div class="bg-gray-50 border-b border-gray-200 dark:bg-brand-black/50 dark:border-brand-dark flex items-center justify-between p-4">
-      <h3 class="dark:text-brand-white font-semibold text-brand-black text-sm tracking-wider uppercase">Notificaciones</h3>
+      <h3 class="dark:text-brand-white font-semibold text-brand-black text-sm tracking-wider uppercase">{t('ui.notification.title')}</h3>
       {unreadCount > 0 && (
-        <button id="mark-all-read" class="dark:hover:text-brand-black dark:text-brand-white focus-visible font-semibold hover:text-brand-black text-brand-gold text-xs transition-colors">Marcar todo como leído</button>
+        <button id="mark-all-read" class="dark:hover:text-brand-black dark:text-brand-white focus-visible font-semibold hover:text-brand-black text-brand-gold text-xs transition-colors">{t('ui.notification.mark_read')}</button>
       )}
     </div>
 

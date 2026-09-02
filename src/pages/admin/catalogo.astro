@@ -37,27 +37,27 @@ const formatDate = (date: Date) => {
     <!-- Create Product Modal Base -->
     <div id="create-product-modal" class="bg-black/80 fixed flex hidden inset-0 items-center justify-center p-4 z-50">
       <div class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card dark:border-brand-dark max-w-lg p-6 rounded-xl w-full">
-        <h2 class="dark:text-white font-bold mb-4 text-brand-black text-xl">Añadir Nuevo Producto</h2>
+        <h2 class="dark:text-white font-bold mb-4 text-brand-black text-xl">{t('admin.catalog.add')}</h2>
         <form method="POST" action="/api/admin/catalog/create" class="space-y-4">
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Nombre del Producto</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.catalog.name')}</label>
             <input type="text" name="name" required class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Precio (Texto)</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.catalog.price')}</label>
             <input type="text" name="price" required placeholder="Ej: $15.00 o Consultar" class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Número de WhatsApp de Contacto</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.catalog.whatsapp')}</label>
             <input type="text" name="whatsappNumber" required placeholder="+1234567890" class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Descripción</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.catalog.desc')}</label>
             <textarea name="description" required rows="3" class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full"></textarea>
           </div>
           <div class="flex gap-2 justify-end mt-4">
-            <Button type="button" variant="ghost" onclick="document.getElementById('create-product-modal').classList.add('hidden')">Cancelar</Button>
-            <Button type="submit">Guardar Producto</Button>
+            <Button type="button" variant="ghost" onclick="document.getElementById('create-product-modal').classList.add('hidden')">{t('admin.catalog.cancel')}</Button>
+            <Button type="submit">{t('admin.catalog.save')}</Button>
           </div>
         </form>
       </div>
@@ -66,28 +66,28 @@ const formatDate = (date: Date) => {
     <!-- Edit Product Modal Base -->
     <div id="edit-product-modal" class="bg-black/80 fixed flex hidden inset-0 items-center justify-center p-4 z-50">
       <div class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card dark:border-brand-dark max-w-lg p-6 rounded-xl w-full">
-        <h2 class="dark:text-white font-bold mb-4 text-brand-black text-xl">Editar Producto</h2>
+        <h2 class="dark:text-white font-bold mb-4 text-brand-black text-xl">{t('admin.catalog.edit')}</h2>
         <form method="POST" action="/api/admin/catalog/update" class="space-y-4">
           <input type="hidden" name="id" id="edit-product-id" />
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Nombre del Producto</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.catalog.name')}</label>
             <input type="text" name="name" id="edit-product-name" required class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Precio (Texto)</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.catalog.price')}</label>
             <input type="text" name="price" id="edit-product-price" required placeholder="Ej: $15.00 o Consultar" class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Número de WhatsApp de Contacto</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.catalog.whatsapp')}</label>
             <input type="text" name="whatsappNumber" id="edit-product-whatsapp" required placeholder="+1234567890" class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Descripción</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.catalog.desc')}</label>
             <textarea name="description" id="edit-product-description" required rows="3" class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full"></textarea>
           </div>
           <div class="flex gap-2 justify-end mt-4">
-            <Button type="button" variant="ghost" onclick="document.getElementById('edit-product-modal').classList.add('hidden')">Cancelar</Button>
-            <Button type="submit">Actualizar Producto</Button>
+            <Button type="button" variant="ghost" onclick="document.getElementById('edit-product-modal').classList.add('hidden')">{t('admin.catalog.cancel')}</Button>
+            <Button type="submit">{t('admin.catalog.update')}</Button>
           </div>
         </form>
       </div>
@@ -123,7 +123,7 @@ const formatDate = (date: Date) => {
                   ))}
                 </div>
               ) : (
-                <span class="dark:text-gray-400 italic text-gray-500 text-xs">Sin variantes</span>
+                <span class="dark:text-gray-400 italic text-gray-500 text-xs">{t('admin.catalog.no_variants')}</span>
               )}
             </td>
             <td class="dark:text-gray-400 font-mono font-semibold p-4 text-gray-500 text-xs">

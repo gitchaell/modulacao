@@ -37,26 +37,26 @@ const formatDate = (date: Date) => {
     <!-- Create Modal Base -->
     <div id="create-modal" class="bg-black/80 fixed flex hidden inset-0 items-center justify-center p-4 z-50">
       <div class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card dark:border-brand-dark max-w-lg p-6 rounded-xl w-full">
-        <h2 class="dark:text-white font-bold mb-4 text-brand-black text-xl">Crear Nueva Publicación</h2>
+        <h2 class="dark:text-white font-bold mb-4 text-brand-black text-xl">{t('admin.news.create')}</h2>
         <form method="POST" action="/api/admin/news/create" class="space-y-4">
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Tipo</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.news.type')}</label>
             <select name="type" class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full">
-              <option value="NEWS">Noticia</option>
-              <option value="COMMUNIQUE">Comunicado</option>
+              <option value="NEWS">{t('admin.news.type_news')}</option>
+              <option value="COMMUNIQUE">{t('admin.news.type_communique')}</option>
             </select>
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Título</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.news.title')}</label>
             <input type="text" name="title" required class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Contenido (Borrador)</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.news.content_draft')}</label>
             <textarea name="content" required rows="4" class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full"></textarea>
           </div>
           <div class="flex gap-2 justify-end mt-4">
-            <Button type="button" variant="ghost" onclick="document.getElementById('create-modal').classList.add('hidden')">Cancelar</Button>
-            <Button type="submit">Guardar Borrador</Button>
+            <Button type="button" variant="ghost" onclick="document.getElementById('create-modal').classList.add('hidden')">{t('admin.news.cancel')}</Button>
+            <Button type="submit">{t('admin.news.save_draft')}</Button>
           </div>
         </form>
       </div>
@@ -65,34 +65,34 @@ const formatDate = (date: Date) => {
     <!-- Edit Modal Base -->
     <div id="edit-modal" class="bg-black/80 fixed flex hidden inset-0 items-center justify-center p-4 z-50">
       <div class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card dark:border-brand-dark max-w-lg p-6 rounded-xl w-full">
-        <h2 class="dark:text-white font-bold mb-4 text-brand-black text-xl">Editar Publicación</h2>
+        <h2 class="dark:text-white font-bold mb-4 text-brand-black text-xl">{t('admin.news.edit')}</h2>
         <form method="POST" action="/api/admin/news/update" class="space-y-4">
           <input type="hidden" name="id" id="edit-id" />
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Tipo</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.news.type')}</label>
             <select name="type" id="edit-type" class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full">
-              <option value="NEWS">Noticia</option>
-              <option value="COMMUNIQUE">Comunicado</option>
+              <option value="NEWS">{t('admin.news.type_news')}</option>
+              <option value="COMMUNIQUE">{t('admin.news.type_communique')}</option>
             </select>
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Estado</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.news.status')}</label>
             <select name="status" id="edit-status" class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full">
-              <option value="DRAFT">Borrador</option>
-              <option value="PUBLISHED">Publicado</option>
+              <option value="DRAFT">{t('admin.news.status_draft')}</option>
+              <option value="PUBLISHED">{t('admin.news.status_published')}</option>
             </select>
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Título</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.news.title')}</label>
             <input type="text" name="title" id="edit-title" required class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full" />
           </div>
           <div>
-            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">Contenido</label>
+            <label class="block dark:text-gray-300 font-semibold mb-1 text-gray-600 text-sm">{t('admin.news.content')}</label>
             <textarea name="content" id="edit-content" required rows="4" class="bg-gray-100 border border-gray-300 dark:bg-brand-black dark:border-brand-dark dark:text-white p-2 rounded-sm text-brand-black w-full"></textarea>
           </div>
           <div class="flex gap-2 justify-end mt-4">
-            <Button type="button" variant="ghost" onclick="document.getElementById('edit-modal').classList.add('hidden')">Cancelar</Button>
-            <Button type="submit">Actualizar</Button>
+            <Button type="button" variant="ghost" onclick="document.getElementById('edit-modal').classList.add('hidden')">{t('admin.news.cancel')}</Button>
+            <Button type="submit">{t('admin.news.update')}</Button>
           </div>
         </form>
       </div>
