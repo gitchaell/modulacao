@@ -1,10 +1,11 @@
 ---
 import PublicLayout from '@/layouts/PublicLayout.astro';
-import { Target, Eye, Gem, Users, Globe, LayoutGrid, Heart, ChevronRight, Briefcase, Palette, Microscope, Network } from '@lucide/astro';
+import { Target, Users, ChevronRight, Briefcase, Palette, Microscope, Network } from '@lucide/astro';
 import { getLangFromUrl, getPageTranslations , usePageTranslations} from '@/utils/i18n';
 
 import Stats from '@/components/sobre/Stats.astro';
 import MissionVisionValues from '@/components/sobre/MissionVisionValues.astro';
+import Topics from '@/components/sobre/Topics.astro';
 
 
 const lang = getLangFromUrl(Astro.cookies);
@@ -130,7 +131,7 @@ const topics = [
             <p class="dark:text-gray-300 font-semibold leading-relaxed mb-8 md:text-xl text-gray-700 text-lg">
               {t('about.group.title')}
             </p>
-            <a href="#historia" class="border border-brand-gold/50 dark:hover:text-brand-white dark:text-gray-400 duration-300 font-bold hover:bg-brand-gold hover:text-brand-black inline-flex items-center justify-center px-6 py-3 rounded-full text-brand-gold text-gray-500 dark:text-gray-400 text-sm tracking-widest transition-colors uppercase">
+            <a href="#historia" class="border border-brand-gold/50 dark:hover:text-brand-white dark:text-gray-400 duration-300 font-bold hover:bg-brand-gold hover:text-brand-black inline-flex items-center justify-center px-6 py-3 rounded-full text-brand-gold text-gray-500 text-sm tracking-widest transition-colors uppercase">
               {t('about.group.btn')}
               <ChevronRight class="h-4 ml-2 w-4" />
             </a>
@@ -162,7 +163,7 @@ const topics = [
             <p class="dark:text-gray-400 leading-relaxed mb-8 text-gray-600 text-lg">
               {t('about.history.p2')}
             </p>
-            <a href="#filosofia" class="border border-brand-gold/50 dark:hover:text-brand-white dark:text-gray-400 duration-300 font-bold hover:bg-brand-gold hover:text-brand-black inline-flex items-center justify-center px-6 py-3 rounded-full text-brand-gold text-gray-500 dark:text-gray-400 text-sm tracking-widest transition-colors uppercase">
+            <a href="#filosofia" class="border border-brand-gold/50 dark:hover:text-brand-white dark:text-gray-400 duration-300 font-bold hover:bg-brand-gold hover:text-brand-black inline-flex items-center justify-center px-6 py-3 rounded-full text-brand-gold text-gray-500 text-sm tracking-widest transition-colors uppercase">
               {t('about.history.btn')}
               <ChevronRight class="h-4 ml-2 w-4" />
             </a>
@@ -173,38 +174,7 @@ const topics = [
         <MissionVisionValues t={t} />
 
         <!-- Topics List -->
-        <section class="space-y-4">
-          {topics.map(topic => (
-            <div id={topic.id} class="bg-white border border-black/5 cursor-pointer dark:bg-brand-dark-card dark:border-white/5 flex flex-col group hover:border-brand-gold/30 items-center md:flex-row md:p-8 overflow-hidden p-6 relative rounded-3xl transition-colors">
-              <!-- Background Image on hover or subtly behind -->
-              <div class="absolute duration-500 group-hover:opacity-30 inset-0 opacity-10 pointer-events-none transition-opacity">
-                <img src={topic.image} alt={topic.title} class="dark:mix-blend-overlay h-full mix-blend-normal object-cover w-full" />
-                <div class="absolute bg-gradient-to-r from-brand-black inset-0 to-transparent via-brand-black/80"></div>
-              </div>
-
-              <!-- Content -->
-              <div class="bg-brand-gold/10 border border-brand-gold/30 flex h-16 items-center justify-center mb-4 md:mb-0 md:mr-8 relative rounded-full shrink-0 text-brand-gold w-16 z-10">
-                {
-                  (() => {
-                    const Icon = topic.icon;
-                    return <Icon class="h-8 w-8" />;
-                  })()
-                }
-              </div>
-
-              <div class="flex-1 md:pr-12 md:text-left pr-0 relative text-center z-10">
-                <h3 class="dark:text-brand-white font-bold font-display mb-2 text-2xl text-brand-black tracking-wider uppercase">{topic.title}</h3>
-                <p class="dark:text-gray-400 font-semibold text-gray-600">
-                  {topic.desc}
-                </p>
-              </div>
-
-              <div class="bg-white/5 dark:text-gray-400 dark:text-gray-500 group-hover:bg-brand-gold/10 group-hover:text-brand-gold h-10 hidden items-center justify-center md:flex relative rounded-full shrink-0 text-gray-500 dark:text-gray-400 transition-colors w-10 z-10">
-                <ChevronRight class="h-5 w-5" />
-              </div>
-            </div>
-          ))}
-        </section>
+        <Topics topics={topics} t={t} />
 
         <!-- CTA Final -->
         <section class="bg-gradient-to-br border border-black/5 dark:border-white/5 dark:from-brand-dark dark:to-brand-black flex flex-col from-gray-100 gap-8 items-center justify-between lg:p-16 md:flex-row overflow-hidden p-10 relative rounded-3xl to-gray-200">

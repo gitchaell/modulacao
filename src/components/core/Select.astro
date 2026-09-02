@@ -29,7 +29,7 @@ const selectId = id || Math.random().toString(36).substring(7);
         <option value={opt.value}>{opt.label}</option>
       ))}
     </select>
-    <div class="absolute dark:text-gray-400 flex inset-y-0 items-center pointer-events-none px-4 right-0 text-gray-500 dark:text-gray-400">
+    <div class="absolute dark:text-gray-400 flex inset-y-0 items-center pointer-events-none px-4 right-0 text-gray-500">
       <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
     </div>
   </div>
@@ -39,7 +39,7 @@ const selectId = id || Math.random().toString(36).substring(7);
     </span>
   )}
   {helperText && !error && (
-    <span id={`${selectId}-helper`} class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-xs">
+    <span id={`${selectId}-helper`} class="dark:text-gray-400 text-gray-500 text-xs">
       {helperText}
     </span>
   )}

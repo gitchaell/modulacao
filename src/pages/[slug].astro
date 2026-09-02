@@ -102,7 +102,7 @@ const t = usePageTranslations(pageDict, lang);
       <div class="space-y-6">
         {userPosts.length === 0 ? (
           <div class="bg-gray-100 border border-gray-200 dark:bg-brand-black/50 dark:border-brand-dark p-12 rounded-sm text-center">
-            <p class="dark:text-gray-400 text-gray-500 dark:text-gray-400">{t('profile.no_posts')}</p>
+            <p class="dark:text-gray-400 text-gray-500">{t('profile.no_posts')}</p>
           </div>
         ) : (
           userPosts.map(post => (
@@ -113,7 +113,7 @@ const t = usePageTranslations(pageDict, lang);
                   </div>
                   <div>
                     <div class="dark:text-white font-semibold text-brand-black">{profile.profiles.fullName}</div>
-                    <div class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-xs">{formatDate(post.createdAt as unknown as Date)}</div>
+                    <div class="dark:text-gray-400 text-gray-500 text-xs">{formatDate(post.createdAt as unknown as Date)}</div>
                   </div>
               </div>
 

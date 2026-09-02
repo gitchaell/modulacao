@@ -15,7 +15,7 @@ const { upcomingEvents, featuredArticles, formatDateShort, formatTime, t } = Ast
 <div class="flex flex-col gap-6 lg:col-span-4">
 
   {/* Search and Filters */}
-  <div class="bg-brand-white border border-black/5 dark:bg-brand-dark-card dark:bg-brand-dark-card dark:border-white/5 p-6 rounded-sm">
+  <div class="bg-brand-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 p-6 rounded-sm">
       <div class="mb-6 relative">
           <input type="text" placeholder={t('publications.sidebar.search')} class="bg-gray-50 border border-black/10 dark:bg-brand-black dark:bg-brand-dark-card dark:border-white/10 dark:text-brand-white focus:border-brand-gold/50 focus:outline-none focus:ring-1 focus:ring-brand-gold/50 pl-10 pr-4 py-2.5 rounded-sm text-brand-black text-sm w-full" />
           <Search class="absolute dark:text-gray-400 h-4 left-3 text-gray-400 top-3 w-4" />
@@ -78,7 +78,7 @@ const { upcomingEvents, featuredArticles, formatDateShort, formatTime, t } = Ast
   </div>
 
   {/* Upcoming Events */}
-  <div class="bg-brand-white border border-black/5 dark:bg-brand-dark-card dark:bg-brand-dark-card dark:border-white/5 p-6 rounded-sm">
+  <div class="bg-brand-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 p-6 rounded-sm">
       <div class="flex items-center justify-between mb-6">
           <h3 class="dark:text-brand-white font-bold text-brand-black text-sm tracking-widest uppercase">Próximos {t('publications.compose.event')}s</h3>
           <a href="/eventos" class="hover:underline text-brand-gold text-xs">{t('publications.sidebar.events.view_all')}</a>
@@ -99,12 +99,12 @@ const { upcomingEvents, featuredArticles, formatDateShort, formatTime, t } = Ast
                   </div>
               </div>
           ))}
-          {upcomingEvents.length === 0 && <p class="dark:text-gray-400 dark:text-gray-500 text-gray-500 dark:text-gray-400 text-sm">{t('publications.sidebar.events.empty')}</p>}
+          {upcomingEvents.length === 0 && <p class="dark:text-gray-400 dark:text-gray-500 text-gray-500 text-sm">{t('publications.sidebar.events.empty')}</p>}
       </div>
   </div>
 
   {/* Featured Publications */}
-  <div class="bg-brand-white border border-black/5 dark:bg-brand-dark-card dark:bg-brand-dark-card dark:border-white/5 p-6 rounded-sm">
+  <div class="bg-brand-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 p-6 rounded-sm">
       <div class="flex items-center justify-between mb-6">
           <h3 class="dark:text-brand-white font-bold text-brand-black text-sm tracking-widest uppercase">{t('publications.sidebar.featured.title')}</h3>
           <a href="/publicacoes" class="hover:underline text-brand-gold text-xs">{t('publications.sidebar.featured.view_all')}</a>
@@ -125,12 +125,12 @@ const { upcomingEvents, featuredArticles, formatDateShort, formatTime, t } = Ast
                    </div>
                </div>
            ))}
-           {featuredArticles.length === 0 && <p class="dark:text-gray-400 dark:text-gray-500 text-gray-500 dark:text-gray-400 text-sm">{t('publications.sidebar.featured.empty')}</p>}
+           {featuredArticles.length === 0 && <p class="dark:text-gray-400 dark:text-gray-500 text-gray-500 text-sm">{t('publications.sidebar.featured.empty')}</p>}
       </div>
   </div>
 
   {/* Ecosystem CTA */}
-  <div class="bg-brand-white border border-black/5 dark:bg-brand-dark-card dark:bg-brand-dark-card dark:border-white/5 group overflow-hidden p-6 relative rounded-sm">
+  <div class="bg-brand-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 group overflow-hidden p-6 relative rounded-sm">
       <div class="absolute bg-brand-gold/5 inset-0 mix-blend-overlay"></div>
       <div class="flex flex-col items-center relative text-center z-10">
            <div class="bg-brand-gold/10 flex h-12 items-center justify-center mb-4 rounded-full text-brand-gold w-12">

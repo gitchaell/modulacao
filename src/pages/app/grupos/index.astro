@@ -22,11 +22,11 @@ const allGroups = await db
 
     <div>
       <h1 class="font-bold font-display text-3xl text-brand-gold tracking-widest uppercase">Grupos por Ciudad y País</h1>
-      <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500 dark:text-gray-400">Conéctate localmente. Únete a los grupos de tu área en {tenantConfig.name}.</p>
+      <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500">Conéctate localmente. Únete a los grupos de tu área en {tenantConfig.name}.</p>
     </div>
 
     {allGroups.length === 0 ? (
-      <div class="dark:text-gray-400 font-semibold py-20 text-center text-gray-500 dark:text-gray-400">
+      <div class="dark:text-gray-400 font-semibold py-20 text-center text-gray-500">
         No hay grupos creados actualmente.
       </div>
     ) : (

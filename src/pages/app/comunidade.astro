@@ -1,8 +1,5 @@
 ---
 import AppLayout from '@/layouts/AppLayout.astro';
-import Card from '@/components/core/Card.astro';
-import Button from '@/components/core/Button.astro';
-import Avatar from '@/components/core/Avatar.astro';
 import { db } from '@/data/db/db';
 import { posts, profiles, comments } from '@/data/db/schema';
 import { eq, desc } from 'drizzle-orm';
@@ -48,7 +45,7 @@ const formatDate = (date: Date | null) => {
     <!-- Cabecera -->
     <div>
       <h1 class="font-bold font-display text-3xl text-brand-gold tracking-widest uppercase">{t('app.community')}</h1>
-      <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500 dark:text-gray-400">Comparte y conéctate con otros miembros de {tenantConfig.name}.</p>
+      <p class="dark:text-gray-400 font-semibold mt-2 text-base text-gray-500">Comparte y conéctate con otros miembros de {tenantConfig.name}.</p>
     </div>
 
     <!-- Creador de Post -->

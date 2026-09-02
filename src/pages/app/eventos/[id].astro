@@ -126,7 +126,7 @@ const lang = getLangFromUrl(Astro.cookies);
         {/* Placeholder for map */}
         {event.mapUrl && (
           <Card noPadding class="backdrop-blur-md bg-brand-white/80 border border-gray-200 dark:bg-brand-dark-card/80 dark:border-white/10 premium-shadow">
-          <div class="dark:text-gray-400 flex h-64 items-center justify-center overflow-hidden relative rounded-xl text-gray-500 dark:text-gray-400 w-full">
+          <div class="dark:text-gray-400 flex h-64 items-center justify-center overflow-hidden relative rounded-xl text-gray-500 w-full">
              <div class="absolute bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] inset-0 opacity-10"></div>
              <p class="font-semibold text-brand-gold text-sm tracking-widest uppercase z-10">Vista del Mapa (Integración pendiente)</p>
           </div>
@@ -154,14 +154,14 @@ const lang = getLangFromUrl(Astro.cookies);
               <div class="space-y-4">
                 <input type="hidden" name="action" value="JOIN" />
                 <Button type="submit" variant="primary" fullWidth>Asistiré</Button>
-                <p class="dark:text-gray-400 text-center text-gray-500 dark:text-gray-400 text-xs">Al confirmar aceptas las normas de convivencia del evento.</p>
+                <p class="dark:text-gray-400 text-center text-gray-500 text-xs">Al confirmar aceptas las normas de convivencia del evento.</p>
               </div>
             )}
           </form>
 
           <div class="border-brand-black border-t pt-6 space-y-6">
             <div>
-              <h4 class="dark:text-gray-400 flex font-bold items-center justify-between mb-3 text-gray-500 dark:text-gray-400 text-sm">
+              <h4 class="dark:text-gray-400 flex font-bold items-center justify-between mb-3 text-gray-500 text-sm">
                 ASISTENTES CONFIRMADOS <span class="bg-gray-100 dark:bg-brand-black dark:text-white px-2 py-0.5 rounded text-brand-black text-xs">{attending.length} / {event.capacity}</span>
               </h4>
               <div class="flex flex-wrap gap-2">
@@ -177,17 +177,17 @@ const lang = getLangFromUrl(Astro.cookies);
                   </a>
                 ))}
                 {attending.length > 8 && (
-                  <div class="bg-gray-100 border-2 border-gray-200 dark:bg-brand-black dark:border-brand-dark dark:text-gray-400 flex h-10 items-center justify-center rounded-full text-gray-500 dark:text-gray-400 text-xs w-10">
+                  <div class="bg-gray-100 border-2 border-gray-200 dark:bg-brand-black dark:border-brand-dark dark:text-gray-400 flex h-10 items-center justify-center rounded-full text-gray-500 text-xs w-10">
                     +{attending.length - 8}
                   </div>
                 )}
-                {attending.length === 0 && <p class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-xs">Nadie confirmado aún.</p>}
+                {attending.length === 0 && <p class="dark:text-gray-400 text-gray-500 text-xs">Nadie confirmado aún.</p>}
               </div>
             </div>
 
             {waitlist.length > 0 && (
                <div class="border-gray-200 border-t dark:border-white/10 mt-6 pt-6">
-                <h4 class="dark:text-gray-400 flex font-bold items-center justify-between mb-3 text-gray-500 dark:text-gray-400 text-sm">
+                <h4 class="dark:text-gray-400 flex font-bold items-center justify-between mb-3 text-gray-500 text-sm">
                   LISTA DE ESPERA <span class="bg-gray-100 dark:bg-brand-black dark:text-white px-2 py-0.5 rounded text-brand-black text-xs">{waitlist.length}</span>
                 </h4>
                 <div class="flex flex-wrap gap-2">

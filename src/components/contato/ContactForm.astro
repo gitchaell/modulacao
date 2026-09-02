@@ -13,7 +13,7 @@ const { t } = Astro.props;
 <div class="space-y-6">
   <div>
     <h2 class="dark:text-brand-white font-bold font-display mb-2 text-2xl text-brand-black tracking-widest uppercase">{t('contact.form.title2')}</h2>
-    <p class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-sm">{t('contact.form.desc')}</p>
+    <p class="dark:text-gray-400 text-gray-500 text-sm">{t('contact.form.desc')}</p>
   </div>
 
   <form id="contact-form" method="POST" action="/api/contacto" class="space-y-6">
@@ -25,8 +25,8 @@ const { t } = Astro.props;
     </div>
 
     <div class="gap-6 grid grid-cols-1 md:grid-cols-2">
-      <Input type="text" name="name" label="" placeholder={t('contact.form.name.label')} required class="bg-gray-50 border-black/10 dark:bg-brand-dark dark:border-white/10 dark:text-brand-white dark:text-gray-400 placeholder:text-gray-500 dark:text-gray-400 text-brand-black" />
-      <Input type="email" name="email" label="" placeholder={t('contact.form.email.label')} required class="bg-gray-50 border-black/10 dark:bg-brand-dark dark:border-white/10 dark:text-brand-white dark:text-gray-400 placeholder:text-gray-500 dark:text-gray-400 text-brand-black" />
+      <Input type="text" name="name" label="" placeholder={t('contact.form.name.label')} required class="bg-gray-50 border-black/10 dark:bg-brand-dark dark:border-white/10 dark:text-brand-white dark:text-gray-400 placeholder:text-gray-500 text-brand-black" />
+      <Input type="email" name="email" label="" placeholder={t('contact.form.email.label')} required class="bg-gray-50 border-black/10 dark:bg-brand-dark dark:border-white/10 dark:text-brand-white dark:text-gray-400 placeholder:text-gray-500 text-brand-black" />
     </div>
 
     <div class="relative">
@@ -48,13 +48,13 @@ const { t } = Astro.props;
         required
         rows="5"
         placeholder={t('contact.form.message.placeholder')}
-        class="bg-gray-50 border border-black/10 dark:bg-brand-dark dark:border-white/10 dark:text-brand-white dark:text-gray-400 duration-300 flex focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold hover:border-brand-gold/50 placeholder:text-gray-500 dark:text-gray-400 px-4 py-3 rounded-sm text-brand-black text-sm transition-all w-full"
+        class="bg-gray-50 border border-black/10 dark:bg-brand-dark dark:border-white/10 dark:text-brand-white dark:text-gray-400 duration-300 flex focus:border-brand-gold focus:outline-none focus:ring-2 focus:ring-brand-gold hover:border-brand-gold/50 placeholder:text-gray-500 px-4 py-3 rounded-sm text-brand-black text-sm transition-all w-full"
       ></textarea>
     </div>
 
     <div class="flex gap-3 items-start">
       <input type="checkbox" id="privacy" required class="bg-gray-50 border-black/10 cursor-pointer dark:bg-brand-dark dark:border-white/10 focus:ring-brand-gold mt-1 rounded-sm text-brand-gold" />
-      <label for="privacy" class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-sm">
+      <label for="privacy" class="dark:text-gray-400 text-gray-500 text-sm">
         {t('contact.form.privacy')} <a href="#" class="hover:underline text-brand-gold">{t('contact.form.privacy.link')}</a>
       </label>
     </div>
