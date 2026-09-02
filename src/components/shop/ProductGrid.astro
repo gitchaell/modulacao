@@ -40,7 +40,7 @@ const produtos = [
     <div class="gap-6 grid grid-cols-1 lg:grid-cols-4 sm:grid-cols-2">
       {destaques.map(product => (
         <div class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card/50 dark:border-white/5 dark:shadow-none duration-300 group hover:-translate-y-1 hover:border-brand-gold/30 hover:transform overflow-hidden rounded-xl shadow-sm transition-all">
-          <div class="aspect-square bg-gray-100 dark:bg-[#111] dark:bg-brand-black overflow-hidden relative">
+          <div class="aspect-square bg-gray-100 dark:bg-brand-dark dark:bg-brand-black overflow-hidden relative">
             {product.category && (
               <div class="absolute backdrop-blur-md bg-brand-white/90 border border-brand-gold/50 dark:bg-black/70 dark:border-brand-gold/20 font-bold left-3 px-2 py-1 rounded text-[10px] text-brand-gold top-3 tracking-wider uppercase z-10">
                 {product.category}
@@ -87,7 +87,7 @@ const produtos = [
     <div class="gap-6 grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
       {produtos.map(product => (
         <div class="bg-brand-white border border-gray-200 dark:bg-brand-dark-card/50 dark:border-white/5 dark:shadow-none duration-300 group hover:border-brand-gold/30 overflow-hidden rounded-xl shadow-sm transition-all">
-          <div class="aspect-square bg-gray-100 dark:bg-[#111] dark:bg-brand-black overflow-hidden relative">
+          <div class="aspect-square bg-gray-100 dark:bg-brand-dark dark:bg-brand-black overflow-hidden relative">
             <img src={product.img} alt={product.name} class="dark:opacity-80 duration-500 group-hover:opacity-100 group-hover:scale-105 h-full object-cover opacity-90 transition-opacity w-full" loading="lazy" decoding="async" />
 
             <button class="absolute backdrop-blur bg-brand-white/80 border border-gray-300 dark:bg-black/50 dark:border-white/10 dark:text-brand-white/50 dark:text-white/50 flex group-hover:opacity-100 h-8 hover:border-brand-gold hover:text-brand-gold items-center justify-center opacity-0 right-3 rounded-full text-brand-black top-3 transition-colors w-8">

@@ -12,12 +12,12 @@ const { pageDict } = Astro.props;
 const lang = getLangFromUrl(Astro.cookies);
 const t = usePageTranslations(pageDict, lang);
 ---
-<section class="bg-brand-offwhite border-b border-black/5 dark:bg-[#0a0a0a] dark:bg-brand-dark-card dark:border-white/5 flex items-center min-h-[75vh] overflow-hidden pb-24 pt-24 relative">
+<section class="bg-brand-offwhite border-b border-black/5 dark:bg-brand-black dark:bg-brand-dark-card dark:border-white/5 flex items-center min-h-[75vh] overflow-hidden pb-24 pt-24 relative">
   <!-- Placeholder Image Background -->
   <div class="absolute inset-0 z-0">
     <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop" alt="Hero Background" class="dark:mix-blend-luminosity dark:opacity-20 h-full mix-blend-normal object-cover opacity-10 w-full" />
-    <div class="absolute bg-gradient-to-t dark:from-[#0a0a0a] dark:via-[#0a0a0a]/50 from-white inset-0 to-transparent via-white/80"></div>
-    <div class="absolute bg-gradient-to-r dark:from-[#0a0a0a] dark:via-[#0a0a0a]/90 from-white inset-0 to-transparent via-white/90"></div>
+    <div class="absolute bg-gradient-to-t dark:from-brand-black dark:via-brand-black/50 from-white inset-0 to-transparent via-white/80"></div>
+    <div class="absolute bg-gradient-to-r dark:from-brand-black dark:via-brand-black/90 from-white inset-0 to-transparent via-white/90"></div>
   </div>
 
   <div class="container lg:px-12 max-w-[1400px] mx-auto px-6 relative z-10">

@@ -15,9 +15,9 @@ const { upcomingEvents, featuredArticles, formatDateShort, formatTime, t } = Ast
 <div class="flex flex-col gap-6 lg:col-span-4">
 
   {/* Search and Filters */}
-  <div class="bg-brand-white border border-black/5 dark:bg-[#151515] dark:bg-brand-dark-card dark:border-white/5 p-6 rounded-sm">
+  <div class="bg-brand-white border border-black/5 dark:bg-brand-dark-card dark:bg-brand-dark-card dark:border-white/5 p-6 rounded-sm">
       <div class="mb-6 relative">
-          <input type="text" placeholder={t('publications.sidebar.search')} class="bg-gray-50 border border-black/10 dark:bg-[#0a0a0a] dark:bg-brand-dark-card dark:border-white/10 dark:text-brand-white focus:border-brand-gold/50 focus:outline-none focus:ring-1 focus:ring-brand-gold/50 pl-10 pr-4 py-2.5 rounded-sm text-brand-black text-sm w-full" />
+          <input type="text" placeholder={t('publications.sidebar.search')} class="bg-gray-50 border border-black/10 dark:bg-brand-black dark:bg-brand-dark-card dark:border-white/10 dark:text-brand-white focus:border-brand-gold/50 focus:outline-none focus:ring-1 focus:ring-brand-gold/50 pl-10 pr-4 py-2.5 rounded-sm text-brand-black text-sm w-full" />
           <Search class="absolute dark:text-gray-400 h-4 left-3 text-gray-400 top-3 w-4" />
       </div>
 
@@ -64,13 +64,13 @@ const { upcomingEvents, featuredArticles, formatDateShort, formatTime, t } = Ast
       <div class="space-y-4">
           <div>
               <label class="block dark:text-gray-400 font-semibold mb-2 text-gray-600 text-sm">{t('publications.filters.community')}</label>
-              <select class="bg-brand-white border border-black/10 dark:bg-[#0a0a0a] dark:bg-brand-dark-card dark:border-white/10 dark:text-brand-white focus:border-brand-gold/50 focus:outline-none p-2 rounded text-brand-black text-sm w-full">
+              <select class="bg-brand-white border border-black/10 dark:bg-brand-black dark:bg-brand-dark-card dark:border-white/10 dark:text-brand-white focus:border-brand-gold/50 focus:outline-none p-2 rounded text-brand-black text-sm w-full">
                   <option>{t('publications.tabs.all')} as comunidades</option>
               </select>
           </div>
           <div>
               <label class="block dark:text-gray-400 font-semibold mb-2 text-gray-600 text-sm">{t('publications.filters.sort')}</label>
-              <select class="bg-brand-white border border-black/10 dark:bg-[#0a0a0a] dark:bg-brand-dark-card dark:border-white/10 dark:text-brand-white focus:border-brand-gold/50 focus:outline-none p-2 rounded text-brand-black text-sm w-full">
+              <select class="bg-brand-white border border-black/10 dark:bg-brand-black dark:bg-brand-dark-card dark:border-white/10 dark:text-brand-white focus:border-brand-gold/50 focus:outline-none p-2 rounded text-brand-black text-sm w-full">
                   <option>{t('publications.filters.sort.recent')}</option>
               </select>
           </div>
@@ -78,7 +78,7 @@ const { upcomingEvents, featuredArticles, formatDateShort, formatTime, t } = Ast
   </div>
 
   {/* Upcoming Events */}
-  <div class="bg-brand-white border border-black/5 dark:bg-[#151515] dark:bg-brand-dark-card dark:border-white/5 p-6 rounded-sm">
+  <div class="bg-brand-white border border-black/5 dark:bg-brand-dark-card dark:bg-brand-dark-card dark:border-white/5 p-6 rounded-sm">
       <div class="flex items-center justify-between mb-6">
           <h3 class="dark:text-brand-white font-bold text-brand-black text-sm tracking-widest uppercase">Próximos {t('publications.compose.event')}s</h3>
           <a href="/eventos" class="hover:underline text-brand-gold text-xs">{t('publications.sidebar.events.view_all')}</a>
@@ -86,7 +86,7 @@ const { upcomingEvents, featuredArticles, formatDateShort, formatTime, t } = Ast
       <div class="space-y-4">
           {upcomingEvents.map((event) => (
               <div class="cursor-pointer flex gap-4 group items-start">
-                  <div class="bg-brand-white border border-black/10 dark:bg-[#0a0a0a] dark:bg-brand-dark-card dark:border-white/10 flex flex-col flex-shrink-0 group-hover:border-brand-gold h-12 items-center justify-center rounded transition-colors w-12">
+                  <div class="bg-brand-white border border-black/10 dark:bg-brand-black dark:bg-brand-dark-card dark:border-white/10 flex flex-col flex-shrink-0 group-hover:border-brand-gold h-12 items-center justify-center rounded transition-colors w-12">
                       <span class="font-bold leading-tight text-brand-gold text-sm">{formatDateShort(event.date as unknown as Date).split(' ')[0]}</span>
                       <span class="dark:text-gray-400 text-[10px] text-gray-600 uppercase">{formatDateShort(event.date as unknown as Date).split(' ')[2]}</span>
                   </div>
@@ -104,7 +104,7 @@ const { upcomingEvents, featuredArticles, formatDateShort, formatTime, t } = Ast
   </div>
 
   {/* Featured Publications */}
-  <div class="bg-brand-white border border-black/5 dark:bg-[#151515] dark:bg-brand-dark-card dark:border-white/5 p-6 rounded-sm">
+  <div class="bg-brand-white border border-black/5 dark:bg-brand-dark-card dark:bg-brand-dark-card dark:border-white/5 p-6 rounded-sm">
       <div class="flex items-center justify-between mb-6">
           <h3 class="dark:text-brand-white font-bold text-brand-black text-sm tracking-widest uppercase">{t('publications.sidebar.featured.title')}</h3>
           <a href="/publicacoes" class="hover:underline text-brand-gold text-xs">{t('publications.sidebar.featured.view_all')}</a>
@@ -130,7 +130,7 @@ const { upcomingEvents, featuredArticles, formatDateShort, formatTime, t } = Ast
   </div>
 
   {/* Ecosystem CTA */}
-  <div class="bg-brand-white border border-black/5 dark:bg-[#151515] dark:bg-brand-dark-card dark:border-white/5 group overflow-hidden p-6 relative rounded-sm">
+  <div class="bg-brand-white border border-black/5 dark:bg-brand-dark-card dark:bg-brand-dark-card dark:border-white/5 group overflow-hidden p-6 relative rounded-sm">
       <div class="absolute bg-brand-gold/5 inset-0 mix-blend-overlay"></div>
       <div class="flex flex-col items-center relative text-center z-10">
            <div class="bg-brand-gold/10 flex h-12 items-center justify-center mb-4 rounded-full text-brand-gold w-12">

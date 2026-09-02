@@ -52,7 +52,7 @@ const highlights = [
   }
 ];
 ---
-<Section class="bg-brand-offwhite dark:bg-[#0a0a0a] dark:bg-brand-dark-card py-24" contained={true}>
+<Section class="bg-brand-offwhite dark:bg-brand-black dark:bg-brand-dark-card py-24" contained={true}>
   <div class="border-b border-black/10 dark:border-white/10 flex items-center justify-between mb-8 pb-4">
     <div class="flex gap-4 items-center">
       <Typography variant="h5" class="font-bold font-display tracking-widest uppercase">
@@ -67,11 +67,11 @@ const highlights = [
 
   <div class="gap-6 grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2">
     {highlights.map(item => (
-      <a href={`/publicacoes/${item.title.toLowerCase().replace(/\s+/g, '-')}`} class="bg-white block border border-black/5 dark:bg-[#0d0d0d] dark:bg-brand-dark-card dark:border-white/5 group hover:border-brand-gold/30 overflow-hidden rounded-sm transition-colors">
+      <a href={`/publicacoes/${item.title.toLowerCase().replace(/\s+/g, '-')}`} class="bg-white block border border-black/5 dark:bg-brand-black dark:bg-brand-dark-card dark:border-white/5 group hover:border-brand-gold/30 overflow-hidden rounded-sm transition-colors">
         <div class="h-48 overflow-hidden relative">
-          <div class="absolute bg-brand-offwhite border border-brand-gold/50 dark:bg-[#0a0a0a]/90 dark:bg-brand-dark-card font-bold left-4 px-2.5 py-1 text-brand-gold text-xs top-4 tracking-[0.15em] uppercase z-10">{item.type}</div>
+          <div class="absolute bg-brand-offwhite border border-brand-gold/50 dark:bg-brand-black/90 dark:bg-brand-dark-card font-bold left-4 px-2.5 py-1 text-brand-gold text-xs top-4 tracking-[0.15em] uppercase z-10">{item.type}</div>
           <img src={item.image} alt={item.title} class="duration-700 group-hover:scale-105 h-full object-cover transition-transform w-full" />
-          <div class="absolute bg-gradient-to-t dark:from-[#0d0d0d] from-gray-200 inset-0 opacity-90 to-transparent via-transparent"></div>
+          <div class="absolute bg-gradient-to-t dark:from-brand-black from-gray-200 inset-0 opacity-90 to-transparent via-transparent"></div>
         </div>
         <div class="p-6">
           <Typography variant="h6" class="group-hover:text-brand-gold leading-tight mb-2 transition-colors">{item.title}</Typography>

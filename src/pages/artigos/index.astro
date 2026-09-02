@@ -48,7 +48,7 @@ const navItems = [
 ---
 
 <PublicLayout title="Artigos - Grupo Modulação">
-  <div class="bg-brand-white dark:bg-[#0a0a0a] dark:bg-brand-dark-card dark:text-gray-300 font-sans min-h-screen text-gray-600">
+  <div class="bg-brand-white dark:bg-brand-black dark:bg-brand-dark-card dark:text-gray-300 font-sans min-h-screen text-gray-600">
 
     {/* HERO SECTION */}
     <div class="border-b border-black/10 dark:border-white/10 overflow-hidden pb-16 pt-24 relative">
@@ -136,7 +136,7 @@ const navItems = [
                 ) : (
                   <div class="bg-gray-100 dark:bg-brand-black/50 h-full w-full"></div>
                 )}
-                <div class="absolute bg-gradient-to-t from-[#0a0a0a] inset-0 to-transparent via-[#0a0a0a]/80"></div>
+                <div class="absolute bg-gradient-to-t from-brand-black inset-0 to-transparent via-brand-black/80"></div>
               </div>
               <div class="absolute bottom-0 flex flex-col left-0 p-8 w-full">
                 <div class="mb-4">
@@ -182,7 +182,7 @@ const navItems = [
                   )}
                   <div class="absolute left-4 top-4">
                     {article.tags && article.tags[0] && (
-                      <span class="backdrop-blur-sm bg-brand-white border border-brand-gold/30 dark:bg-[#0a0a0a]/80 dark:bg-brand-dark-card font-bold inline-block px-3 py-1 rounded-sm text-[10px] text-brand-gold tracking-widest uppercase">
+                      <span class="backdrop-blur-sm bg-brand-white border border-brand-gold/30 dark:bg-brand-black/80 dark:bg-brand-dark-card font-bold inline-block px-3 py-1 rounded-sm text-[10px] text-brand-gold tracking-widest uppercase">
                         {article.tags[0]}
                       </span>
                     )}

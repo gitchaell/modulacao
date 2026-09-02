@@ -13,12 +13,12 @@ const { feedPosts, formatDateFull, t } = Astro.props;
 ---
 
 {feedPosts.map((postData) => (
-  <Card class="bg-brand-white border-black/5 dark:bg-[#151515] dark:bg-brand-dark-card dark:border-white/5 flex flex-col" noPadding>
+  <Card class="bg-brand-white border-black/5 dark:bg-brand-dark-card dark:bg-brand-dark-card dark:border-white/5 flex flex-col" noPadding>
       <div class="p-6">
           {/* Author Header */}
           <div class="flex items-start justify-between mb-4">
               <div class="flex gap-3 items-center">
-                  <div class="bg-brand-gold border-2 border-[#151515] flex h-12 items-center justify-center overflow-hidden rounded-full w-12">
+                  <div class="bg-brand-gold border-2 border-brand-dark-card flex h-12 items-center justify-center overflow-hidden rounded-full w-12">
                       {postData.profile?.avatarUrl ? (
                           <img src={postData.profile.avatarUrl} alt={postData.profile.fullName} class="h-full object-cover w-full" />
                       ) : (

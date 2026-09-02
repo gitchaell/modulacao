@@ -102,7 +102,7 @@ const formatTime = (date: Date | null) => {
     </div>
   </div>
 
-  <section class="bg-[#0F0F0F] min-h-screen py-10">
+  <section class="bg-brand-black min-h-screen py-10">
     <div class="container max-w-7xl mx-auto px-6">
 
       {/* Top Tabs */}
@@ -120,12 +120,12 @@ const formatTime = (date: Date | null) => {
         <div class="flex flex-col gap-6 lg:col-span-8">
 
             {/* Compose Box */}
-            <Card class="!p-6 bg-brand-white border-black/5 dark:bg-[#151515] dark:bg-brand-dark-card dark:border-white/5" noPadding>
+            <Card class="!p-6 bg-brand-white border-black/5 dark:bg-brand-dark-card dark:bg-brand-dark-card dark:border-white/5" noPadding>
                 <div class="flex gap-4 mb-4">
                     <div class="bg-brand-gold flex flex-shrink-0 h-10 items-center justify-center rounded-full w-10">
                         <Users class="dark:text-brand-white h-5 text-brand-black w-5" />
                     </div>
-                    <input type="text" placeholder={t('publications.compose.placeholder')} class="bg-brand-white border border-black/10 dark:bg-[#0a0a0a] dark:bg-brand-dark-card dark:border-white/10 dark:text-brand-white focus:border-brand-gold/50 focus:outline-none px-4 rounded text-brand-black w-full" />
+                    <input type="text" placeholder={t('publications.compose.placeholder')} class="bg-brand-white border border-black/10 dark:bg-brand-black dark:bg-brand-dark-card dark:border-white/10 dark:text-brand-white focus:border-brand-gold/50 focus:outline-none px-4 rounded text-brand-black w-full" />
                 </div>
                 <div class="flex flex-wrap items-center justify-between mt-4">
                     <button class="dark:text-gray-400 flex font-semibold hover:text-brand-gold items-center text-gray-600 text-sm transition-colors">
