@@ -10,32 +10,32 @@ interface Props {
 const { pageDict, lang } = Astro.props;
 const t = usePageTranslations(pageDict, lang);
 ---
-<section class="relative min-h-[400px] flex items-center pt-24 pb-12 overflow-hidden border-b border-black/5 dark:border-white/5 bg-brand-white dark:bg-transparent">
+<section class="bg-brand-white border-b border-black/5 dark:bg-brand-dark-card dark:bg-transparent dark:border-white/5 flex items-center min-h-[400px] overflow-hidden pb-12 pt-24 relative">
   <!-- Hero Background Image (Right side) -->
-  <div class="absolute inset-0 z-0 flex justify-end opacity-20 dark:opacity-60">
-    <div class="w-full lg:w-2/3 h-full relative">
-      <div class="absolute inset-0 bg-gradient-to-r from-brand-white dark:from-brand-black via-brand-white/80 dark:via-brand-black/80 to-transparent z-10"></div>
+  <div class="absolute dark:opacity-60 flex inset-0 justify-end opacity-20 z-0">
+    <div class="h-full lg:w-2/3 relative w-full">
+      <div class="absolute bg-gradient-to-r dark:from-brand-black dark:via-brand-black/80 from-brand-white inset-0 to-transparent via-brand-white/80 z-10"></div>
       <img
         src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?q=80&w=1200&auto=format&fit=crop"
         alt="Shop Hero"
-        class="w-full h-full object-cover"
+        class="h-full object-cover w-full"
       />
       <!-- Gold Wave overlay (abstract representation) -->
-      <div class="absolute inset-0 z-20 opacity-30 bg-[url('/wave-pattern.svg')] bg-cover mix-blend-multiply dark:mix-blend-screen pointer-events-none"></div>
+      <div class="absolute bg-[url('/wave-pattern.svg')] bg-cover dark:mix-blend-screen inset-0 mix-blend-multiply opacity-30 pointer-events-none z-20"></div>
     </div>
   </div>
 
   <div class="container mx-auto px-6 relative z-10">
     <div class="max-w-2xl">
-      <div class="flex items-center text-sm text-brand-black/50 dark:text-gray-400 mb-6">
-        <a href="/" class="hover:text-brand-black dark:hover:text-white transition-colors">{t('shop.hero.home')}</a>
-        <ChevronRight class="w-4 h-4 mx-2" />
-        <span class="text-brand-black dark:text-white">{t('shop.hero.breadcrumb')}</span>
+      <div class="dark:text-brand-white/50 dark:text-gray-400 flex items-center mb-6 text-brand-black text-sm">
+        <a href="/" class="dark:hover:text-brand-black dark:text-white hover:text-brand-black transition-colors">{t('shop.hero.home')}</a>
+        <ChevronRight class="h-4 mx-2 w-4" />
+        <span class="dark:text-white text-brand-black">{t('shop.hero.breadcrumb')}</span>
       </div>
 
-      <h1 class="text-5xl lg:text-6xl font-bold text-brand-black dark:text-white mb-6 font-display tracking-tight">{t('shop.hero.title')}</h1>
+      <h1 class="dark:text-white font-bold font-display lg:text-6xl mb-6 text-5xl text-brand-black tracking-tight">{t('shop.hero.title')}</h1>
 
-      <p class="text-lg text-brand-black/70 dark:text-gray-300 leading-relaxed max-w-lg">
+      <p class="dark:text-brand-white/70 dark:text-gray-300 leading-relaxed max-w-lg text-brand-black text-lg">
         {t('shop.hero.desc')}
       </p>
     </div>

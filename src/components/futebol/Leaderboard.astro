@@ -11,74 +11,74 @@ interface Props {
 const { pageDict, lang } = Astro.props;
 const t = usePageTranslations(pageDict, lang);
 ---
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8">
+<div class="gap-8 grid grid-cols-1 lg:grid-cols-1 md:grid-cols-2">
   <!-- Classificação -->
   <div>
-    <h2 class="text-xl font-bold text-brand-black dark:text-brand-white mb-4 tracking-wide uppercase">{t('futebol.standings.title')}</h2>
-    <Card noPadding class="bg-brand-white/80 dark:bg-brand-dark-card/60 border border-gray-200 dark:border-white/5 overflow-hidden">
-      <div class="bg-brand-white dark:bg-brand-dark-card p-4 border-b border-gray-200 dark:border-white/5 flex items-center justify-between">
-        <span class="font-bold text-brand-black dark:text-brand-white">{t('futebol.standings.group')}</span>
-        <div class="flex gap-4 text-xs font-medium text-brand-black/50 dark:text-brand-gray-light/70">
-          <span class="w-6 text-center" title="Pontos">{t('futebol.standings.pts')}</span>
-          <span class="w-6 text-center hidden sm:block" title="Jogos">{t('futebol.standings.j')}</span>
-          <span class="w-6 text-center" title="Vitórias">{t('futebol.standings.v')}</span>
-          <span class="w-6 text-center hidden sm:block" title="Empates">{t('futebol.standings.e')}</span>
-          <span class="w-6 text-center hidden sm:block" title="Derrotas">{t('futebol.standings.d')}</span>
-          <span class="w-6 text-center" title="Saldo de Gols">{t('futebol.standings.sg')}</span>
+    <h2 class="dark:text-brand-white font-bold mb-4 text-brand-black text-xl tracking-wide uppercase">{t('futebol.standings.title')}</h2>
+    <Card noPadding class="bg-brand-white/80 border border-gray-200 dark:bg-brand-dark-card/60 dark:border-white/5 overflow-hidden">
+      <div class="bg-brand-white border-b border-gray-200 dark:bg-brand-dark-card dark:border-white/5 flex items-center justify-between p-4">
+        <span class="dark:text-brand-white font-bold text-brand-black">{t('futebol.standings.group')}</span>
+        <div class="dark:text-brand-gray-light/70 dark:text-brand-white/50 flex font-medium gap-4 text-brand-black text-xs">
+          <span class="text-center w-6" title="Pontos">{t('futebol.standings.pts')}</span>
+          <span class="hidden sm:block text-center w-6" title="Jogos">{t('futebol.standings.j')}</span>
+          <span class="text-center w-6" title="Vitórias">{t('futebol.standings.v')}</span>
+          <span class="hidden sm:block text-center w-6" title="Empates">{t('futebol.standings.e')}</span>
+          <span class="hidden sm:block text-center w-6" title="Derrotas">{t('futebol.standings.d')}</span>
+          <span class="text-center w-6" title="Saldo de Gols">{t('futebol.standings.sg')}</span>
         </div>
       </div>
 
-      <div class="divide-y divide-gray-100 dark:divide-white/5">
+      <div class="dark:divide-white/5 divide-gray-100 divide-y">
         <!-- Team 1 (Modulação) -->
-        <div class="p-4 flex items-center justify-between bg-brand-gold/5 border-l-2 border-brand-gold">
-          <div class="flex items-center gap-3">
-            <span class="text-brand-gold font-bold w-4 text-center">1</span>
-            <div class="w-6 h-6 rounded-full bg-brand-gold/20 flex items-center justify-center border border-brand-gold/30">
-               <span class="text-[8px] text-brand-gold font-bold">MD</span>
+        <div class="bg-brand-gold/5 border-brand-gold border-l-2 flex items-center justify-between p-4">
+          <div class="flex gap-3 items-center">
+            <span class="font-bold text-brand-gold text-center w-4">1</span>
+            <div class="bg-brand-gold/20 border border-brand-gold/30 flex h-6 items-center justify-center rounded-full w-6">
+               <span class="font-bold text-[8px] text-brand-gold">MD</span>
             </div>
-            <span class="font-medium text-brand-black dark:text-brand-white text-sm">Modulação Dakila</span>
+            <span class="dark:text-brand-white font-medium text-brand-black text-sm">Modulação Dakila</span>
           </div>
           <div class="flex gap-4 text-sm">
-            <span class="w-6 text-center font-bold text-brand-black dark:text-brand-white">12</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light hidden sm:block">4</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light">4</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light hidden sm:block">0</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light hidden sm:block">0</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light">+8</span>
+            <span class="dark:text-brand-white font-bold text-brand-black text-center w-6">12</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 hidden sm:block text-brand-black text-center w-6">4</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 text-brand-black text-center w-6">4</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 hidden sm:block text-brand-black text-center w-6">0</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 hidden sm:block text-brand-black text-center w-6">0</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 text-brand-black text-center w-6">+8</span>
           </div>
         </div>
 
         <!-- Team 2 -->
-        <div class="p-4 flex items-center justify-between hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
-          <div class="flex items-center gap-3">
-            <span class="text-brand-black/50 dark:text-brand-gray-light/50 font-bold w-4 text-center">2</span>
-            <div class="w-6 h-6 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center border border-gray-200 dark:border-white/10"></div>
-            <span class="font-medium text-brand-black/70 dark:text-brand-gray-light text-sm">Atlético Central</span>
+        <div class="dark:hover:bg-white/5 flex hover:bg-gray-100 items-center justify-between p-4 transition-colors">
+          <div class="flex gap-3 items-center">
+            <span class="dark:text-brand-gray-light/50 dark:text-brand-white/50 font-bold text-brand-black text-center w-4">2</span>
+            <div class="bg-gray-100 border border-gray-200 dark:bg-white/10 dark:border-white/10 flex h-6 items-center justify-center rounded-full w-6"></div>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 font-medium text-brand-black text-sm">Atlético Central</span>
           </div>
           <div class="flex gap-4 text-sm">
-            <span class="w-6 text-center font-bold text-brand-black dark:text-brand-white">7</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light hidden sm:block">4</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light">2</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light hidden sm:block">1</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light hidden sm:block">1</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light">+2</span>
+            <span class="dark:text-brand-white font-bold text-brand-black text-center w-6">7</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 hidden sm:block text-brand-black text-center w-6">4</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 text-brand-black text-center w-6">2</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 hidden sm:block text-brand-black text-center w-6">1</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 hidden sm:block text-brand-black text-center w-6">1</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 text-brand-black text-center w-6">+2</span>
           </div>
         </div>
 
         <!-- Team 3 -->
-        <div class="p-4 flex items-center justify-between hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
-          <div class="flex items-center gap-3">
-            <span class="text-brand-black/50 dark:text-brand-gray-light/50 font-bold w-4 text-center">3</span>
-            <div class="w-6 h-6 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center border border-gray-200 dark:border-white/10"></div>
-            <span class="font-medium text-brand-black/70 dark:text-brand-gray-light text-sm">FC Rivera</span>
+        <div class="dark:hover:bg-white/5 flex hover:bg-gray-100 items-center justify-between p-4 transition-colors">
+          <div class="flex gap-3 items-center">
+            <span class="dark:text-brand-gray-light/50 dark:text-brand-white/50 font-bold text-brand-black text-center w-4">3</span>
+            <div class="bg-gray-100 border border-gray-200 dark:bg-white/10 dark:border-white/10 flex h-6 items-center justify-center rounded-full w-6"></div>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 font-medium text-brand-black text-sm">FC Rivera</span>
           </div>
           <div class="flex gap-4 text-sm">
-            <span class="w-6 text-center font-bold text-brand-black dark:text-brand-white">4</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light hidden sm:block">4</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light">1</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light hidden sm:block">1</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light hidden sm:block">2</span>
-            <span class="w-6 text-center text-brand-black/70 dark:text-brand-gray-light">-3</span>
+            <span class="dark:text-brand-white font-bold text-brand-black text-center w-6">4</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 hidden sm:block text-brand-black text-center w-6">4</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 text-brand-black text-center w-6">1</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 hidden sm:block text-brand-black text-center w-6">1</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 hidden sm:block text-brand-black text-center w-6">2</span>
+            <span class="dark:text-brand-gray-light dark:text-brand-white/70 text-brand-black text-center w-6">-3</span>
           </div>
         </div>
       </div>
@@ -87,42 +87,42 @@ const t = usePageTranslations(pageDict, lang);
 
   <!-- Artilheiros -->
   <div>
-    <h2 class="text-xl font-bold text-brand-black dark:text-brand-white mb-4 tracking-wide uppercase">{t('futebol.scorers.title')}</h2>
-    <Card noPadding class="bg-brand-white/80 dark:bg-brand-dark-card/60 border border-gray-200 dark:border-white/5 overflow-hidden">
-      <div class="bg-brand-white dark:bg-brand-dark-card p-4 border-b border-gray-200 dark:border-white/5 flex items-center">
-        <span class="w-10 text-xs font-medium text-brand-black/50 dark:text-brand-gray-light/70">{t('futebol.scorers.pos')}</span>
-        <span class="flex-1 text-xs font-medium text-brand-black/50 dark:text-brand-gray-light/70">{t('futebol.scorers.player')}</span>
-        <span class="w-16 text-center text-xs font-medium text-brand-black/50 dark:text-brand-gray-light/70">{t('futebol.scorers.matches')}</span>
-        <span class="w-16 text-center text-xs font-medium text-brand-black/50 dark:text-brand-gray-light/70">{t('futebol.scorers.goals')}</span>
+    <h2 class="dark:text-brand-white font-bold mb-4 text-brand-black text-xl tracking-wide uppercase">{t('futebol.scorers.title')}</h2>
+    <Card noPadding class="bg-brand-white/80 border border-gray-200 dark:bg-brand-dark-card/60 dark:border-white/5 overflow-hidden">
+      <div class="bg-brand-white border-b border-gray-200 dark:bg-brand-dark-card dark:border-white/5 flex items-center p-4">
+        <span class="dark:text-brand-gray-light/70 dark:text-brand-white/50 font-medium text-brand-black text-xs w-10">{t('futebol.scorers.pos')}</span>
+        <span class="dark:text-brand-gray-light/70 dark:text-brand-white/50 flex-1 font-medium text-brand-black text-xs">{t('futebol.scorers.player')}</span>
+        <span class="dark:text-brand-gray-light/70 dark:text-brand-white/50 font-medium text-brand-black text-center text-xs w-16">{t('futebol.scorers.matches')}</span>
+        <span class="dark:text-brand-gray-light/70 dark:text-brand-white/50 font-medium text-brand-black text-center text-xs w-16">{t('futebol.scorers.goals')}</span>
       </div>
 
-      <div class="divide-y divide-gray-100 dark:divide-white/5">
+      <div class="dark:divide-white/5 divide-gray-100 divide-y">
         <!-- Scorer 1 -->
-        <div class="p-4 grid grid-cols-[auto_1fr_auto_auto] gap-4 items-center bg-brand-gold/5 border-l-2 border-brand-gold group">
-          <div class="w-6 text-center font-bold text-brand-gold text-lg">1</div>
-          <div class="flex items-center gap-3">
+        <div class="bg-brand-gold/5 border-brand-gold border-l-2 gap-4 grid grid-cols-[auto_1fr_auto_auto] group items-center p-4">
+          <div class="font-bold text-brand-gold text-center text-lg w-6">1</div>
+          <div class="flex gap-3 items-center">
             <Avatar alt="Lucas Silva" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100&h=100" />
             <div>
-              <div class="text-sm font-medium text-brand-black dark:text-brand-white leading-tight">Lucas Silva</div>
-              <div class="text-xs text-brand-gold">Modulação Dakila</div>
+              <div class="dark:text-brand-white font-medium leading-tight text-brand-black text-sm">Lucas Silva</div>
+              <div class="text-brand-gold text-xs">Modulação Dakila</div>
             </div>
           </div>
-          <div class="w-16 text-center text-sm text-brand-black/70 dark:text-brand-gray-light">4</div>
-          <div class="w-16 text-center font-bold text-brand-gold text-xl">6</div>
+          <div class="dark:text-brand-gray-light dark:text-brand-white/70 text-brand-black text-center text-sm w-16">4</div>
+          <div class="font-bold text-brand-gold text-center text-xl w-16">6</div>
         </div>
 
         <!-- Scorer 2 -->
-        <div class="p-4 grid grid-cols-[auto_1fr_auto_auto] gap-4 items-center hover:bg-black/5 dark:hover:bg-white/5 transition-colors group">
-          <div class="w-6 text-center font-medium text-brand-black/70 dark:text-brand-gray-light text-lg group-hover:text-brand-black dark:group-hover:text-brand-white transition-colors">2</div>
-          <div class="flex items-center gap-3">
+        <div class="dark:hover:bg-white/5 gap-4 grid grid-cols-[auto_1fr_auto_auto] group hover:bg-gray-100 items-center p-4 transition-colors">
+          <div class="dark:group-text-gray-400 dark:hover:text-brand-white dark:text-brand-gray-light dark:text-brand-white dark:text-brand-white/70 dark:text-gray-500 font-medium group-hover:text-brand-black hover:text-brand-black text-brand-black text-center text-lg transition-colors w-6">2</div>
+          <div class="flex gap-3 items-center">
             <Avatar alt="Marcos Costa" src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=100&h=100" />
             <div>
-              <div class="text-sm font-medium text-brand-black dark:text-brand-white leading-tight">Marcos Costa</div>
-              <div class="text-xs text-brand-black/70 dark:text-brand-gray-light group-hover:text-brand-black dark:group-hover:text-white transition-colors">Atlético Central</div>
+              <div class="dark:text-brand-white font-medium leading-tight text-brand-black text-sm">Marcos Costa</div>
+              <div class="dark:group-hover:text-brand-black dark:text-brand-gray-light dark:text-brand-white dark:text-brand-white/70 dark:text-white group-hover:text-brand-black text-brand-black text-xs transition-colors">Atlético Central</div>
             </div>
           </div>
-          <div class="w-16 text-center text-sm text-brand-black/70 dark:text-brand-gray-light">4</div>
-          <div class="w-16 text-center font-bold text-brand-gold text-xl">5</div>
+          <div class="dark:text-brand-gray-light dark:text-brand-white/70 text-brand-black text-center text-sm w-16">4</div>
+          <div class="font-bold text-brand-gold text-center text-xl w-16">5</div>
         </div>
       </div>
     </Card>

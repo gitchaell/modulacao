@@ -19,8 +19,8 @@ const t = usePageTranslations(pageDict, lang as any);
 
   <Tabs pageDict={pageDict} lang={lang} />
 
-  <section class="max-w-7xl mx-auto px-4 mb-16">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+  <section class="max-w-7xl mb-16 mx-auto px-4">
+    <div class="gap-8 grid grid-cols-1 lg:grid-cols-12">
       <div class="lg:col-span-5 space-y-8">
         <MatchList pageDict={pageDict} lang={lang} />
       </div>
@@ -30,11 +30,11 @@ const t = usePageTranslations(pageDict, lang as any);
     </div>
   </section>
 
-  <section class="max-w-7xl mx-auto px-4 mb-16">
+  <section class="max-w-7xl mb-16 mx-auto px-4">
     <News pageDict={pageDict} lang={lang} />
   </section>
 
-  <section class="max-w-7xl mx-auto px-4 mb-24">
+  <section class="max-w-7xl mb-24 mx-auto px-4">
     <CTA pageDict={pageDict} lang={lang} />
   </section>
 </PublicLayout>

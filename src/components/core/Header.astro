@@ -7,61 +7,61 @@ import ThemeToggle from '@/components/ui/ThemeToggle.astro';
 const lang = getLangFromUrl(Astro.cookies);
 const t = await useTranslations(lang);
 ---
-<header class="w-full border-b border-black/5 dark:border-white/5 bg-brand-offwhite/90 dark:bg-[#0a0a0a]/90 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
-  <div class="container mx-auto px-6 lg:px-12 max-w-[1400px] py-4 flex justify-between items-center">
-    <a href="/" class="flex items-center gap-3 group focus-visible">
-      <svg class="w-10 h-10 text-brand-gold group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+<header class="backdrop-blur-md bg-brand-offwhite/90 border-b border-black/5 dark:bg-[#0a0a0a]/90 dark:border-white/5 duration-300 sticky top-0 transition-all w-full z-50">
+  <div class="container flex items-center justify-between lg:px-12 max-w-[1400px] mx-auto px-6 py-4">
+    <a href="/" class="flex focus-visible gap-3 group items-center">
+      <svg class="duration-300 group-hover:scale-110 h-10 text-brand-gold transition-transform w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden lg:flex gap-5 xl:gap-7 items-center">
-      <a href="/" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-gold hover:text-brand-black dark:hover:text-white transition-colors focus-visible">{t('nav.home')}</a>
-      <a href="/sobre" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
-      <a href="/publicacoes" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.publications')}</a>
-      <a href="/artigos" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.articles')}</a>
-      <a href="/futebol" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.football')}</a>
-      <a href="/shop" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.shop')}</a>
-      <a href="/contato" class="text-xs font-extrabold uppercase tracking-[0.15em] text-brand-black dark:text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.contact')}</a>
+    <nav class="gap-5 hidden items-center lg:flex xl:gap-7">
+      <a href="/" class="dark:hover:text-brand-black dark:text-white focus-visible font-extrabold hover:text-brand-black text-brand-gold text-xs tracking-[0.15em] transition-colors uppercase">{t('nav.home')}</a>
+      <a href="/sobre" class="dark:text-brand-white focus-visible font-extrabold hover:text-brand-gold text-brand-black text-xs tracking-[0.15em] transition-colors uppercase">{t('nav.about')}</a>
+      <a href="/publicacoes" class="dark:text-brand-white focus-visible font-extrabold hover:text-brand-gold text-brand-black text-xs tracking-[0.15em] transition-colors uppercase">{t('nav.publications')}</a>
+      <a href="/artigos" class="dark:text-brand-white focus-visible font-extrabold hover:text-brand-gold text-brand-black text-xs tracking-[0.15em] transition-colors uppercase">{t('nav.articles')}</a>
+      <a href="/futebol" class="dark:text-brand-white focus-visible font-extrabold hover:text-brand-gold text-brand-black text-xs tracking-[0.15em] transition-colors uppercase">{t('nav.football')}</a>
+      <a href="/shop" class="dark:text-brand-white focus-visible font-extrabold hover:text-brand-gold text-brand-black text-xs tracking-[0.15em] transition-colors uppercase">{t('nav.shop')}</a>
+      <a href="/contato" class="dark:text-brand-white focus-visible font-extrabold hover:text-brand-gold text-brand-black text-xs tracking-[0.15em] transition-colors uppercase">{t('nav.contact')}</a>
     </nav>
 
     <!-- Right Actions -->
-    <div class="hidden lg:flex items-center gap-4">
-      <button class="h-10 px-3 flex items-center justify-center text-brand-gold hover:text-brand-black dark:hover:text-white transition-colors border border-black/10 dark:border-white/10 rounded-sm" aria-label="Search">
+    <div class="gap-4 hidden items-center lg:flex">
+      <button class="border border-black/10 dark:border-white/10 dark:hover:text-brand-black dark:text-white flex h-10 hover:text-brand-black items-center justify-center px-3 rounded-sm text-brand-gold transition-colors" aria-label="Search">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       </button>
 
-      <div class="h-10 flex items-center justify-center border border-black/10 dark:border-white/10 rounded-sm overflow-hidden">
-        <ThemeToggle class="h-full px-3 flex items-center justify-center" />
+      <div class="border border-black/10 dark:border-white/10 flex h-10 items-center justify-center overflow-hidden rounded-sm">
+        <ThemeToggle class="flex h-full items-center justify-center px-3" />
       </div>
 
-      <div class="h-10 flex items-center justify-center border border-black/10 dark:border-white/10 rounded-sm">
+      <div class="border border-black/10 dark:border-white/10 flex h-10 items-center justify-center rounded-sm">
         <LanguageSelector />
       </div>
 
-      <a href="/login" class="ml-2 h-10 px-4 border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black transition-colors text-xs font-extrabold uppercase tracking-[0.15em] flex items-center gap-2 rounded-sm">
+      <a href="/login" class="border border-brand-gold dark:hover:text-brand-white dark:text-gray-500 flex font-extrabold gap-2 h-10 hover:bg-brand-gold hover:text-brand-black items-center ml-2 px-4 rounded-sm text-brand-gold text-gray-500 dark:text-gray-400 text-xs tracking-[0.15em] transition-colors uppercase">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         SEJA UM MEMBRO
       </a>
     </div>
 
     <!-- Mobile Menu Button -->
-    <button id="mobile-menu-btn" class="lg:hidden text-brand-black dark:text-brand-white p-2 focus-visible hover:text-brand-gold transition-colors" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+    <button id="mobile-menu-btn" class="dark:text-brand-white focus-visible hover:text-brand-gold lg:hidden p-2 text-brand-black transition-colors" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
     </button>
   </div>
 </header>
 
 <!-- Mobile Navigation Menu -->
-<div id="mobile-menu" class="hidden opacity-0 -translate-y-4 lg:hidden bg-[#0a0a0a]/95 border-b border-white/10 shadow-lg fixed inset-0 z-40 backdrop-blur-lg pt-20 transition-all duration-300 ease-in-out">
-  <nav class="flex flex-col px-8 py-6 gap-6 mt-4">
-    <a href="/" class="text-base font-semibold uppercase tracking-wide text-brand-gold hover:text-brand-white transition-colors focus-visible">{t('nav.home')}</a>
-    <a href="/sobre" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.about')}</a>
-    <a href="/publicacoes" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.publications')}</a>
-    <a href="/artigos" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.articles')}</a>
-    <a href="/futebol" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.football')}</a>
-    <a href="/shop" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.shop')}</a>
-    <a href="/contato" class="text-base font-semibold uppercase tracking-wide text-brand-white hover:text-brand-gold transition-colors focus-visible">{t('nav.contact')}</a>
-    <a href="/login" class="text-base font-semibold uppercase tracking-wide text-brand-gold border border-brand-gold p-4 text-center mt-4">SEJA UM MEMBRO</a>
+<div id="mobile-menu" class="-translate-y-4 backdrop-blur-lg bg-[#0a0a0a]/95 border-b border-gray-200 dark:border-white/10 duration-300 ease-in-out fixed hidden inset-0 lg:hidden opacity-0 pt-20 shadow-lg transition-all z-40">
+  <nav class="flex flex-col gap-6 mt-4 px-8 py-6">
+    <a href="/" class="dark:hover:text-brand-white dark:text-gray-500 focus-visible font-semibold hover:text-brand-black text-base text-brand-gold text-gray-500 dark:text-gray-400 tracking-wide transition-colors uppercase">{t('nav.home')}</a>
+    <a href="/sobre" class="dark:text-brand-white focus-visible font-semibold hover:text-brand-gold text-base text-brand-black tracking-wide transition-colors uppercase">{t('nav.about')}</a>
+    <a href="/publicacoes" class="dark:text-brand-white focus-visible font-semibold hover:text-brand-gold text-base text-brand-black tracking-wide transition-colors uppercase">{t('nav.publications')}</a>
+    <a href="/artigos" class="dark:text-brand-white focus-visible font-semibold hover:text-brand-gold text-base text-brand-black tracking-wide transition-colors uppercase">{t('nav.articles')}</a>
+    <a href="/futebol" class="dark:text-brand-white focus-visible font-semibold hover:text-brand-gold text-base text-brand-black tracking-wide transition-colors uppercase">{t('nav.football')}</a>
+    <a href="/shop" class="dark:text-brand-white focus-visible font-semibold hover:text-brand-gold text-base text-brand-black tracking-wide transition-colors uppercase">{t('nav.shop')}</a>
+    <a href="/contato" class="dark:text-brand-white focus-visible font-semibold hover:text-brand-gold text-base text-brand-black tracking-wide transition-colors uppercase">{t('nav.contact')}</a>
+    <a href="/login" class="border border-brand-gold font-semibold mt-4 p-4 text-base text-brand-gold text-center tracking-wide uppercase">SEJA UM MEMBRO</a>
   </nav>
 </div>
 

@@ -30,16 +30,16 @@ const lang = getLangFromUrl(Astro.cookies);
 <PublicLayout title={article.title}>
   <article class="bg-brand-offwhite dark:bg-brand-dark min-h-screen pb-24">
     {/* Cabecera del artículo */}
-    <header class="py-20 bg-brand-black border-b border-brand-dark-card/50 text-center relative overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-gold/10 via-brand-black to-brand-black opacity-60"></div>
-      <div class="relative z-10 container mx-auto px-6 max-w-4xl">
-        <div class="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-widest text-brand-black bg-brand-gold rounded-full uppercase">
+    <header class="bg-gray-100 border-b border-gray-200 dark:bg-brand-black dark:border-brand-dark/50 overflow-hidden py-20 relative text-center">
+      <div class="absolute bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-gold/10 inset-0 opacity-60 to-brand-black via-brand-black"></div>
+      <div class="container max-w-4xl mx-auto px-6 relative z-10">
+        <div class="bg-brand-gold dark:text-brand-white font-semibold inline-block mb-6 px-3 py-1 rounded-full text-brand-black text-xs tracking-widest uppercase">
           Investigación
         </div>
-        <h1 class="text-4xl md:text-5xl font-bold text-brand-black dark:text-white mb-6 leading-tight">
+        <h1 class="dark:text-white font-bold leading-tight mb-6 md:text-5xl text-4xl text-brand-black">
           {article.title}
         </h1>
-        <div class="text-gray-600 dark:text-gray-400 font-semibold tracking-wide text-sm">
+        <div class="dark:text-gray-400 font-semibold text-gray-600 text-sm tracking-wide">
           {formatDate(article.publishedAt as unknown as Date)}
         </div>
       </div>
@@ -47,15 +47,15 @@ const lang = getLangFromUrl(Astro.cookies);
 
     {/* Imagen de portada si existe */}
     {article.coverImageUrl && (
-      <div class="container mx-auto max-w-5xl -mt-10 mb-12 px-6 relative z-20">
-        <div class="aspect-video w-full rounded-xl overflow-hidden shadow-2xl border border-brand-dark-card">
-          <img loading="lazy" decoding="async" src={article.coverImageUrl} alt={article.title} class="w-full h-full object-cover" />
+      <div class="-mt-10 container max-w-5xl mb-12 mx-auto px-6 relative z-20">
+        <div class="aspect-video border border-gray-200 dark:border-brand-dark overflow-hidden rounded-xl shadow-2xl w-full">
+          <img loading="lazy" decoding="async" src={article.coverImageUrl} alt={article.title} class="h-full object-cover w-full" />
         </div>
       </div>
     )}
 
     {/* Contenido (Esperando HTML renderizado desde el CMS) */}
-    <div class="container mx-auto px-6 max-w-3xl mt-16 prose prose-invert prose-brand lg:prose-lg max-w-none">
+    <div class="container lg:prose-lg max-w-3xl max-w-none mt-16 mx-auto prose prose-brand prose-invert px-6">
       {/*
         NOTA: En producción con un CMS real, el contenido en HTML se insertaría con set:html.
         Al venir directamente de Drizzle, asumiendo HTML seguro del admin.
@@ -64,8 +64,8 @@ const lang = getLangFromUrl(Astro.cookies);
     </div>
 
     {/* Footer del artículo - Regresar */}
-    <div class="container mx-auto px-6 max-w-3xl mt-16 pt-8 border-t border-brand-dark-card/50">
-      <a href="/pesquisas" class="inline-flex items-center text-brand-gold hover:text-brand-black dark:text-white transition-colors">
+    <div class="border-gray-200 border-t container dark:border-brand-dark/50 max-w-3xl mt-16 mx-auto pt-8 px-6">
+      <a href="/pesquisas" class="dark:text-white hover:text-brand-black inline-flex items-center text-brand-gold transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m15 18-6-6 6-6"/></svg>
         Volver a Pesquisas
       </a>

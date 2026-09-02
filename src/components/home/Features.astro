@@ -12,50 +12,50 @@ const { pageDict } = Astro.props;
 const lang = getLangFromUrl(Astro.cookies);
 const t = usePageTranslations(pageDict, lang);
 ---
-<Section class="py-16 bg-brand-offwhite dark:bg-[#0a0a0a] border-b border-black/5 dark:border-white/5" contained={true}>
-  <div class="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4 divide-x-0 lg:divide-x lg:divide-white/10">
+<Section class="bg-brand-offwhite border-b border-black/5 dark:bg-[#0a0a0a] dark:bg-brand-dark-card dark:border-white/5 py-16" contained={true}>
+  <div class="divide-x-0 gap-8 grid grid-cols-2 lg:divide-white/10 lg:divide-x lg:gap-4 lg:grid-cols-5">
     <!-- Feature 1 -->
-    <div class="flex flex-col items-center text-center lg:px-4">
-      <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-5 transition-transform hover:scale-105">
+    <div class="flex flex-col items-center lg:px-4 text-center">
+      <div class="border border-brand-gold/30 flex h-[72px] hover:scale-105 items-center justify-center mb-5 rounded-full text-brand-gold transition-transform w-[72px]">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
       </div>
-      <Typography variant="h6" class="text-brand-gold mb-2.5">{t('home.features.identity.title') || 'Dakila Ecosystem'}</Typography>
+      <Typography variant="h6" class="mb-2.5 text-brand-gold">{t('home.features.identity.title') || 'Dakila Ecosystem'}</Typography>
       <Typography variant="small" class="max-w-[200px]">{t('home.features.identity.desc') || 'Direct connection with Dakila Pesquisas, Zigurats, and the global search for knowledge.'}</Typography>
     </div>
 
     <!-- Feature 2 -->
-    <div class="flex flex-col items-center text-center lg:px-4">
-      <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-5 transition-transform hover:scale-105">
+    <div class="flex flex-col items-center lg:px-4 text-center">
+      <div class="border border-brand-gold/30 flex h-[72px] hover:scale-105 items-center justify-center mb-5 rounded-full text-brand-gold transition-transform w-[72px]">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       </div>
-      <Typography variant="h6" class="text-brand-gold mb-2.5">{t('home.features.unity.title') || 'UNIDADE'}</Typography>
+      <Typography variant="h6" class="mb-2.5 text-brand-gold">{t('home.features.unity.title') || 'UNIDADE'}</Typography>
       <Typography variant="small" class="max-w-[200px]">{t('home.features.unity.desc') || 'Jogamos juntos, vencemos juntos, comemoramos juntos.'}</Typography>
     </div>
 
     <!-- Feature 3 -->
-    <div class="flex flex-col items-center text-center lg:px-4">
-      <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-5 transition-transform hover:scale-105">
+    <div class="flex flex-col items-center lg:px-4 text-center">
+      <div class="border border-brand-gold/30 flex h-[72px] hover:scale-105 items-center justify-center mb-5 rounded-full text-brand-gold transition-transform w-[72px]">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       </div>
-      <Typography variant="h6" class="text-brand-gold mb-2.5">{t('home.features.evolution.title') || 'EVOLUÇÃO'}</Typography>
+      <Typography variant="h6" class="mb-2.5 text-brand-gold">{t('home.features.evolution.title') || 'EVOLUÇÃO'}</Typography>
       <Typography variant="small" class="max-w-[200px]">{t('home.features.evolution.desc') || 'Buscamos sempre a melhor versão dentro e fora de campo.'}</Typography>
     </div>
 
     <!-- Feature 4 -->
-    <div class="flex flex-col items-center text-center lg:px-4">
-      <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-5 transition-transform hover:scale-105">
+    <div class="flex flex-col items-center lg:px-4 text-center">
+      <div class="border border-brand-gold/30 flex h-[72px] hover:scale-105 items-center justify-center mb-5 rounded-full text-brand-gold transition-transform w-[72px]">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="22" x2="18" y1="12" y2="12"/><line x1="6" x2="2" y1="12" y2="12"/><line x1="12" x2="12" y1="6" y2="2"/><line x1="12" x2="12" y1="22" y2="18"/></svg>
       </div>
-      <Typography variant="h6" class="text-brand-gold mb-2.5">{t('home.features.discipline.title') || 'DISCIPLINA'}</Typography>
+      <Typography variant="h6" class="mb-2.5 text-brand-gold">{t('home.features.discipline.title') || 'DISCIPLINA'}</Typography>
       <Typography variant="small" class="max-w-[200px]">{t('home.features.discipline.desc') || 'Comprometimento com o processo e os detalhes.'}</Typography>
     </div>
 
     <!-- Feature 5 -->
-    <div class="flex flex-col items-center text-center lg:px-4 col-span-2 lg:col-span-1">
-      <div class="w-[72px] h-[72px] rounded-full border border-brand-gold/30 text-brand-gold flex items-center justify-center mb-5 transition-transform hover:scale-105">
+    <div class="col-span-2 flex flex-col items-center lg:col-span-1 lg:px-4 text-center">
+      <div class="border border-brand-gold/30 flex h-[72px] hover:scale-105 items-center justify-center mb-5 rounded-full text-brand-gold transition-transform w-[72px]">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" x2="12" y1="1" y2="3"/><line x1="12" x2="12" y1="21" y2="23"/><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"/><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"/><line x1="1" x2="3" y1="12" y2="12"/><line x1="21" x2="23" y1="12" y2="12"/><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"/><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"/></svg>
       </div>
-      <Typography variant="h6" class="text-brand-gold mb-2.5">{t('home.features.purpose.title') || 'PROPÓSITO'}</Typography>
+      <Typography variant="h6" class="mb-2.5 text-brand-gold">{t('home.features.purpose.title') || 'PROPÓSITO'}</Typography>
       <Typography variant="small" class="max-w-[200px]">{t('home.features.purpose.desc') || 'Fazer parte de algo maior que o futebol.'}</Typography>
     </div>
   </div>

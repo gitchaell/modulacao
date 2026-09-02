@@ -30,25 +30,25 @@ const formatDate = (date: Date) => {
 };
 ---
 
-<div class="relative inline-block" id="notification-bell-container">
-  <button id="notification-button" class="relative p-2 text-brand-black dark:text-gray-400 hover:text-brand-gold transition-colors focus-visible focus:outline-none" aria-label="Notificaciones" aria-expanded="false" aria-controls="notification-dropdown">
+<div class="inline-block relative" id="notification-bell-container">
+  <button id="notification-button" class="dark:text-gray-400 focus-visible focus:outline-none hover:text-brand-gold p-2 relative text-brand-black transition-colors" aria-label="Notificaciones" aria-expanded="false" aria-controls="notification-dropdown">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
     {unreadCount > 0 && (
-      <span class="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-brand-white dark:border-brand-black"></span>
+      <span class="absolute bg-red-500 border-2 border-brand-white dark:border-brand-black h-2.5 right-1 rounded-full top-1 w-2.5"></span>
     )}
   </button>
 
-  <div id="notification-dropdown" class="absolute right-0 mt-2 w-80 bg-brand-white dark:bg-brand-dark-card border border-gray-200 dark:border-brand-dark rounded-sm premium-shadow hidden z-50 overflow-hidden transform origin-top-right transition-all">
-    <div class="p-4 border-b border-gray-200 dark:border-brand-dark flex justify-between items-center bg-gray-50 dark:bg-brand-black/50">
-      <h3 class="font-semibold text-brand-black dark:text-white text-sm uppercase tracking-wider">Notificaciones</h3>
+  <div id="notification-dropdown" class="absolute bg-brand-white border border-gray-200 dark:bg-brand-dark-card dark:border-brand-dark hidden mt-2 origin-top-right overflow-hidden premium-shadow right-0 rounded-sm transform transition-all w-80 z-50">
+    <div class="bg-gray-50 border-b border-gray-200 dark:bg-brand-black/50 dark:border-brand-dark flex items-center justify-between p-4">
+      <h3 class="dark:text-brand-white font-semibold text-brand-black text-sm tracking-wider uppercase">Notificaciones</h3>
       {unreadCount > 0 && (
-        <button id="mark-all-read" class="text-xs font-semibold text-brand-gold hover:text-brand-black dark:hover:text-white transition-colors focus-visible">Marcar todo como leído</button>
+        <button id="mark-all-read" class="dark:hover:text-brand-black dark:text-brand-white focus-visible font-semibold hover:text-brand-black text-brand-gold text-xs transition-colors">Marcar todo como leído</button>
       )}
     </div>
 
-    <div class="max-h-96 overflow-y-auto divide-y divide-gray-100 dark:divide-brand-dark">
+    <div class="dark:divide-brand-dark divide-gray-100 divide-y max-h-96 overflow-y-auto">
       {userNotifications.length === 0 ? (
-        <div class="p-8 text-center text-sm font-semibold text-gray-500 dark:text-gray-400">
+        <div class="dark:text-gray-400 font-semibold p-8 text-center text-gray-500 dark:text-gray-400 text-sm">
           No tienes notificaciones.
         </div>
       ) : (
@@ -61,10 +61,10 @@ const formatDate = (date: Date) => {
             <div class="flex gap-3">
               <div class={`w-2 h-2 mt-1.5 rounded-full flex-shrink-0 transition-colors ${!notification.isRead ? 'bg-brand-gold shadow-[0_0_8px_rgba(212,175,55,0.5)]' : 'bg-transparent'}`}></div>
               <div>
-                <p class={`text-sm ${!notification.isRead ? 'text-brand-black font-semibold dark:text-white' : 'text-gray-600 dark:text-gray-300'}`}>
+                <p class={`text-sm ${!notification.isRead ? 'text-brand-black dark:text-brand-white font-semibold dark:text-brand-white' : 'text-gray-600 dark:text-gray-300'}`}>
                   {notification.message}
                 </p>
-                <span class="text-xs uppercase font-semibold tracking-wider text-gray-400 dark:text-gray-500 mt-1.5 block">{formatDate(notification.createdAt as unknown as Date)}</span>
+                <span class="block dark:text-gray-400 dark:text-gray-500 font-semibold mt-1.5 text-gray-500 dark:text-gray-400 text-xs tracking-wider uppercase">{formatDate(notification.createdAt as unknown as Date)}</span>
               </div>
             </div>
           </a>

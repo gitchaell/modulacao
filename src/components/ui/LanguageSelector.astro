@@ -10,22 +10,22 @@ const flags = {
 };
 const currentFlag = flags[lang as keyof typeof flags] || 'fi-br';
 ---
-<div class="relative group h-full">
-  <div class="h-full flex items-center justify-center gap-2.5 px-3 text-brand-black dark:text-brand-white text-sm font-semibold cursor-pointer group-hover:text-brand-gold transition-colors duration-200">
+<div class="group h-full relative">
+  <div class="cursor-pointer dark:text-brand-white duration-200 flex font-semibold gap-2.5 group-hover:text-brand-gold h-full items-center justify-center px-3 text-brand-black text-sm transition-colors">
     <span class={`fi ${currentFlag} rounded-sm w-5 h-3.5 overflow-hidden inline-block object-cover`}></span>
     {lang.toUpperCase()}
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-180 transition-transform duration-200"><path d="m6 9 6 6 6-6"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="duration-200 group-hover:rotate-180 transition-transform"><path d="m6 9 6 6 6-6"/></svg>
   </div>
 
-  <div class="absolute right-0 mt-2 w-32 bg-white dark:bg-brand-dark border border-white/10 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-    <button class="w-full text-left px-4 py-2 text-sm text-brand-black dark:text-brand-white hover:bg-brand-gold/20 dark:hover:bg-brand-gold/10 hover:text-brand-gold flex items-center gap-2" data-lang="pt">
-      <span class="fi fi-br rounded-sm w-5 h-3.5 overflow-hidden inline-block object-cover"></span> PT
+  <div class="absolute bg-white border border-gray-200 dark:bg-brand-dark dark:border-white/10 duration-200 group-hover:opacity-100 group-hover:visible invisible mt-2 opacity-0 right-0 rounded-sm shadow-lg transition-all w-32 z-50">
+    <button class="dark:hover:bg-brand-gold/10 dark:text-brand-white flex gap-2 hover:bg-brand-gold/20 hover:text-brand-gold items-center px-4 py-2 text-brand-black text-left text-sm w-full" data-lang="pt">
+      <span class="fi fi-br h-3.5 inline-block object-cover overflow-hidden rounded-sm w-5"></span> PT
     </button>
-    <button class="w-full text-left px-4 py-2 text-sm text-brand-black dark:text-brand-white hover:bg-brand-gold/20 dark:hover:bg-brand-gold/10 hover:text-brand-gold flex items-center gap-2" data-lang="en">
-      <span class="fi fi-us rounded-sm w-5 h-3.5 overflow-hidden inline-block object-cover"></span> EN
+    <button class="dark:hover:bg-brand-gold/10 dark:text-brand-white flex gap-2 hover:bg-brand-gold/20 hover:text-brand-gold items-center px-4 py-2 text-brand-black text-left text-sm w-full" data-lang="en">
+      <span class="fi fi-us h-3.5 inline-block object-cover overflow-hidden rounded-sm w-5"></span> EN
     </button>
-    <button class="w-full text-left px-4 py-2 text-sm text-brand-black dark:text-brand-white hover:bg-brand-gold/20 dark:hover:bg-brand-gold/10 hover:text-brand-gold flex items-center gap-2" data-lang="es">
-      <span class="fi fi-es rounded-sm w-5 h-3.5 overflow-hidden inline-block object-cover"></span> ES
+    <button class="dark:hover:bg-brand-gold/10 dark:text-brand-white flex gap-2 hover:bg-brand-gold/20 hover:text-brand-gold items-center px-4 py-2 text-brand-black text-left text-sm w-full" data-lang="es">
+      <span class="fi fi-es h-3.5 inline-block object-cover overflow-hidden rounded-sm w-5"></span> ES
     </button>
   </div>
 </div>

@@ -36,48 +36,48 @@ const lang = getLangFromUrl(Astro.cookies);
   <div class="max-w-4xl mx-auto space-y-8">
 
     <!-- Cabecera del Grupo -->
-    <div class="relative h-64 bg-brand-black border border-brand-dark-card rounded-2xl overflow-hidden shadow-2xl">
+    <div class="bg-gray-100 border border-gray-200 dark:bg-brand-black dark:border-brand-dark h-64 overflow-hidden relative rounded-2xl shadow-2xl">
        {group.coverImageUrl ? (
-          <img loading="lazy" decoding="async" src={group.coverImageUrl} alt={group.name} class="w-full h-full object-cover opacity-60" />
+          <img loading="lazy" decoding="async" src={group.coverImageUrl} alt={group.name} class="h-full object-cover opacity-60 w-full" />
         ) : (
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-gold/20 via-brand-black to-brand-black"></div>
+          <div class="absolute bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-gold/20 inset-0 to-brand-black via-brand-black"></div>
         )}
-        <div class="absolute inset-0 flex flex-col justify-end p-8 bg-gradient-to-t from-brand-black to-transparent">
-          <div class="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-widest text-brand-black bg-brand-gold rounded-full uppercase self-start">
+        <div class="absolute bg-gradient-to-t flex flex-col from-brand-black inset-0 justify-end p-8 to-transparent">
+          <div class="bg-brand-gold dark:text-brand-white font-semibold inline-block mb-3 px-3 py-1 rounded-full self-start text-brand-black text-xs tracking-widest uppercase">
             {group.type === 'COUNTRY' ? 'Grupo Nacional' : 'Grupo Local'}
           </div>
-          <h1 class="text-4xl font-bold text-white mb-2">{group.name}</h1>
-          <p class="text-gray-300 max-w-2xl">{group.description}</p>
+          <h1 class="dark:text-white font-bold mb-2 text-4xl text-brand-black">{group.name}</h1>
+          <p class="dark:text-gray-300 max-w-2xl text-gray-600">{group.description}</p>
         </div>
     </div>
 
     <!-- Pestañas (Visual) -->
-    <div class="flex border-b border-brand-dark-card/50">
-      <button class="px-6 py-3 text-brand-gold border-b-2 border-brand-gold font-semibold">Miembros ({membersList.length})</button>
+    <div class="border-b border-gray-200 dark:border-brand-dark/50 flex">
+      <button class="border-b-2 border-brand-gold font-semibold px-6 py-3 text-brand-gold">Miembros ({membersList.length})</button>
     </div>
 
     <!-- Lista de Miembros -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div class="gap-4 grid grid-cols-1 sm:grid-cols-2">
       {membersList.length === 0 ? (
-        <div class="col-span-full py-12 text-center text-gray-500">
+        <div class="col-span-full dark:text-gray-400 py-12 text-center text-gray-500 dark:text-gray-400">
           Aún no hay miembros en este grupo.
         </div>
       ) : (
         membersList.map(({ profile, role }) => (
           <a href={`/@${profile.slug}`} class="block focus-visible">
-            <Card class="flex items-center gap-4 p-4 bg-brand-white/80 dark:bg-brand-dark-card/80 backdrop-blur-md border border-gray-200 dark:border-white/10 hover:border-brand-gold/50 transition-colors group premium-shadow">
-            <div class="w-12 h-12 rounded-full overflow-hidden bg-brand-white dark:bg-brand-black flex items-center justify-center border border-gray-200 dark:border-brand-dark-card group-hover:border-brand-gold transition-colors">
+            <Card class="backdrop-blur-md bg-brand-white/80 border border-gray-200 dark:bg-brand-dark-card/80 dark:border-white/10 flex gap-4 group hover:border-brand-gold/50 items-center p-4 premium-shadow transition-colors">
+            <div class="bg-brand-white border border-gray-200 dark:bg-brand-black dark:border-brand-dark-card flex group-hover:border-brand-gold h-12 items-center justify-center overflow-hidden rounded-full transition-colors w-12">
               {profile.avatarUrl ? (
-                <img loading="lazy" decoding="async" src={profile.avatarUrl} alt={profile.fullName} class="w-full h-full object-cover" />
+                <img loading="lazy" decoding="async" src={profile.avatarUrl} alt={profile.fullName} class="h-full object-cover w-full" />
               ) : (
-                <span class="text-lg font-bold text-brand-gold">{profile.fullName.charAt(0).toUpperCase()}</span>
+                <span class="font-bold text-brand-gold text-lg">{profile.fullName.charAt(0).toUpperCase()}</span>
               )}
             </div>
             <div>
-              <div class="font-semibold text-white group-hover:text-brand-gold transition-colors">{profile.fullName}</div>
-              <div class="text-xs text-brand-gold flex gap-2">
+              <div class="dark:text-white font-semibold group-hover:text-brand-gold text-brand-black transition-colors">{profile.fullName}</div>
+              <div class="flex gap-2 text-brand-gold text-xs">
                 <span>@{profile.slug}</span>
-                {role === 'ADMIN' && <span class="bg-brand-gold/20 text-brand-gold px-1.5 py-0.5 rounded text-xs">ADMIN</span>}
+                {role === 'ADMIN' && <span class="bg-brand-gold/20 px-1.5 py-0.5 rounded text-brand-gold text-xs">ADMIN</span>}
               </div>
             </div>
             </Card>

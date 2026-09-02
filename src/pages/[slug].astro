@@ -51,79 +51,79 @@ const t = usePageTranslations(pageDict, lang);
   <div class="bg-brand-offwhite dark:bg-brand-dark min-h-screen pb-24">
 
     <!-- Profile Header (Cover & Info) -->
-    <div class="relative h-64 bg-brand-black border-b border-brand-gold overflow-hidden">
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-gold/20 via-brand-black to-brand-black opacity-80"></div>
+    <div class="bg-gray-100 border-b border-brand-gold dark:bg-brand-black h-64 overflow-hidden relative">
+      <div class="absolute bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-gold/20 inset-0 opacity-80 to-brand-black via-brand-black"></div>
     </div>
 
-    <div class="container mx-auto px-6 max-w-4xl relative z-10 -mt-24">
-      <div class="bg-white dark:bg-brand-dark-card border border-brand-dark/50 rounded-2xl shadow-2xl p-8 flex flex-col md:flex-row items-center md:items-start gap-8">
+    <div class="-mt-24 container max-w-4xl mx-auto px-6 relative z-10">
+      <div class="bg-white border border-gray-200 dark:bg-brand-dark-card dark:border-brand-dark/50 flex flex-col gap-8 items-center md:flex-row md:items-start p-8 rounded-2xl shadow-2xl">
 
         <!-- Avatar -->
-        <div class="w-40 h-40 flex-shrink-0 rounded-full border-4 border-brand-dark-card overflow-hidden bg-brand-black shadow-lg flex items-center justify-center">
+        <div class="bg-gray-100 border-4 border-gray-200 dark:bg-brand-black dark:border-brand-dark flex flex-shrink-0 h-40 items-center justify-center overflow-hidden rounded-full shadow-lg w-40">
           {profile.profiles.avatarUrl ? (
-             <img loading="lazy" decoding="async" src={profile.profiles.avatarUrl} alt={profile.profiles.fullName} class="w-full h-full object-cover" />
+             <img loading="lazy" decoding="async" src={profile.profiles.avatarUrl} alt={profile.profiles.fullName} class="h-full object-cover w-full" />
           ) : (
-            <span class="text-6xl font-bold text-brand-gold">{profile.profiles.fullName.charAt(0).toUpperCase()}</span>
+            <span class="font-bold text-6xl text-brand-gold">{profile.profiles.fullName.charAt(0).toUpperCase()}</span>
           )}
         </div>
 
         <!-- Info -->
-        <div class="flex-1 text-center md:text-left mt-2">
-          <div class="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-widest text-brand-black bg-brand-gold rounded-full uppercase">
+        <div class="flex-1 md:text-left mt-2 text-center">
+          <div class="bg-brand-gold dark:text-brand-white font-semibold inline-block mb-3 px-3 py-1 rounded-full text-brand-black text-xs tracking-widest uppercase">
             {profile.users.role}
           </div>
-          <h1 class="text-3xl font-bold text-brand-black dark:text-white mb-1">{profile.profiles.fullName}</h1>
-          <p class="text-brand-gold text-lg mb-4">@{profile.profiles.slug}</p>
+          <h1 class="dark:text-white font-bold mb-1 text-3xl text-brand-black">{profile.profiles.fullName}</h1>
+          <p class="mb-4 text-brand-gold text-lg">@{profile.profiles.slug}</p>
 
-          <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 text-gray-600 dark:text-gray-400 text-sm mb-6">
+          <div class="dark:text-gray-400 flex flex-wrap gap-4 items-center justify-center mb-6 md:justify-start text-gray-600 text-sm">
             {(profile.profiles.city || profile.profiles.country) && (
-              <span class="flex items-center gap-1">
+              <span class="flex gap-1 items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 {profile.profiles.city}{profile.profiles.city && profile.profiles.country ? ', ' : ''}{profile.profiles.country}
               </span>
             )}
-            <span class="flex items-center gap-1">
+            <span class="flex gap-1 items-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               {t('profile.member_since')} {formatDate(profile.users.createdAt as unknown as Date)}
             </span>
           </div>
 
           {profile.profiles.bio && (
-            <p class="text-gray-700 dark:text-gray-300 leading-relaxed max-w-2xl">{profile.profiles.bio}</p>
+            <p class="dark:text-gray-300 leading-relaxed max-w-2xl text-gray-700">{profile.profiles.bio}</p>
           )}
         </div>
       </div>
     </div>
 
     <!-- Recent Activity -->
-    <div class="container mx-auto px-6 max-w-4xl mt-12">
-      <h2 class="text-2xl font-bold text-brand-gold uppercase tracking-wider mb-6">{t('profile.recent_activity')}</h2>
+    <div class="container max-w-4xl mt-12 mx-auto px-6">
+      <h2 class="font-bold mb-6 text-2xl text-brand-gold tracking-wider uppercase">{t('profile.recent_activity')}</h2>
 
       <div class="space-y-6">
         {userPosts.length === 0 ? (
-          <div class="bg-brand-black/50 border border-brand-dark-card rounded-lg p-12 text-center">
-            <p class="text-gray-500">{t('profile.no_posts')}</p>
+          <div class="bg-gray-100 border border-gray-200 dark:bg-brand-black/50 dark:border-brand-dark p-12 rounded-sm text-center">
+            <p class="dark:text-gray-400 text-gray-500 dark:text-gray-400">{t('profile.no_posts')}</p>
           </div>
         ) : (
           userPosts.map(post => (
-            <Card class="bg-white dark:bg-brand-dark-card hover:border-brand-dark transition-colors">
-              <div class="flex items-center gap-3 mb-4">
-                 <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold font-bold text-sm">
+            <Card class="bg-white border-gray-200 dark:bg-brand-dark-card dark:border-brand-dark hover:border-gray-200 transition-colors">
+              <div class="flex gap-3 items-center mb-4">
+                 <div class="bg-brand-gold/20 flex font-bold h-10 items-center justify-center rounded-full text-brand-gold text-sm w-10">
                     {profile.profiles.fullName.charAt(0).toUpperCase()}
                   </div>
                   <div>
-                    <div class="font-semibold text-brand-black dark:text-white">{profile.profiles.fullName}</div>
-                    <div class="text-xs text-gray-500">{formatDate(post.createdAt as unknown as Date)}</div>
+                    <div class="dark:text-white font-semibold text-brand-black">{profile.profiles.fullName}</div>
+                    <div class="dark:text-gray-400 text-gray-500 dark:text-gray-400 text-xs">{formatDate(post.createdAt as unknown as Date)}</div>
                   </div>
               </div>
 
-              <div class="text-gray-700 dark:text-gray-300 text-sm whitespace-pre-wrap mb-4 leading-relaxed">
+              <div class="dark:text-gray-300 leading-relaxed mb-4 text-gray-700 text-sm whitespace-pre-wrap">
                 {post.content}
               </div>
 
               {post.imageUrl && (
-                <div class="rounded-lg overflow-hidden border border-brand-black/50">
-                  <img loading="lazy" decoding="async" src={post.imageUrl} alt="Publicación" class="w-full max-h-96 object-cover" />
+                <div class="border border-brand-black/50 overflow-hidden rounded-sm">
+                  <img loading="lazy" decoding="async" src={post.imageUrl} alt="Publicación" class="max-h-96 object-cover w-full" />
                 </div>
               )}
             </Card>

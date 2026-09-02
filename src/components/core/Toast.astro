@@ -49,7 +49,7 @@ const config = typeConfig[type];
   class={`fixed bottom-4 right-4 z-50 p-4 rounded-sm border shadow-lg transition-all duration-300 transform ${visible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0 pointer-events-none'} ${config.bg} ${config.border} ${className || ''}`}
   {...rest}
 >
-  <div class="flex items-start gap-3">
+  <div class="flex gap-3 items-start">
     <div class="flex-shrink-0">
       <Icon name={config.icon} class={`w-5 h-5 ${config.iconColor}`} />
     </div>
@@ -63,14 +63,14 @@ const config = typeConfig[type];
         </p>
       )}
     </div>
-    <div class="ml-4 flex-shrink-0 flex">
+    <div class="flex flex-shrink-0 ml-4">
       <button
         type="button"
-        class={`inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${config.textColor} hover:bg-black/5 dark:hover:bg-white/5 transition-colors`}
+        class={`inline-flex rounded-sm p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${config.textColor} hover:bg-gray-100 dark:hover:bg-white/5 transition-colors`}
         onclick="const alert = this.closest('[role=\'alert\']'); alert.style.opacity='0'; setTimeout(() => alert.style.display='none', 300)"
       >
-        <span class="sr-only">Cerrar</span>
-        <Icon name="x" class="w-4 h-4" />
+        <span class="sr-only">Close</span>
+        <Icon name="x" class="h-4 w-4" />
       </button>
     </div>
   </div>
