@@ -3,6 +3,10 @@ import PublicLayout from '@/layouts/PublicLayout.astro';
 import { Target, Eye, Gem, Users, Globe, LayoutGrid, Heart, ChevronRight, Briefcase, Palette, Microscope, Network } from '@lucide/astro';
 import { getLangFromUrl, getPageTranslations , usePageTranslations} from '@/utils/i18n';
 
+import Stats from '@/components/sobre/Stats.astro';
+import MissionVisionValues from '@/components/sobre/MissionVisionValues.astro';
+
+
 const lang = getLangFromUrl(Astro.cookies);
 const pageDict = await getPageTranslations('about', lang);
 const t = usePageTranslations(pageDict, lang);
@@ -134,28 +138,7 @@ const topics = [
         </section>
 
         <!-- Stats -->
-        <section class="border-b border-black/5 dark:border-white/5 gap-4 grid grid-cols-2 md:grid-cols-4 pb-8">
-          <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col items-center justify-center p-6 rounded-2xl text-center">
-            <Users class="h-8 mb-4 text-brand-gold w-8" />
-            <span class="dark:text-brand-white font-bold mb-1 text-2xl text-brand-black">{t('about.stats.members')}</span>
-            <span class="dark:text-gray-400 dark:text-gray-500 text-gray-500 dark:text-gray-400 text-xs tracking-wider uppercase">{t('about.stats.members_label')}</span>
-          </div>
-          <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col items-center justify-center p-6 rounded-2xl text-center">
-            <Globe class="h-8 mb-4 text-brand-gold w-8" />
-            <span class="dark:text-brand-white font-bold mb-1 text-2xl text-brand-black">{t('about.stats.countries')}</span>
-            <span class="dark:text-gray-400 dark:text-gray-500 text-gray-500 dark:text-gray-400 text-xs tracking-wider uppercase">{t('about.stats.countries_label')}</span>
-          </div>
-          <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col items-center justify-center p-6 rounded-2xl text-center">
-            <LayoutGrid class="h-8 mb-4 text-brand-gold w-8" />
-            <span class="dark:text-brand-white font-bold mb-1 text-2xl text-brand-black">{t('about.stats.projects')}</span>
-            <span class="dark:text-gray-400 dark:text-gray-500 text-gray-500 dark:text-gray-400 text-xs tracking-wider uppercase">{t('about.stats.projects_label')}</span>
-          </div>
-          <div class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col items-center justify-center p-6 rounded-2xl text-center">
-            <Heart class="h-8 mb-4 text-brand-gold w-8" />
-            <span class="dark:text-brand-white font-bold mb-1 text-2xl text-brand-black">{t('about.stats.purpose')}</span>
-            <span class="dark:text-gray-400 dark:text-gray-500 text-gray-500 dark:text-gray-400 text-xs tracking-wider uppercase">{t('about.stats.purpose_label')}</span>
-          </div>
-        </section>
+        <Stats t={t} />
 
         <!-- Historia -->
         <section id="historia" class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 gap-8 grid grid-cols-1 items-center lg:p-8 md:grid-cols-2 p-6 rounded-3xl">
@@ -187,56 +170,7 @@ const topics = [
         </section>
 
         <!-- Missao, Visao, Valores Grid -->
-        <section class="gap-6 grid grid-cols-1 lg:grid-cols-3">
-
-          <!-- Missao -->
-          <div id="missao" class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col hover:border-brand-gold/20 p-8 rounded-3xl transition-colors">
-            <div class="flex gap-4 items-center mb-6">
-              <Target class="h-8 text-brand-gold w-8" />
-              <h3 class="font-bold font-display text-brand-gold text-xl tracking-wider uppercase">{t('about.mission.label')}</h3>
-            </div>
-            <div class="h-32 mb-6 overflow-hidden relative rounded-2xl">
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" alt="Missao" class="absolute h-full inset-0 object-cover opacity-60 w-full" />
-            </div>
-            <p class="dark:text-gray-400 flex-1 font-semibold leading-relaxed text-gray-600">
-              {t('about.mission.desc')}
-            </p>
-          </div>
-
-          <!-- Visao -->
-          <div id="visao" class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col hover:border-brand-gold/20 p-8 rounded-3xl transition-colors">
-            <div class="flex gap-4 items-center mb-6">
-              <Eye class="h-8 text-brand-gold w-8" />
-              <h3 class="font-bold font-display text-brand-gold text-xl tracking-wider uppercase">{t('about.vision.label')}</h3>
-            </div>
-            <div class="h-32 mb-6 overflow-hidden relative rounded-2xl">
-              <img src="https://images.unsplash.com/photo-1454372182658-c712e4c5a1db?q=80&w=2070&auto=format&fit=crop" alt="Visao" class="absolute h-full inset-0 object-cover opacity-60 w-full" />
-            </div>
-            <p class="dark:text-gray-400 flex-1 font-semibold leading-relaxed text-gray-600">
-              {t('about.vision.desc')}
-            </p>
-          </div>
-
-          <!-- Valores -->
-          <div id="valores" class="bg-white border border-black/5 dark:bg-brand-dark-card dark:border-white/5 flex flex-col hover:border-brand-gold/20 p-8 rounded-3xl transition-colors">
-            <div class="flex gap-4 items-center mb-6">
-              <Gem class="h-8 text-brand-gold w-8" />
-              <h3 class="font-bold font-display text-brand-gold text-xl tracking-wider uppercase">{t('about.values.label')}</h3>
-            </div>
-            <div class="h-32 mb-6 overflow-hidden relative rounded-2xl">
-              <img src="https://images.unsplash.com/photo-1484807352052-23338990c6c6?q=80&w=2070&auto=format&fit=crop" alt="Valores" class="absolute h-full inset-0 object-cover opacity-60 w-full" />
-            </div>
-            <div class="gap-x-2 gap-y-3 grid grid-cols-2 mt-auto">
-              {Array.from({length: 10}).map((_, i) => (
-                <div class="dark:text-gray-300 flex gap-2 items-center text-gray-700 text-sm">
-                  <div class="bg-brand-gold h-1.5 rounded-full w-1.5"></div>
-                  <span>{t(`about.values.v${i+1}` as any)}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-        </section>
+        <MissionVisionValues t={t} />
 
         <!-- Topics List -->
         <section class="space-y-4">
